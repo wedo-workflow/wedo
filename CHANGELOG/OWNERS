@@ -1,0 +1,8 @@
+# See the OWNERS docs at https://go.k8s.io/owners
+
+approvers:
+  - jony4 # Release Manager
+reviewers:
+
+labels:
+  - area/release-eng
