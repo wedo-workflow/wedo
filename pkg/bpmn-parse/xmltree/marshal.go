@@ -63,12 +63,6 @@ func Encode(w io.Writer, el *Element) error {
 	return enc.encode(el, nil, make(map[*Element]struct{}))
 }
 
-// String returns the XML encoding of an Element
-// and its children as a string.
-func (el *Element) String() string {
-	return string(Marshal(el))
-}
-
 type encoder struct {
 	w              io.Writer
 	prefix, indent string
