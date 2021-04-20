@@ -8,17 +8,16 @@
 	<xsd:import namespace="http://www.omg.org/spec/BPMN/20100524/DI" schemaLocation="BPMNDI.xsd"/>
 	<xsd:import namespace="http://www.omg.org/spec/DD/20100524/DC" schemaLocation="DC.xsd" />
 	<xsd:import namespace="http://www.omg.org/spec/DD/20100524/DI" schemaLocation="DI.xsd" />
-<!--	<xsd:include schemaLocation="Semantic.xsd"/>-->
+	<xsd:include schemaLocation="Semantic.xsd"/>
 
 	<xsd:element name="definitions" type="tDefinitions"/>
 	<xsd:complexType name="tDefinitions">
 		<xsd:sequence>
 			<xsd:element ref="import" minOccurs="0" maxOccurs="unbounded"/>
-<!--			todo-->
-<!--			<xsd:element ref="extension" minOccurs="0" maxOccurs="unbounded"/>-->
-<!--			<xsd:element ref="rootElement" minOccurs="0" maxOccurs="unbounded"/>-->
+			<xsd:element ref="extension" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="rootElement" minOccurs="0" maxOccurs="unbounded"/>
 			<xsd:element ref="bpmndi:BPMNDiagram" minOccurs="0" maxOccurs="unbounded"/>
-<!--			<xsd:element ref="relationship" minOccurs="0" maxOccurs="unbounded"/>-->
+			<xsd:element ref="relationship" minOccurs="0" maxOccurs="unbounded"/>
 		</xsd:sequence>
 		<xsd:attribute name="id" type="xsd:ID" use="optional"/>
 		<xsd:attribute name="name" type="xsd:string"/>
