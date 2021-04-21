@@ -6,7 +6,7 @@ import (
 )
 
 func TestXML(t *testing.T) {
-	doc, err := os.ReadFile("testdata/approve.bpmn")
+	doc, err := os.ReadFile("testdata/diagram.bpmn")
 	if err != nil {
 		t.Log(err)
 		t.FailNow()
