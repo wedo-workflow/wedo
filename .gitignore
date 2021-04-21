@@ -1,3 +1,3 @@
 .idea
 vendor
-pkg/bpmn-parse/testdata
+pkg/bpmn-schema/testdata
