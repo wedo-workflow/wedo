@@ -1,0 +1,61 @@
+<bpmn:process id="Process_1pduhy5" isExecutable="true">
+    <bpmn:laneSet id="LaneSet_0gxmqt1">
+      <bpmn:lane id="Lane_0xcu69n" name="销售专员">
+        <bpmn:flowNodeRef>StartEvent_1ewddrp</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0v6cmko</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0gyvj51</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_0wt4ueu" name="销售主管">
+        <bpmn:flowNodeRef>Activity_1pxa75y</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1teb8e6</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_0ha2sub" name="商务总监">
+        <bpmn:flowNodeRef>Activity_1xu2aqd</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_0uk213p</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_0ztsup6</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="StartEvent_1ewddrp" name="客户下单">
+      <bpmn:outgoing>Flow_1pz0vks</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="Activity_0v6cmko" name="创建合同">
+      <bpmn:incoming>Flow_1pz0vks</bpmn:incoming>
+      <bpmn:outgoing>Flow_1k7okkk</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_1pxa75y" name="主管审批">
+      <bpmn:incoming>Flow_1k7okkk</bpmn:incoming>
+      <bpmn:incoming>Flow_1azgadk</bpmn:incoming>
+      <bpmn:outgoing>Flow_16v2ri8</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_1teb8e6">
+      <bpmn:incoming>Flow_16v2ri8</bpmn:incoming>
+      <bpmn:outgoing>Flow_0sjgceb</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0c5ask9</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="Activity_0gyvj51" name="编辑合同">
+      <bpmn:incoming>Flow_0sjgceb</bpmn:incoming>
+      <bpmn:incoming>Flow_0osraz9</bpmn:incoming>
+      <bpmn:outgoing>Flow_1azgadk</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:userTask id="Activity_1xu2aqd" name="总监审批">
+      <bpmn:incoming>Flow_0c5ask9</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ziylvk</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_0uk213p">
+      <bpmn:incoming>Flow_0ziylvk</bpmn:incoming>
+      <bpmn:outgoing>Flow_0osraz9</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1385o5y</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="Event_0ztsup6" name="订单审批通过">
+      <bpmn:incoming>Flow_1385o5y</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1pz0vks" sourceRef="StartEvent_1ewddrp" targetRef="Activity_0v6cmko" />
+    <bpmn:sequenceFlow id="Flow_1k7okkk" sourceRef="Activity_0v6cmko" targetRef="Activity_1pxa75y" />
+    <bpmn:sequenceFlow id="Flow_16v2ri8" sourceRef="Activity_1pxa75y" targetRef="Gateway_1teb8e6" />
+    <bpmn:sequenceFlow id="Flow_0sjgceb" name="驳回" sourceRef="Gateway_1teb8e6" targetRef="Activity_0gyvj51" />
+    <bpmn:sequenceFlow id="Flow_1azgadk" sourceRef="Activity_0gyvj51" targetRef="Activity_1pxa75y" />
+    <bpmn:sequenceFlow id="Flow_0c5ask9" name="通过" sourceRef="Gateway_1teb8e6" targetRef="Activity_1xu2aqd" />
+    <bpmn:sequenceFlow id="Flow_0ziylvk" sourceRef="Activity_1xu2aqd" targetRef="Gateway_0uk213p" />
+    <bpmn:sequenceFlow id="Flow_0osraz9" name="驳回" sourceRef="Gateway_0uk213p" targetRef="Activity_0gyvj51" />
+    <bpmn:sequenceFlow id="Flow_1385o5y" name="通过" sourceRef="Gateway_0uk213p" targetRef="Event_0ztsup6" />
+  </bpmn:process>

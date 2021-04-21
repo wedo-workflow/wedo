@@ -3,7 +3,7 @@
   <bpmn:collaboration id="Collaboration_1mf2iqh">
     <bpmn:participant id="Participant_03dmxwq" name="睿智科技合同审批" processRef="Process_1pduhy5" />
   </bpmn:collaboration>
-  <bpmn:process id="Process_1pduhy5" isExecutable="false">
+  <bpmn:process id="Process_1pduhy5" isExecutable="true">
     <bpmn:laneSet id="LaneSet_0gxmqt1">
       <bpmn:lane id="Lane_0xcu69n" name="销售专员">
         <bpmn:flowNodeRef>StartEvent_1ewddrp</bpmn:flowNodeRef>
