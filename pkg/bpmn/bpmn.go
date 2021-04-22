@@ -17,7 +17,9 @@ type B struct {
 
 func NewB() *B {
 	rootParsers := map[string]BPMN{
-		BPMN_ELEMENT_PROCESS: NewProcess(),
+		BPMN_ELEMENT_DEFINITIONS: NewDefinitions(),
+		BPMN_ELEMENT_PROCESS:     NewProcess(),
+		BPMN_ELEMENT_MESSAGE:     NewMessage(),
 	}
 	return &B{
 		rootParsers: rootParsers,
