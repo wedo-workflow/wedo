@@ -2,17 +2,20 @@ package bpmn
 
 import "github.com/wedo-workflow/xmltree"
 
-type Signals struct{}
+type Signals struct {
+	ID   string
+	Name string
 
-func (Signals) Parse(*xmltree.Element) error {
-	panic("implement me")
+	parsed bool
+}
+
+func (s *Signals) Parse(element *xmltree.Element) error {
+	s.ID = element.Attr("", "id")
+	s.Name = element.Attr("", "name")
+	s.parsed = true
 	return nil
 }
 
 func (Signals) Store() {
-	panic("implement me")
-}
-
-func (Signals) List() ([]BPMN, error) {
 	panic("implement me")
 }
