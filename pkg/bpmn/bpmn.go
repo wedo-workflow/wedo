@@ -7,7 +7,7 @@ import (
 )
 
 type BPMN interface {
-	Parse(*xmltree.Element) error
+	Parse(element *xmltree.Element) error
 	Store()
 }
 
@@ -40,5 +40,6 @@ func (b *B) Parse(doc []byte) {
 			log.Print(err)
 			continue
 		}
+		parser.Store()
 	}
 }
