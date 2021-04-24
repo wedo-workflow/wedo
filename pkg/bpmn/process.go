@@ -5,10 +5,10 @@ import (
 )
 
 type Process struct {
-	ID           string
-	Name         string
-	IsExecutable bool
-	Version      string
+	ID           string `json:"id"`
+	Name         string `json:"name"`
+	IsExecutable bool   `json:"isExecutable"`
+	Version      string `json:"versionTag"`
 
 	parsed bool
 }

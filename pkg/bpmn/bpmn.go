@@ -20,13 +20,14 @@ func NewB() *B {
 		BPMN_ELEMENT_DEFINITIONS: NewDefinitions(),
 		BPMN_ELEMENT_PROCESS:     NewProcess(),
 		BPMN_ELEMENT_MESSAGE:     NewMessage(),
+		BPMN_ELEMENT_GROUP:       NewGroup(),
 	}
 	return &B{
 		rootParsers: rootParsers,
 	}
 }
 
-func (b *B) Parse(doc []byte) {
+func (b *B) ParseDoc(doc []byte) {
 	tree, err := xmltree.Parse(doc)
 	if err != nil {
 		log.Print(err)

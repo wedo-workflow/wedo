@@ -6,7 +6,7 @@ import (
 
 type Group struct {
 	ID               string
-	GategoryValueRef string
+	CategoryValueRef string
 
 	parsed bool
 }
@@ -17,7 +17,7 @@ func NewGroup() *Group {
 
 func (g *Group) Parse(element *xmltree.Element) error {
 	g.ID = element.Attr("", "id")
-	g.GategoryValueRef = element.Attr("", "gategoryValueRef")
+	g.CategoryValueRef = element.Attr("", "categoryValueRef")
 	g.parsed = true
 	return nil
 }

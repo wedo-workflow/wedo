@@ -12,5 +12,5 @@ func TestXML(t *testing.T) {
 		t.FailNow()
 	}
 	b := NewB()
-	b.Parse(doc)
+	b.ParseDoc(doc)
 }
