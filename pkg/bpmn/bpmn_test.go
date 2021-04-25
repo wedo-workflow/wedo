@@ -3,6 +3,8 @@ package bpmn
 import (
 	"os"
 	"testing"
+
+	"github.com/wedo-workflow/wedo/configs"
 )
 
 func TestXML(t *testing.T) {
@@ -11,6 +13,10 @@ func TestXML(t *testing.T) {
 		t.Log(err)
 		t.FailNow()
 	}
-	b := NewB()
-	b.ParseDoc(doc)
+	wedo, err := NewWedo(configs.NewDefaultConfig())
+	if err != nil {
+		t.Log(err)
+		t.FailNow()
+	}
+	wedo.ParseDoc(doc)
 }
