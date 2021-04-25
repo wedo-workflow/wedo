@@ -1,6 +1,9 @@
 package bpmn
 
-import "github.com/wedo-workflow/xmltree"
+import (
+	"github.com/wedo-workflow/wedo/pkg/store"
+	"github.com/wedo-workflow/xmltree"
+)
 
 type Signals struct {
 	ID   string
@@ -16,6 +19,6 @@ func (s *Signals) Parse(element *xmltree.Element) error {
 	return nil
 }
 
-func (Signals) Store() {
-	panic("implement me")
+func (Signals) Store(store store.Store) {
+	store.Ping()
 }

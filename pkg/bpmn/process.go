@@ -1,6 +1,7 @@
 package bpmn
 
 import (
+	"github.com/wedo-workflow/wedo/pkg/store"
 	"github.com/wedo-workflow/xmltree"
 )
 
@@ -26,8 +27,9 @@ func (p *Process) Parse(element *xmltree.Element) error {
 	return nil
 }
 
-func (p *Process) Store() {
+func (p *Process) Store(store store.Store) {
 	if !p.parsed {
 		return
 	}
+	store.Ping()
 }
