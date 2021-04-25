@@ -18,16 +18,14 @@ var (
 	DI_NS = "http://www.omg.org/spec/DD/20100524/DI"
 
 	// BPMN_20_SCHEMA_LOCATION The location of the BPMN 2.0 XML schema.
-	BPMN_20_SCHEMA_LOCATION = "github.com/wedo-workflow/wedo/pkg/bpmn-schema/schema/BPMN20.xsd"
+	BPMN_20_SCHEMA_LOCATION = "github.com/wedo-workflow/wedo/pkg/bpmn/schema/BPMN20.xsd"
 
 	// XML_SCHEMA_NS Xml Schema is the default type language
 	XML_SCHEMA_NS = "http://www.w3.org/2001/XMLSchema"
 
 	XPATH_NS = "http://www.w3.org/1999/XPath"
 
-	ACTIVITI_NS = "https://github.com/wedo-workflow/wedo/bpmn"
-
-	WEDO_NS = "https://github.com/wedo-workflow/wedo/schema/1.0/bpmn"
+	WEDO_NS = "https://github.com/wedo-workflow/wedo/bpmn/1.0"
 
 	BPMN_ELEMENT_BASE_ELEMENT                              = "baseElement"
 	BPMN_ELEMENT_DEFINITIONS                               = "definitions"
