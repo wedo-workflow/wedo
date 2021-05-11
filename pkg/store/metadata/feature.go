@@ -1,4 +1,4 @@
-package store
+package metadata
 
 const (
 	// FeatureETag is the feature to etag metadata in state store.

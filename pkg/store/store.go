@@ -2,6 +2,7 @@ package store
 
 import (
 	"github.com/wedo-workflow/wedo/configs"
+	"github.com/wedo-workflow/wedo/pkg/store/metadata"
 	"github.com/wedo-workflow/wedo/pkg/store/mysql"
 	"github.com/wedo-workflow/wedo/pkg/store/postgresql"
 )
@@ -9,26 +10,26 @@ import (
 // Store is an interface to perform operations on store
 type Store interface {
 	BulkStore
-	Init(metadata Metadata) error
-	Features() []Feature
-	Delete(req *DeleteRequest) error
-	Get(req *GetRequest) (*GetResponse, error)
-	Set(req *SetRequest) error
+	Init(metadata metadata.Metadata) error
+	Features() []metadata.Feature
+	Delete(req *metadata.DeleteRequest) error
+	Get(req *metadata.GetRequest) (*metadata.GetResponse, error)
+	Set(req *metadata.SetRequest) error
 
 	Ping() error
 }
 
 // BulkStore is an interface to perform bulk operations on store
 type BulkStore interface {
-	BulkDelete(req []DeleteRequest) error
-	BulkGet(req []GetRequest) (bool, []BulkGetResponse, error)
-	BulkSet(req []SetRequest) error
+	BulkDelete(req []metadata.DeleteRequest) error
+	BulkGet(req []metadata.GetRequest) (bool, []metadata.BulkGetResponse, error)
+	BulkSet(req []metadata.SetRequest) error
 }
 
 // TransactionalStore is an interface for initialization and support multiple transactional requests
 type TransactionalStore interface {
-	Init(metadata Metadata) error
-	Multi(request *TransactionalStateRequest) error
+	Init(metadata metadata.Metadata) error
+	Multi(request *metadata.TransactionalStateRequest) error
 }
 
 func NewStore(config *configs.Config) (Store, error) {

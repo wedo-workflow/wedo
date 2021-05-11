@@ -1,4 +1,4 @@
-package store
+package metadata
 
 // GetRequest is the object describing a state fetch request
 type GetRequest struct {

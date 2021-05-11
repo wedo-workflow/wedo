@@ -1,4 +1,4 @@
-package store
+package metadata
 
 // Metadata contains a state store specific set of metadata properties
 type Metadata struct {

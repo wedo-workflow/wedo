@@ -2,7 +2,7 @@ package postgresql
 
 import (
 	"github.com/wedo-workflow/wedo/configs"
-	"github.com/wedo-workflow/wedo/pkg/store"
+	"github.com/wedo-workflow/wedo/pkg/store/metadata"
 )
 
 type PostgreSQL struct {
@@ -13,35 +13,35 @@ func NewPG(config *configs.Config) (*PostgreSQL, error) {
 
 }
 
-func (pg *PostgreSQL) BulkDelete(req []store.DeleteRequest) error {
+func (pg *PostgreSQL) BulkDelete(req []metadata.DeleteRequest) error {
 	panic("implement me")
 }
 
-func (pg *PostgreSQL) BulkGet(req []store.GetRequest) (bool, []store.BulkGetResponse, error) {
+func (pg *PostgreSQL) BulkGet(req []metadata.GetRequest) (bool, []metadata.BulkGetResponse, error) {
 	panic("implement me")
 }
 
-func (pg *PostgreSQL) BulkSet(req []store.SetRequest) error {
+func (pg *PostgreSQL) BulkSet(req []metadata.SetRequest) error {
 	panic("implement me")
 }
 
-func (pg *PostgreSQL) Init(metadata store.Metadata) error {
+func (pg *PostgreSQL) Init(metadata metadata.Metadata) error {
 	panic("implement me")
 }
 
-func (pg *PostgreSQL) Features() []store.Feature {
+func (pg *PostgreSQL) Features() []metadata.Feature {
 	panic("implement me")
 }
 
-func (pg *PostgreSQL) Delete(req *store.DeleteRequest) error {
+func (pg *PostgreSQL) Delete(req *metadata.DeleteRequest) error {
 	panic("implement me")
 }
 
-func (pg *PostgreSQL) Get(req *store.GetRequest) (*store.GetResponse, error) {
+func (pg *PostgreSQL) Get(req *metadata.GetRequest) (*metadata.GetResponse, error) {
 	panic("implement me")
 }
 
-func (pg *PostgreSQL) Set(req *store.SetRequest) error {
+func (pg *PostgreSQL) Set(req *metadata.SetRequest) error {
 	panic("implement me")
 }
 

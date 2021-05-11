@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	"github.com/wedo-workflow/wedo/configs"
-	"github.com/wedo-workflow/wedo/pkg/store"
+	"github.com/wedo-workflow/wedo/pkg/store/metadata"
 )
 
 type MySQL struct {
@@ -16,35 +16,35 @@ func NewMySQL(config *configs.Config) (*MySQL, error) {
 	return &MySQL{}, nil
 }
 
-func (m *MySQL) BulkDelete(req []store.DeleteRequest) error {
+func (m *MySQL) BulkDelete(req []metadata.DeleteRequest) error {
 	panic("implement me")
 }
 
-func (m *MySQL) BulkGet(req []store.GetRequest) (bool, []store.BulkGetResponse, error) {
+func (m *MySQL) BulkGet(req []metadata.GetRequest) (bool, []metadata.BulkGetResponse, error) {
 	panic("implement me")
 }
 
-func (m *MySQL) BulkSet(req []store.SetRequest) error {
+func (m *MySQL) BulkSet(req []metadata.SetRequest) error {
 	panic("implement me")
 }
 
-func (m *MySQL) Init(metadata store.Metadata) error {
+func (m *MySQL) Init(metadata metadata.Metadata) error {
 	panic("implement me")
 }
 
-func (m *MySQL) Features() []store.Feature {
+func (m *MySQL) Features() []metadata.Feature {
 	panic("implement me")
 }
 
-func (m *MySQL) Delete(req *store.DeleteRequest) error {
+func (m *MySQL) Delete(req *metadata.DeleteRequest) error {
 	panic("implement me")
 }
 
-func (m *MySQL) Get(req *store.GetRequest) (*store.GetResponse, error) {
+func (m *MySQL) Get(req *metadata.GetRequest) (*metadata.GetResponse, error) {
 	panic("implement me")
 }
 
-func (m *MySQL) Set(req *store.SetRequest) error {
+func (m *MySQL) Set(req *metadata.SetRequest) error {
 	panic("implement me")
 }
 

@@ -1,4 +1,4 @@
-package store
+package metadata
 
 // GetResponse is the request object for getting state
 type GetResponse struct {
