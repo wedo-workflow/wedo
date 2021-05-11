@@ -2,3 +2,4 @@
 vendor
 *.bpmn
 *.test
+.DS_Store
