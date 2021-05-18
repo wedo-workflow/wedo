@@ -19,6 +19,7 @@ func (s *Signals) Parse(element *xmltree.Element) error {
 	return nil
 }
 
-func (Signals) Store(store store.Store) {
+func (Signals) Store(store store.Store) error {
 	store.Ping()
+	return nil
 }

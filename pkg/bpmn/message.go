@@ -20,6 +20,7 @@ func (m *Message) Parse(element *xmltree.Element) error {
 	return nil
 }
 
-func (m *Message) Store(store store.Store) {
+func (m *Message) Store(store store.Store) error {
 	store.Ping()
+	return nil
 }

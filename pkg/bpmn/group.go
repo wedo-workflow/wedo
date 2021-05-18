@@ -23,9 +23,10 @@ func (g *Group) Parse(element *xmltree.Element) error {
 	return nil
 }
 
-func (g *Group) Store(store store.Store) {
+func (g *Group) Store(store store.Store) error {
 	if !g.parsed {
-		return
+		return nil
 	}
 	store.Ping()
+	return nil
 }

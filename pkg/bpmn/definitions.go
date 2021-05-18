@@ -25,6 +25,7 @@ func (d *Definitions) Parse(element *xmltree.Element) error {
 	return nil
 }
 
-func (d *Definitions) Store(store store.Store) {
+func (d *Definitions) Store(store store.Store) error {
 	store.Ping()
+	return nil
 }

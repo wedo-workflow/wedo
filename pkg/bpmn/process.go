@@ -27,9 +27,10 @@ func (p *Process) Parse(element *xmltree.Element) error {
 	return nil
 }
 
-func (p *Process) Store(store store.Store) {
+func (p *Process) Store(store store.Store) error {
 	if !p.parsed {
-		return
+		return nil
 	}
 	store.Ping()
+	return nil
 }

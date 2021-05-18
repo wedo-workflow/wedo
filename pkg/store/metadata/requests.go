@@ -20,7 +20,7 @@ type DeleteRequest struct {
 	Options  DeleteStateOption `json:"options,omitempty"`
 }
 
-// Key gets the Key on a DeleteRequest
+// GetKey gets the Key on a DeleteRequest
 func (r DeleteRequest) GetKey() string {
 	return r.Key
 }

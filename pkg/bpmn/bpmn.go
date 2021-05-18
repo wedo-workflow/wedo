@@ -10,7 +10,7 @@ import (
 
 type BPMN interface {
 	Parse(element *xmltree.Element) error
-	Store(store store.Store)
+	Store(store store.Store) error
 }
 
 type Wedo struct {
@@ -30,11 +30,10 @@ func NewWedo(config *configs.Config) (*Wedo, error) {
 	return wedo, nil
 }
 
-func (w *Wedo) ParseDoc(doc []byte) {
+func (w *Wedo) ParseDoc(doc []byte) error {
 	tree, err := xmltree.Parse(doc)
 	if err != nil {
-		log.Print(err)
-		return
+		return err
 	}
 	for _, element := range tree.Flatten() {
 		eleLocal := element.Name.Local
@@ -46,9 +45,11 @@ func (w *Wedo) ParseDoc(doc []byte) {
 			log.Print(err)
 			continue
 		}
-		parser.Store(w.store)
+		if err := parser.Store(w.store); err != nil {
+			return err
+		}
 	}
-	return
+	return nil
 }
 
 func defaultParser() map[string]BPMN {

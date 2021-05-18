@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+import "protoc-gen-swagger/options/annotations.proto";
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "github.com/wedo-workflow/wedo/api/api_deployment.proto";
+
+option go_package="github.com/wedo-workflow/wedo/api";
+
+package github.com.wedo_workflow.wedo.api;
+
+service CloudTaskManageService {
+  // 创建任务.
+  rpc DeploymentCreate(DeploymentCreateRequest) returns (DeploymentCreateResponse) {
+    option (google.api.http) = {
+      post : "/deployment/create"
+      body : "*"
+    };
+  }
+}
