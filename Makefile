@@ -1,7 +1,7 @@
 SHELL := /usr/bin/env bash -o pipefail
 
 # This controls the location of the cache.
-PROJECT := buf-example
+PROJECT := wedo
 # This controls the remote HTTPS git location to compare against for breaking changes in CI.
 #
 # Most CI providers only clone the branch under test and to a certain depth, so when
@@ -9,7 +9,7 @@ PROJECT := buf-example
 # the remote repository directly.
 #
 # Basic authentication is available, see https://buf.build/docs/inputs#https for more details.
-HTTPS_GIT := https://github.com/bufbuild/buf-example.git
+HTTPS_GIT := https://github.com/wedo-workflow/wedo.git
 # This controls the remote SSH git location to compare against for breaking changes in CI.
 #
 # CI providers will typically have an SSH key installed as part of your setup for both
@@ -18,7 +18,7 @@ HTTPS_GIT := https://github.com/bufbuild/buf-example.git
 # configuration. We demo this with CircleCI.
 #
 # See https://buf.build/docs/inputs#ssh for more details.
-SSH_GIT := ssh://git@github.com/bufbuild/buf-example.git
+SSH_GIT := ssh://git@github.com/wedo-workflow/wedo.git
 # This controls the version of buf to install and use.
 BUF_VERSION := 0.41.0
 # If true, Buf is installed from source instead of from releases
@@ -83,6 +83,10 @@ local: $(BUF)
 .PHONY: generate
 generate: $(BUF)
 	buf generate
+
+.PHONY: modupdate
+modupdate: $(BUF)
+	buf beta mod update -v
 
 # https is what we run when testing in most CI providers.
 # This does breaking change detection against our remote HTTPS git repository.

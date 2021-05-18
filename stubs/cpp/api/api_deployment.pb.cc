@@ -18,8 +18,7 @@
 PROTOBUF_PRAGMA_INIT_SEG
 namespace github {
 namespace com {
-namespace wedo {
-namespace workflow {
+namespace wedo_workflow {
 namespace wedo {
 namespace api {
 constexpr DeploymentCreateRequest::DeploymentCreateRequest(
@@ -46,8 +45,7 @@ struct DeploymentCreateResponseDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT DeploymentCreateResponseDefaultTypeInternal _DeploymentCreateResponse_default_instance_;
 }  // namespace api
 }  // namespace wedo
-}  // namespace workflow
-}  // namespace wedo
+}  // namespace wedo_workflow
 }  // namespace com
 }  // namespace github
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_api_2fapi_5fdeployment_2eproto[2];
@@ -56,44 +54,42 @@ static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_s
 
 const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_api_2fapi_5fdeployment_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::github::com::wedo::workflow::wedo::api::DeploymentCreateRequest, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::github::com::wedo_workflow::wedo::api::DeploymentCreateRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::github::com::wedo::workflow::wedo::api::DeploymentCreateResponse, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::github::com::wedo_workflow::wedo::api::DeploymentCreateResponse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, sizeof(::github::com::wedo::workflow::wedo::api::DeploymentCreateRequest)},
-  { 5, -1, sizeof(::github::com::wedo::workflow::wedo::api::DeploymentCreateResponse)},
+  { 0, -1, sizeof(::github::com::wedo_workflow::wedo::api::DeploymentCreateRequest)},
+  { 5, -1, sizeof(::github::com::wedo_workflow::wedo::api::DeploymentCreateResponse)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::github::com::wedo::workflow::wedo::api::_DeploymentCreateRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::github::com::wedo::workflow::wedo::api::_DeploymentCreateResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::github::com::wedo_workflow::wedo::api::_DeploymentCreateRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::github::com::wedo_workflow::wedo::api::_DeploymentCreateResponse_default_instance_),
 };
 
 const char descriptor_table_protodef_api_2fapi_5fdeployment_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\030api/api_deployment.proto\022!github.com.w"
-  "edo.workflow.wedo.api\032.protoc-gen-openap"
-  "iv2/options/annotations.proto\032\034google/ap"
-  "i/annotations.proto\032\037google/protobuf/tim"
-  "estamp.proto\"\031\n\027DeploymentCreateRequest\""
-  "\032\n\030DeploymentCreateResponseB#Z!github.co"
-  "m/wedo-workflow/wedo/apib\006proto3"
+  "edo_workflow.wedo.api\032\034google/api/annota"
+  "tions.proto\032\037google/protobuf/timestamp.p"
+  "roto\"\031\n\027DeploymentCreateRequest\"\032\n\030Deplo"
+  "ymentCreateResponseB#Z!github.com/wedo-w"
+  "orkflow/wedo/apib\006proto3"
   ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_api_2fapi_5fdeployment_2eproto_deps[3] = {
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_api_2fapi_5fdeployment_2eproto_deps[2] = {
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
   &::descriptor_table_google_2fprotobuf_2ftimestamp_2eproto,
-  &::descriptor_table_protoc_2dgen_2dopenapiv2_2foptions_2fannotations_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_api_2fapi_5fdeployment_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_api_2fapi_5fdeployment_2eproto = {
-  false, false, 272, descriptor_table_protodef_api_2fapi_5fdeployment_2eproto, "api/api_deployment.proto", 
-  &descriptor_table_api_2fapi_5fdeployment_2eproto_once, descriptor_table_api_2fapi_5fdeployment_2eproto_deps, 3, 2,
+  false, false, 224, descriptor_table_protodef_api_2fapi_5fdeployment_2eproto, "api/api_deployment.proto", 
+  &descriptor_table_api_2fapi_5fdeployment_2eproto_once, descriptor_table_api_2fapi_5fdeployment_2eproto_deps, 2, 2,
   schemas, file_default_instances, TableStruct_api_2fapi_5fdeployment_2eproto::offsets,
   file_level_metadata_api_2fapi_5fdeployment_2eproto, file_level_enum_descriptors_api_2fapi_5fdeployment_2eproto, file_level_service_descriptors_api_2fapi_5fdeployment_2eproto,
 };
@@ -107,8 +103,7 @@ descriptor_table_api_2fapi_5fdeployment_2eproto_metadata_getter(int index) {
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_api_2fapi_5fdeployment_2eproto(&descriptor_table_api_2fapi_5fdeployment_2eproto);
 namespace github {
 namespace com {
-namespace wedo {
-namespace workflow {
+namespace wedo_workflow {
 namespace wedo {
 namespace api {
 
@@ -122,19 +117,19 @@ DeploymentCreateRequest::DeploymentCreateRequest(::PROTOBUF_NAMESPACE_ID::Arena*
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
   RegisterArenaDtor(arena);
-  // @@protoc_insertion_point(arena_constructor:github.com.wedo.workflow.wedo.api.DeploymentCreateRequest)
+  // @@protoc_insertion_point(arena_constructor:github.com.wedo_workflow.wedo.api.DeploymentCreateRequest)
 }
 DeploymentCreateRequest::DeploymentCreateRequest(const DeploymentCreateRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:github.com.wedo.workflow.wedo.api.DeploymentCreateRequest)
+  // @@protoc_insertion_point(copy_constructor:github.com.wedo_workflow.wedo.api.DeploymentCreateRequest)
 }
 
 void DeploymentCreateRequest::SharedCtor() {
 }
 
 DeploymentCreateRequest::~DeploymentCreateRequest() {
-  // @@protoc_insertion_point(destructor:github.com.wedo.workflow.wedo.api.DeploymentCreateRequest)
+  // @@protoc_insertion_point(destructor:github.com.wedo_workflow.wedo.api.DeploymentCreateRequest)
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -154,7 +149,7 @@ void DeploymentCreateRequest::SetCachedSize(int size) const {
 }
 
 void DeploymentCreateRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:github.com.wedo.workflow.wedo.api.DeploymentCreateRequest)
+// @@protoc_insertion_point(message_clear_start:github.com.wedo_workflow.wedo.api.DeploymentCreateRequest)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -188,7 +183,7 @@ failure:
 
 ::PROTOBUF_NAMESPACE_ID::uint8* DeploymentCreateRequest::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:github.com.wedo.workflow.wedo.api.DeploymentCreateRequest)
+  // @@protoc_insertion_point(serialize_to_array_start:github.com.wedo_workflow.wedo.api.DeploymentCreateRequest)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -196,12 +191,12 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:github.com.wedo.workflow.wedo.api.DeploymentCreateRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:github.com.wedo_workflow.wedo.api.DeploymentCreateRequest)
   return target;
 }
 
 size_t DeploymentCreateRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:github.com.wedo.workflow.wedo.api.DeploymentCreateRequest)
+// @@protoc_insertion_point(message_byte_size_start:github.com.wedo_workflow.wedo.api.DeploymentCreateRequest)
   size_t total_size = 0;
 
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
@@ -218,22 +213,22 @@ size_t DeploymentCreateRequest::ByteSizeLong() const {
 }
 
 void DeploymentCreateRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:github.com.wedo.workflow.wedo.api.DeploymentCreateRequest)
+// @@protoc_insertion_point(generalized_merge_from_start:github.com.wedo_workflow.wedo.api.DeploymentCreateRequest)
   GOOGLE_DCHECK_NE(&from, this);
   const DeploymentCreateRequest* source =
       ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DeploymentCreateRequest>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:github.com.wedo.workflow.wedo.api.DeploymentCreateRequest)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:github.com.wedo_workflow.wedo.api.DeploymentCreateRequest)
     ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:github.com.wedo.workflow.wedo.api.DeploymentCreateRequest)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:github.com.wedo_workflow.wedo.api.DeploymentCreateRequest)
     MergeFrom(*source);
   }
 }
 
 void DeploymentCreateRequest::MergeFrom(const DeploymentCreateRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:github.com.wedo.workflow.wedo.api.DeploymentCreateRequest)
+// @@protoc_insertion_point(class_specific_merge_from_start:github.com.wedo_workflow.wedo.api.DeploymentCreateRequest)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
@@ -242,14 +237,14 @@ void DeploymentCreateRequest::MergeFrom(const DeploymentCreateRequest& from) {
 }
 
 void DeploymentCreateRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:github.com.wedo.workflow.wedo.api.DeploymentCreateRequest)
+// @@protoc_insertion_point(generalized_copy_from_start:github.com.wedo_workflow.wedo.api.DeploymentCreateRequest)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void DeploymentCreateRequest::CopyFrom(const DeploymentCreateRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:github.com.wedo.workflow.wedo.api.DeploymentCreateRequest)
+// @@protoc_insertion_point(class_specific_copy_from_start:github.com.wedo_workflow.wedo.api.DeploymentCreateRequest)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -279,19 +274,19 @@ DeploymentCreateResponse::DeploymentCreateResponse(::PROTOBUF_NAMESPACE_ID::Aren
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
   RegisterArenaDtor(arena);
-  // @@protoc_insertion_point(arena_constructor:github.com.wedo.workflow.wedo.api.DeploymentCreateResponse)
+  // @@protoc_insertion_point(arena_constructor:github.com.wedo_workflow.wedo.api.DeploymentCreateResponse)
 }
 DeploymentCreateResponse::DeploymentCreateResponse(const DeploymentCreateResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:github.com.wedo.workflow.wedo.api.DeploymentCreateResponse)
+  // @@protoc_insertion_point(copy_constructor:github.com.wedo_workflow.wedo.api.DeploymentCreateResponse)
 }
 
 void DeploymentCreateResponse::SharedCtor() {
 }
 
 DeploymentCreateResponse::~DeploymentCreateResponse() {
-  // @@protoc_insertion_point(destructor:github.com.wedo.workflow.wedo.api.DeploymentCreateResponse)
+  // @@protoc_insertion_point(destructor:github.com.wedo_workflow.wedo.api.DeploymentCreateResponse)
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -311,7 +306,7 @@ void DeploymentCreateResponse::SetCachedSize(int size) const {
 }
 
 void DeploymentCreateResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:github.com.wedo.workflow.wedo.api.DeploymentCreateResponse)
+// @@protoc_insertion_point(message_clear_start:github.com.wedo_workflow.wedo.api.DeploymentCreateResponse)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -345,7 +340,7 @@ failure:
 
 ::PROTOBUF_NAMESPACE_ID::uint8* DeploymentCreateResponse::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:github.com.wedo.workflow.wedo.api.DeploymentCreateResponse)
+  // @@protoc_insertion_point(serialize_to_array_start:github.com.wedo_workflow.wedo.api.DeploymentCreateResponse)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -353,12 +348,12 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:github.com.wedo.workflow.wedo.api.DeploymentCreateResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:github.com.wedo_workflow.wedo.api.DeploymentCreateResponse)
   return target;
 }
 
 size_t DeploymentCreateResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:github.com.wedo.workflow.wedo.api.DeploymentCreateResponse)
+// @@protoc_insertion_point(message_byte_size_start:github.com.wedo_workflow.wedo.api.DeploymentCreateResponse)
   size_t total_size = 0;
 
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
@@ -375,22 +370,22 @@ size_t DeploymentCreateResponse::ByteSizeLong() const {
 }
 
 void DeploymentCreateResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:github.com.wedo.workflow.wedo.api.DeploymentCreateResponse)
+// @@protoc_insertion_point(generalized_merge_from_start:github.com.wedo_workflow.wedo.api.DeploymentCreateResponse)
   GOOGLE_DCHECK_NE(&from, this);
   const DeploymentCreateResponse* source =
       ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DeploymentCreateResponse>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:github.com.wedo.workflow.wedo.api.DeploymentCreateResponse)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:github.com.wedo_workflow.wedo.api.DeploymentCreateResponse)
     ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:github.com.wedo.workflow.wedo.api.DeploymentCreateResponse)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:github.com.wedo_workflow.wedo.api.DeploymentCreateResponse)
     MergeFrom(*source);
   }
 }
 
 void DeploymentCreateResponse::MergeFrom(const DeploymentCreateResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:github.com.wedo.workflow.wedo.api.DeploymentCreateResponse)
+// @@protoc_insertion_point(class_specific_merge_from_start:github.com.wedo_workflow.wedo.api.DeploymentCreateResponse)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
@@ -399,14 +394,14 @@ void DeploymentCreateResponse::MergeFrom(const DeploymentCreateResponse& from) {
 }
 
 void DeploymentCreateResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:github.com.wedo.workflow.wedo.api.DeploymentCreateResponse)
+// @@protoc_insertion_point(generalized_copy_from_start:github.com.wedo_workflow.wedo.api.DeploymentCreateResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void DeploymentCreateResponse::CopyFrom(const DeploymentCreateResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:github.com.wedo.workflow.wedo.api.DeploymentCreateResponse)
+// @@protoc_insertion_point(class_specific_copy_from_start:github.com.wedo_workflow.wedo.api.DeploymentCreateResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -429,16 +424,15 @@ void DeploymentCreateResponse::InternalSwap(DeploymentCreateResponse* other) {
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace api
 }  // namespace wedo
-}  // namespace workflow
-}  // namespace wedo
+}  // namespace wedo_workflow
 }  // namespace com
 }  // namespace github
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::github::com::wedo::workflow::wedo::api::DeploymentCreateRequest* Arena::CreateMaybeMessage< ::github::com::wedo::workflow::wedo::api::DeploymentCreateRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::github::com::wedo::workflow::wedo::api::DeploymentCreateRequest >(arena);
+template<> PROTOBUF_NOINLINE ::github::com::wedo_workflow::wedo::api::DeploymentCreateRequest* Arena::CreateMaybeMessage< ::github::com::wedo_workflow::wedo::api::DeploymentCreateRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::github::com::wedo_workflow::wedo::api::DeploymentCreateRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::github::com::wedo::workflow::wedo::api::DeploymentCreateResponse* Arena::CreateMaybeMessage< ::github::com::wedo::workflow::wedo::api::DeploymentCreateResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::github::com::wedo::workflow::wedo::api::DeploymentCreateResponse >(arena);
+template<> PROTOBUF_NOINLINE ::github::com::wedo_workflow::wedo::api::DeploymentCreateResponse* Arena::CreateMaybeMessage< ::github::com::wedo_workflow::wedo::api::DeploymentCreateResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::github::com::wedo_workflow::wedo::api::DeploymentCreateResponse >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

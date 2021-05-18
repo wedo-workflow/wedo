@@ -29,7 +29,6 @@
 #include <google/protobuf/generated_message_reflection.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
-#include "protoc-gen-openapiv2/options/annotations.pb.h"
 #include "google/api/annotations.pb.h"
 #include <google/protobuf/timestamp.pb.h>
 #include "api/api_deployment.pb.h"
@@ -60,8 +59,7 @@ PROTOBUF_NAMESPACE_OPEN
 PROTOBUF_NAMESPACE_CLOSE
 namespace github {
 namespace com {
-namespace wedo {
-namespace workflow {
+namespace wedo_workflow {
 namespace wedo {
 namespace api {
 
@@ -85,8 +83,7 @@ namespace api {
 
 }  // namespace api
 }  // namespace wedo
-}  // namespace workflow
-}  // namespace wedo
+}  // namespace wedo_workflow
 }  // namespace com
 }  // namespace github
 

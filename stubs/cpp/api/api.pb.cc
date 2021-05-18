@@ -18,14 +18,12 @@
 PROTOBUF_PRAGMA_INIT_SEG
 namespace github {
 namespace com {
-namespace wedo {
-namespace workflow {
+namespace wedo_workflow {
 namespace wedo {
 namespace api {
 }  // namespace api
 }  // namespace wedo
-}  // namespace workflow
-}  // namespace wedo
+}  // namespace wedo_workflow
 }  // namespace com
 }  // namespace github
 static constexpr ::PROTOBUF_NAMESPACE_ID::Metadata* file_level_metadata_api_2fapi_2eproto = nullptr;
@@ -36,28 +34,26 @@ static constexpr ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema* schemas = n
 static constexpr ::PROTOBUF_NAMESPACE_ID::Message* const* file_default_instances = nullptr;
 
 const char descriptor_table_protodef_api_2fapi_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\rapi/api.proto\022!github.com.wedo.workflo"
-  "w.wedo.api\032.protoc-gen-openapiv2/options"
-  "/annotations.proto\032\034google/api/annotatio"
-  "ns.proto\032\037google/protobuf/timestamp.prot"
-  "o\032\030api/api_deployment.proto2\305\001\n\026CloudTas"
-  "kManageService\022\252\001\n\020DeploymentCreate\022:.gi"
-  "thub.com.wedo.workflow.wedo.api.Deployme"
-  "ntCreateRequest\032;.github.com.wedo.workfl"
-  "ow.wedo.api.DeploymentCreateResponse\"\035\202\323"
-  "\344\223\002\027\"\022/deployment/create:\001*B#Z!github.co"
-  "m/wedo-workflow/wedo/apib\006proto3"
+  "\n\rapi/api.proto\022!github.com.wedo_workflo"
+  "w.wedo.api\032\034google/api/annotations.proto"
+  "\032\037google/protobuf/timestamp.proto\032\030api/a"
+  "pi_deployment.proto2\305\001\n\026CloudTaskManageS"
+  "ervice\022\252\001\n\020DeploymentCreate\022:.github.com"
+  ".wedo_workflow.wedo.api.DeploymentCreate"
+  "Request\032;.github.com.wedo_workflow.wedo."
+  "api.DeploymentCreateResponse\"\035\202\323\344\223\002\027\"\022/d"
+  "eployment/create:\001*B#Z!github.com/wedo-w"
+  "orkflow/wedo/apib\006proto3"
   ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_api_2fapi_2eproto_deps[4] = {
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_api_2fapi_2eproto_deps[3] = {
   &::descriptor_table_api_2fapi_5fdeployment_2eproto,
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
   &::descriptor_table_google_2fprotobuf_2ftimestamp_2eproto,
-  &::descriptor_table_protoc_2dgen_2dopenapiv2_2foptions_2fannotations_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_api_2fapi_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_api_2fapi_2eproto = {
-  false, false, 432, descriptor_table_protodef_api_2fapi_2eproto, "api/api.proto", 
-  &descriptor_table_api_2fapi_2eproto_once, descriptor_table_api_2fapi_2eproto_deps, 4, 0,
+  false, false, 384, descriptor_table_protodef_api_2fapi_2eproto, "api/api.proto", 
+  &descriptor_table_api_2fapi_2eproto_once, descriptor_table_api_2fapi_2eproto_deps, 3, 0,
   schemas, file_default_instances, TableStruct_api_2fapi_2eproto::offsets,
   file_level_metadata_api_2fapi_2eproto, file_level_enum_descriptors_api_2fapi_2eproto, file_level_service_descriptors_api_2fapi_2eproto,
 };
@@ -71,16 +67,14 @@ descriptor_table_api_2fapi_2eproto_metadata_getter(int index) {
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_api_2fapi_2eproto(&descriptor_table_api_2fapi_2eproto);
 namespace github {
 namespace com {
-namespace wedo {
-namespace workflow {
+namespace wedo_workflow {
 namespace wedo {
 namespace api {
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace api
 }  // namespace wedo
-}  // namespace workflow
-}  // namespace wedo
+}  // namespace wedo_workflow
 }  // namespace com
 }  // namespace github
 PROTOBUF_NAMESPACE_OPEN

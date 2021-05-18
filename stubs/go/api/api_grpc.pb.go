@@ -32,7 +32,7 @@ func NewCloudTaskManageServiceClient(cc grpc.ClientConnInterface) CloudTaskManag
 
 func (c *cloudTaskManageServiceClient) DeploymentCreate(ctx context.Context, in *DeploymentCreateRequest, opts ...grpc.CallOption) (*DeploymentCreateResponse, error) {
 	out := new(DeploymentCreateResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo.workflow.wedo.api.CloudTaskManageService/DeploymentCreate", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.CloudTaskManageService/DeploymentCreate", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -79,7 +79,7 @@ func _CloudTaskManageService_DeploymentCreate_Handler(srv interface{}, ctx conte
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo.workflow.wedo.api.CloudTaskManageService/DeploymentCreate",
+		FullMethod: "/github.com.wedo_workflow.wedo.api.CloudTaskManageService/DeploymentCreate",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CloudTaskManageServiceServer).DeploymentCreate(ctx, req.(*DeploymentCreateRequest))
@@ -91,7 +91,7 @@ func _CloudTaskManageService_DeploymentCreate_Handler(srv interface{}, ctx conte
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var CloudTaskManageService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "github.com.wedo.workflow.wedo.api.CloudTaskManageService",
+	ServiceName: "github.com.wedo_workflow.wedo.api.CloudTaskManageService",
 	HandlerType: (*CloudTaskManageServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

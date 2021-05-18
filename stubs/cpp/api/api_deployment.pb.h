@@ -31,7 +31,6 @@
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/unknown_field_set.h>
-#include "protoc-gen-openapiv2/options/annotations.pb.h"
 #include "google/api/annotations.pb.h"
 #include <google/protobuf/timestamp.pb.h>
 // @@protoc_insertion_point(includes)
@@ -59,8 +58,7 @@ extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table
 ::PROTOBUF_NAMESPACE_ID::Metadata descriptor_table_api_2fapi_5fdeployment_2eproto_metadata_getter(int index);
 namespace github {
 namespace com {
-namespace wedo {
-namespace workflow {
+namespace wedo_workflow {
 namespace wedo {
 namespace api {
 class DeploymentCreateRequest;
@@ -71,25 +69,23 @@ struct DeploymentCreateResponseDefaultTypeInternal;
 extern DeploymentCreateResponseDefaultTypeInternal _DeploymentCreateResponse_default_instance_;
 }  // namespace api
 }  // namespace wedo
-}  // namespace workflow
-}  // namespace wedo
+}  // namespace wedo_workflow
 }  // namespace com
 }  // namespace github
 PROTOBUF_NAMESPACE_OPEN
-template<> ::github::com::wedo::workflow::wedo::api::DeploymentCreateRequest* Arena::CreateMaybeMessage<::github::com::wedo::workflow::wedo::api::DeploymentCreateRequest>(Arena*);
-template<> ::github::com::wedo::workflow::wedo::api::DeploymentCreateResponse* Arena::CreateMaybeMessage<::github::com::wedo::workflow::wedo::api::DeploymentCreateResponse>(Arena*);
+template<> ::github::com::wedo_workflow::wedo::api::DeploymentCreateRequest* Arena::CreateMaybeMessage<::github::com::wedo_workflow::wedo::api::DeploymentCreateRequest>(Arena*);
+template<> ::github::com::wedo_workflow::wedo::api::DeploymentCreateResponse* Arena::CreateMaybeMessage<::github::com::wedo_workflow::wedo::api::DeploymentCreateResponse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace github {
 namespace com {
-namespace wedo {
-namespace workflow {
+namespace wedo_workflow {
 namespace wedo {
 namespace api {
 
 // ===================================================================
 
 class DeploymentCreateRequest PROTOBUF_FINAL :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:github.com.wedo.workflow.wedo.api.DeploymentCreateRequest) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:github.com.wedo_workflow.wedo.api.DeploymentCreateRequest) */ {
  public:
   inline DeploymentCreateRequest() : DeploymentCreateRequest(nullptr) {}
   virtual ~DeploymentCreateRequest();
@@ -179,7 +175,7 @@ class DeploymentCreateRequest PROTOBUF_FINAL :
   void InternalSwap(DeploymentCreateRequest* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "github.com.wedo.workflow.wedo.api.DeploymentCreateRequest";
+    return "github.com.wedo_workflow.wedo.api.DeploymentCreateRequest";
   }
   protected:
   explicit DeploymentCreateRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena);
@@ -200,7 +196,7 @@ class DeploymentCreateRequest PROTOBUF_FINAL :
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:github.com.wedo.workflow.wedo.api.DeploymentCreateRequest)
+  // @@protoc_insertion_point(class_scope:github.com.wedo_workflow.wedo.api.DeploymentCreateRequest)
  private:
   class _Internal;
 
@@ -213,7 +209,7 @@ class DeploymentCreateRequest PROTOBUF_FINAL :
 // -------------------------------------------------------------------
 
 class DeploymentCreateResponse PROTOBUF_FINAL :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:github.com.wedo.workflow.wedo.api.DeploymentCreateResponse) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:github.com.wedo_workflow.wedo.api.DeploymentCreateResponse) */ {
  public:
   inline DeploymentCreateResponse() : DeploymentCreateResponse(nullptr) {}
   virtual ~DeploymentCreateResponse();
@@ -303,7 +299,7 @@ class DeploymentCreateResponse PROTOBUF_FINAL :
   void InternalSwap(DeploymentCreateResponse* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "github.com.wedo.workflow.wedo.api.DeploymentCreateResponse";
+    return "github.com.wedo_workflow.wedo.api.DeploymentCreateResponse";
   }
   protected:
   explicit DeploymentCreateResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
@@ -324,7 +320,7 @@ class DeploymentCreateResponse PROTOBUF_FINAL :
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:github.com.wedo.workflow.wedo.api.DeploymentCreateResponse)
+  // @@protoc_insertion_point(class_scope:github.com.wedo_workflow.wedo.api.DeploymentCreateResponse)
  private:
   class _Internal;
 
@@ -359,8 +355,7 @@ class DeploymentCreateResponse PROTOBUF_FINAL :
 
 }  // namespace api
 }  // namespace wedo
-}  // namespace workflow
-}  // namespace wedo
+}  // namespace wedo_workflow
 }  // namespace com
 }  // namespace github
 
