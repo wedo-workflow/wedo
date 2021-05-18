@@ -1,0 +1,14 @@
+version: v1beta1
+plugins:
+  - name: java
+    out: stubs/java
+  - name: cpp
+    out: stubs/cpp
+  - name: go
+    out: stubs/go
+    opt:
+      - paths=source_relative
+  - name: go-grpc
+    out: stubs/go
+    opt:
+      - paths=source_relative
