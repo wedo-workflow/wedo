@@ -12,3 +12,8 @@ plugins:
     out: stubs/go
     opt:
       - paths=source_relative
+  - name: grpc-gateway
+    out: stubs/go
+    opt:
+      - paths=source_relative
+      - generate_unbound_methods=false
