@@ -1,19 +1,17 @@
 version: v1beta1
 plugins:
-  - name: java
-    out: stubs/java
-  - name: cpp
-    out: stubs/cpp
   - name: go
-    out: stubs/go
+    out: .
     opt:
       - paths=source_relative
   - name: go-grpc
-    out: stubs/go
+    out: .
     opt:
       - paths=source_relative
   - name: grpc-gateway
-    out: stubs/go
+    out: .
     opt:
       - paths=source_relative
       - generate_unbound_methods=false
+  - name: openapiv2
+    out: .
