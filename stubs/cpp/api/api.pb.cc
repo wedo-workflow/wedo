@@ -20,8 +20,6 @@ namespace github {
 namespace com {
 namespace wedo_workflow {
 namespace wedo {
-namespace api {
-}  // namespace api
 }  // namespace wedo
 }  // namespace wedo_workflow
 }  // namespace com
@@ -34,16 +32,16 @@ static constexpr ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema* schemas = n
 static constexpr ::PROTOBUF_NAMESPACE_ID::Message* const* file_default_instances = nullptr;
 
 const char descriptor_table_protodef_api_2fapi_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\rapi/api.proto\022!github.com.wedo_workflo"
-  "w.wedo.api\032\034google/api/annotations.proto"
-  "\032\037google/protobuf/timestamp.proto\032\030api/a"
-  "pi_deployment.proto2\305\001\n\026CloudTaskManageS"
-  "ervice\022\252\001\n\020DeploymentCreate\022:.github.com"
-  ".wedo_workflow.wedo.api.DeploymentCreate"
-  "Request\032;.github.com.wedo_workflow.wedo."
-  "api.DeploymentCreateResponse\"\035\202\323\344\223\002\027\"\022/d"
-  "eployment/create:\001*B#Z!github.com/wedo-w"
-  "orkflow/wedo/apib\006proto3"
+  "\n\rapi/api.proto\022\035github.com.wedo_workflo"
+  "w.wedo\032\034google/api/annotations.proto\032\037go"
+  "ogle/protobuf/timestamp.proto\032\030api/api_d"
+  "eployment.proto2\275\001\n\026CloudTaskManageServi"
+  "ce\022\242\001\n\020DeploymentCreate\0226.github.com.wed"
+  "o_workflow.wedo.DeploymentCreateRequest\032"
+  "7.github.com.wedo_workflow.wedo.Deployme"
+  "ntCreateResponse\"\035\202\323\344\223\002\027\"\022/deployment/cr"
+  "eate:\001*B\037Z\035github.com/wedo-workflow/wedo"
+  "b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_api_2fapi_2eproto_deps[3] = {
   &::descriptor_table_api_2fapi_5fdeployment_2eproto,
@@ -52,7 +50,7 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_api_2fapi_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_api_2fapi_2eproto = {
-  false, false, 384, descriptor_table_protodef_api_2fapi_2eproto, "api/api.proto", 
+  false, false, 368, descriptor_table_protodef_api_2fapi_2eproto, "api/api.proto", 
   &descriptor_table_api_2fapi_2eproto_once, descriptor_table_api_2fapi_2eproto_deps, 3, 0,
   schemas, file_default_instances, TableStruct_api_2fapi_2eproto::offsets,
   file_level_metadata_api_2fapi_2eproto, file_level_enum_descriptors_api_2fapi_2eproto, file_level_service_descriptors_api_2fapi_2eproto,
@@ -69,10 +67,8 @@ namespace github {
 namespace com {
 namespace wedo_workflow {
 namespace wedo {
-namespace api {
 
 // @@protoc_insertion_point(namespace_scope)
-}  // namespace api
 }  // namespace wedo
 }  // namespace wedo_workflow
 }  // namespace com

@@ -61,7 +61,6 @@ namespace github {
 namespace com {
 namespace wedo_workflow {
 namespace wedo {
-namespace api {
 
 // ===================================================================
 
@@ -81,7 +80,6 @@ namespace api {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace api
 }  // namespace wedo
 }  // namespace wedo_workflow
 }  // namespace com

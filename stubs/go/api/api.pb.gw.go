@@ -2,11 +2,11 @@
 // source: api/api.proto
 
 /*
-Package api is a reverse proxy.
+Package wedo is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package api
+package wedo
 
 import (
 	"context"
