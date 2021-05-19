@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package="github.com/wedo-workflow/wedo";
+
+package github.com.wedo_workflow.wedo;
+
+message DeploymentCreateRequest {}
+
+message DeploymentCreateResponse {}
