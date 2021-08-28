@@ -1,0 +1,1 @@
+- bpmn elements, reference https://www.omg.org/spec/BPMN/2.0/PDF

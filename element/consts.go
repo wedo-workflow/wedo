@@ -1,4 +1,4 @@
-package bpmn
+package element
 
 // Constants used in the BPMN 2.0 Language (DI + Semantic)
 var (
