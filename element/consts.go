@@ -1,15 +1,15 @@
 package element
 
-// Constants used in the Element 2.0 Language (DI + Semantic)
+// Constants used in the BPMN 2.0 Language (DI + Semantic)
 var (
 	// XSI_NS The XSI namespace
 	XSI_NS = "http://www.w3.org/2001/XMLSchema-instance"
 
-	// BPMN20_NS The Element 2.0 namespace
-	BPMN20_NS = "http://www.omg.org/spec/Element/20100524/MODEL"
+	// BPMN20_NS The BPMN 2.0 namespace
+	BPMN20_NS = "http://www.omg.org/spec/BPMN/20100524/MODEL"
 
 	// BPMNDI_NS The BPMNDI namespace
-	BPMNDI_NS = "http://www.omg.org/spec/Element/20100524/DI"
+	BPMNDI_NS = "http://www.omg.org/spec/BPMN/20100524/DI"
 
 	// DC_NS The DC namespace
 	DC_NS = "http://www.omg.org/spec/DD/20100524/DC"
@@ -17,15 +17,15 @@ var (
 	// DI_NS The DI namespace
 	DI_NS = "http://www.omg.org/spec/DD/20100524/DI"
 
-	// BPMN_20_SCHEMA_LOCATION The location of the Element 2.0 XML schema.
-	BPMN_20_SCHEMA_LOCATION = "github.com/wedo-workflow/wedo/pkg/element/schema/BPMN20.xsd"
+	// BPMN_20_SCHEMA_LOCATION The location of the BPMN 2.0 XML schema.
+	BPMN_20_SCHEMA_LOCATION = "github.com/wedo-workflow/wedo/pkg/bpmn/schema/BPMN20.xsd"
 
 	// XML_SCHEMA_NS Xml Schema is the default type language
 	XML_SCHEMA_NS = "http://www.w3.org/2001/XMLSchema"
 
 	XPATH_NS = "http://www.w3.org/1999/XPath"
 
-	WEDO_NS = "https://github.com/wedo-workflow/wedo/element/1.0"
+	WEDO_NS = "https://github.com/wedo-workflow/wedo/bpmn/1.0"
 
 	BPMN_ELEMENT_BASE_ELEMENT                              = "baseElement"
 	BPMN_ELEMENT_DEFINITIONS                               = "definitions"
@@ -263,7 +263,7 @@ var (
 	// XSI attributes
 	XSI_ATTRIBUTE_TYPE = "type"
 
-	// Element attributes
+	// BPMN attributes
 	BPMN_ATTRIBUTE_EXPORTER                    = "exporter"
 	BPMN_ATTRIBUTE_EXPORTER_VERSION            = "exporterVersion"
 	BPMN_ATTRIBUTE_EXPRESSION_LANGUAGE         = "expressionLanguage"
