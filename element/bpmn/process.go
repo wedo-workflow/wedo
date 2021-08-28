@@ -1,7 +1,7 @@
 package bpmn
 
 import (
-	"github.com/wedo-workflow/wedo/pkg/store"
+	"github.com/wedo-workflow/wedo/store"
 	"github.com/wedo-workflow/xmltree"
 )
 

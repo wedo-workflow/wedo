@@ -4,12 +4,12 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/wedo-workflow/wedo/configs"
+	"github.com/wedo-workflow/wedo/runtime/config"
 )
 
 func TestNewStore(t *testing.T) {
 	type args struct {
-		config *configs.Config
+		config *config.Config
 	}
 	tests := []struct {
 		name    string

@@ -1,10 +1,10 @@
-package bpmn
+package runtime
 
 import (
 	"os"
 	"testing"
 
-	"github.com/wedo-workflow/wedo/configs"
+	"github.com/wedo-workflow/wedo/runtime/config"
 )
 
 func TestXML(t *testing.T) {
@@ -13,10 +13,13 @@ func TestXML(t *testing.T) {
 		t.Log(err)
 		t.FailNow()
 	}
-	wedo, err := NewWedo(configs.NewDefaultConfig())
+	wedo, err := NewRuntime(config.NewDefaultConfig())
 	if err != nil {
 		t.Log(err)
 		t.FailNow()
 	}
-	wedo.ParseDoc(doc)
+	if err := wedo.Deploy(doc); err != nil {
+		t.Log(err)
+		t.FailNow()
+	}
 }

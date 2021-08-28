@@ -1,0 +1,76 @@
+package runtime
+
+import (
+	"fmt"
+
+	"github.com/wedo-workflow/wedo/element"
+	"github.com/wedo-workflow/wedo/runtime/config"
+	"github.com/wedo-workflow/wedo/store"
+	"github.com/wedo-workflow/xmltree"
+)
+
+type Runtime struct {
+	rootParsers map[string]element.Element
+	store       store.Store
+}
+
+func NewRuntime(config *config.Config) (*Runtime, error) {
+	newStore, err := store.NewStore(config)
+	if err != nil {
+		return nil, err
+	}
+	r := &Runtime{
+		store:       newStore,
+		rootParsers: element.DefaultRegister(),
+	}
+
+	return r, nil
+}
+
+func (r *Runtime) Run(opts ...Option) error {
+
+	return nil
+}
+
+func (r *Runtime) Deploy(doc []byte) error {
+	tree, err := xmltree.Parse(doc)
+	if err != nil {
+		return err
+	}
+	return r.deploy(tree)
+}
+
+func (r *Runtime) deploy(tree *xmltree.Element) error {
+	if err := r.parseAndStore(tree); err != nil {
+		return err
+	}
+	if len(tree.Children) == 0 {
+		return nil
+	}
+	for _, child := range tree.Children {
+		fmt.Println("deal with", tree.Name.Local, child.Name.Local)
+		if err := r.deploy(&child); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func (r Runtime) parseAndStore(e *xmltree.Element) error {
+	fmt.Println(e.Name.Local, string(e.Content))
+	eleLocal := e.Name.Local
+	parser, ok := r.rootParsers[eleLocal]
+	if !ok {
+		return fmt.Errorf("element %s's parser not found", e.Name.Local)
+	}
+	// 1. Parse
+	if err := parser.Parse(e); err != nil {
+		return err
+	}
+	// 2. store
+	if err := parser.Store(r.store); err != nil {
+		return err
+	}
+	fmt.Println(e.Name.Local, "saved")
+	return nil
+}

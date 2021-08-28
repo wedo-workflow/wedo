@@ -1,5 +1,0 @@
-package runtime
-
-func FromFlags() {
-
-}
