@@ -24,7 +24,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/wedoDeploymentCreateResponse"
+              "$ref": "#/definitions/v1DeploymentCreateResponse"
             }
           },
           "default": {
@@ -40,7 +40,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/wedoDeploymentCreateRequest"
+              "$ref": "#/definitions/v1DeploymentCreateRequest"
             }
           }
         ],
@@ -81,10 +81,10 @@
         }
       }
     },
-    "wedoDeploymentCreateRequest": {
+    "v1DeploymentCreateRequest": {
       "type": "object"
     },
-    "wedoDeploymentCreateResponse": {
+    "v1DeploymentCreateResponse": {
       "type": "object"
     }
   }

@@ -1,14 +1,11 @@
-version: v1beta1
-name: github.com/wedo-workflow/wedo
+version: v1
+name: buf.build/wedo-workflow/wedo
 deps:
-  - buf.build/beta/googleapis
+  - buf.build/googleapis/googleapis
   - buf.build/grpc-ecosystem/grpc-gateway
-build:
-  roots:
-    - .
-lint:
-  use:
-    - DEFAULT
 breaking:
   use:
     - FILE
+lint:
+  use:
+    - DEFAULT
