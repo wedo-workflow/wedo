@@ -1,13 +1,12 @@
 package bpmn
 
 import (
-	"github.com/wedo-workflow/wedo/store"
 	"github.com/wedo-workflow/xmltree"
 )
 
 type Group struct {
-	ID               string
-	CategoryValueRef string
+	ID               string `json:"id"`
+	CategoryValueRef string `json:"categoryValueRef"`
 
 	parsed bool
 }
@@ -16,17 +15,13 @@ func NewGroup() *Group {
 	return &Group{}
 }
 
-func (g *Group) Parse(element *xmltree.Element) error {
-	g.ID = element.Attr("", "id")
-	g.CategoryValueRef = element.Attr("", "categoryValueRef")
-	g.parsed = true
-	return nil
+func (e *Group) EID() string {
+	return e.ID
 }
 
-func (g *Group) Store(store store.Store) error {
-	if !g.parsed {
-		return nil
-	}
-	store.Ping()
+func (e *Group) Parse(element *xmltree.Element) error {
+	e.ID = element.Attr("", "id")
+	e.CategoryValueRef = element.Attr("", "categoryValueRef")
+	e.parsed = true
 	return nil
 }

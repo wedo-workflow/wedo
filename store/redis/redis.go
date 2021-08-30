@@ -1,47 +1,47 @@
 package redis
 
 import (
-	metadata2 "github.com/wedo-workflow/wedo/store/metadata"
+	"context"
+	"encoding/json"
+	"errors"
+
+	"github.com/go-redis/redis/v8"
+	"github.com/wedo-workflow/wedo/element"
+	"github.com/wedo-workflow/wedo/runtime/config"
 )
 
-type Redis struct{}
-
-func NewRedis() (*Redis, error) {
-	return &Redis{}, nil
+type Redis struct {
+	db *redis.Client
 }
 
-func (r *Redis) BulkDelete(req []metadata2.DeleteRequest) error {
-	panic("implement me")
+func NewRedis(config *config.Config) (*Redis, error) {
+	rdb := redis.NewClient(&redis.Options{
+		Addr:     config.Store.DSN,
+		Password: config.Store.Password,
+		DB:       0, // use default DB
+	})
+	return &Redis{
+		db: rdb,
+	}, nil
 }
 
-func (r *Redis) BulkGet(req []metadata2.GetRequest) (bool, []metadata2.BulkGetResponse, error) {
-	panic("implement me")
+func (r *Redis) ElementSave(ctx context.Context, element element.Element, rootID string) error {
+	if element == nil {
+		return errors.New("element is nil")
+	}
+	if rootID == "" {
+		return errors.New("rootID is empty")
+	}
+	elementBytes, err := json.Marshal(element)
+	if err != nil {
+		return err
+	}
+	if err := r.db.HSet(ctx, rootID, element.EID(), elementBytes).Err(); err != nil {
+		return err
+	}
+	return nil
 }
 
-func (r *Redis) BulkSet(req []metadata2.SetRequest) error {
-	panic("implement me")
-}
-
-func (r *Redis) Init(metadata metadata2.Metadata) error {
-	panic("implement me")
-}
-
-func (r *Redis) Features() []metadata2.Feature {
-	panic("implement me")
-}
-
-func (r *Redis) Delete(req *metadata2.DeleteRequest) error {
-	panic("implement me")
-}
-
-func (r *Redis) Get(req *metadata2.GetRequest) (*metadata2.GetResponse, error) {
-	panic("implement me")
-}
-
-func (r *Redis) Set(req *metadata2.SetRequest) error {
-	panic("implement me")
-}
-
-func (r *Redis) Ping() error {
-	panic("implement me")
+func (r *Redis) Ping(ctx context.Context) error {
+	return r.db.Ping(ctx).Err()
 }
