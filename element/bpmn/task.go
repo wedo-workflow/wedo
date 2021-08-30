@@ -23,6 +23,14 @@ func (e *Task) EID() string {
 	return e.ID
 }
 
+func (e *Task) RootID() string {
+	panic("implement me")
+}
+
+func (e *Task) SetRootID(s string) error {
+	panic("implement me")
+}
+
 func (e *Task) Parse(element *xmltree.Element) error {
 	e.ID = element.Attr("", "id")
 	for _, child := range element.Children {

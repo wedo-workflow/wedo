@@ -20,6 +20,14 @@ func (e *Definitions) EID() string {
 	return e.ID
 }
 
+func (e *Definitions) RootID() string {
+	panic("implement me")
+}
+
+func (e *Definitions) SetRootID(s string) error {
+	panic("implement me")
+}
+
 func (e *Definitions) Parse(element *xmltree.Element) error {
 	e.ID = element.Attr("", "id")
 	e.TargetNamespace = element.Attr("", "targetNamespace")

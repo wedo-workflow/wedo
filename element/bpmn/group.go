@@ -19,6 +19,14 @@ func (e *Group) EID() string {
 	return e.ID
 }
 
+func (e *Group) RootID() string {
+	panic("implement me")
+}
+
+func (e *Group) SetRootID(s string) error {
+	panic("implement me")
+}
+
 func (e *Group) Parse(element *xmltree.Element) error {
 	e.ID = element.Attr("", "id")
 	e.CategoryValueRef = element.Attr("", "categoryValueRef")

@@ -80,7 +80,7 @@ func (r *Runtime) parseAndStore(e *xmltree.Element, rootID string) error {
 		return err
 	}
 	// 2. store
-	if err := r.store.ElementSave(context.Background(), parser, rootID); err != nil {
+	if err := r.store.ElementSet(context.Background(), parser, rootID); err != nil {
 		return err
 	}
 	fmt.Println(e.Name.Local, "saved")

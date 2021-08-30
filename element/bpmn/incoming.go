@@ -18,6 +18,14 @@ func (e *Incoming) EID() string {
 	return e.ID
 }
 
+func (e *Incoming) RootID() string {
+	panic("implement me")
+}
+
+func (e *Incoming) SetRootID(s string) error {
+	panic("implement me")
+}
+
 func (e *Incoming) Parse(element *xmltree.Element) error {
 	e.ID = string(element.Content)
 	e.parsed = true

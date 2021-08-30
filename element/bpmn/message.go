@@ -17,6 +17,14 @@ func (e *Message) EID() string {
 	return e.ID
 }
 
+func (e *Message) RootID() string {
+	panic("implement me")
+}
+
+func (e *Message) SetRootID(s string) error {
+	panic("implement me")
+}
+
 func (e *Message) Parse(element *xmltree.Element) error {
 	e.ID = element.Attr("", "id")
 	e.Name = element.Attr("", "name")

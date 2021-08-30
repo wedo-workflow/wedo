@@ -6,8 +6,13 @@ import (
 )
 
 type Element interface {
-	// EID of element.
+	// EID is id of element.
 	EID() string
+
+	// RootID is root element of self.
+	RootID() string
+	SetRootID(string) error
+
 	// Parse parse xml dom element to element object.
 	Parse(element *xmltree.Element) error
 }

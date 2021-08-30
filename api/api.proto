@@ -2,11 +2,10 @@ syntax = "proto3";
 
 import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
-import "api/api_deployment.proto";
 
-option go_package="github.com/wedo-workflow/wedo";
+option go_package = "github.com/wedo-workflow/wedo";
 
-package github.com.wedo_workflow.wedo;
+package github.com.wedo_workflow.wedo.api.v1;
 
 service CloudTaskManageService {
   // Creates a deployment.
@@ -17,3 +16,7 @@ service CloudTaskManageService {
     };
   }
 }
+
+message DeploymentCreateRequest {}
+
+message DeploymentCreateResponse {}

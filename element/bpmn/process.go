@@ -21,6 +21,14 @@ func (e *Process) EID() string {
 	return e.ID
 }
 
+func (e *Process) RootID() string {
+	panic("implement me")
+}
+
+func (e *Process) SetRootID(s string) error {
+	panic("implement me")
+}
+
 func (e *Process) Parse(element *xmltree.Element) error {
 	e.ID = element.Attr("", "id")
 	e.Name = element.Attr("", "name")
