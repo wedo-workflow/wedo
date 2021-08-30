@@ -22,6 +22,11 @@ func NewRuntime(config *config.Config) (*Runtime, error) {
 	if err != nil {
 		return nil, err
 	}
+	ctx, cancel := context.WithTimeout(context.Background(), config.Store.PingTimeout)
+	defer cancel()
+	if err := newStore.Ping(ctx); err != nil {
+		return nil, err
+	}
 	r := &Runtime{
 		store:       newStore,
 		rootParsers: element.DefaultRegister(),
