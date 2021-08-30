@@ -9,3 +9,6 @@ breaking:
 lint:
   use:
     - DEFAULT
+build:
+  excludes:
+    - vendor/github.com/grpc-ecosystem/grpc-gateway/internal/
