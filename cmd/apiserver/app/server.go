@@ -116,7 +116,6 @@ func (s *APIServer) Run() {
 	}
 
 	mux := http.NewServeMux()
-	mux.Handle("/v1/", gw)
 
 	mux.HandleFunc("/health", func(writer http.ResponseWriter, request *http.Request) {
 		writer.WriteHeader(http.StatusOK)
