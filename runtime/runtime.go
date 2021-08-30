@@ -1,12 +1,15 @@
 package runtime
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/wedo-workflow/wedo/element"
 	"github.com/wedo-workflow/wedo/runtime/config"
 	"github.com/wedo-workflow/wedo/store"
 	"github.com/wedo-workflow/xmltree"
+
+	"github.com/google/uuid"
 )
 
 type Runtime struct {
@@ -37,11 +40,15 @@ func (r *Runtime) Deploy(doc []byte) error {
 	if err != nil {
 		return err
 	}
-	return r.deploy(tree)
+	uuidV4, err := uuid.NewRandom()
+	if err != nil {
+		return err
+	}
+	return r.deploy(tree, uuidV4.String())
 }
 
-func (r *Runtime) deploy(tree *xmltree.Element) error {
-	if err := r.parseAndStore(tree); err != nil {
+func (r *Runtime) deploy(tree *xmltree.Element, rootID string) error {
+	if err := r.parseAndStore(tree, rootID); err != nil {
 		return err
 	}
 	if len(tree.Children) == 0 {
@@ -49,14 +56,14 @@ func (r *Runtime) deploy(tree *xmltree.Element) error {
 	}
 	for _, child := range tree.Children {
 		fmt.Println("deal with", tree.Name.Local, child.Name.Local)
-		if err := r.deploy(&child); err != nil {
+		if err := r.deploy(&child, rootID); err != nil {
 			return err
 		}
 	}
 	return nil
 }
 
-func (r Runtime) parseAndStore(e *xmltree.Element) error {
+func (r *Runtime) parseAndStore(e *xmltree.Element, rootID string) error {
 	fmt.Println(e.Name.Local, string(e.Content))
 	eleLocal := e.Name.Local
 	parser, ok := r.rootParsers[eleLocal]
@@ -68,7 +75,7 @@ func (r Runtime) parseAndStore(e *xmltree.Element) error {
 		return err
 	}
 	// 2. store
-	if err := parser.Store(r.store); err != nil {
+	if err := r.store.ElementSave(context.Background(), parser, rootID); err != nil {
 		return err
 	}
 	fmt.Println(e.Name.Local, "saved")

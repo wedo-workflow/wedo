@@ -1,13 +1,23 @@
 package config
 
 type Config struct {
-	StoreDriver string
-	StoreDSN    string
+	Store *Store
+}
+
+type Store struct {
+	Driver   string
+	DSN      string
+	Username string
+	Password string
 }
 
 func NewDefaultConfig() *Config {
 	return &Config{
-		StoreDriver: "mysql",
-		StoreDSN:    "",
+		Store: &Store{
+			Driver:   "redis",
+			DSN:      "localhost:6379",
+			Username: "",
+			Password: "",
+		},
 	}
 }

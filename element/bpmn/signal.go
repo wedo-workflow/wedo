@@ -4,21 +4,22 @@ import (
 	"github.com/wedo-workflow/xmltree"
 )
 
-type Message struct {
+type Signal struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`
+
+	parsed bool
 }
 
-func NewMessage() *Message {
-	return &Message{}
+func NewSignal() *Signal {
+	return &Signal{}
 }
-
-func (e *Message) EID() string {
+func (e *Signal) EID() string {
 	return e.ID
 }
-
-func (e *Message) Parse(element *xmltree.Element) error {
+func (e *Signal) Parse(element *xmltree.Element) error {
 	e.ID = element.Attr("", "id")
 	e.Name = element.Attr("", "name")
+	e.parsed = true
 	return nil
 }
