@@ -6,11 +6,10 @@ import (
 )
 
 type Element interface {
+	// EID of element.
 	EID() string
 	// Parse parse xml dom element to element object.
 	Parse(element *xmltree.Element) error
-	// Store element to database.
-	// Store(ctx context.Context, store store.Store, rootID string) error
 }
 
 func DefaultRegister() map[string]Element {
