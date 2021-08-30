@@ -40,7 +40,10 @@ func main() {
 		TimestampFormat: "01-02T15:04:05.999999",
 	})
 
-	server := app.NewAPIServer(cfg)
+	server, err := app.NewAPIServer(cfg)
+	if err != nil {
+		log.Fatalf("api server err %v", err)
+	}
 
 	go server.Run()
 

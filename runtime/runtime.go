@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/wedo-workflow/wedo/element"
+	"github.com/wedo-workflow/wedo/element/wedo_model"
 	"github.com/wedo-workflow/wedo/runtime/config"
 	"github.com/wedo-workflow/wedo/store"
 	"github.com/wedo-workflow/xmltree"
@@ -40,8 +41,12 @@ func (r *Runtime) Run(opts ...Option) error {
 	return nil
 }
 
-func (r *Runtime) Deploy(doc []byte) error {
-	tree, err := xmltree.Parse(doc)
+func (r *Runtime) Deploy(ctx context.Context, deploy *wedo_model.Deploy) error {
+	err := r.store.DeploySet(ctx, deploy)
+	if err != nil {
+		return err
+	}
+	tree, err := xmltree.Parse(deploy.Content)
 	if err != nil {
 		return err
 	}

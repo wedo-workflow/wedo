@@ -32,7 +32,7 @@ func NewWedoServiceClient(cc grpc.ClientConnInterface) WedoServiceClient {
 
 func (c *wedoServiceClient) DeploymentCreate(ctx context.Context, in *DeploymentCreateRequest, opts ...grpc.CallOption) (*DeploymentCreateResponse, error) {
 	out := new(DeploymentCreateResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/DeploymentCreate", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo_model.api.v1.WedoService/DeploymentCreate", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -76,7 +76,7 @@ func _WedoService_DeploymentCreate_Handler(srv interface{}, ctx context.Context,
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/DeploymentCreate",
+		FullMethod: "/github.com.wedo_workflow.wedo_model.api.v1.WedoService/DeploymentCreate",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).DeploymentCreate(ctx, req.(*DeploymentCreateRequest))
@@ -88,7 +88,7 @@ func _WedoService_DeploymentCreate_Handler(srv interface{}, ctx context.Context,
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var WedoService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "github.com.wedo_workflow.wedo.api.v1.WedoService",
+	ServiceName: "github.com.wedo_workflow.wedo_model.api.v1.WedoService",
 	HandlerType: (*WedoServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

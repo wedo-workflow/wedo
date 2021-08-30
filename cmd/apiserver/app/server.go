@@ -10,8 +10,9 @@ import (
 	grpc_logging "github.com/grpc-ecosystem/go-grpc-middleware/logging"
 	grpc_logrus "github.com/grpc-ecosystem/go-grpc-middleware/logging/logrus"
 	grpc_recovery "github.com/grpc-ecosystem/go-grpc-middleware/recovery"
-	"github.com/grpc-ecosystem/grpc-gateway/runtime"
+	grpc_runtime "github.com/grpc-ecosystem/grpc-gateway/runtime"
 	log "github.com/sirupsen/logrus"
+	"github.com/wedo-workflow/wedo/runtime"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/keepalive"
 	"google.golang.org/grpc/metadata"
@@ -21,13 +22,22 @@ import (
 )
 
 type APIServer struct {
-	Config *config.Config
+	Config  *config.Config
+	Runtime *runtime.Runtime
 }
 
-func NewAPIServer(config *config.Config) *APIServer {
-	return &APIServer{
+func NewAPIServer(config *config.Config) (*APIServer, error) {
+	server := &APIServer{
 		Config: config,
 	}
+
+	rt, err := runtime.NewRuntime(config.RuntimeConfig)
+	if err != nil {
+		return nil, err
+	}
+	server.Runtime = rt
+
+	return server, nil
 }
 
 func (s *APIServer) HelloAPIServer() {
@@ -101,9 +111,9 @@ func (s *APIServer) Run() {
 	ctx, cancel := context.WithCancel(ctx)
 	defer cancel()
 
-	gw := runtime.NewServeMux(runtime.WithMarshalerOption(
-		runtime.MIMEWildcard,
-		&runtime.JSONPb{
+	gw := grpc_runtime.NewServeMux(grpc_runtime.WithMarshalerOption(
+		grpc_runtime.MIMEWildcard,
+		&grpc_runtime.JSONPb{
 			OrigName:     true,
 			EmitDefaults: true,
 		},

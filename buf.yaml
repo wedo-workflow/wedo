@@ -1,5 +1,5 @@
 version: v1
-name: buf.build/wedo-workflow/wedo
+name: buf.build/wedo_model-workflow/wedo_model
 deps:
   - buf.build/googleapis/googleapis
   - buf.build/grpc-ecosystem/grpc-gateway
