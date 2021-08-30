@@ -21,7 +21,7 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   };
 };
 
-service CloudTaskManageService {
+service WedoService {
   // Creates a deployment.
   rpc DeploymentCreate(DeploymentCreateRequest) returns (DeploymentCreateResponse) {
     option (google.api.http) = {

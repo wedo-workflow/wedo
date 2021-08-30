@@ -33,7 +33,7 @@ var _ = utilities.NewDoubleArray
 var _ = descriptor.ForMessage
 var _ = metadata.Join
 
-func request_CloudTaskManageService_DeploymentCreate_0(ctx context.Context, marshaler runtime.Marshaler, client CloudTaskManageServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_WedoService_DeploymentCreate_0(ctx context.Context, marshaler runtime.Marshaler, client WedoServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq DeploymentCreateRequest
 	var metadata runtime.ServerMetadata
 
@@ -50,7 +50,7 @@ func request_CloudTaskManageService_DeploymentCreate_0(ctx context.Context, mars
 
 }
 
-func local_request_CloudTaskManageService_DeploymentCreate_0(ctx context.Context, marshaler runtime.Marshaler, server CloudTaskManageServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_WedoService_DeploymentCreate_0(ctx context.Context, marshaler runtime.Marshaler, server WedoServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq DeploymentCreateRequest
 	var metadata runtime.ServerMetadata
 
@@ -67,13 +67,13 @@ func local_request_CloudTaskManageService_DeploymentCreate_0(ctx context.Context
 
 }
 
-// RegisterCloudTaskManageServiceHandlerServer registers the http handlers for service CloudTaskManageService to "mux".
-// UnaryRPC     :call CloudTaskManageServiceServer directly.
+// RegisterWedoServiceHandlerServer registers the http handlers for service WedoService to "mux".
+// UnaryRPC     :call WedoServiceServer directly.
 // StreamingRPC :currently unsupported pending https://github.com/grpc/grpc-go/issues/906.
-// Note that using this registration option will cause many gRPC library features to stop working. Consider using RegisterCloudTaskManageServiceHandlerFromEndpoint instead.
-func RegisterCloudTaskManageServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux, server CloudTaskManageServiceServer) error {
+// Note that using this registration option will cause many gRPC library features to stop working. Consider using RegisterWedoServiceHandlerFromEndpoint instead.
+func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux, server WedoServiceServer) error {
 
-	mux.Handle("POST", pattern_CloudTaskManageService_DeploymentCreate_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_WedoService_DeploymentCreate_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -84,7 +84,7 @@ func RegisterCloudTaskManageServiceHandlerServer(ctx context.Context, mux *runti
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_CloudTaskManageService_DeploymentCreate_0(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_WedoService_DeploymentCreate_0(rctx, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
@@ -92,16 +92,16 @@ func RegisterCloudTaskManageServiceHandlerServer(ctx context.Context, mux *runti
 			return
 		}
 
-		forward_CloudTaskManageService_DeploymentCreate_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_WedoService_DeploymentCreate_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
 	return nil
 }
 
-// RegisterCloudTaskManageServiceHandlerFromEndpoint is same as RegisterCloudTaskManageServiceHandler but
+// RegisterWedoServiceHandlerFromEndpoint is same as RegisterWedoServiceHandler but
 // automatically dials to "endpoint" and closes the connection when "ctx" gets done.
-func RegisterCloudTaskManageServiceHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
+func RegisterWedoServiceHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
 	conn, err := grpc.Dial(endpoint, opts...)
 	if err != nil {
 		return err
@@ -121,23 +121,23 @@ func RegisterCloudTaskManageServiceHandlerFromEndpoint(ctx context.Context, mux 
 		}()
 	}()
 
-	return RegisterCloudTaskManageServiceHandler(ctx, mux, conn)
+	return RegisterWedoServiceHandler(ctx, mux, conn)
 }
 
-// RegisterCloudTaskManageServiceHandler registers the http handlers for service CloudTaskManageService to "mux".
+// RegisterWedoServiceHandler registers the http handlers for service WedoService to "mux".
 // The handlers forward requests to the grpc endpoint over "conn".
-func RegisterCloudTaskManageServiceHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
-	return RegisterCloudTaskManageServiceHandlerClient(ctx, mux, NewCloudTaskManageServiceClient(conn))
+func RegisterWedoServiceHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
+	return RegisterWedoServiceHandlerClient(ctx, mux, NewWedoServiceClient(conn))
 }
 
-// RegisterCloudTaskManageServiceHandlerClient registers the http handlers for service CloudTaskManageService
-// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "CloudTaskManageServiceClient".
-// Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "CloudTaskManageServiceClient"
+// RegisterWedoServiceHandlerClient registers the http handlers for service WedoService
+// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "WedoServiceClient".
+// Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "WedoServiceClient"
 // doesn't go through the normal gRPC flow (creating a gRPC client etc.) then it will be up to the passed in
-// "CloudTaskManageServiceClient" to call the correct interceptors.
-func RegisterCloudTaskManageServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux, client CloudTaskManageServiceClient) error {
+// "WedoServiceClient" to call the correct interceptors.
+func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux, client WedoServiceClient) error {
 
-	mux.Handle("POST", pattern_CloudTaskManageService_DeploymentCreate_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_WedoService_DeploymentCreate_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -146,14 +146,14 @@ func RegisterCloudTaskManageServiceHandlerClient(ctx context.Context, mux *runti
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_CloudTaskManageService_DeploymentCreate_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_WedoService_DeploymentCreate_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_CloudTaskManageService_DeploymentCreate_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_WedoService_DeploymentCreate_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -161,9 +161,9 @@ func RegisterCloudTaskManageServiceHandlerClient(ctx context.Context, mux *runti
 }
 
 var (
-	pattern_CloudTaskManageService_DeploymentCreate_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"deployment", "create"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_WedoService_DeploymentCreate_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"deployment", "create"}, "", runtime.AssumeColonVerbOpt(true)))
 )
 
 var (
-	forward_CloudTaskManageService_DeploymentCreate_0 = runtime.ForwardResponseMessage
+	forward_WedoService_DeploymentCreate_0 = runtime.ForwardResponseMessage
 )

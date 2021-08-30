@@ -14,89 +14,86 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// CloudTaskManageServiceClient is the client API for CloudTaskManageService service.
+// WedoServiceClient is the client API for WedoService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type CloudTaskManageServiceClient interface {
+type WedoServiceClient interface {
 	// Creates a deployment.
 	DeploymentCreate(ctx context.Context, in *DeploymentCreateRequest, opts ...grpc.CallOption) (*DeploymentCreateResponse, error)
 }
 
-type cloudTaskManageServiceClient struct {
+type wedoServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewCloudTaskManageServiceClient(cc grpc.ClientConnInterface) CloudTaskManageServiceClient {
-	return &cloudTaskManageServiceClient{cc}
+func NewWedoServiceClient(cc grpc.ClientConnInterface) WedoServiceClient {
+	return &wedoServiceClient{cc}
 }
 
-func (c *cloudTaskManageServiceClient) DeploymentCreate(ctx context.Context, in *DeploymentCreateRequest, opts ...grpc.CallOption) (*DeploymentCreateResponse, error) {
+func (c *wedoServiceClient) DeploymentCreate(ctx context.Context, in *DeploymentCreateRequest, opts ...grpc.CallOption) (*DeploymentCreateResponse, error) {
 	out := new(DeploymentCreateResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.CloudTaskManageService/DeploymentCreate", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/DeploymentCreate", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// CloudTaskManageServiceServer is the server API for CloudTaskManageService service.
-// All implementations must embed UnimplementedCloudTaskManageServiceServer
+// WedoServiceServer is the server API for WedoService service.
+// All implementations should embed UnimplementedWedoServiceServer
 // for forward compatibility
-type CloudTaskManageServiceServer interface {
+type WedoServiceServer interface {
 	// Creates a deployment.
 	DeploymentCreate(context.Context, *DeploymentCreateRequest) (*DeploymentCreateResponse, error)
-	mustEmbedUnimplementedCloudTaskManageServiceServer()
 }
 
-// UnimplementedCloudTaskManageServiceServer must be embedded to have forward compatible implementations.
-type UnimplementedCloudTaskManageServiceServer struct {
+// UnimplementedWedoServiceServer should be embedded to have forward compatible implementations.
+type UnimplementedWedoServiceServer struct {
 }
 
-func (UnimplementedCloudTaskManageServiceServer) DeploymentCreate(context.Context, *DeploymentCreateRequest) (*DeploymentCreateResponse, error) {
+func (UnimplementedWedoServiceServer) DeploymentCreate(context.Context, *DeploymentCreateRequest) (*DeploymentCreateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeploymentCreate not implemented")
 }
-func (UnimplementedCloudTaskManageServiceServer) mustEmbedUnimplementedCloudTaskManageServiceServer() {
-}
 
-// UnsafeCloudTaskManageServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to CloudTaskManageServiceServer will
+// UnsafeWedoServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to WedoServiceServer will
 // result in compilation errors.
-type UnsafeCloudTaskManageServiceServer interface {
-	mustEmbedUnimplementedCloudTaskManageServiceServer()
+type UnsafeWedoServiceServer interface {
+	mustEmbedUnimplementedWedoServiceServer()
 }
 
-func RegisterCloudTaskManageServiceServer(s grpc.ServiceRegistrar, srv CloudTaskManageServiceServer) {
-	s.RegisterService(&CloudTaskManageService_ServiceDesc, srv)
+func RegisterWedoServiceServer(s grpc.ServiceRegistrar, srv WedoServiceServer) {
+	s.RegisterService(&WedoService_ServiceDesc, srv)
 }
 
-func _CloudTaskManageService_DeploymentCreate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _WedoService_DeploymentCreate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeploymentCreateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CloudTaskManageServiceServer).DeploymentCreate(ctx, in)
+		return srv.(WedoServiceServer).DeploymentCreate(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.CloudTaskManageService/DeploymentCreate",
+		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/DeploymentCreate",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CloudTaskManageServiceServer).DeploymentCreate(ctx, req.(*DeploymentCreateRequest))
+		return srv.(WedoServiceServer).DeploymentCreate(ctx, req.(*DeploymentCreateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// CloudTaskManageService_ServiceDesc is the grpc.ServiceDesc for CloudTaskManageService service.
+// WedoService_ServiceDesc is the grpc.ServiceDesc for WedoService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var CloudTaskManageService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "github.com.wedo_workflow.wedo.api.v1.CloudTaskManageService",
-	HandlerType: (*CloudTaskManageServiceServer)(nil),
+var WedoService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "github.com.wedo_workflow.wedo.api.v1.WedoService",
+	HandlerType: (*WedoServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "DeploymentCreate",
-			Handler:    _CloudTaskManageService_DeploymentCreate_Handler,
+			Handler:    _WedoService_DeploymentCreate_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -3,3 +3,4 @@ vendor
 *.bpmn
 *.test
 .DS_Store
+cmd/apiserver/config/apiserver.json

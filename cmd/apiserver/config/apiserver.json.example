@@ -1,0 +1,14 @@
+{
+  "log_level": "trace",
+  "db": {
+    "driver": "redis"
+  },
+  "grpc_endpoint": {
+    "address": "127.0.0.1",
+    "port": 8910
+  },
+  "http_endpoint": {
+    "address": "127.0.0.1",
+    "port": 8911
+  }
+}
