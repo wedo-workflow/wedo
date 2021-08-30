@@ -16,11 +16,10 @@ func (s *APIServer) DeploymentCreate(ctx context.Context, request *wedo.Deployme
 	if len(request.Content) == 0 {
 		return nil, status.Error(codes.InvalidArgument, "content is empty")
 	}
-	err := s.Runtime.Deploy(ctx, &wedo_model.Deploy{
+	if err := s.Runtime.Deploy(ctx, &wedo_model.Deploy{
 		Name:    request.Name,
 		Content: request.Content,
-	})
-	if err != nil {
+	}); err != nil {
 		return nil, status.Error(codes.Internal, err.Error())
 	}
 	return &wedo.DeploymentCreateResponse{}, nil
