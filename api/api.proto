@@ -17,6 +17,14 @@ service CloudTaskManageService {
   }
 }
 
-message DeploymentCreateRequest {}
+message DeploymentCreateRequest {
+  string name = 1;
+  bytes content = 2;
+}
 
-message DeploymentCreateResponse {}
+message DeploymentCreateResponse {
+  string id = 1;
+  string name = 2;
+  bytes content = 3;
+  google.protobuf.Timestamp timestamp = 4;
+}
