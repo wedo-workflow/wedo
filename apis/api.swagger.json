@@ -11,7 +11,7 @@
   },
   "tags": [
     {
-      "name": "CloudTaskManageService"
+      "name": "WedoService"
     }
   ],
   "consumes": [
@@ -24,7 +24,7 @@
     "/deployment/create": {
       "post": {
         "summary": "Creates a deployment.",
-        "operationId": "CloudTaskManageService_DeploymentCreate",
+        "operationId": "WedoService_DeploymentCreate",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -50,7 +50,7 @@
           }
         ],
         "tags": [
-          "CloudTaskManageService"
+          "WedoService"
         ]
       }
     }
