@@ -214,14 +214,14 @@ func file_api_api_proto_rawDescGZIP() []byte {
 
 var file_api_api_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_api_api_proto_goTypes = []interface{}{
-	(*DeploymentCreateRequest)(nil),  // 0: github.com.wedo_workflow.wedo_model.api.v1.DeploymentCreateRequest
-	(*DeploymentCreateResponse)(nil), // 1: github.com.wedo_workflow.wedo_model.api.v1.DeploymentCreateResponse
+	(*DeploymentCreateRequest)(nil),  // 0: github.com.wedo_workflow.wedo.api.v1.DeploymentCreateRequest
+	(*DeploymentCreateResponse)(nil), // 1: github.com.wedo_workflow.wedo.api.v1.DeploymentCreateResponse
 	(*timestamppb.Timestamp)(nil),    // 2: google.protobuf.Timestamp
 }
 var file_api_api_proto_depIdxs = []int32{
-	2, // 0: github.com.wedo_workflow.wedo_model.api.v1.DeploymentCreateResponse.timestamp:type_name -> google.protobuf.Timestamp
-	0, // 1: github.com.wedo_workflow.wedo_model.api.v1.WedoService.DeploymentCreate:input_type -> github.com.wedo_workflow.wedo_model.api.v1.DeploymentCreateRequest
-	1, // 2: github.com.wedo_workflow.wedo_model.api.v1.WedoService.DeploymentCreate:output_type -> github.com.wedo_workflow.wedo_model.api.v1.DeploymentCreateResponse
+	2, // 0: github.com.wedo_workflow.wedo.api.v1.DeploymentCreateResponse.timestamp:type_name -> google.protobuf.Timestamp
+	0, // 1: github.com.wedo_workflow.wedo.api.v1.WedoService.DeploymentCreate:input_type -> github.com.wedo_workflow.wedo.api.v1.DeploymentCreateRequest
+	1, // 2: github.com.wedo_workflow.wedo.api.v1.WedoService.DeploymentCreate:output_type -> github.com.wedo_workflow.wedo.api.v1.DeploymentCreateResponse
 	2, // [2:3] is the sub-list for method output_type
 	1, // [1:2] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name

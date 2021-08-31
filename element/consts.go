@@ -18,14 +18,14 @@ var (
 	DI_NS = "http://www.omg.org/spec/DD/20100524/DI"
 
 	// BPMN_20_SCHEMA_LOCATION The location of the BPMN 2.0 XML schema.
-	BPMN_20_SCHEMA_LOCATION = "github.com/wedo_model-workflow/wedo_model/pkg/bpmn/schema/BPMN20.xsd"
+	BPMN_20_SCHEMA_LOCATION = "github.com/wedo-workflow/wedo/pkg/bpmn/schema/BPMN20.xsd"
 
 	// XML_SCHEMA_NS Xml Schema is the default type language
 	XML_SCHEMA_NS = "http://www.w3.org/2001/XMLSchema"
 
 	XPATH_NS = "http://www.w3.org/1999/XPath"
 
-	WEDO_NS = "https://github.com/wedo_model-workflow/wedo_model/bpmn/1.0"
+	WEDO_NS = "https://github.com/wedo-workflow/wedo/bpmn/1.0"
 
 	BPMN_ELEMENT_BASE_ELEMENT                              = "baseElement"
 	BPMN_ELEMENT_DEFINITIONS                               = "definitions"
@@ -229,7 +229,7 @@ var (
 	BPMNDI_ELEMENT_BPMN_LABEL       = "BPMNLabel"
 	BPMNDI_ELEMENT_BPMN_EDGE        = "BPMNEdge"
 
-	// wedo_model extensions
+	// model extensions
 	WEDO_ELEMENT_CONNECTOR                   = "connector"
 	WEDO_ELEMENT_CONNECTOR_ID                = "connectorId"
 	WEDO_ELEMENT_CONSTRAINT                  = "constraint"
@@ -372,7 +372,7 @@ var (
 	BPMNDI_ATTRIBUTE_CHOREOGRAPHY_ACTIVITY_SHAPE = "choreographyActivityShape"
 	BPMNDI_ATTRIBUTE_LABEL_STYLE                 = "labelStyle"
 
-	// wedo_model extensions
+	// model extensions
 	WEDO_ATTRIBUTE_ASSIGNEE                             = "assignee"
 	WEDO_ATTRIBUTE_ASYNC                                = "async"
 	WEDO_ATTRIBUTE_ASYNC_BEFORE                         = "asyncBefore"

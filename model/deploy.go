@@ -1,4 +1,4 @@
-package wedo_model
+package model
 
 type Deploy struct {
 	DID     string `json:"did"`

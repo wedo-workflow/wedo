@@ -5,7 +5,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/wedo-workflow/wedo/element/wedo_model"
+	"github.com/wedo-workflow/wedo/model"
 	"github.com/wedo-workflow/wedo/runtime/config"
 )
 
@@ -20,7 +20,7 @@ func TestXML(t *testing.T) {
 		t.Log(err)
 		t.FailNow()
 	}
-	if err := rt.Deploy(context.Background(), &wedo_model.Deploy{
+	if err := rt.Deploy(context.Background(), &model.Deploy{
 		DID:     "",
 		Name:    "test",
 		Content: doc,

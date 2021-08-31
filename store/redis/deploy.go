@@ -5,11 +5,11 @@ import (
 	"encoding/json"
 	"errors"
 
-	"github.com/wedo-workflow/wedo/element/wedo_model"
+	"github.com/wedo-workflow/wedo/model"
 )
 
-func (r *Redis) Deploy(ctx context.Context, deployID string) (*wedo_model.Deploy, error) {
-	deploy := &wedo_model.Deploy{}
+func (r *Redis) Deploy(ctx context.Context, deployID string) (*model.Deploy, error) {
+	deploy := &model.Deploy{}
 	err := r.db.Get(ctx, deployID).Scan(deploy)
 	if err != nil {
 		return nil, err
@@ -17,7 +17,7 @@ func (r *Redis) Deploy(ctx context.Context, deployID string) (*wedo_model.Deploy
 	return deploy, nil
 }
 
-func (r *Redis) DeploySet(ctx context.Context, deploy *wedo_model.Deploy) error {
+func (r *Redis) DeploySet(ctx context.Context, deploy *model.Deploy) error {
 	if deploy.Name == "" {
 		return errors.New("deploy name is empty")
 	}

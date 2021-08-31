@@ -2,7 +2,7 @@
 // source: api/api.proto
 
 /*
-Package wedo_model is a reverse proxy.
+Package wedo is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
