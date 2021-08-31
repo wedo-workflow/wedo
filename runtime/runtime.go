@@ -3,6 +3,7 @@ package runtime
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"github.com/wedo-workflow/wedo/element"
 	"github.com/wedo-workflow/wedo/model"
@@ -23,7 +24,7 @@ func NewRuntime(config *config.Config) (*Runtime, error) {
 	if err != nil {
 		return nil, err
 	}
-	ctx, cancel := context.WithTimeout(context.Background(), config.Store.PingTimeout)
+	ctx, cancel := context.WithTimeout(context.Background(), config.Store.PingTimeout*time.Second)
 	defer cancel()
 	if err := newStore.Ping(ctx); err != nil {
 		return nil, err

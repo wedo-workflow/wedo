@@ -18,6 +18,8 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type WedoServiceClient interface {
+	// View a deployment.
+	Deployment(ctx context.Context, in *DeploymentRequest, opts ...grpc.CallOption) (*DeploymentResponse, error)
 	// Creates a deployment.
 	DeploymentCreate(ctx context.Context, in *DeploymentCreateRequest, opts ...grpc.CallOption) (*DeploymentCreateResponse, error)
 }
@@ -28,6 +30,15 @@ type wedoServiceClient struct {
 
 func NewWedoServiceClient(cc grpc.ClientConnInterface) WedoServiceClient {
 	return &wedoServiceClient{cc}
+}
+
+func (c *wedoServiceClient) Deployment(ctx context.Context, in *DeploymentRequest, opts ...grpc.CallOption) (*DeploymentResponse, error) {
+	out := new(DeploymentResponse)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/Deployment", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *wedoServiceClient) DeploymentCreate(ctx context.Context, in *DeploymentCreateRequest, opts ...grpc.CallOption) (*DeploymentCreateResponse, error) {
@@ -43,6 +54,8 @@ func (c *wedoServiceClient) DeploymentCreate(ctx context.Context, in *Deployment
 // All implementations should embed UnimplementedWedoServiceServer
 // for forward compatibility
 type WedoServiceServer interface {
+	// View a deployment.
+	Deployment(context.Context, *DeploymentRequest) (*DeploymentResponse, error)
 	// Creates a deployment.
 	DeploymentCreate(context.Context, *DeploymentCreateRequest) (*DeploymentCreateResponse, error)
 }
@@ -51,6 +64,9 @@ type WedoServiceServer interface {
 type UnimplementedWedoServiceServer struct {
 }
 
+func (UnimplementedWedoServiceServer) Deployment(context.Context, *DeploymentRequest) (*DeploymentResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Deployment not implemented")
+}
 func (UnimplementedWedoServiceServer) DeploymentCreate(context.Context, *DeploymentCreateRequest) (*DeploymentCreateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeploymentCreate not implemented")
 }
@@ -64,6 +80,24 @@ type UnsafeWedoServiceServer interface {
 
 func RegisterWedoServiceServer(s grpc.ServiceRegistrar, srv WedoServiceServer) {
 	s.RegisterService(&WedoService_ServiceDesc, srv)
+}
+
+func _WedoService_Deployment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeploymentRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WedoServiceServer).Deployment(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/Deployment",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WedoServiceServer).Deployment(ctx, req.(*DeploymentRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _WedoService_DeploymentCreate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -91,6 +125,10 @@ var WedoService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "github.com.wedo_workflow.wedo.api.v1.WedoService",
 	HandlerType: (*WedoServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "Deployment",
+			Handler:    _WedoService_Deployment_Handler,
+		},
 		{
 			MethodName: "DeploymentCreate",
 			Handler:    _WedoService_DeploymentCreate_Handler,

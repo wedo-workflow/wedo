@@ -21,7 +21,7 @@
     "application/json"
   ],
   "paths": {
-    "/deployment/create": {
+    "/deployments": {
       "post": {
         "summary": "Creates a deployment.",
         "operationId": "WedoService_DeploymentCreate",
@@ -47,6 +47,37 @@
             "schema": {
               "$ref": "#/definitions/v1DeploymentCreateRequest"
             }
+          }
+        ],
+        "tags": [
+          "WedoService"
+        ]
+      }
+    },
+    "/deployments/{deploymentId}": {
+      "get": {
+        "summary": "View a deployment.",
+        "operationId": "WedoService_Deployment",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DeploymentResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "deploymentId",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
         ],
         "tags": [
@@ -99,6 +130,25 @@
       }
     },
     "v1DeploymentCreateResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string",
+          "format": "byte"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "v1DeploymentResponse": {
       "type": "object",
       "properties": {
         "id": {

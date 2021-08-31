@@ -3,20 +3,21 @@ package config
 import "time"
 
 type Config struct {
-	Store *Store
+	Store *Store `json:"store"`
 }
 
 type Store struct {
-	Driver      string
-	PingTimeout time.Duration
-	Redis       *Redis
+	Driver      string        `json:"driver"`
+	Redis       *Redis        `json:"redis"`
+	PingTimeout time.Duration `json:"ping_timeout_second"`
 }
 
 type Redis struct {
-	DSN      string
-	Username string
-	Password string
-	DB       int
+	Addr     string `json:"addr"`
+	Port     string `json:"port"`
+	Username string `json:"username"`
+	Password string `json:"password"`
+	DBID     int    `json:"dbid"`
 }
 
 func NewDefaultConfig() *Config {
@@ -25,10 +26,11 @@ func NewDefaultConfig() *Config {
 			Driver:      "redis",
 			PingTimeout: 5 * time.Second,
 			Redis: &Redis{
-				DSN:      "localhost:6379",
+				Addr:     "localhost",
+				Port:     "6379",
 				Username: "",
 				Password: "",
-				DB:       0,
+				DBID:     0,
 			},
 		},
 	}

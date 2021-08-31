@@ -9,6 +9,10 @@ import (
 	"google.golang.org/grpc/status"
 )
 
+func (s *APIServer) Deployment(ctx context.Context, request *wedo.DeploymentRequest) (*wedo.DeploymentResponse, error) {
+	panic("implement me")
+}
+
 func (s *APIServer) DeploymentCreate(ctx context.Context, request *wedo.DeploymentCreateRequest) (*wedo.DeploymentCreateResponse, error) {
 	if request.Name == "" {
 		return nil, status.Error(codes.InvalidArgument, "name is empty")

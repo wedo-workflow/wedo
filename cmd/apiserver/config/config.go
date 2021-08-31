@@ -11,10 +11,10 @@ import (
 
 // Config of service.
 type Config struct {
-	LogLevel      string    `json:"log_level"`
-	GRPCEndpoint  *Endpoint `json:"grpc_endpoint"`
-	HTTPEndpoint  *Endpoint `json:"http_endpoint"`
-	RuntimeConfig *config.Config
+	LogLevel      string         `json:"log_level"`
+	GRPCEndpoint  *Endpoint      `json:"grpc_endpoint"`
+	HTTPEndpoint  *Endpoint      `json:"http_endpoint"`
+	RuntimeConfig *config.Config `json:"runtime_config"`
 }
 
 type Endpoint struct {
