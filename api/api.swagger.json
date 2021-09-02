@@ -21,7 +21,7 @@
     "application/json"
   ],
   "paths": {
-    "/deployments": {
+    "/deployment/create": {
       "post": {
         "summary": "Creates a deployment.",
         "operationId": "WedoService_DeploymentCreate",
@@ -54,10 +54,10 @@
         ]
       }
     },
-    "/deployments/{deploymentId}": {
+    "/deployment/{deploymentId}": {
       "get": {
-        "summary": "View a deployment.",
-        "operationId": "WedoService_Deployment",
+        "summary": "Get a deployment.",
+        "operationId": "WedoService_DeploymentGet",
         "responses": {
           "200": {
             "description": "A successful response.",
