@@ -22,16 +22,16 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 };
 
 service WedoService {
-  // View a deployment.
-  rpc Deployment(DeploymentRequest) returns (DeploymentResponse) {
+  // Get a deployment.
+  rpc DeploymentGet(DeploymentRequest) returns (DeploymentResponse) {
     option (google.api.http) = {
-      get : "/deployments/{deployment_id}"
+      get : "/deployment/{deployment_id}"
     };
   }
   // Creates a deployment.
   rpc DeploymentCreate(DeploymentCreateRequest) returns (DeploymentCreateResponse) {
     option (google.api.http) = {
-      post : "/deployments"
+      post : "/deployment/create"
       body : "*"
     };
   }
