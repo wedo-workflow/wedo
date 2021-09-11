@@ -33,7 +33,7 @@ var _ = utilities.NewDoubleArray
 var _ = descriptor.ForMessage
 var _ = metadata.Join
 
-func request_WedoService_Deployment_0(ctx context.Context, marshaler runtime.Marshaler, client WedoServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_WedoService_DeploymentGet_0(ctx context.Context, marshaler runtime.Marshaler, client WedoServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq DeploymentRequest
 	var metadata runtime.ServerMetadata
 
@@ -55,12 +55,12 @@ func request_WedoService_Deployment_0(ctx context.Context, marshaler runtime.Mar
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "deployment_id", err)
 	}
 
-	msg, err := client.Deployment(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.DeploymentGet(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_WedoService_Deployment_0(ctx context.Context, marshaler runtime.Marshaler, server WedoServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_WedoService_DeploymentGet_0(ctx context.Context, marshaler runtime.Marshaler, server WedoServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq DeploymentRequest
 	var metadata runtime.ServerMetadata
 
@@ -82,7 +82,7 @@ func local_request_WedoService_Deployment_0(ctx context.Context, marshaler runti
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "deployment_id", err)
 	}
 
-	msg, err := server.Deployment(ctx, &protoReq)
+	msg, err := server.DeploymentGet(ctx, &protoReq)
 	return msg, metadata, err
 
 }
@@ -127,7 +127,7 @@ func local_request_WedoService_DeploymentCreate_0(ctx context.Context, marshaler
 // Note that using this registration option will cause many gRPC library features to stop working. Consider using RegisterWedoServiceHandlerFromEndpoint instead.
 func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux, server WedoServiceServer) error {
 
-	mux.Handle("GET", pattern_WedoService_Deployment_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_WedoService_DeploymentGet_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -138,7 +138,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_WedoService_Deployment_0(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_WedoService_DeploymentGet_0(rctx, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
@@ -146,7 +146,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 			return
 		}
 
-		forward_WedoService_Deployment_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_WedoService_DeploymentGet_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -214,7 +214,7 @@ func RegisterWedoServiceHandler(ctx context.Context, mux *runtime.ServeMux, conn
 // "WedoServiceClient" to call the correct interceptors.
 func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux, client WedoServiceClient) error {
 
-	mux.Handle("GET", pattern_WedoService_Deployment_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_WedoService_DeploymentGet_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -223,14 +223,14 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_WedoService_Deployment_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_WedoService_DeploymentGet_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_WedoService_Deployment_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_WedoService_DeploymentGet_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -258,13 +258,13 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 }
 
 var (
-	pattern_WedoService_Deployment_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"deployments", "deployment_id"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_WedoService_DeploymentGet_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"deployment", "deployment_id"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_WedoService_DeploymentCreate_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"deployments"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_WedoService_DeploymentCreate_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"deployment", "create"}, "", runtime.AssumeColonVerbOpt(true)))
 )
 
 var (
-	forward_WedoService_Deployment_0 = runtime.ForwardResponseMessage
+	forward_WedoService_DeploymentGet_0 = runtime.ForwardResponseMessage
 
 	forward_WedoService_DeploymentCreate_0 = runtime.ForwardResponseMessage
 )
