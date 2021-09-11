@@ -16,7 +16,8 @@ import (
 
 type Runtime struct {
 	rootParsers map[string]element.Element
-	store       store.Store
+
+	store store.Store
 }
 
 func NewRuntime(config *config.Config) (*Runtime, error) {
@@ -36,6 +37,17 @@ func NewRuntime(config *config.Config) (*Runtime, error) {
 
 	return r, nil
 }
+
+var (
+	parsersWhitelist = map[string]bool{
+		"BPMNShape": true,
+		"Bounds":    true,
+		"BPMNPlane": true,
+		"BPMNEdge":  true,
+		"BPMNLabel": true,
+		"waypoint":  true,
+	}
+)
 
 func (r *Runtime) Run(opts ...Option) error {
 
@@ -77,6 +89,10 @@ func (r *Runtime) deploy(tree *xmltree.Element, rootID string) error {
 func (r *Runtime) parseAndStore(e *xmltree.Element, rootID string) error {
 	fmt.Println(e.Name.Local, string(e.Content))
 	eleLocal := e.Name.Local
+	_, skip := parsersWhitelist[eleLocal]
+	if skip {
+		return nil
+	}
 	parser, ok := r.rootParsers[eleLocal]
 	if !ok {
 		return fmt.Errorf("element %s's parser not found", e.Name.Local)

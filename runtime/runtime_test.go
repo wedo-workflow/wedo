@@ -10,7 +10,7 @@ import (
 )
 
 func TestXML(t *testing.T) {
-	doc, err := os.ReadFile("testdata/diagram.bpmn")
+	doc, err := os.ReadFile("testdata/diagram.BPMN")
 	if err != nil {
 		t.Log(err)
 		t.FailNow()
@@ -28,4 +28,5 @@ func TestXML(t *testing.T) {
 		t.Log(err)
 		t.FailNow()
 	}
+	t.Log("test2")
 }
