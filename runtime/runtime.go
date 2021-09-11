@@ -55,19 +55,23 @@ func (r *Runtime) Run(opts ...Option) error {
 }
 
 func (r *Runtime) Deploy(ctx context.Context, deploy *model.Deploy) error {
-	err := r.store.DeploySet(ctx, deploy)
+	uuidV4, err := uuid.NewRandom()
 	if err != nil {
+		return err
+	}
+	deploy.DID = uuidV4.String()
+	if err := r.store.ProcessDefinitionAdd(ctx, deploy); err != nil {
+		return err
+	}
+	if err := r.store.DeploySet(ctx, deploy); err != nil {
 		return err
 	}
 	tree, err := xmltree.Parse(deploy.Content)
 	if err != nil {
 		return err
 	}
-	uuidV4, err := uuid.NewRandom()
-	if err != nil {
-		return err
-	}
-	return r.deploy(tree, uuidV4.String())
+
+	return r.deploy(tree, deploy.DID)
 }
 
 func (r *Runtime) deploy(tree *xmltree.Element, rootID string) error {

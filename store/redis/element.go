@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"fmt"
 
 	"github.com/wedo-workflow/wedo/element"
 )
@@ -35,7 +36,7 @@ func (r *Redis) ElementSet(ctx context.Context, element element.Element, rootID 
 	if err != nil {
 		return err
 	}
-	if err := r.db.HSet(ctx, rootID, element.EID(), elementBytes).Err(); err != nil {
+	if err := r.db.HSet(ctx, fmt.Sprintf("%s_elements", rootID), element.EID(), elementBytes).Err(); err != nil {
 		return err
 	}
 	return nil
