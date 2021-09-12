@@ -12,6 +12,7 @@ import (
 type Store interface {
 	Ping(ctx context.Context) error
 
+	ProcessDefinition(ctx context.Context, processID string) (*model.Deploy, error)
 	ProcessDefinitionAdd(ctx context.Context, deploy *model.Deploy) error
 
 	Deploy(ctx context.Context, deployID string) (*model.Deploy, error)
