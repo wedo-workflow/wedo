@@ -35,6 +35,80 @@ service WedoService {
       body : "*"
     };
   }
+
+  // User
+  rpc UserCreate(UserCreateRequest) returns (UserCreateResponse) {
+    option (google.api.http) = {
+      post : "/user/create"
+      body : "*"
+    };
+  }
+  rpc UserGet(UserRequest) returns (UserResponse) {
+    option (google.api.http) = {
+      get : "/user/{user_id}"
+    };
+  }
+  rpc UserDelete(UserDeleteRequest) returns (UserDeleteResponse) {
+    option (google.api.http) = {
+      delete : "/user/{user_id}"
+    };
+  }
+
+  // Namespace
+  rpc NamespaceCreate(NamespaceCreateRequest) returns (NamespaceCreateResponse) {
+    option (google.api.http) = {
+      post : "/namespace/create"
+      body : "*"
+    };
+  }
+  rpc NamespaceGet(NamespaceRequest) returns (NamespaceResponse) {
+    option (google.api.http) = {
+      get : "/namespace/{namespace_id}"
+    };
+  }
+  rpc NamespaceDelete(NamespaceDeleteRequest) returns (NamespaceDeleteResponse) {
+    option (google.api.http) = {
+      delete : "/namespace/{namespace_id}"
+    };
+  }
+
+  // Namespace User Membership
+  // PUT /namespace/{id}/user-members/{userId}
+  // DELETE /namespace/{id}/user-members/{userId}
+  // Namespace Group Membership
+  // PUT /namespace/{id}/group-members/{groupId}
+  // DELETE /namespace/{id}/group-members/{groupId}
+
+  // Process Definition
+  rpc ProcessDefinitionStart(ProcessDefinitionCreateRequest) returns (ProcessDefinitionCreateResponse) {
+    option (google.api.http) = {
+      post : "/process-definition/key/{process_definition_key}/namespace-id/{namespace_id}/start"
+      body : "*"
+    };
+  }
+  rpc ProcessDefinitionGet(ProcessDefinitionRequest) returns (ProcessDefinitionResponse) {
+    option (google.api.http) = {
+      get : "/process-definition/key/{process_definition_key}/namespace-id/{namespace_id}"
+    };
+  }
+
+  // Task
+  rpc TaskCreate(TaskCreateRequest) returns (TaskCreateResponse) {
+    option (google.api.http) = {
+      post : "/task/create"
+      body : "*"
+    };
+  }
+  rpc TaskGet(TaskRequest) returns (TaskResponse) {
+    option (google.api.http) = {
+      get : "/task/{task_id}"
+    };
+  }
+  rpc TaskDelete(TaskDeleteRequest) returns (TaskDeleteResponse) {
+    option (google.api.http) = {
+      delete : "/task/{task_id}"
+    };
+  }
 }
 
 message DeploymentRequest {
@@ -58,4 +132,106 @@ message DeploymentCreateResponse {
   string name = 2;
   bytes content = 3;
   google.protobuf.Timestamp timestamp = 4;
+}
+
+message NamespaceCreateRequest {
+  string id = 1;
+  string name = 2;
+}
+
+message NamespaceCreateResponse {
+  string id = 1;
+  string name = 2;
+}
+
+message NamespaceRequest {
+  string namespace_id = 1;
+}
+
+message NamespaceResponse {
+  string id = 1;
+  string name = 2;
+}
+
+message NamespaceDeleteRequest {
+  string namespace_id = 1;
+}
+
+message NamespaceDeleteResponse {
+
+}
+
+message UserCreateRequest {
+  string id = 1;
+  string name = 2;
+}
+
+message UserCreateResponse {
+  string id = 1;
+  string name = 2;
+}
+
+message UserRequest {
+  string user_id = 1;
+}
+
+message UserResponse {
+  string id = 1;
+  string name = 2;
+}
+
+message UserDeleteRequest {
+  string user_id = 1;
+}
+
+message UserDeleteResponse {
+
+}
+
+message ProcessDefinitionCreateRequest {
+  string process_definition_key = 1;
+  string namespace_id = 2;
+  string id = 3;
+}
+
+message ProcessDefinitionCreateResponse {
+  string process_definition_key = 1;
+  string namespace_id = 2;
+}
+
+message ProcessDefinitionRequest {
+  string process_definition_key = 1;
+  string namespace_id = 2;
+}
+
+message ProcessDefinitionResponse {
+  string process_definition_key = 1;
+  string namespace_id = 2;
+}
+
+message TaskCreateRequest {
+  string id = 1;
+  string name = 2;
+}
+
+message TaskCreateResponse {
+  string id = 1;
+  string name = 2;
+}
+
+message TaskRequest {
+  string task_id = 1;
+}
+
+message TaskResponse {
+  string id = 1;
+  string name = 2;
+}
+
+message TaskDeleteRequest {
+  string task_id = 1;
+}
+
+message TaskDeleteResponse {
+
 }
