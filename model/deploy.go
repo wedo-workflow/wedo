@@ -1,7 +1,7 @@
 package model
 
 type Deploy struct {
-	DID     string `json:"did"`
+	DID     string
 	Name    string `json:"name"`
 	Content []byte `json:"content"`
 }

@@ -20,7 +20,6 @@ require (
 require (
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
-	github.com/googleapis/googleapis v0.0.0-20210831004333-2127126597ea // indirect
 	github.com/tidwall/gjson v1.8.1 // indirect
 	golang.org/x/net v0.0.0-20210428140749-89ef3d95e781 // indirect
 	golang.org/x/sys v0.0.0-20210510120138-977fb7262007 // indirect
