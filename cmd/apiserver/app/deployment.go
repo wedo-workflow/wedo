@@ -28,3 +28,7 @@ func (s *APIServer) DeploymentCreate(ctx context.Context, request *wedo.Deployme
 	}
 	return &wedo.DeploymentCreateResponse{}, nil
 }
+
+func (APIServer) DeploymentGet(ctx context.Context, request *wedo.DeploymentRequest) (*wedo.DeploymentResponse, error) {
+	panic("implement me")
+}
