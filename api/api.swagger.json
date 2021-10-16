@@ -485,6 +485,9 @@
         "content": {
           "type": "string",
           "format": "byte"
+        },
+        "namespaceId": {
+          "type": "string"
         }
       }
     },

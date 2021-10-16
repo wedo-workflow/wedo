@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"time"
 
 	"github.com/wedo-workflow/wedo/model"
 )
@@ -25,9 +26,10 @@ func (r *Redis) DeploySet(ctx context.Context, deploy *model.Deploy) error {
 	if deploy.Name == "" {
 		return errors.New("deploy name is empty")
 	}
+	deploy.CreateTime = time.Now()
 	deployBytes, err := json.Marshal(deploy)
 	if err != nil {
 		return err
 	}
-	return r.db.Set(ctx, fmt.Sprintf("%s_deploy", deploy.DID), deployBytes, 0).Err()
+	return r.db.Set(ctx, fmt.Sprintf(deploySet, deploy.DID), deployBytes, 0).Err()
 }

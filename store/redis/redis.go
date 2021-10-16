@@ -8,6 +8,12 @@ import (
 	"github.com/wedo-workflow/wedo/runtime/config"
 )
 
+var (
+	processDefinition = "ProcessDefinitions"
+	elementSet        = "%s_elements"
+	deploySet         = "%s_deploy"
+)
+
 type Redis struct {
 	db *redis.Client
 }

@@ -125,6 +125,7 @@ message DeploymentResponse {
 message DeploymentCreateRequest {
   string name = 1;
   bytes content = 2;
+  string namespace_id = 3;
 }
 
 message DeploymentCreateResponse {

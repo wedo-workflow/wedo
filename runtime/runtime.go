@@ -33,6 +33,10 @@ func NewRuntime(config *config.Config) (*Runtime, error) {
 	return r, nil
 }
 
+func (r *Runtime) Store() store.Store {
+	return r.store
+}
+
 func (r *Runtime) Run(opts ...Option) error {
 
 	return nil

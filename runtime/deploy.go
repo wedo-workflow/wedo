@@ -20,24 +20,27 @@ var (
 	}
 )
 
-func (r *Runtime) Deploy(ctx context.Context, deploy *model.Deploy) error {
+func (r *Runtime) Deploy(ctx context.Context, deploy *model.Deploy) (string, error) {
 	uuidV4, err := uuid.NewRandom()
 	if err != nil {
-		return err
+		return "", err
 	}
 	deploy.DID = uuidV4.String()
+	// 1. store process definition
 	if err := r.store.ProcessDefinitionAdd(ctx, deploy); err != nil {
-		return err
+		return "", err
 	}
+	// 2. store deploy
 	if err := r.store.DeploySet(ctx, deploy); err != nil {
-		return err
+		return "", err
 	}
+	// 3.0 parse deploy content
 	tree, err := xmltree.Parse(deploy.Content)
 	if err != nil {
-		return err
+		return "", err
 	}
-
-	return r.deploy(tree, deploy.DID)
+	// 3.1 deploy element
+	return deploy.DID, r.deploy(tree, deploy.DID)
 }
 
 func (r *Runtime) deploy(tree *xmltree.Element, rootID string) error {
