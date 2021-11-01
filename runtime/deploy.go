@@ -11,12 +11,13 @@ import (
 
 var (
 	parsersWhitelist = map[string]bool{
-		"BPMNShape": true,
-		"Bounds":    true,
-		"BPMNPlane": true,
-		"BPMNEdge":  true,
-		"BPMNLabel": true,
-		"waypoint":  true,
+		"BPMNShape":        true,
+		"Bounds":           true,
+		"BPMNPlane":        true,
+		"BPMNEdge":         true,
+		"BPMNLabel":        true,
+		"waypoint":         true,
+		"exclusiveGateway": true,
 	}
 )
 

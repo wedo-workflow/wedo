@@ -20,7 +20,7 @@ func TestXML(t *testing.T) {
 		t.Log(err)
 		t.FailNow()
 	}
-	if err := rt.Deploy(context.Background(), &model.Deploy{
+	if _, err := rt.Deploy(context.Background(), &model.Deploy{
 		DID:     "",
 		Name:    "test",
 		Content: doc,

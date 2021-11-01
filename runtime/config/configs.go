@@ -26,11 +26,11 @@ func NewDefaultConfig() *Config {
 			Driver:      "redis",
 			PingTimeout: 5 * time.Second,
 			Redis: &Redis{
-				Addr:     "localhost",
+				Addr:     "10.151.144.75",
 				Port:     "6379",
 				Username: "",
 				Password: "",
-				DBID:     0,
+				DBID:     1,
 			},
 		},
 	}
