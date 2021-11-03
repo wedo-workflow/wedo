@@ -118,6 +118,66 @@
         ]
       }
     },
+    "/namespace/list": {
+      "get": {
+        "operationId": "WedoService_NamespaceList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1NamespaceListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "namespaceId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WedoService"
+        ]
+      }
+    },
+    "/namespace/list/count": {
+      "get": {
+        "operationId": "WedoService_NamespaceListCount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1NamespaceListCountResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "namespaceId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WedoService"
+        ]
+      }
+    },
     "/namespace/{namespaceId}": {
       "get": {
         "operationId": "WedoService_NamespaceGet",
@@ -553,6 +613,26 @@
     },
     "v1NamespaceDeleteResponse": {
       "type": "object"
+    },
+    "v1NamespaceListCountResponse": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "v1NamespaceListResponse": {
+      "type": "object",
+      "properties": {
+        "namespaces": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1NamespaceResponse"
+          }
+        }
+      }
     },
     "v1NamespaceResponse": {
       "type": "object",
