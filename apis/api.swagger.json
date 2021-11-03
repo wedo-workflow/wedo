@@ -54,6 +54,36 @@
         ]
       }
     },
+    "/deployment/list": {
+      "get": {
+        "operationId": "WedoService_DeploymentList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DeploymentListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "namespaceId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WedoService"
+        ]
+      }
+    },
     "/deployment/{deploymentId}": {
       "get": {
         "summary": "Get a deployment.",
@@ -355,6 +385,36 @@
         ]
       }
     },
+    "/task/list": {
+      "get": {
+        "operationId": "WedoService_TaskList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1TaskListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WedoService"
+        ]
+      }
+    },
     "/task/{taskId}": {
       "get": {
         "operationId": "WedoService_TaskGet",
@@ -570,6 +630,17 @@
         }
       }
     },
+    "v1DeploymentListResponse": {
+      "type": "object",
+      "properties": {
+        "deployments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1DeploymentResponse"
+          }
+        }
+      }
+    },
     "v1DeploymentResponse": {
       "type": "object",
       "properties": {
@@ -691,6 +762,17 @@
     },
     "v1TaskDeleteResponse": {
       "type": "object"
+    },
+    "v1TaskListResponse": {
+      "type": "object",
+      "properties": {
+        "tasks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1TaskResponse"
+          }
+        }
+      }
     },
     "v1TaskResponse": {
       "type": "object",
