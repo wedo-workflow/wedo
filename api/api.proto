@@ -35,6 +35,11 @@ service WedoService {
       body : "*"
     };
   }
+  rpc DeploymentList(DeploymentListRequest) returns (DeploymentListResponse) {
+    option (google.api.http) = {
+      get : "/deployment/list"
+    };
+  }
 
   // User
   rpc UserCreate(UserCreateRequest) returns (UserCreateResponse) {
@@ -119,6 +124,11 @@ service WedoService {
       delete : "/task/{task_id}"
     };
   }
+  rpc TaskList(TaskListRequest) returns (TaskListResponse) {
+    option (google.api.http) = {
+      get : "/task/list"
+    };
+  }
 }
 
 message DeploymentRequest {
@@ -143,6 +153,14 @@ message DeploymentCreateResponse {
   string name = 2;
   bytes content = 3;
   google.protobuf.Timestamp timestamp = 4;
+}
+
+message DeploymentListRequest {
+  string namespace_id = 1;
+}
+
+message DeploymentListResponse {
+  repeated DeploymentResponse deployments = 1;
 }
 
 message NamespaceCreateRequest {
@@ -261,4 +279,12 @@ message TaskDeleteRequest {
 
 message TaskDeleteResponse {
 
+}
+
+message TaskListRequest {
+  string task_id = 1;
+}
+
+message TaskListResponse {
+  repeated TaskResponse tasks = 1;
 }

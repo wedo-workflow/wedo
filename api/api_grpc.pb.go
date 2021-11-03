@@ -22,6 +22,7 @@ type WedoServiceClient interface {
 	DeploymentGet(ctx context.Context, in *DeploymentRequest, opts ...grpc.CallOption) (*DeploymentResponse, error)
 	// Creates a deployment.
 	DeploymentCreate(ctx context.Context, in *DeploymentCreateRequest, opts ...grpc.CallOption) (*DeploymentCreateResponse, error)
+	DeploymentList(ctx context.Context, in *DeploymentListRequest, opts ...grpc.CallOption) (*DeploymentListResponse, error)
 	// User
 	UserCreate(ctx context.Context, in *UserCreateRequest, opts ...grpc.CallOption) (*UserCreateResponse, error)
 	UserGet(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*UserResponse, error)
@@ -39,6 +40,7 @@ type WedoServiceClient interface {
 	TaskCreate(ctx context.Context, in *TaskCreateRequest, opts ...grpc.CallOption) (*TaskCreateResponse, error)
 	TaskGet(ctx context.Context, in *TaskRequest, opts ...grpc.CallOption) (*TaskResponse, error)
 	TaskDelete(ctx context.Context, in *TaskDeleteRequest, opts ...grpc.CallOption) (*TaskDeleteResponse, error)
+	TaskList(ctx context.Context, in *TaskListRequest, opts ...grpc.CallOption) (*TaskListResponse, error)
 }
 
 type wedoServiceClient struct {
@@ -61,6 +63,15 @@ func (c *wedoServiceClient) DeploymentGet(ctx context.Context, in *DeploymentReq
 func (c *wedoServiceClient) DeploymentCreate(ctx context.Context, in *DeploymentCreateRequest, opts ...grpc.CallOption) (*DeploymentCreateResponse, error) {
 	out := new(DeploymentCreateResponse)
 	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/DeploymentCreate", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wedoServiceClient) DeploymentList(ctx context.Context, in *DeploymentListRequest, opts ...grpc.CallOption) (*DeploymentListResponse, error) {
+	out := new(DeploymentListResponse)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/DeploymentList", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -184,6 +195,15 @@ func (c *wedoServiceClient) TaskDelete(ctx context.Context, in *TaskDeleteReques
 	return out, nil
 }
 
+func (c *wedoServiceClient) TaskList(ctx context.Context, in *TaskListRequest, opts ...grpc.CallOption) (*TaskListResponse, error) {
+	out := new(TaskListResponse)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // WedoServiceServer is the server API for WedoService service.
 // All implementations should embed UnimplementedWedoServiceServer
 // for forward compatibility
@@ -192,6 +212,7 @@ type WedoServiceServer interface {
 	DeploymentGet(context.Context, *DeploymentRequest) (*DeploymentResponse, error)
 	// Creates a deployment.
 	DeploymentCreate(context.Context, *DeploymentCreateRequest) (*DeploymentCreateResponse, error)
+	DeploymentList(context.Context, *DeploymentListRequest) (*DeploymentListResponse, error)
 	// User
 	UserCreate(context.Context, *UserCreateRequest) (*UserCreateResponse, error)
 	UserGet(context.Context, *UserRequest) (*UserResponse, error)
@@ -209,6 +230,7 @@ type WedoServiceServer interface {
 	TaskCreate(context.Context, *TaskCreateRequest) (*TaskCreateResponse, error)
 	TaskGet(context.Context, *TaskRequest) (*TaskResponse, error)
 	TaskDelete(context.Context, *TaskDeleteRequest) (*TaskDeleteResponse, error)
+	TaskList(context.Context, *TaskListRequest) (*TaskListResponse, error)
 }
 
 // UnimplementedWedoServiceServer should be embedded to have forward compatible implementations.
@@ -220,6 +242,9 @@ func (UnimplementedWedoServiceServer) DeploymentGet(context.Context, *Deployment
 }
 func (UnimplementedWedoServiceServer) DeploymentCreate(context.Context, *DeploymentCreateRequest) (*DeploymentCreateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeploymentCreate not implemented")
+}
+func (UnimplementedWedoServiceServer) DeploymentList(context.Context, *DeploymentListRequest) (*DeploymentListResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeploymentList not implemented")
 }
 func (UnimplementedWedoServiceServer) UserCreate(context.Context, *UserCreateRequest) (*UserCreateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UserCreate not implemented")
@@ -259,6 +284,9 @@ func (UnimplementedWedoServiceServer) TaskGet(context.Context, *TaskRequest) (*T
 }
 func (UnimplementedWedoServiceServer) TaskDelete(context.Context, *TaskDeleteRequest) (*TaskDeleteResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TaskDelete not implemented")
+}
+func (UnimplementedWedoServiceServer) TaskList(context.Context, *TaskListRequest) (*TaskListResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TaskList not implemented")
 }
 
 // UnsafeWedoServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -304,6 +332,24 @@ func _WedoService_DeploymentCreate_Handler(srv interface{}, ctx context.Context,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).DeploymentCreate(ctx, req.(*DeploymentCreateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WedoService_DeploymentList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeploymentListRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WedoServiceServer).DeploymentList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/DeploymentList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WedoServiceServer).DeploymentList(ctx, req.(*DeploymentListRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -542,6 +588,24 @@ func _WedoService_TaskDelete_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WedoService_TaskList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TaskListRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WedoServiceServer).TaskList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WedoServiceServer).TaskList(ctx, req.(*TaskListRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // WedoService_ServiceDesc is the grpc.ServiceDesc for WedoService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -556,6 +620,10 @@ var WedoService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeploymentCreate",
 			Handler:    _WedoService_DeploymentCreate_Handler,
+		},
+		{
+			MethodName: "DeploymentList",
+			Handler:    _WedoService_DeploymentList_Handler,
 		},
 		{
 			MethodName: "UserCreate",
@@ -608,6 +676,10 @@ var WedoService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "TaskDelete",
 			Handler:    _WedoService_TaskDelete_Handler,
+		},
+		{
+			MethodName: "TaskList",
+			Handler:    _WedoService_TaskList_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

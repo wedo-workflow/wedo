@@ -48,3 +48,23 @@ func (s *APIServer) DeploymentGet(ctx context.Context, request *wedo.DeploymentR
 	}
 	return ret, nil
 }
+
+// DeploymentList returns a list of deployments.
+func (s *APIServer) DeploymentList(ctx context.Context, request *wedo.DeploymentListRequest) (*wedo.DeploymentListResponse, error) {
+	deploys, err := s.Runtime.Store().DeployList(ctx)
+	if err != nil {
+		return nil, status.Error(codes.Internal, err.Error())
+	}
+	ret := &wedo.DeploymentListResponse{
+		Deployments: make([]*wedo.DeploymentResponse, 0, len(deploys)),
+	}
+	for _, deploy := range deploys {
+		ret.Deployments = append(ret.Deployments, &wedo.DeploymentResponse{
+			Id:        deploy.Id,
+			Name:      deploy.Name,
+			Content:   deploy.Content,
+			Timestamp: timestamppb.New(deploy.CreateTime),
+		})
+	}
+	return ret, nil
+}
