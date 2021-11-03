@@ -55,7 +55,7 @@ func (s *APIServer) NamespaceList(ctx context.Context, request *wedo.NamespaceLi
 		return nil, status.Error(codes.Internal, err.Error())
 	}
 	res := &wedo.NamespaceListResponse{
-		Namespaces: make([]*wedo.NamespaceResponse, len(namespaces)),
+		Namespaces: make([]*wedo.NamespaceResponse, 0, len(namespaces)),
 	}
 	for _, namespace := range namespaces {
 		res.Namespaces = append(res.Namespaces, &wedo.NamespaceResponse{

@@ -47,8 +47,6 @@ func main() {
 
 	go server.Run()
 
-	server.HelloAPIServer()
-
 	sc := make(chan os.Signal, 1)
 	signal.Notify(sc, os.Interrupt)
 	sig := <-sc

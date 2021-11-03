@@ -33,25 +33,25 @@ func (r *Redis) NamespaceGet(ctx context.Context, namespaceID string) (*model.Na
 
 // NamespaceList returns all namespaces
 func (r *Redis) NamespaceList(ctx context.Context, opts *model.NamespaceQueryOptions) ([]*model.Namespace, error) {
-	// todo : deal with otps
+	// todo : deal with opts
 	namespaces := make([]*model.Namespace, 0)
-	err := r.db.HGetAll(ctx, NamespaceAll).Scan(func(key, value string) error {
-		var namespace model.Namespace
-		if err := json.Unmarshal([]byte(value), &namespace); err != nil {
-			return err
-		}
-		namespaces = append(namespaces, &namespace)
-		return nil
-	})
+	results, err := r.db.HGetAll(ctx, NamespaceAll).Result()
 	if err != nil {
 		return nil, err
+	}
+	for _, result := range results {
+		var namespace model.Namespace
+		if err := json.Unmarshal([]byte(result), &namespace); err != nil {
+			return nil, err
+		}
+		namespaces = append(namespaces, &namespace)
 	}
 	return namespaces, nil
 }
 
 // NamespaceListCount returns the count of all namespaces
 func (r *Redis) NamespaceListCount(ctx context.Context, opts *model.NamespaceQueryOptions) (int64, error) {
-	// todo : deal with otps
+	// todo : deal with opts
 	return r.db.HLen(ctx, NamespaceAll).Result()
 }
 

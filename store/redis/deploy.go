@@ -7,13 +7,21 @@ import (
 	"fmt"
 	"time"
 
+	log "github.com/sirupsen/logrus"
 	"github.com/wedo-workflow/wedo/model"
 )
 
+func deployKey(deployID string) string {
+	return fmt.Sprintf(deploySet, deployID)
+}
+
 func (r *Redis) Deploy(ctx context.Context, deployID string) (*model.Deploy, error) {
 	deploy := &model.Deploy{}
-	err := r.db.Get(ctx, deployID).Scan(deploy)
+	result, err := r.db.Get(ctx, deployKey(deployID)).Result()
 	if err != nil {
+		return nil, err
+	}
+	if err := json.Unmarshal([]byte(result), deploy); err != nil {
 		return nil, err
 	}
 	return deploy, nil
@@ -31,7 +39,7 @@ func (r *Redis) DeploySet(ctx context.Context, deploy *model.Deploy) error {
 	if err != nil {
 		return err
 	}
-	return r.db.Set(ctx, fmt.Sprintf(deploySet, deploy.DID), deployBytes, 0).Err()
+	return r.db.Set(ctx, deployKey(deploy.DID), deployBytes, 0).Err()
 }
 
 // DeploymentList returns a list of deployments.
@@ -46,8 +54,7 @@ func (r *Redis) DeploymentList(ctx context.Context, opts *model.DeploymentListOp
 		return nil, err
 	}
 	for key, _ := range lists {
-		deployKeys = append(deployKeys, fmt.Sprintf(deploySet, key))
-
+		deployKeys = append(deployKeys, deployKey(key))
 	}
 	deploys := make([]*model.Deploy, 0)
 	results, err := r.db.MGet(ctx, deployKeys...).Result()
@@ -56,6 +63,7 @@ func (r *Redis) DeploymentList(ctx context.Context, opts *model.DeploymentListOp
 	}
 	for _, result := range results {
 		if result == nil {
+			log.Debug("deployment list result is nil")
 			continue
 		}
 		deploy := &model.Deploy{}

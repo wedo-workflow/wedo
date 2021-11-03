@@ -38,7 +38,7 @@ func (r *Runtime) Deploy(ctx context.Context, deploy *model.Deploy) (string, err
 	// 3.0 parse deploy content
 	tree, err := xmltree.Parse(deploy.Content)
 	if err != nil {
-		return "", err
+		return "", fmt.Errorf("parse deploy content error: %s", err)
 	}
 	// 3.1 deploy element
 	return deploy.DID, r.deploy(tree, deploy.DID)
