@@ -113,6 +113,34 @@
         "tags": [
           "WedoService"
         ]
+      },
+      "delete": {
+        "operationId": "WedoService_DeploymentDelete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DeploymentDeleteResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "deploymentId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WedoService"
+        ]
       }
     },
     "/namespace/create": {
@@ -629,6 +657,9 @@
           "format": "date-time"
         }
       }
+    },
+    "v1DeploymentDeleteResponse": {
+      "type": "object"
     },
     "v1DeploymentListResponse": {
       "type": "object",

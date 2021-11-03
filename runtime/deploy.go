@@ -83,7 +83,12 @@ func (r *Runtime) parseAndStore(e *xmltree.Element, rootID string) error {
 	return nil
 }
 
-// DeploymentList returns a list of deployments
-func (r *Runtime) DeploymentList(ctx context.Context, opts *model.DeploymentListOptions) ([]*model.Deploy, error) {
-	return r.store.DeploymentList(ctx, opts)
+// DeployList returns a list of deployments
+func (r *Runtime) DeployList(ctx context.Context, opts *model.DeploymentListOptions) ([]*model.Deploy, error) {
+	return r.store.DeployList(ctx, opts)
+}
+
+// DeployDelete deletes a deployment
+func (r *Runtime) DeployDelete(ctx context.Context, deploymentID string) error {
+	return r.store.DeployDelete(ctx, deploymentID)
 }

@@ -40,6 +40,11 @@ service WedoService {
       get : "/deployment/list"
     };
   }
+  rpc DeploymentDelete(DeploymentDeleteRequest) returns (DeploymentDeleteResponse) {
+    option (google.api.http) = {
+      delete : "/deployment/{deployment_id}"
+    };
+  }
 
   // User
   rpc UserCreate(UserCreateRequest) returns (UserCreateResponse) {
@@ -161,6 +166,13 @@ message DeploymentListRequest {
 
 message DeploymentListResponse {
   repeated DeploymentResponse deployments = 1;
+}
+
+message DeploymentDeleteRequest {
+  string deployment_id = 1;
+}
+
+message DeploymentDeleteResponse {
 }
 
 message NamespaceCreateRequest {

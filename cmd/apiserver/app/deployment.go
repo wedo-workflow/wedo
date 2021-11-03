@@ -51,7 +51,7 @@ func (s *APIServer) DeploymentGet(ctx context.Context, request *wedo.DeploymentR
 
 // DeploymentList returns a list of deployments.
 func (s *APIServer) DeploymentList(ctx context.Context, request *wedo.DeploymentListRequest) (*wedo.DeploymentListResponse, error) {
-	deploys, err := s.Runtime.DeploymentList(ctx, &model.DeploymentListOptions{})
+	deploys, err := s.Runtime.DeployList(ctx, &model.DeploymentListOptions{})
 	if err != nil {
 		return nil, status.Error(codes.Internal, err.Error())
 	}
@@ -67,4 +67,16 @@ func (s *APIServer) DeploymentList(ctx context.Context, request *wedo.Deployment
 		})
 	}
 	return ret, nil
+}
+
+// DeploymentDelete deletes a deployment.
+func (s *APIServer) DeploymentDelete(ctx context.Context, request *wedo.DeploymentDeleteRequest) (*wedo.DeploymentDeleteResponse, error) {
+	if request.DeploymentId == "" {
+		return nil, status.Error(codes.InvalidArgument, "deployment id is empty")
+	}
+	err := s.Runtime.DeployDelete(ctx, request.DeploymentId)
+	if err != nil {
+		return nil, status.Error(codes.Internal, err.Error())
+	}
+	return &wedo.DeploymentDeleteResponse{}, nil
 }

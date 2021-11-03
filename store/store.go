@@ -17,7 +17,8 @@ type Store interface {
 
 	Deploy(ctx context.Context, deployID string) (*model.Deploy, error)
 	DeploySet(ctx context.Context, deploy *model.Deploy) error
-	DeploymentList(ctx context.Context, opts *model.DeploymentListOptions) ([]*model.Deploy, error)
+	DeployList(ctx context.Context, opts *model.DeploymentListOptions) ([]*model.Deploy, error)
+	DeployDelete(ctx context.Context, deployID string) error
 
 	Element(ctx context.Context, element element.Element) (element.Element, error)
 	ElementSet(ctx context.Context, element element.Element, rootID string) error

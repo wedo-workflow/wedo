@@ -42,8 +42,8 @@ func (r *Redis) DeploySet(ctx context.Context, deploy *model.Deploy) error {
 	return r.db.Set(ctx, deployKey(deploy.DID), deployBytes, 0).Err()
 }
 
-// DeploymentList returns a list of deployments.
-func (r *Redis) DeploymentList(ctx context.Context, opts *model.DeploymentListOptions) ([]*model.Deploy, error) {
+// DeployList returns a list of deployments.
+func (r *Redis) DeployList(ctx context.Context, opts *model.DeploymentListOptions) ([]*model.Deploy, error) {
 	type DeployKey struct {
 		Key string
 		Val string
@@ -77,4 +77,9 @@ func (r *Redis) DeploymentList(ctx context.Context, opts *model.DeploymentListOp
 		return nil, err
 	}
 	return deploys, nil
+}
+
+// DeployDelete deletes a deployment.
+func (r *Redis) DeployDelete(ctx context.Context, deployID string) error {
+	return r.db.Del(ctx, deployKey(deployID)).Err()
 }

@@ -23,6 +23,7 @@ type WedoServiceClient interface {
 	// Creates a deployment.
 	DeploymentCreate(ctx context.Context, in *DeploymentCreateRequest, opts ...grpc.CallOption) (*DeploymentCreateResponse, error)
 	DeploymentList(ctx context.Context, in *DeploymentListRequest, opts ...grpc.CallOption) (*DeploymentListResponse, error)
+	DeploymentDelete(ctx context.Context, in *DeploymentDeleteRequest, opts ...grpc.CallOption) (*DeploymentDeleteResponse, error)
 	// User
 	UserCreate(ctx context.Context, in *UserCreateRequest, opts ...grpc.CallOption) (*UserCreateResponse, error)
 	UserGet(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*UserResponse, error)
@@ -72,6 +73,15 @@ func (c *wedoServiceClient) DeploymentCreate(ctx context.Context, in *Deployment
 func (c *wedoServiceClient) DeploymentList(ctx context.Context, in *DeploymentListRequest, opts ...grpc.CallOption) (*DeploymentListResponse, error) {
 	out := new(DeploymentListResponse)
 	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/DeploymentList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wedoServiceClient) DeploymentDelete(ctx context.Context, in *DeploymentDeleteRequest, opts ...grpc.CallOption) (*DeploymentDeleteResponse, error) {
+	out := new(DeploymentDeleteResponse)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/DeploymentDelete", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -213,6 +223,7 @@ type WedoServiceServer interface {
 	// Creates a deployment.
 	DeploymentCreate(context.Context, *DeploymentCreateRequest) (*DeploymentCreateResponse, error)
 	DeploymentList(context.Context, *DeploymentListRequest) (*DeploymentListResponse, error)
+	DeploymentDelete(context.Context, *DeploymentDeleteRequest) (*DeploymentDeleteResponse, error)
 	// User
 	UserCreate(context.Context, *UserCreateRequest) (*UserCreateResponse, error)
 	UserGet(context.Context, *UserRequest) (*UserResponse, error)
@@ -245,6 +256,9 @@ func (UnimplementedWedoServiceServer) DeploymentCreate(context.Context, *Deploym
 }
 func (UnimplementedWedoServiceServer) DeploymentList(context.Context, *DeploymentListRequest) (*DeploymentListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeploymentList not implemented")
+}
+func (UnimplementedWedoServiceServer) DeploymentDelete(context.Context, *DeploymentDeleteRequest) (*DeploymentDeleteResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeploymentDelete not implemented")
 }
 func (UnimplementedWedoServiceServer) UserCreate(context.Context, *UserCreateRequest) (*UserCreateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UserCreate not implemented")
@@ -350,6 +364,24 @@ func _WedoService_DeploymentList_Handler(srv interface{}, ctx context.Context, d
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).DeploymentList(ctx, req.(*DeploymentListRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WedoService_DeploymentDelete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeploymentDeleteRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WedoServiceServer).DeploymentDelete(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/DeploymentDelete",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WedoServiceServer).DeploymentDelete(ctx, req.(*DeploymentDeleteRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -624,6 +656,10 @@ var WedoService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeploymentList",
 			Handler:    _WedoService_DeploymentList_Handler,
+		},
+		{
+			MethodName: "DeploymentDelete",
+			Handler:    _WedoService_DeploymentDelete_Handler,
 		},
 		{
 			MethodName: "UserCreate",
