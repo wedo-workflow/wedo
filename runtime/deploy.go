@@ -84,6 +84,6 @@ func (r *Runtime) parseAndStore(e *xmltree.Element, rootID string) error {
 }
 
 // DeploymentList returns a list of deployments
-func (r *Runtime) DeploymentList(ctx context.Context, opts ...model.DeploymentListOption) ([]*model.Deployment, error) {
-	return r.store.DeploymentList(ctx, opts...)
+func (r *Runtime) DeploymentList(ctx context.Context, opts *model.DeploymentListOptions) ([]*model.Deploy, error) {
+	return r.store.DeploymentList(ctx, opts)
 }

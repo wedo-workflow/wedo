@@ -17,3 +17,8 @@ func (APIServer) TaskGet(ctx context.Context, request *wedo.TaskRequest) (*wedo.
 func (APIServer) TaskDelete(ctx context.Context, request *wedo.TaskDeleteRequest) (*wedo.TaskDeleteResponse, error) {
 	panic("implement me")
 }
+
+// TaskList lists all tasks.
+func (APIServer) TaskList(ctx context.Context, request *wedo.TaskListRequest) (*wedo.TaskListResponse, error) {
+	panic("implement me")
+}

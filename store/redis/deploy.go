@@ -36,8 +36,35 @@ func (r *Redis) DeploySet(ctx context.Context, deploy *model.Deploy) error {
 
 // DeploymentList returns a list of deployments.
 func (r *Redis) DeploymentList(ctx context.Context, opts *model.DeploymentListOptions) ([]*model.Deploy, error) {
-	deploys := []*model.Deploy{}
-	err := r.db.ZRange(ctx, deployList, opts.Offset, opts.Offset+opts.Limit-1).ScanSlice(&deploys)
+	type DeployKey struct {
+		Key string
+		Val string
+	}
+	deployKeys := []string{}
+	lists, err := r.db.HGetAll(ctx, processDefinition).Result()
+	if err != nil {
+		return nil, err
+	}
+	for key, _ := range lists {
+		deployKeys = append(deployKeys, fmt.Sprintf(deploySet, key))
+
+	}
+	deploys := make([]*model.Deploy, 0)
+	results, err := r.db.MGet(ctx, deployKeys...).Result()
+	if err != nil {
+		return nil, err
+	}
+	for _, result := range results {
+		if result == nil {
+			continue
+		}
+		deploy := &model.Deploy{}
+		err := json.Unmarshal([]byte(result.(string)), deploy)
+		if err != nil {
+			return nil, err
+		}
+		deploys = append(deploys, deploy)
+	}
 	if err != nil {
 		return nil, err
 	}
