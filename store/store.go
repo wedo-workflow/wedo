@@ -22,6 +22,12 @@ type Store interface {
 	ElementSet(ctx context.Context, element element.Element, rootID string) error
 	ElementDelete(ctx context.Context, element element.Element) error
 	ElementsByRootID(ctx context.Context, rootID string) ([]element.Element, error)
+
+	NamespaceCreate(ctx context.Context, namespace *model.Namespace) error
+	NamespaceGet(ctx context.Context, namespaceID string) (*model.Namespace, error)
+	NamespaceDelete(ctx context.Context, namespaceID string) error
+	NamespaceList(ctx context.Context, opts *model.NamespaceQueryOptions) ([]*model.Namespace, error)
+	NamespaceListCount(ctx context.Context, opts *model.NamespaceQueryOptions) (int64, error)
 }
 
 func NewStore(config *config.Config) (Store, error) {

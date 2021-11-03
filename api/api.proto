@@ -71,6 +71,16 @@ service WedoService {
       delete : "/namespace/{namespace_id}"
     };
   }
+  rpc NamespaceList(NamespaceListRequest) returns (NamespaceListResponse) {
+    option (google.api.http) = {
+      get : "/namespace/list"
+    };
+  }
+  rpc NamespaceListCount(NamespaceListCountRequest) returns (NamespaceListCountResponse) {
+    option (google.api.http) = {
+      get : "/namespace/list/count"
+    };
+  }
 
   // Namespace User Membership
   // PUT /namespace/{id}/user-members/{userId}
@@ -160,6 +170,22 @@ message NamespaceDeleteRequest {
 
 message NamespaceDeleteResponse {
 
+}
+
+message NamespaceListRequest {
+  string namespace_id = 1;
+}
+
+message NamespaceListResponse {
+  repeated NamespaceResponse namespaces = 1;
+}
+
+message NamespaceListCountRequest {
+  string namespace_id = 1;
+}
+
+message NamespaceListCountResponse {
+  int64 count = 1;
 }
 
 message UserCreateRequest {

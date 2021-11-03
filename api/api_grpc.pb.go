@@ -30,6 +30,8 @@ type WedoServiceClient interface {
 	NamespaceCreate(ctx context.Context, in *NamespaceCreateRequest, opts ...grpc.CallOption) (*NamespaceCreateResponse, error)
 	NamespaceGet(ctx context.Context, in *NamespaceRequest, opts ...grpc.CallOption) (*NamespaceResponse, error)
 	NamespaceDelete(ctx context.Context, in *NamespaceDeleteRequest, opts ...grpc.CallOption) (*NamespaceDeleteResponse, error)
+	NamespaceList(ctx context.Context, in *NamespaceListRequest, opts ...grpc.CallOption) (*NamespaceListResponse, error)
+	NamespaceListCount(ctx context.Context, in *NamespaceListCountRequest, opts ...grpc.CallOption) (*NamespaceListCountResponse, error)
 	// Process Definition
 	ProcessDefinitionStart(ctx context.Context, in *ProcessDefinitionCreateRequest, opts ...grpc.CallOption) (*ProcessDefinitionCreateResponse, error)
 	ProcessDefinitionGet(ctx context.Context, in *ProcessDefinitionRequest, opts ...grpc.CallOption) (*ProcessDefinitionResponse, error)
@@ -119,6 +121,24 @@ func (c *wedoServiceClient) NamespaceDelete(ctx context.Context, in *NamespaceDe
 	return out, nil
 }
 
+func (c *wedoServiceClient) NamespaceList(ctx context.Context, in *NamespaceListRequest, opts ...grpc.CallOption) (*NamespaceListResponse, error) {
+	out := new(NamespaceListResponse)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/NamespaceList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wedoServiceClient) NamespaceListCount(ctx context.Context, in *NamespaceListCountRequest, opts ...grpc.CallOption) (*NamespaceListCountResponse, error) {
+	out := new(NamespaceListCountResponse)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/NamespaceListCount", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *wedoServiceClient) ProcessDefinitionStart(ctx context.Context, in *ProcessDefinitionCreateRequest, opts ...grpc.CallOption) (*ProcessDefinitionCreateResponse, error) {
 	out := new(ProcessDefinitionCreateResponse)
 	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/ProcessDefinitionStart", in, out, opts...)
@@ -180,6 +200,8 @@ type WedoServiceServer interface {
 	NamespaceCreate(context.Context, *NamespaceCreateRequest) (*NamespaceCreateResponse, error)
 	NamespaceGet(context.Context, *NamespaceRequest) (*NamespaceResponse, error)
 	NamespaceDelete(context.Context, *NamespaceDeleteRequest) (*NamespaceDeleteResponse, error)
+	NamespaceList(context.Context, *NamespaceListRequest) (*NamespaceListResponse, error)
+	NamespaceListCount(context.Context, *NamespaceListCountRequest) (*NamespaceListCountResponse, error)
 	// Process Definition
 	ProcessDefinitionStart(context.Context, *ProcessDefinitionCreateRequest) (*ProcessDefinitionCreateResponse, error)
 	ProcessDefinitionGet(context.Context, *ProcessDefinitionRequest) (*ProcessDefinitionResponse, error)
@@ -216,6 +238,12 @@ func (UnimplementedWedoServiceServer) NamespaceGet(context.Context, *NamespaceRe
 }
 func (UnimplementedWedoServiceServer) NamespaceDelete(context.Context, *NamespaceDeleteRequest) (*NamespaceDeleteResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method NamespaceDelete not implemented")
+}
+func (UnimplementedWedoServiceServer) NamespaceList(context.Context, *NamespaceListRequest) (*NamespaceListResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method NamespaceList not implemented")
+}
+func (UnimplementedWedoServiceServer) NamespaceListCount(context.Context, *NamespaceListCountRequest) (*NamespaceListCountResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method NamespaceListCount not implemented")
 }
 func (UnimplementedWedoServiceServer) ProcessDefinitionStart(context.Context, *ProcessDefinitionCreateRequest) (*ProcessDefinitionCreateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ProcessDefinitionStart not implemented")
@@ -388,6 +416,42 @@ func _WedoService_NamespaceDelete_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WedoService_NamespaceList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(NamespaceListRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WedoServiceServer).NamespaceList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/NamespaceList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WedoServiceServer).NamespaceList(ctx, req.(*NamespaceListRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WedoService_NamespaceListCount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(NamespaceListCountRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WedoServiceServer).NamespaceListCount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/NamespaceListCount",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WedoServiceServer).NamespaceListCount(ctx, req.(*NamespaceListCountRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _WedoService_ProcessDefinitionStart_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ProcessDefinitionCreateRequest)
 	if err := dec(in); err != nil {
@@ -516,6 +580,14 @@ var WedoService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "NamespaceDelete",
 			Handler:    _WedoService_NamespaceDelete_Handler,
+		},
+		{
+			MethodName: "NamespaceList",
+			Handler:    _WedoService_NamespaceList_Handler,
+		},
+		{
+			MethodName: "NamespaceListCount",
+			Handler:    _WedoService_NamespaceListCount_Handler,
 		},
 		{
 			MethodName: "ProcessDefinitionStart",
