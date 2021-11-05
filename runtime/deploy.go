@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/google/uuid"
+	log "github.com/sirupsen/logrus"
 	"github.com/wedo-workflow/wedo/model"
 	"github.com/wedo-workflow/xmltree"
 )
@@ -61,7 +62,7 @@ func (r *Runtime) deploy(tree *xmltree.Element, rootID string) error {
 }
 
 func (r *Runtime) parseAndStore(e *xmltree.Element, rootID string) error {
-	fmt.Println(e.Name.Local, string(e.Content))
+	log.Debug("start to deal", rootID, e.Name.Local)
 	eleLocal := e.Name.Local
 	_, skip := parsersWhitelist[eleLocal]
 	if skip {
@@ -79,7 +80,7 @@ func (r *Runtime) parseAndStore(e *xmltree.Element, rootID string) error {
 	if err := r.store.ElementSet(context.Background(), parser, rootID); err != nil {
 		return err
 	}
-	fmt.Println(e.Name.Local, "saved")
+	log.Debug(e.Name.Local, "saved")
 	return nil
 }
 

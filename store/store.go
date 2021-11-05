@@ -30,6 +30,8 @@ type Store interface {
 	NamespaceDelete(ctx context.Context, namespaceID string) error
 	NamespaceList(ctx context.Context, opts *model.NamespaceQueryOptions) ([]*model.Namespace, error)
 	NamespaceListCount(ctx context.Context, opts *model.NamespaceQueryOptions) (int64, error)
+
+	UserCreate(ctx context.Context, user *model.User) error
 }
 
 func NewStore(config *config.Config) (Store, error) {

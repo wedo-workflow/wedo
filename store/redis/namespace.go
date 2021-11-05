@@ -7,10 +7,6 @@ import (
 	"github.com/wedo-workflow/wedo/model"
 )
 
-const (
-	NamespaceAll = "namespace_all"
-)
-
 func (r *Redis) NamespaceCreate(ctx context.Context, namespace *model.Namespace) error {
 	namespaceBytes, err := json.Marshal(namespace)
 	if err != nil {

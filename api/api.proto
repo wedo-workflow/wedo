@@ -63,6 +63,22 @@ service WedoService {
       delete : "/user/{user_id}"
     };
   }
+  rpc UserList(UserListRequest) returns (UserListResponse) {
+    option (google.api.http) = {
+      get : "/user/list"
+    };
+  }
+  rpc UserUpdate(UserUpdateRequest) returns (UserUpdateResponse) {
+    option (google.api.http) = {
+      put : "/user/{user_id}"
+      body : "*"
+    };
+  }
+  rpc UserListCount(UserListCountRequest) returns (UserListCountResponse) {
+    option (google.api.http) = {
+      get : "/user/list/count"
+    };
+  }
 
   // Namespace
   rpc NamespaceCreate(NamespaceCreateRequest) returns (NamespaceCreateResponse) {
@@ -136,6 +152,8 @@ service WedoService {
   }
 }
 
+// Deployment
+
 message DeploymentRequest {
   string deployment_id = 1;
 }
@@ -174,6 +192,8 @@ message DeploymentDeleteRequest {
 
 message DeploymentDeleteResponse {
 }
+
+// Namespace
 
 message NamespaceCreateRequest {
   string id = 1;
@@ -218,9 +238,12 @@ message NamespaceListCountResponse {
   int64 count = 1;
 }
 
+// User
+
 message UserCreateRequest {
-  string id = 1;
-  string name = 2;
+  string name = 1;
+  string email = 2;
+  string password = 3;
 }
 
 message UserCreateResponse {
@@ -245,6 +268,34 @@ message UserDeleteResponse {
 
 }
 
+message UserListRequest {
+  string namespace_id = 1;
+}
+
+message UserListResponse {
+  repeated UserResponse users = 1;
+}
+
+message UserListCountRequest {
+  string namespace_id = 1;
+}
+
+message UserListCountResponse {
+  int64 count = 1;
+}
+
+message UserUpdateRequest {
+  string user_id = 1;
+  string name = 2;
+}
+
+message UserUpdateResponse {
+  string id = 1;
+  string name = 2;
+}
+
+// Process Definition
+
 message ProcessDefinitionCreateRequest {
   string process_definition_key = 1;
   string namespace_id = 2;
@@ -265,6 +316,8 @@ message ProcessDefinitionResponse {
   string process_definition_key = 1;
   string namespace_id = 2;
 }
+
+// Task
 
 message TaskCreateRequest {
   string id = 1;

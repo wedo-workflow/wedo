@@ -8,10 +8,14 @@ import (
 	"github.com/wedo-workflow/wedo/runtime/config"
 )
 
+// Redis Keys
 var (
 	processDefinition = "ProcessDefinitions"
+	NamespaceAll      = "namespace_all"
 	elementSet        = "%s_elements"
 	deploySet         = "%s_deploy"
+	userProfile       = "%s_user"
+	userList          = "user_list"
 )
 
 type Redis struct {

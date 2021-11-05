@@ -28,6 +28,9 @@ type WedoServiceClient interface {
 	UserCreate(ctx context.Context, in *UserCreateRequest, opts ...grpc.CallOption) (*UserCreateResponse, error)
 	UserGet(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*UserResponse, error)
 	UserDelete(ctx context.Context, in *UserDeleteRequest, opts ...grpc.CallOption) (*UserDeleteResponse, error)
+	UserList(ctx context.Context, in *UserListRequest, opts ...grpc.CallOption) (*UserListResponse, error)
+	UserUpdate(ctx context.Context, in *UserUpdateRequest, opts ...grpc.CallOption) (*UserUpdateResponse, error)
+	UserListCount(ctx context.Context, in *UserListCountRequest, opts ...grpc.CallOption) (*UserListCountResponse, error)
 	// Namespace
 	NamespaceCreate(ctx context.Context, in *NamespaceCreateRequest, opts ...grpc.CallOption) (*NamespaceCreateResponse, error)
 	NamespaceGet(ctx context.Context, in *NamespaceRequest, opts ...grpc.CallOption) (*NamespaceResponse, error)
@@ -109,6 +112,33 @@ func (c *wedoServiceClient) UserGet(ctx context.Context, in *UserRequest, opts .
 func (c *wedoServiceClient) UserDelete(ctx context.Context, in *UserDeleteRequest, opts ...grpc.CallOption) (*UserDeleteResponse, error) {
 	out := new(UserDeleteResponse)
 	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserDelete", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wedoServiceClient) UserList(ctx context.Context, in *UserListRequest, opts ...grpc.CallOption) (*UserListResponse, error) {
+	out := new(UserListResponse)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wedoServiceClient) UserUpdate(ctx context.Context, in *UserUpdateRequest, opts ...grpc.CallOption) (*UserUpdateResponse, error) {
+	out := new(UserUpdateResponse)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserUpdate", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wedoServiceClient) UserListCount(ctx context.Context, in *UserListCountRequest, opts ...grpc.CallOption) (*UserListCountResponse, error) {
+	out := new(UserListCountResponse)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserListCount", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -228,6 +258,9 @@ type WedoServiceServer interface {
 	UserCreate(context.Context, *UserCreateRequest) (*UserCreateResponse, error)
 	UserGet(context.Context, *UserRequest) (*UserResponse, error)
 	UserDelete(context.Context, *UserDeleteRequest) (*UserDeleteResponse, error)
+	UserList(context.Context, *UserListRequest) (*UserListResponse, error)
+	UserUpdate(context.Context, *UserUpdateRequest) (*UserUpdateResponse, error)
+	UserListCount(context.Context, *UserListCountRequest) (*UserListCountResponse, error)
 	// Namespace
 	NamespaceCreate(context.Context, *NamespaceCreateRequest) (*NamespaceCreateResponse, error)
 	NamespaceGet(context.Context, *NamespaceRequest) (*NamespaceResponse, error)
@@ -268,6 +301,15 @@ func (UnimplementedWedoServiceServer) UserGet(context.Context, *UserRequest) (*U
 }
 func (UnimplementedWedoServiceServer) UserDelete(context.Context, *UserDeleteRequest) (*UserDeleteResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UserDelete not implemented")
+}
+func (UnimplementedWedoServiceServer) UserList(context.Context, *UserListRequest) (*UserListResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UserList not implemented")
+}
+func (UnimplementedWedoServiceServer) UserUpdate(context.Context, *UserUpdateRequest) (*UserUpdateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UserUpdate not implemented")
+}
+func (UnimplementedWedoServiceServer) UserListCount(context.Context, *UserListCountRequest) (*UserListCountResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UserListCount not implemented")
 }
 func (UnimplementedWedoServiceServer) NamespaceCreate(context.Context, *NamespaceCreateRequest) (*NamespaceCreateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method NamespaceCreate not implemented")
@@ -436,6 +478,60 @@ func _WedoService_UserDelete_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).UserDelete(ctx, req.(*UserDeleteRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WedoService_UserList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UserListRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WedoServiceServer).UserList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WedoServiceServer).UserList(ctx, req.(*UserListRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WedoService_UserUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UserUpdateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WedoServiceServer).UserUpdate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserUpdate",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WedoServiceServer).UserUpdate(ctx, req.(*UserUpdateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WedoService_UserListCount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UserListCountRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WedoServiceServer).UserListCount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserListCount",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WedoServiceServer).UserListCount(ctx, req.(*UserListCountRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -672,6 +768,18 @@ var WedoService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UserDelete",
 			Handler:    _WedoService_UserDelete_Handler,
+		},
+		{
+			MethodName: "UserList",
+			Handler:    _WedoService_UserList_Handler,
+		},
+		{
+			MethodName: "UserUpdate",
+			Handler:    _WedoService_UserUpdate_Handler,
+		},
+		{
+			MethodName: "UserListCount",
+			Handler:    _WedoService_UserListCount_Handler,
 		},
 		{
 			MethodName: "NamespaceCreate",
