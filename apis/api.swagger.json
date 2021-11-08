@@ -56,6 +56,7 @@
     },
     "/deployment/list": {
       "get": {
+        "summary": "Updates a deployment.",
         "operationId": "WedoService_DeploymentList",
         "responses": {
           "200": {
@@ -115,6 +116,7 @@
         ]
       },
       "delete": {
+        "summary": "Delete a deployment.",
         "operationId": "WedoService_DeploymentDelete",
         "responses": {
           "200": {
@@ -145,7 +147,7 @@
     },
     "/namespace/create": {
       "post": {
-        "summary": "Namespace",
+        "summary": "Create a Namespace.",
         "operationId": "WedoService_NamespaceCreate",
         "responses": {
           "200": {
@@ -178,6 +180,7 @@
     },
     "/namespace/list": {
       "get": {
+        "summary": "List all Namespaces.",
         "operationId": "WedoService_NamespaceList",
         "responses": {
           "200": {
@@ -208,6 +211,7 @@
     },
     "/namespace/list/count": {
       "get": {
+        "summary": "Count all Namespaces.",
         "operationId": "WedoService_NamespaceListCount",
         "responses": {
           "200": {
@@ -238,6 +242,7 @@
     },
     "/namespace/{namespaceId}": {
       "get": {
+        "summary": "Get a Namespace.",
         "operationId": "WedoService_NamespaceGet",
         "responses": {
           "200": {
@@ -266,6 +271,7 @@
         ]
       },
       "delete": {
+        "summary": "Delete a Namespace.",
         "operationId": "WedoService_NamespaceDelete",
         "responses": {
           "200": {
@@ -332,7 +338,6 @@
     },
     "/process-definition/key/{processDefinitionKey}/namespace-id/{namespaceId}/start": {
       "post": {
-        "summary": "Process Definition",
         "operationId": "WedoService_ProcessDefinitionStart",
         "responses": {
           "200": {
@@ -382,7 +387,6 @@
     },
     "/task/create": {
       "post": {
-        "summary": "Task",
         "operationId": "WedoService_TaskCreate",
         "responses": {
           "200": {
@@ -503,7 +507,7 @@
     },
     "/user/create": {
       "post": {
-        "summary": "User",
+        "summary": "Create a User.",
         "operationId": "WedoService_UserCreate",
         "responses": {
           "200": {
@@ -536,6 +540,7 @@
     },
     "/user/list": {
       "get": {
+        "summary": "List all Users.",
         "operationId": "WedoService_UserList",
         "responses": {
           "200": {
@@ -610,6 +615,7 @@
     },
     "/user/{userId}": {
       "get": {
+        "summary": "Get a User.",
         "operationId": "WedoService_UserGet",
         "responses": {
           "200": {
@@ -638,6 +644,7 @@
         ]
       },
       "delete": {
+        "summary": "Delete a User.",
         "operationId": "WedoService_UserDelete",
         "responses": {
           "200": {
