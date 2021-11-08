@@ -34,3 +34,11 @@ func (r *Redis) UserGet(ctx context.Context, id string) (*model.User, error) {
 	}
 	return user, nil
 }
+
+// UserDelete deletes the user with the given ID.
+func (r *Redis) UserDelete(ctx context.Context, id string) error {
+	if err := r.db.ZRem(ctx, userList, id).Err(); err != nil {
+		return err
+	}
+	return r.db.Del(ctx, fmt.Sprintf(userProfile, id)).Err()
+}

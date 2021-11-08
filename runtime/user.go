@@ -14,3 +14,8 @@ func (r *Runtime) UserCreate(ctx context.Context, user *model.User) error {
 func (r *Runtime) UserGet(ctx context.Context, id string) (*model.User, error) {
 	return r.store.UserGet(ctx, id)
 }
+
+// UserDelete deletes a user by ID.
+func (r *Runtime) UserDelete(ctx context.Context, id string) error {
+	return r.store.UserDelete(ctx, id)
+}

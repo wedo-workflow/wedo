@@ -53,8 +53,14 @@ func (s *APIServer) UserGet(ctx context.Context, request *wedo.UserRequest) (*we
 	}, nil
 }
 
-func (APIServer) UserDelete(ctx context.Context, request *wedo.UserDeleteRequest) (*wedo.UserDeleteResponse, error) {
-	panic("implement me")
+func (s *APIServer) UserDelete(ctx context.Context, request *wedo.UserDeleteRequest) (*wedo.UserDeleteResponse, error) {
+	if request.UserId == "" {
+		return nil, status.Error(codes.InvalidArgument, "user id is empty")
+	}
+	if err := s.Runtime.UserDelete(ctx, request.UserId); err != nil {
+		return nil, status.Error(codes.Internal, err.Error())
+	}
+	return &wedo.UserDeleteResponse{}, nil
 }
 
 func (APIServer) UserList(ctx context.Context, request *wedo.UserListRequest) (*wedo.UserListResponse, error) {

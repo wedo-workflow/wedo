@@ -33,6 +33,7 @@ type Store interface {
 
 	UserCreate(ctx context.Context, user *model.User) error
 	UserGet(ctx context.Context, userID string) (*model.User, error)
+	UserDelete(ctx context.Context, userID string) error
 }
 
 func NewStore(config *config.Config) (Store, error) {
