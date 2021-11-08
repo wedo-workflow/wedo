@@ -39,8 +39,18 @@ func (s *APIServer) UserCreate(ctx context.Context, request *wedo.UserCreateRequ
 	}, nil
 }
 
-func (APIServer) UserGet(ctx context.Context, request *wedo.UserRequest) (*wedo.UserResponse, error) {
-	panic("implement me")
+func (s *APIServer) UserGet(ctx context.Context, request *wedo.UserRequest) (*wedo.UserResponse, error) {
+	if request.UserId == "" {
+		return nil, status.Error(codes.InvalidArgument, "user id is empty")
+	}
+	user, err := s.Runtime.UserGet(ctx, request.UserId)
+	if err != nil {
+		return nil, status.Error(codes.Internal, err.Error())
+	}
+	return &wedo.UserResponse{
+		Id:   request.UserId,
+		Name: user.Username,
+	}, nil
 }
 
 func (APIServer) UserDelete(ctx context.Context, request *wedo.UserDeleteRequest) (*wedo.UserDeleteResponse, error) {

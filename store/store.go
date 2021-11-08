@@ -32,6 +32,7 @@ type Store interface {
 	NamespaceListCount(ctx context.Context, opts *model.NamespaceQueryOptions) (int64, error)
 
 	UserCreate(ctx context.Context, user *model.User) error
+	UserGet(ctx context.Context, userID string) (*model.User, error)
 }
 
 func NewStore(config *config.Config) (Store, error) {

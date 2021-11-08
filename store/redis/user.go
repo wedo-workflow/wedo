@@ -21,3 +21,16 @@ func (r *Redis) UserCreate(ctx context.Context, user *model.User) error {
 	}
 	return r.db.Set(ctx, fmt.Sprintf(userProfile, user.Id), string(userBytes), redis.KeepTTL).Err()
 }
+
+// UserGet ByID returns the user with the given ID.
+func (r *Redis) UserGet(ctx context.Context, id string) (*model.User, error) {
+	userBytes, err := r.db.Get(ctx, fmt.Sprintf(userProfile, id)).Bytes()
+	if err != nil {
+		return nil, err
+	}
+	user := &model.User{}
+	if err := json.Unmarshal(userBytes, user); err != nil {
+		return nil, err
+	}
+	return user, nil
+}
