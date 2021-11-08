@@ -35,34 +35,39 @@ service WedoService {
       body : "*"
     };
   }
+  // Updates a deployment.
   rpc DeploymentList(DeploymentListRequest) returns (DeploymentListResponse) {
     option (google.api.http) = {
       get : "/deployment/list"
     };
   }
+  // Delete a deployment.
   rpc DeploymentDelete(DeploymentDeleteRequest) returns (DeploymentDeleteResponse) {
     option (google.api.http) = {
       delete : "/deployment/{deployment_id}"
     };
   }
 
-  // User
+  // Create a User.
   rpc UserCreate(UserCreateRequest) returns (UserCreateResponse) {
     option (google.api.http) = {
       post : "/user/create"
       body : "*"
     };
   }
+  // Get a User.
   rpc UserGet(UserRequest) returns (UserResponse) {
     option (google.api.http) = {
       get : "/user/{user_id}"
     };
   }
+  // Delete a User.
   rpc UserDelete(UserDeleteRequest) returns (UserDeleteResponse) {
     option (google.api.http) = {
       delete : "/user/{user_id}"
     };
   }
+  // List all Users.
   rpc UserList(UserListRequest) returns (UserListResponse) {
     option (google.api.http) = {
       get : "/user/list"
@@ -80,28 +85,32 @@ service WedoService {
     };
   }
 
-  // Namespace
+  // Create a Namespace.
   rpc NamespaceCreate(NamespaceCreateRequest) returns (NamespaceCreateResponse) {
     option (google.api.http) = {
       post : "/namespace/create"
       body : "*"
     };
   }
+  // Get a Namespace.
   rpc NamespaceGet(NamespaceRequest) returns (NamespaceResponse) {
     option (google.api.http) = {
       get : "/namespace/{namespace_id}"
     };
   }
+  // Delete a Namespace.
   rpc NamespaceDelete(NamespaceDeleteRequest) returns (NamespaceDeleteResponse) {
     option (google.api.http) = {
       delete : "/namespace/{namespace_id}"
     };
   }
+  // List all Namespaces.
   rpc NamespaceList(NamespaceListRequest) returns (NamespaceListResponse) {
     option (google.api.http) = {
       get : "/namespace/list"
     };
   }
+  // Count all Namespaces.
   rpc NamespaceListCount(NamespaceListCountRequest) returns (NamespaceListCountResponse) {
     option (google.api.http) = {
       get : "/namespace/list/count"
@@ -116,6 +125,8 @@ service WedoService {
   // DELETE /namespace/{id}/group-members/{groupId}
 
   // Process Definition
+
+
   rpc ProcessDefinitionStart(ProcessDefinitionCreateRequest) returns (ProcessDefinitionCreateResponse) {
     option (google.api.http) = {
       post : "/process-definition/key/{process_definition_key}/namespace-id/{namespace_id}/start"
@@ -129,6 +140,9 @@ service WedoService {
   }
 
   // Task
+
+
+  
   rpc TaskCreate(TaskCreateRequest) returns (TaskCreateResponse) {
     option (google.api.http) = {
       post : "/task/create"
