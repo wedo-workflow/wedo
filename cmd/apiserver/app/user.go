@@ -63,8 +63,22 @@ func (s *APIServer) UserDelete(ctx context.Context, request *wedo.UserDeleteRequ
 	return &wedo.UserDeleteResponse{}, nil
 }
 
-func (APIServer) UserList(ctx context.Context, request *wedo.UserListRequest) (*wedo.UserListResponse, error) {
-	panic("implement me")
+func (s *APIServer) UserList(ctx context.Context, request *wedo.UserListRequest) (*wedo.UserListResponse, error) {
+	users, err := s.Runtime.UserList(ctx, &model.UserListOptions{
+		Limit:  request.Limit,
+		Offset: request.Offset,
+	})
+	if err != nil {
+		return nil, status.Error(codes.Internal, err.Error())
+	}
+	response := &wedo.UserListResponse{}
+	for _, user := range users {
+		response.Users = append(response.Users, &wedo.UserResponse{
+			Id:   user.Id,
+			Name: user.Username,
+		})
+	}
+	return response, nil
 }
 
 func (APIServer) UserUpdate(ctx context.Context, request *wedo.UserUpdateRequest) (*wedo.UserUpdateResponse, error) {

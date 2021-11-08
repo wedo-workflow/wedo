@@ -19,3 +19,8 @@ func (r *Runtime) UserGet(ctx context.Context, id string) (*model.User, error) {
 func (r *Runtime) UserDelete(ctx context.Context, id string) error {
 	return r.store.UserDelete(ctx, id)
 }
+
+// UserList returns a list of users.
+func (r *Runtime) UserList(ctx context.Context, opts *model.UserListOptions) ([]*model.User, error) {
+	return r.store.UserList(ctx, opts)
+}

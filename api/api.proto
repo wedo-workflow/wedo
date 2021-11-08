@@ -270,6 +270,8 @@ message UserDeleteResponse {
 
 message UserListRequest {
   string namespace_id = 1;
+  int64 offset = 2;
+  int64 limit = 3;
 }
 
 message UserListResponse {
