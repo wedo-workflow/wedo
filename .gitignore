@@ -4,3 +4,6 @@ vendor
 *.test
 .DS_Store
 cmd/apiserver/config/apiserver.json
+*.gv
+*.svg
+*.ps
