@@ -7,3 +7,4 @@ cmd/apiserver/config/apiserver.json
 *.gv
 *.svg
 *.ps
+/cmd/apiserver/wedo-workflow

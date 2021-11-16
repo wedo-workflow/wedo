@@ -14,6 +14,11 @@
       "name": "WedoService"
     }
   ],
+  "host": "175.24.233.40:8911",
+  "basePath": "/api/v1",
+  "schemes": [
+    "http"
+  ],
   "consumes": [
     "application/json"
   ],

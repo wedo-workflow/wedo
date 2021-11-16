@@ -19,6 +19,9 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
       email: "jony4xx@gmail.com";
     };
   };
+  host: "175.24.233.40:8911";
+  base_path: "/api/v1";
+  schemes: [HTTP];
 };
 
 service WedoService {
@@ -142,7 +145,7 @@ service WedoService {
   // Task
 
 
-  
+
   rpc TaskCreate(TaskCreateRequest) returns (TaskCreateResponse) {
     option (google.api.http) = {
       post : "/task/create"
