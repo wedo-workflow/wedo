@@ -20,6 +20,7 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
     };
   };
   host: "175.24.233.40:8911";
+  base_path: "/api/v1";
   schemes: [HTTP];
 };
 
