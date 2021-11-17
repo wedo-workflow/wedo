@@ -127,8 +127,14 @@ func (s *APIServer) Run() {
 
 	mux := http.NewServeMux()
 
+	mux.Handle("/", gw)
+
 	mux.HandleFunc("/health", func(writer http.ResponseWriter, request *http.Request) {
 		writer.WriteHeader(http.StatusOK)
+		_, err := writer.Write([]byte("I'm OK"))
+		if err != nil {
+			writer.WriteHeader(http.StatusInternalServerError)
+		}
 	})
 
 	httpServer := http.Server{Addr: s.Config.HTTPEndpoint.String(), Handler: mux}
