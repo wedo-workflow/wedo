@@ -18,7 +18,9 @@ var (
 
 func main() {
 	time.Local = time.FixedZone("UTC+8", 8*60*60)
+
 	flag.Parse()
+
 	if *configPath == "" {
 		*configPath = os.Getenv("CONFIG_PATH")
 	}
@@ -44,15 +46,12 @@ func main() {
 	if err != nil {
 		log.Fatalf("api server err %v", err)
 	}
-
 	go server.Run()
 
 	sc := make(chan os.Signal, 1)
 	signal.Notify(sc, os.Interrupt)
 	sig := <-sc
-	log.Warn("system exit by received signal: ", sig.String())
-
 	// close called.
 	server.Close()
-	log.Warn("service closed")
+	log.Warn("system exit by received signal: ", sig.String())
 }

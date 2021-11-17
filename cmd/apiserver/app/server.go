@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net"
 	"net/http"
+	"strings"
 	"time"
 
 	grpc_logging "github.com/grpc-ecosystem/go-grpc-middleware/logging"
@@ -38,10 +39,6 @@ func NewAPIServer(config *config.Config) (*APIServer, error) {
 	server.Runtime = rt
 
 	return server, nil
-}
-
-func (s *APIServer) HelloAPIServer() {
-	fmt.Println("hello apiserver!")
 }
 
 func (s *APIServer) Close() {
@@ -88,47 +85,45 @@ func (s *APIServer) Run() {
 			}),
 		),
 	}
-
 	grpcServer := grpc.NewServer(serverOptions...)
 	defer grpcServer.GracefulStop()
 
+	// Register the server with the runtime.
 	wedo.RegisterWedoServiceServer(grpcServer, s)
 
-	lis, err := net.Listen("tcp", s.Config.GRPCEndpoint.String())
-	if err != nil {
-		log.Fatal("failed to listen: ", err)
-	}
-
 	go func() {
+		lis, err := net.Listen("tcp", s.Config.GRPCEndpoint.String())
+		if err != nil {
+			log.Fatal("failed to listen: ", err)
+		}
 		log.Info("Try start to serve grpc at ", s.Config.GRPCEndpoint.String())
 		if err := grpcServer.Serve(lis); err != nil {
 			log.Fatal("failed to serve: ", err)
 		}
 	}()
 
-	// http
-	ctx := context.Background()
-	ctx, cancel := context.WithCancel(ctx)
+	// Register the gateway with the runtime.
+	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	gw := grpc_runtime.NewServeMux(grpc_runtime.WithMarshalerOption(
-		grpc_runtime.MIMEWildcard,
-		&grpc_runtime.JSONPb{
-			OrigName:     true,
-			EmitDefaults: true,
-		},
-	))
-	opts := []grpc.DialOption{grpc.WithInsecure()}
+	gw := grpc_runtime.NewServeMux(
+		grpc_runtime.WithMarshalerOption(
+			grpc_runtime.MIMEWildcard,
+			&grpc_runtime.JSONPb{
+				OrigName:     true,
+				EmitDefaults: true,
+			},
+		),
+	)
 
+	opts := []grpc.DialOption{grpc.WithInsecure()}
 	if err := wedo.RegisterWedoServiceHandlerFromEndpoint(ctx,
 		gw, s.Config.GRPCEndpoint.String(), opts); err != nil {
 		log.Fatal("register handler failed: ", err)
 	}
 
 	mux := http.NewServeMux()
-
 	mux.Handle("/", gw)
-
 	mux.HandleFunc("/health", func(writer http.ResponseWriter, request *http.Request) {
 		writer.WriteHeader(http.StatusOK)
 		_, err := writer.Write([]byte("I'm OK"))
@@ -137,16 +132,31 @@ func (s *APIServer) Run() {
 		}
 	})
 
-	httpServer := http.Server{Addr: s.Config.HTTPEndpoint.String(), Handler: mux}
-
+	httpServer := http.Server{
+		Addr:    s.Config.HTTPEndpoint.String(),
+		Handler: grpcHandlerFunc(grpcServer, mux),
+	}
 	defer func() {
 		if err := httpServer.Shutdown(ctx); err != nil {
 			log.Warn(err)
 		}
 	}()
-
 	log.Info("Try http server serve at ", s.Config.HTTPEndpoint.String())
 	if err := httpServer.ListenAndServe(); err != nil {
 		log.Fatal("http server serve failed: ", err)
 	}
+}
+
+// grpcHandlerFunc returns an http.Handler that delegates to grpcServer on incoming gRPC
+// connections or otherHandler otherwise. Copied from cockroachdb.
+func grpcHandlerFunc(grpcServer *grpc.Server, otherHandler http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.ProtoMajor == 2 && strings.Contains(r.Header.Get("Content-Type"), "application/grpc") {
+			grpcServer.ServeHTTP(w, r)
+		} else {
+			r.Header.Set("Access-Control-Allow-Origin", "https://wedo-workflow.github.io")
+			r.Header.Set("Vary", "Origin")
+			otherHandler.ServeHTTP(w, r)
+		}
+	})
 }
