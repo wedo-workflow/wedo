@@ -134,7 +134,7 @@ func (s *APIServer) Run() {
 
 	httpServer := http.Server{
 		Addr:    s.Config.HTTPEndpoint.String(),
-		Handler: grpcHandlerFunc(grpcServer, mux),
+		Handler: grpcHandlerFunc(grpcServer, cors(mux)),
 	}
 	defer func() {
 		if err := httpServer.Shutdown(ctx); err != nil {
@@ -154,9 +154,22 @@ func grpcHandlerFunc(grpcServer *grpc.Server, otherHandler http.Handler) http.Ha
 		if r.ProtoMajor == 2 && strings.Contains(r.Header.Get("Content-Type"), "application/grpc") {
 			grpcServer.ServeHTTP(w, r)
 		} else {
-			r.Header.Set("Access-Control-Allow-Origin", "https://wedo-workflow.github.io")
-			r.Header.Set("Vary", "Origin")
 			otherHandler.ServeHTTP(w, r)
 		}
+	})
+}
+
+
+func cors(h http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// if allowedOrigin(r.Header.Get("Origin")) {
+		// 	w.Header().Set("Access-Control-Allow-Origin", r.Header.Get("Origin"))
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE")
+		w.Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Accept-Encoding, Authorization, ResponseType")
+		w.Header().Set("Access-Control-Allow-Credentials", "true")
+		w.Header().Set("Vary", "Accept-Encoding, Origin")
+		// }
+		h.ServeHTTP(w, r)
 	})
 }
