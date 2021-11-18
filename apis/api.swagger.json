@@ -14,9 +14,9 @@
       "name": "WedoService"
     }
   ],
-  "host": "175.24.233.40:8911",
+  "host": "wedo-workflow.niuqiang.vip",
   "schemes": [
-    "http"
+    "https"
   ],
   "consumes": [
     "application/json"
