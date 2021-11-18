@@ -19,8 +19,8 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
       email: "jony4xx@gmail.com";
     };
   };
-  host: "175.24.233.40:8911";
-  schemes: [HTTP];
+  host: "wedo-workflow.niuqiang.vip";
+  schemes: [HTTPS];
 };
 
 service WedoService {
