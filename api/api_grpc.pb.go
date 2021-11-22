@@ -47,7 +47,7 @@ type WedoServiceClient interface {
 	NamespaceList(ctx context.Context, in *NamespaceListRequest, opts ...grpc.CallOption) (*NamespaceListResponse, error)
 	// Count all Namespaces.
 	NamespaceListCount(ctx context.Context, in *NamespaceListCountRequest, opts ...grpc.CallOption) (*NamespaceListCountResponse, error)
-	ProcessDefinitionStart(ctx context.Context, in *ProcessDefinitionCreateRequest, opts ...grpc.CallOption) (*ProcessDefinitionCreateResponse, error)
+	ProcessDefinitionStart(ctx context.Context, in *ProcessDefinitionStartRequest, opts ...grpc.CallOption) (*ProcessDefinitionStartResponse, error)
 	ProcessDefinitionGet(ctx context.Context, in *ProcessDefinitionRequest, opts ...grpc.CallOption) (*ProcessDefinitionResponse, error)
 	TaskCreate(ctx context.Context, in *TaskCreateRequest, opts ...grpc.CallOption) (*TaskCreateResponse, error)
 	TaskGet(ctx context.Context, in *TaskRequest, opts ...grpc.CallOption) (*TaskResponse, error)
@@ -198,8 +198,8 @@ func (c *wedoServiceClient) NamespaceListCount(ctx context.Context, in *Namespac
 	return out, nil
 }
 
-func (c *wedoServiceClient) ProcessDefinitionStart(ctx context.Context, in *ProcessDefinitionCreateRequest, opts ...grpc.CallOption) (*ProcessDefinitionCreateResponse, error) {
-	out := new(ProcessDefinitionCreateResponse)
+func (c *wedoServiceClient) ProcessDefinitionStart(ctx context.Context, in *ProcessDefinitionStartRequest, opts ...grpc.CallOption) (*ProcessDefinitionStartResponse, error) {
+	out := new(ProcessDefinitionStartResponse)
 	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/ProcessDefinitionStart", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -285,7 +285,7 @@ type WedoServiceServer interface {
 	NamespaceList(context.Context, *NamespaceListRequest) (*NamespaceListResponse, error)
 	// Count all Namespaces.
 	NamespaceListCount(context.Context, *NamespaceListCountRequest) (*NamespaceListCountResponse, error)
-	ProcessDefinitionStart(context.Context, *ProcessDefinitionCreateRequest) (*ProcessDefinitionCreateResponse, error)
+	ProcessDefinitionStart(context.Context, *ProcessDefinitionStartRequest) (*ProcessDefinitionStartResponse, error)
 	ProcessDefinitionGet(context.Context, *ProcessDefinitionRequest) (*ProcessDefinitionResponse, error)
 	TaskCreate(context.Context, *TaskCreateRequest) (*TaskCreateResponse, error)
 	TaskGet(context.Context, *TaskRequest) (*TaskResponse, error)
@@ -342,7 +342,7 @@ func (UnimplementedWedoServiceServer) NamespaceList(context.Context, *NamespaceL
 func (UnimplementedWedoServiceServer) NamespaceListCount(context.Context, *NamespaceListCountRequest) (*NamespaceListCountResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method NamespaceListCount not implemented")
 }
-func (UnimplementedWedoServiceServer) ProcessDefinitionStart(context.Context, *ProcessDefinitionCreateRequest) (*ProcessDefinitionCreateResponse, error) {
+func (UnimplementedWedoServiceServer) ProcessDefinitionStart(context.Context, *ProcessDefinitionStartRequest) (*ProcessDefinitionStartResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ProcessDefinitionStart not implemented")
 }
 func (UnimplementedWedoServiceServer) ProcessDefinitionGet(context.Context, *ProcessDefinitionRequest) (*ProcessDefinitionResponse, error) {
@@ -643,7 +643,7 @@ func _WedoService_NamespaceListCount_Handler(srv interface{}, ctx context.Contex
 }
 
 func _WedoService_ProcessDefinitionStart_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ProcessDefinitionCreateRequest)
+	in := new(ProcessDefinitionStartRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -655,7 +655,7 @@ func _WedoService_ProcessDefinitionStart_Handler(srv interface{}, ctx context.Co
 		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/ProcessDefinitionStart",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WedoServiceServer).ProcessDefinitionStart(ctx, req.(*ProcessDefinitionCreateRequest))
+		return srv.(WedoServiceServer).ProcessDefinitionStart(ctx, req.(*ProcessDefinitionStartRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

@@ -6,7 +6,7 @@ import (
 	wedo "github.com/wedo-workflow/wedo/api"
 )
 
-func (APIServer) ProcessDefinitionStart(ctx context.Context, request *wedo.ProcessDefinitionCreateRequest) (*wedo.ProcessDefinitionCreateResponse, error) {
+func (APIServer) ProcessDefinitionStart(ctx context.Context, request *wedo.ProcessDefinitionStartRequest) (*wedo.ProcessDefinitionStartResponse, error) {
 	panic("implement me")
 }
 

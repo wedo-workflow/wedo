@@ -130,15 +130,22 @@ service WedoService {
   // Process Definition
 
 
-  rpc ProcessDefinitionStart(ProcessDefinitionCreateRequest) returns (ProcessDefinitionCreateResponse) {
+  rpc ProcessDefinitionStart(ProcessDefinitionStartRequest) returns (ProcessDefinitionStartResponse) {
     option (google.api.http) = {
       post : "/process-definition/key/{process_definition_key}/namespace-id/{namespace_id}/start"
       body : "*"
+      additional_bindings {
+        post: "/process-definition/{id}/namespace-id/{namespace_id}/start"
+        body: "*"
+      }
     };
   }
   rpc ProcessDefinitionGet(ProcessDefinitionRequest) returns (ProcessDefinitionResponse) {
     option (google.api.http) = {
       get : "/process-definition/key/{process_definition_key}/namespace-id/{namespace_id}"
+      additional_bindings {
+        get: "/process-definition/{id}"
+      }
     };
   }
 
@@ -315,13 +322,13 @@ message UserUpdateResponse {
 
 // Process Definition
 
-message ProcessDefinitionCreateRequest {
+message ProcessDefinitionStartRequest {
   string process_definition_key = 1;
   string namespace_id = 2;
   string id = 3;
 }
 
-message ProcessDefinitionCreateResponse {
+message ProcessDefinitionStartResponse {
   string process_definition_key = 1;
   string namespace_id = 2;
 }
@@ -329,6 +336,7 @@ message ProcessDefinitionCreateResponse {
 message ProcessDefinitionRequest {
   string process_definition_key = 1;
   string namespace_id = 2;
+  string id = 3;
 }
 
 message ProcessDefinitionResponse {

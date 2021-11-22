@@ -333,6 +333,12 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [
@@ -347,7 +353,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1ProcessDefinitionCreateResponse"
+              "$ref": "#/definitions/v1ProcessDefinitionStartResponse"
             }
           },
           "default": {
@@ -378,6 +384,97 @@
               "type": "object",
               "properties": {
                 "id": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "WedoService"
+        ]
+      }
+    },
+    "/process-definition/{id}": {
+      "get": {
+        "operationId": "WedoService_ProcessDefinitionGet2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ProcessDefinitionResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "processDefinitionKey",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "namespaceId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WedoService"
+        ]
+      }
+    },
+    "/process-definition/{id}/namespace-id/{namespaceId}/start": {
+      "post": {
+        "operationId": "WedoService_ProcessDefinitionStart2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ProcessDefinitionStartResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "namespaceId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "processDefinitionKey": {
                   "type": "string"
                 }
               }
@@ -874,7 +971,7 @@
         }
       }
     },
-    "v1ProcessDefinitionCreateResponse": {
+    "v1ProcessDefinitionResponse": {
       "type": "object",
       "properties": {
         "processDefinitionKey": {
@@ -885,7 +982,7 @@
         }
       }
     },
-    "v1ProcessDefinitionResponse": {
+    "v1ProcessDefinitionStartResponse": {
       "type": "object",
       "properties": {
         "processDefinitionKey": {
