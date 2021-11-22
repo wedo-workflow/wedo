@@ -15,6 +15,9 @@ func (r *Redis) UserCreate(ctx context.Context, user *model.User) error {
 	if err := r.db.ZAdd(ctx, userList, &redis.Z{Score: float64(now), Member: user.Id}).Err(); err != nil {
 		return err
 	}
+	if err := r.db.SAdd(ctx, userListByEmail, user.Email).Err(); err != nil {
+		return err
+	}
 	return r.db.Set(ctx, fmt.Sprintf(userProfile, user.Id), user, redis.KeepTTL).Err()
 }
 
@@ -27,12 +30,32 @@ func (r *Redis) UserGet(ctx context.Context, id string) (*model.User, error) {
 	return &user, nil
 }
 
+// UserCheckExist returns the user with the given email.
+func (r *Redis) UserCheckExist(ctx context.Context, email string) (bool, error) {
+	return r.db.SIsMember(ctx, userListByEmail, email).Result()
+}
+
 // UserDelete deletes the user with the given ID.
 func (r *Redis) UserDelete(ctx context.Context, id string) error {
+	user, err := r.UserGet(ctx, id)
+	if err != nil {
+		return err
+	}
 	if err := r.db.ZRem(ctx, userList, id).Err(); err != nil {
 		return err
 	}
+	if err := r.db.SRem(ctx, userListByEmail, user.Email).Err(); err != nil {
+		return err
+	}
 	return r.db.Del(ctx, fmt.Sprintf(userProfile, id)).Err()
+}
+
+// UserUpdate updates the user with the given ID.
+func (r *Redis) UserUpdate(ctx context.Context, user *model.User) error {
+	if err := r.db.Set(ctx, fmt.Sprintf(userProfile, user.Id), user, redis.KeepTTL).Err(); err != nil {
+		return err
+	}
+	return nil
 }
 
 // UserList returns a list of all users.

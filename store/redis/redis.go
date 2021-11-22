@@ -16,6 +16,7 @@ var (
 	deploySet         = "%s_deploy"
 	userProfile       = "%s_user"
 	userList          = "user_list"
+	userListByEmail   = "user_list_by_email"
 )
 
 type Redis struct {

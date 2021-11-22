@@ -33,7 +33,9 @@ type Store interface {
 
 	UserCreate(ctx context.Context, user *model.User) error
 	UserGet(ctx context.Context, userID string) (*model.User, error)
+	UserCheckExist(ctx context.Context, email string) (bool, error)
 	UserDelete(ctx context.Context, userID string) error
+	UserUpdate(ctx context.Context, user *model.User) error
 	UserList(ctx context.Context, opts *model.UserListOptions) ([]*model.User, error)
 }
 

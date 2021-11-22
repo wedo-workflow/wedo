@@ -677,6 +677,7 @@
         ]
       },
       "put": {
+        "summary": "Update a User.",
         "operationId": "WedoService_UserUpdate",
         "responses": {
           "200": {

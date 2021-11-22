@@ -34,6 +34,7 @@ type WedoServiceClient interface {
 	UserDelete(ctx context.Context, in *UserDeleteRequest, opts ...grpc.CallOption) (*UserDeleteResponse, error)
 	// List all Users.
 	UserList(ctx context.Context, in *UserListRequest, opts ...grpc.CallOption) (*UserListResponse, error)
+	// Update a User.
 	UserUpdate(ctx context.Context, in *UserUpdateRequest, opts ...grpc.CallOption) (*UserUpdateResponse, error)
 	UserListCount(ctx context.Context, in *UserListCountRequest, opts ...grpc.CallOption) (*UserListCountResponse, error)
 	// Create a Namespace.
@@ -271,6 +272,7 @@ type WedoServiceServer interface {
 	UserDelete(context.Context, *UserDeleteRequest) (*UserDeleteResponse, error)
 	// List all Users.
 	UserList(context.Context, *UserListRequest) (*UserListResponse, error)
+	// Update a User.
 	UserUpdate(context.Context, *UserUpdateRequest) (*UserUpdateResponse, error)
 	UserListCount(context.Context, *UserListCountRequest) (*UserListCountResponse, error)
 	// Create a Namespace.

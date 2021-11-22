@@ -81,8 +81,24 @@ func (s *APIServer) UserList(ctx context.Context, request *wedo.UserListRequest)
 	return response, nil
 }
 
-func (APIServer) UserUpdate(ctx context.Context, request *wedo.UserUpdateRequest) (*wedo.UserUpdateResponse, error) {
-	panic("implement me")
+func (s *APIServer) UserUpdate(ctx context.Context, request *wedo.UserUpdateRequest) (*wedo.UserUpdateResponse, error) {
+	if request.Name == "" {
+		return nil, status.Error(codes.InvalidArgument, "name is empty")
+	}
+	if request.UserId == "" {
+		return nil, status.Error(codes.InvalidArgument, "user id is empty")
+	}
+	user := &model.User{
+		Id:       request.UserId,
+		Username: request.Name,
+	}
+	if err := s.Runtime.UserUpdate(ctx, user); err != nil {
+		return nil, status.Error(codes.Internal, err.Error())
+	}
+	return &wedo.UserUpdateResponse{
+		Id:   user.Id,
+		Name: request.Name,
+	}, nil
 }
 
 // UserListCount returns the count of the users.

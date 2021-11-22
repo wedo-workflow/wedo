@@ -75,6 +75,7 @@ service WedoService {
       get : "/user/list"
     };
   }
+  // Update a User.
   rpc UserUpdate(UserUpdateRequest) returns (UserUpdateResponse) {
     option (google.api.http) = {
       put : "/user/{user_id}"
