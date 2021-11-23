@@ -69,6 +69,9 @@ func (r *Redis) UserList(ctx context.Context, opts *model.UserListOptions) ([]*m
 		userIDKeys = append(userIDKeys, fmt.Sprintf(userProfile, id))
 	}
 	users := make([]*model.User, 0, len(userIDs))
+	if len(userIDKeys) == 0 {
+		return users, nil
+	}
 	results, err := r.db.MGet(ctx, userIDKeys...).Result()
 	if err != nil {
 		return nil, err
