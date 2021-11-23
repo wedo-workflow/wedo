@@ -1,6 +1,10 @@
 package model
 
-import "time"
+import (
+	"encoding/json"
+	"errors"
+	"time"
+)
 
 type Deploy struct {
 	DID        string
@@ -20,4 +24,28 @@ type DeploymentListOptions struct {
 type PageOpts struct {
 	Page int
 	Size int
+}
+
+// MarshalBinary Deploy implements the BinaryMarshaler interface
+func (d *Deploy) MarshalBinary() ([]byte, error) {
+	if d == nil {
+		return nil, errors.New("Deploy is nil")
+	}
+	DeployBytes, err := json.Marshal(d)
+	if err != nil {
+		return nil, err
+	}
+	return DeployBytes, nil
+}
+
+// UnmarshalBinary Deploy implements the BinaryUnmarshaler interface
+func (d *Deploy) UnmarshalBinary(data []byte) error {
+	if d == nil {
+		return errors.New("Deploy is nil")
+	}
+	err := json.Unmarshal(data, d)
+	if err != nil {
+		return err
+	}
+	return nil
 }

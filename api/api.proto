@@ -129,15 +129,14 @@ service WedoService {
 
   // Process Definition
 
-
   rpc ProcessDefinitionStart(ProcessDefinitionStartRequest) returns (ProcessDefinitionStartResponse) {
     option (google.api.http) = {
       post : "/process-definition/key/{process_definition_key}/namespace-id/{namespace_id}/start"
       body : "*"
-      additional_bindings {
-        post: "/process-definition/{id}/namespace-id/{namespace_id}/start"
-        body: "*"
-      }
+      //      additional_bindings {
+      //        post: "/process-definition/{id}/namespace-id/{namespace_id}/start"
+      //        body: "*"
+      //      }
     };
   }
   rpc ProcessDefinitionGet(ProcessDefinitionRequest) returns (ProcessDefinitionResponse) {
@@ -203,7 +202,6 @@ message DeploymentCreateResponse {
 }
 
 message DeploymentListRequest {
-  string namespace_id = 1;
 }
 
 message DeploymentListResponse {
@@ -220,8 +218,7 @@ message DeploymentDeleteResponse {
 // Namespace
 
 message NamespaceCreateRequest {
-  string id = 1;
-  string name = 2;
+  string name = 1;
 }
 
 message NamespaceCreateResponse {
@@ -247,7 +244,6 @@ message NamespaceDeleteResponse {
 }
 
 message NamespaceListRequest {
-  string namespace_id = 1;
 }
 
 message NamespaceListResponse {
@@ -255,7 +251,6 @@ message NamespaceListResponse {
 }
 
 message NamespaceListCountRequest {
-  string namespace_id = 1;
 }
 
 message NamespaceListCountResponse {
@@ -329,8 +324,7 @@ message ProcessDefinitionStartRequest {
 }
 
 message ProcessDefinitionStartResponse {
-  string process_definition_key = 1;
-  string namespace_id = 2;
+  string process_instance_id = 1;
 }
 
 message ProcessDefinitionRequest {

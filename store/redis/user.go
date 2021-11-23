@@ -75,7 +75,7 @@ func (r *Redis) UserList(ctx context.Context, opts *model.UserListOptions) ([]*m
 	}
 	for _, result := range results {
 		if result == nil {
-			log.Debug("deployment list result is nil")
+			log.Debug("user list result is nil")
 			continue
 		}
 		user := &model.User{}

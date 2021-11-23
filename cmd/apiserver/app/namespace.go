@@ -3,7 +3,6 @@ package app
 import (
 	"context"
 
-	"github.com/google/uuid"
 	wedo "github.com/wedo-workflow/wedo/api"
 	"github.com/wedo-workflow/wedo/model"
 	"google.golang.org/grpc/codes"
@@ -14,20 +13,14 @@ func (s *APIServer) NamespaceCreate(ctx context.Context, request *wedo.Namespace
 	if request.Name == "" {
 		return nil, status.Error(codes.InvalidArgument, "name is empty")
 	}
-	uuidV4, err := uuid.NewRandom()
-	if err != nil {
-		return nil, status.Error(codes.Internal, err.Error())
-	}
-	request.Id = uuidV4.String()
-	err = s.Runtime.NamespaceCreate(ctx, &model.Namespace{
-		ID:   request.Id,
+	namespce, err := s.Runtime.NamespaceCreate(ctx, &model.Namespace{
 		Name: request.Name,
 	})
 	if err != nil {
 		return nil, status.Error(codes.Internal, err.Error())
 	}
 	res := &wedo.NamespaceCreateResponse{
-		Id:   request.Id,
+		Id:   namespce.ID,
 		Name: request.Name,
 	}
 	return res, err

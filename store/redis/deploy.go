@@ -2,7 +2,6 @@ package redis
 
 import (
 	"context"
-	"encoding/json"
 	"errors"
 	"fmt"
 	"time"
@@ -21,7 +20,7 @@ func (r *Redis) Deploy(ctx context.Context, deployID string) (*model.Deploy, err
 	if err != nil {
 		return nil, err
 	}
-	if err := json.Unmarshal([]byte(result), deploy); err != nil {
+	if err := deploy.UnmarshalBinary([]byte(result)); err != nil {
 		return nil, err
 	}
 	return deploy, nil
@@ -35,11 +34,7 @@ func (r *Redis) DeploySet(ctx context.Context, deploy *model.Deploy) error {
 		return errors.New("deploy name is empty")
 	}
 	deploy.CreateTime = time.Now()
-	deployBytes, err := json.Marshal(deploy)
-	if err != nil {
-		return err
-	}
-	return r.db.Set(ctx, deployKey(deploy.DID), deployBytes, 0).Err()
+	return r.db.Set(ctx, deployKey(deploy.DID), deploy, 0).Err()
 }
 
 // DeployList returns a list of deployments.
@@ -57,6 +52,9 @@ func (r *Redis) DeployList(ctx context.Context, opts *model.DeploymentListOption
 		deployKeys = append(deployKeys, deployKey(key))
 	}
 	deploys := make([]*model.Deploy, 0)
+	if len(deployKeys) == 0 {
+		return deploys, nil
+	}
 	results, err := r.db.MGet(ctx, deployKeys...).Result()
 	if err != nil {
 		return nil, err
@@ -67,8 +65,7 @@ func (r *Redis) DeployList(ctx context.Context, opts *model.DeploymentListOption
 			continue
 		}
 		deploy := &model.Deploy{}
-		err := json.Unmarshal([]byte(result.(string)), deploy)
-		if err != nil {
+		if err := deploy.UnmarshalBinary([]byte(result.(string))); err != nil {
 			return nil, err
 		}
 		deploys = append(deploys, deploy)

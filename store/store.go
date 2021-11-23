@@ -14,6 +14,8 @@ type Store interface {
 
 	ProcessDefinition(ctx context.Context, processID string) (*model.Deploy, error)
 	ProcessDefinitionAdd(ctx context.Context, deploy *model.Deploy) error
+	// ProcessDefinitionStart return the process instance id
+	ProcessDefinitionStart(ctx context.Context, pd *model.ProcessDefinition) (string, error)
 
 	Deploy(ctx context.Context, deployID string) (*model.Deploy, error)
 	DeploySet(ctx context.Context, deploy *model.Deploy) error
@@ -26,6 +28,7 @@ type Store interface {
 	ElementsByRootID(ctx context.Context, rootID string) ([]element.Element, error)
 
 	NamespaceCreate(ctx context.Context, namespace *model.Namespace) error
+	NamespaceCheckExist(ctx context.Context, namespace string) (bool, error)
 	NamespaceGet(ctx context.Context, namespaceID string) (*model.Namespace, error)
 	NamespaceDelete(ctx context.Context, namespaceID string) error
 	NamespaceList(ctx context.Context, opts *model.NamespaceQueryOptions) ([]*model.Namespace, error)
