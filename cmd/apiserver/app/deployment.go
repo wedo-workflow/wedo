@@ -3,6 +3,7 @@ package app
 import (
 	"context"
 
+	"github.com/go-redis/redis/v8"
 	wedo "github.com/wedo-workflow/wedo/api"
 	"github.com/wedo-workflow/wedo/model"
 	"google.golang.org/grpc/codes"
@@ -51,12 +52,14 @@ func (s *APIServer) DeploymentGet(ctx context.Context, request *wedo.DeploymentR
 
 // DeploymentList returns a list of deployments.
 func (s *APIServer) DeploymentList(ctx context.Context, request *wedo.DeploymentListRequest) (*wedo.DeploymentListResponse, error) {
-	deploys, err := s.Runtime.DeployList(ctx, &model.DeploymentListOptions{})
-	if err != nil {
-		return nil, status.Error(codes.Internal, err.Error())
-	}
 	ret := &wedo.DeploymentListResponse{
-		Deployments: make([]*wedo.DeploymentResponse, 0, len(deploys)),
+		Deployments: make([]*wedo.DeploymentResponse, 0),
+	}
+	deploys, err := s.Runtime.DeployList(ctx, &model.DeploymentListOptions{})
+	if err != nil && err != redis.Nil {
+		return nil, status.Error(codes.Internal, err.Error())
+	} else if err == redis.Nil {
+		return ret, nil
 	}
 	for _, deploy := range deploys {
 		ret.Deployments = append(ret.Deployments, &wedo.DeploymentResponse{

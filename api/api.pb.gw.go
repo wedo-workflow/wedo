@@ -2092,7 +2092,7 @@ var (
 
 	pattern_WedoService_DeploymentCreate_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"deployment", "create"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_WedoService_DeploymentList_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"deployment", "list"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_WedoService_DeploymentList_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"deployments"}, "", runtime.AssumeColonVerbOpt(true)))
 
 	pattern_WedoService_DeploymentDelete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"deployment", "deployment_id"}, "", runtime.AssumeColonVerbOpt(true)))
 

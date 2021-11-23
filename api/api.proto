@@ -40,7 +40,7 @@ service WedoService {
   // Updates a deployment.
   rpc DeploymentList(DeploymentListRequest) returns (DeploymentListResponse) {
     option (google.api.http) = {
-      get : "/deployment/list"
+      get : "/deployments"
     };
   }
   // Delete a deployment.
