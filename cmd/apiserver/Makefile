@@ -1,5 +1,5 @@
 .PHONY: api
-apiHost=wedo-workflow.niuqiang.vip
+apiHost=swagger.wedo.run
 
 api:
 	env GOOS=linux go build -o wedo-workflow && upx -1 -k -v wedo-workflow

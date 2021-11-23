@@ -14,7 +14,7 @@
       "name": "WedoService"
     }
   ],
-  "host": "wedo-workflow.niuqiang.vip",
+  "host": "swagger.wedo.run",
   "schemes": [
     "https"
   ],
