@@ -72,7 +72,7 @@ service WedoService {
   // List all Users.
   rpc UserList(UserListRequest) returns (UserListResponse) {
     option (google.api.http) = {
-      get : "/user/list"
+      get : "/users"
     };
   }
   // Update a User.
@@ -84,7 +84,7 @@ service WedoService {
   }
   rpc UserListCount(UserListCountRequest) returns (UserListCountResponse) {
     option (google.api.http) = {
-      get : "/user/list/count"
+      get : "/users/count"
     };
   }
 
@@ -110,13 +110,13 @@ service WedoService {
   // List all Namespaces.
   rpc NamespaceList(NamespaceListRequest) returns (NamespaceListResponse) {
     option (google.api.http) = {
-      get : "/namespace/list"
+      get : "/namespaces"
     };
   }
   // Count all Namespaces.
   rpc NamespaceListCount(NamespaceListCountRequest) returns (NamespaceListCountResponse) {
     option (google.api.http) = {
-      get : "/namespace/list/count"
+      get : "/namespaces/count"
     };
   }
 
@@ -170,7 +170,7 @@ service WedoService {
   }
   rpc TaskList(TaskListRequest) returns (TaskListResponse) {
     option (google.api.http) = {
-      get : "/task/list"
+      get : "/tasks"
     };
   }
 }

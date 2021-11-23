@@ -174,52 +174,6 @@
         ]
       }
     },
-    "/namespace/list": {
-      "get": {
-        "summary": "List all Namespaces.",
-        "operationId": "WedoService_NamespaceList",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/v1NamespaceListResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "tags": [
-          "WedoService"
-        ]
-      }
-    },
-    "/namespace/list/count": {
-      "get": {
-        "summary": "Count all Namespaces.",
-        "operationId": "WedoService_NamespaceListCount",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/v1NamespaceListCountResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "tags": [
-          "WedoService"
-        ]
-      }
-    },
     "/namespace/{namespaceId}": {
       "get": {
         "summary": "Get a Namespace.",
@@ -275,6 +229,52 @@
             "type": "string"
           }
         ],
+        "tags": [
+          "WedoService"
+        ]
+      }
+    },
+    "/namespaces": {
+      "get": {
+        "summary": "List all Namespaces.",
+        "operationId": "WedoService_NamespaceList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1NamespaceListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "WedoService"
+        ]
+      }
+    },
+    "/namespaces/count": {
+      "get": {
+        "summary": "Count all Namespaces.",
+        "operationId": "WedoService_NamespaceListCount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1NamespaceListCountResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
         "tags": [
           "WedoService"
         ]
@@ -445,36 +445,6 @@
         ]
       }
     },
-    "/task/list": {
-      "get": {
-        "operationId": "WedoService_TaskList",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/v1TaskListResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "taskId",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "tags": [
-          "WedoService"
-        ]
-      }
-    },
     "/task/{taskId}": {
       "get": {
         "operationId": "WedoService_TaskGet",
@@ -533,6 +503,36 @@
         ]
       }
     },
+    "/tasks": {
+      "get": {
+        "operationId": "WedoService_TaskList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1TaskListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WedoService"
+        ]
+      }
+    },
     "/user/create": {
       "post": {
         "summary": "Create a User.",
@@ -559,81 +559,6 @@
             "schema": {
               "$ref": "#/definitions/v1UserCreateRequest"
             }
-          }
-        ],
-        "tags": [
-          "WedoService"
-        ]
-      }
-    },
-    "/user/list": {
-      "get": {
-        "summary": "List all Users.",
-        "operationId": "WedoService_UserList",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/v1UserListResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "namespaceId",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "offset",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "format": "int64"
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "format": "int64"
-          }
-        ],
-        "tags": [
-          "WedoService"
-        ]
-      }
-    },
-    "/user/list/count": {
-      "get": {
-        "operationId": "WedoService_UserListCount",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/v1UserListCountResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "namespaceId",
-            "in": "query",
-            "required": false,
-            "type": "string"
           }
         ],
         "tags": [
@@ -736,6 +661,81 @@
                 }
               }
             }
+          }
+        ],
+        "tags": [
+          "WedoService"
+        ]
+      }
+    },
+    "/users": {
+      "get": {
+        "summary": "List all Users.",
+        "operationId": "WedoService_UserList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1UserListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "namespaceId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "WedoService"
+        ]
+      }
+    },
+    "/users/count": {
+      "get": {
+        "operationId": "WedoService_UserListCount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1UserListCountResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "namespaceId",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [

@@ -2102,11 +2102,11 @@ var (
 
 	pattern_WedoService_UserDelete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"user", "user_id"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_WedoService_UserList_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"user", "list"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_WedoService_UserList_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"users"}, "", runtime.AssumeColonVerbOpt(true)))
 
 	pattern_WedoService_UserUpdate_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"user", "user_id"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_WedoService_UserListCount_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"user", "list", "count"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_WedoService_UserListCount_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"users", "count"}, "", runtime.AssumeColonVerbOpt(true)))
 
 	pattern_WedoService_NamespaceCreate_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"namespace", "create"}, "", runtime.AssumeColonVerbOpt(true)))
 
@@ -2114,9 +2114,9 @@ var (
 
 	pattern_WedoService_NamespaceDelete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"namespace", "namespace_id"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_WedoService_NamespaceList_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"namespace", "list"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_WedoService_NamespaceList_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"namespaces"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_WedoService_NamespaceListCount_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"namespace", "list", "count"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_WedoService_NamespaceListCount_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"namespaces", "count"}, "", runtime.AssumeColonVerbOpt(true)))
 
 	pattern_WedoService_ProcessDefinitionStart_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"process-definition", "key", "process_definition_key", "namespace-id", "namespace_id", "start"}, "", runtime.AssumeColonVerbOpt(true)))
 
@@ -2130,7 +2130,7 @@ var (
 
 	pattern_WedoService_TaskDelete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"task", "task_id"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_WedoService_TaskList_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"task", "list"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_WedoService_TaskList_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"tasks"}, "", runtime.AssumeColonVerbOpt(true)))
 )
 
 var (
