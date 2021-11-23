@@ -76,14 +76,6 @@
             }
           }
         },
-        "parameters": [
-          {
-            "name": "namespaceId",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          }
-        ],
         "tags": [
           "WedoService"
         ]
@@ -200,14 +192,6 @@
             }
           }
         },
-        "parameters": [
-          {
-            "name": "namespaceId",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          }
-        ],
         "tags": [
           "WedoService"
         ]
@@ -231,14 +215,6 @@
             }
           }
         },
-        "parameters": [
-          {
-            "name": "namespaceId",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          }
-        ],
         "tags": [
           "WedoService"
         ]
@@ -430,55 +406,6 @@
             "in": "query",
             "required": false,
             "type": "string"
-          }
-        ],
-        "tags": [
-          "WedoService"
-        ]
-      }
-    },
-    "/process-definition/{id}/namespace-id/{namespaceId}/start": {
-      "post": {
-        "operationId": "WedoService_ProcessDefinitionStart2",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/v1ProcessDefinitionStartResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "namespaceId",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "processDefinitionKey": {
-                  "type": "string"
-                }
-              }
-            }
           }
         ],
         "tags": [
@@ -918,9 +845,6 @@
     "v1NamespaceCreateRequest": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string"
-        },
         "name": {
           "type": "string"
         }
@@ -985,10 +909,7 @@
     "v1ProcessDefinitionStartResponse": {
       "type": "object",
       "properties": {
-        "processDefinitionKey": {
-          "type": "string"
-        },
-        "namespaceId": {
+        "processInstanceId": {
           "type": "string"
         }
       }
