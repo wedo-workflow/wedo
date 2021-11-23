@@ -58,29 +58,6 @@
         ]
       }
     },
-    "/deployment/list": {
-      "get": {
-        "summary": "Updates a deployment.",
-        "operationId": "WedoService_DeploymentList",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/v1DeploymentListResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "tags": [
-          "WedoService"
-        ]
-      }
-    },
     "/deployment/{deploymentId}": {
       "get": {
         "summary": "Get a deployment.",
@@ -136,6 +113,29 @@
             "type": "string"
           }
         ],
+        "tags": [
+          "WedoService"
+        ]
+      }
+    },
+    "/deployments": {
+      "get": {
+        "summary": "Updates a deployment.",
+        "operationId": "WedoService_DeploymentList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DeploymentListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
         "tags": [
           "WedoService"
         ]
