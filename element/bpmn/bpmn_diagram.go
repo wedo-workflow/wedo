@@ -8,6 +8,7 @@ type BPMNDiagram struct {
 	ID      string `json:"id"`
 	Content string `json:"content"`
 
+	RID    string `json:"rid"` // Root element id
 	parsed bool
 }
 
@@ -20,11 +21,12 @@ func (e *BPMNDiagram) EID() string {
 }
 
 func (e *BPMNDiagram) RootID() string {
-	panic("implement me")
+	return e.RID
 }
 
 func (e *BPMNDiagram) SetRootID(s string) error {
-	panic("implement me")
+	e.RID = s
+	return nil
 }
 
 func (e *BPMNDiagram) Parse(element *xmltree.Element) error {

@@ -7,6 +7,7 @@ import (
 type FormData struct {
 	BusinessKey string `json:"businessKey"`
 
+	RID    string `json:"rid"` // Root element id
 	parsed bool
 }
 
@@ -19,11 +20,12 @@ func (e *FormData) EID() string {
 }
 
 func (e *FormData) RootID() string {
-	panic("implement me")
+	return e.RID
 }
 
 func (e *FormData) SetRootID(s string) error {
-	panic("implement me")
+	e.RID = s
+	return nil
 }
 
 func (e *FormData) Parse(element *xmltree.Element) error {

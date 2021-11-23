@@ -8,6 +8,7 @@ type Signal struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`
 
+	RID    string `json:"rid"` // Root element id
 	parsed bool
 }
 
@@ -20,11 +21,12 @@ func (e *Signal) EID() string {
 }
 
 func (e *Signal) RootID() string {
-	panic("implement me")
+	return e.RID
 }
 
 func (e *Signal) SetRootID(s string) error {
-	panic("implement me")
+	e.RID = s
+	return nil
 }
 
 func (e *Signal) Parse(element *xmltree.Element) error {

@@ -10,6 +10,7 @@ type Process struct {
 	IsExecutable bool   `json:"isExecutable"`
 	Version      string `json:"versionTag"`
 
+	RID    string `json:"rid"` // Root element id
 	parsed bool
 }
 
@@ -22,11 +23,12 @@ func (e *Process) EID() string {
 }
 
 func (e *Process) RootID() string {
-	panic("implement me")
+	return e.RID
 }
 
 func (e *Process) SetRootID(s string) error {
-	panic("implement me")
+	e.RID = s
+	return nil
 }
 
 func (e *Process) Parse(element *xmltree.Element) error {

@@ -7,6 +7,9 @@ import (
 type Message struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`
+
+	RID    string `json:"rid"` // Root element id
+	parsed bool
 }
 
 func NewMessage() *Message {
@@ -18,11 +21,12 @@ func (e *Message) EID() string {
 }
 
 func (e *Message) RootID() string {
-	panic("implement me")
+	return e.RID
 }
 
 func (e *Message) SetRootID(s string) error {
-	panic("implement me")
+	e.RID = s
+	return nil
 }
 
 func (e *Message) Parse(element *xmltree.Element) error {

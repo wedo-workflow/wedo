@@ -7,6 +7,7 @@ import (
 type Outgoing struct {
 	ID string `json:"id"`
 
+	RID    string `json:"rid"` // Root element id
 	parsed bool
 }
 
@@ -19,11 +20,12 @@ func (e *Outgoing) EID() string {
 }
 
 func (e *Outgoing) RootID() string {
-	panic("implement me")
+	return e.RID
 }
 
 func (e *Outgoing) SetRootID(s string) error {
-	panic("implement me")
+	e.RID = s
+	return nil
 }
 
 func (e *Outgoing) Parse(element *xmltree.Element) error {

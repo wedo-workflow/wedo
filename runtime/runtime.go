@@ -10,8 +10,6 @@ import (
 )
 
 type Runtime struct {
-	rootParsers map[string]element.Element
-
 	store store.Store
 }
 
@@ -26,11 +24,14 @@ func NewRuntime(config *config.Config) (*Runtime, error) {
 		return nil, err
 	}
 	r := &Runtime{
-		store:       newStore,
-		rootParsers: element.DefaultRegister(),
+		store: newStore,
 	}
 
 	return r, nil
+}
+
+func (r Runtime) RootParsers() map[string]element.Element {
+	return element.DefaultRegister()
 }
 
 func (r *Runtime) Store() store.Store {

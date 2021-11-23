@@ -9,6 +9,7 @@ type Definitions struct {
 	TargetNamespace string `json:"targetNamespace"`
 	SchemaLocation  string `json:"schemaLocation"`
 
+	RID    string `json:"rid"` // Root element id
 	parsed bool
 }
 
@@ -21,11 +22,12 @@ func (e *Definitions) EID() string {
 }
 
 func (e *Definitions) RootID() string {
-	panic("implement me")
+	return e.RID
 }
 
 func (e *Definitions) SetRootID(s string) error {
-	panic("implement me")
+	e.RID = s
+	return nil
 }
 
 func (e *Definitions) Parse(element *xmltree.Element) error {

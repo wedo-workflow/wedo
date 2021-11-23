@@ -12,15 +12,16 @@ import (
 type Store interface {
 	Ping(ctx context.Context) error
 
-	ProcessDefinition(ctx context.Context, processID string) (*model.Deploy, error)
-	ProcessDefinitionAdd(ctx context.Context, deploy *model.Deploy) error
+	ProcessDefinition(ctx context.Context, processID string) (*model.Deployment, error)
+	ProcessDefinitionAdd(ctx context.Context, deploy *model.Deployment) error
 	// ProcessDefinitionStart return the process instance id
 	ProcessDefinitionStart(ctx context.Context, pd *model.ProcessDefinition) (string, error)
 
-	Deploy(ctx context.Context, deployID string) (*model.Deploy, error)
-	DeploySet(ctx context.Context, deploy *model.Deploy) error
-	DeployList(ctx context.Context, opts *model.DeploymentListOptions) ([]*model.Deploy, error)
-	DeployDelete(ctx context.Context, deployID string) error
+	// Deployment read a deployment
+	Deployment(ctx context.Context, deployID string) (*model.Deployment, error)
+	DeploymentCreate(ctx context.Context, deploy *model.Deployment) error
+	DeploymentList(ctx context.Context, opts *model.DeploymentListOptions) ([]*model.Deployment, error)
+	DeploymentDelete(ctx context.Context, deployID string) error
 
 	Element(ctx context.Context, element element.Element) (element.Element, error)
 	ElementSet(ctx context.Context, element element.Element, rootID string) error

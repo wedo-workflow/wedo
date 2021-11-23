@@ -9,6 +9,7 @@ type StartEvent struct {
 	Name    string `json:"name"`
 	FormKey string `json:"formKey"`
 
+	RID    string `json:"rid"` // Root element id
 	parsed bool
 }
 
@@ -21,11 +22,12 @@ func (e *StartEvent) EID() string {
 }
 
 func (e *StartEvent) RootID() string {
-	panic("implement me")
+	return e.RID
 }
 
 func (e *StartEvent) SetRootID(s string) error {
-	panic("implement me")
+	e.RID = s
+	return nil
 }
 
 func (e *StartEvent) Parse(element *xmltree.Element) error {

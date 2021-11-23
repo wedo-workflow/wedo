@@ -8,6 +8,7 @@ type EndEvent struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`
 
+	RID    string `json:"rid"` // Root element id
 	parsed bool
 }
 
@@ -20,11 +21,12 @@ func (e *EndEvent) EID() string {
 }
 
 func (e *EndEvent) RootID() string {
-	panic("implement me")
+	return e.RID
 }
 
 func (e *EndEvent) SetRootID(s string) error {
-	panic("implement me")
+	e.RID = s
+	return nil
 }
 
 func (e *EndEvent) Parse(element *xmltree.Element) error {

@@ -7,6 +7,7 @@ import (
 type SignalEventDefinition struct {
 	ID string `json:"id"`
 
+	RID    string `json:"rid"` // Root element id
 	parsed bool
 }
 
@@ -19,11 +20,12 @@ func (e *SignalEventDefinition) EID() string {
 }
 
 func (e *SignalEventDefinition) RootID() string {
-	panic("implement me")
+	return e.RID
 }
 
 func (e *SignalEventDefinition) SetRootID(s string) error {
-	panic("implement me")
+	e.RID = s
+	return nil
 }
 
 func (e *SignalEventDefinition) Parse(element *xmltree.Element) error {

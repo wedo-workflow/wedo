@@ -8,6 +8,7 @@ type ReceiveTask struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`
 
+	RID    string `json:"rid"` // Root element id
 	parsed bool
 }
 
@@ -20,11 +21,12 @@ func (e *ReceiveTask) EID() string {
 }
 
 func (e *ReceiveTask) RootID() string {
-	panic("implement me")
+	return e.RID
 }
 
 func (e *ReceiveTask) SetRootID(s string) error {
-	panic("implement me")
+	e.RID = s
+	return nil
 }
 
 func (e *ReceiveTask) Parse(element *xmltree.Element) error {

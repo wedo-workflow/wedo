@@ -9,6 +9,7 @@ type SequenceFlow struct {
 	SourceRef string `json:"sourceRef"`
 	TargetRef string `json:"targetRef"`
 
+	RID    string `json:"rid"` // Root element id
 	parsed bool
 }
 
@@ -21,11 +22,12 @@ func (e *SequenceFlow) EID() string {
 }
 
 func (e *SequenceFlow) RootID() string {
-	panic("implement me")
+	return e.RID
 }
 
 func (e *SequenceFlow) SetRootID(s string) error {
-	panic("implement me")
+	e.RID = s
+	return nil
 }
 
 func (e *SequenceFlow) Parse(element *xmltree.Element) error {

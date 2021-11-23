@@ -9,6 +9,7 @@ type Participant struct {
 	Name       string `json:"name"`
 	ProcessRef string `json:"processRef"`
 
+	RID    string `json:"rid"` // Root element id
 	parsed bool
 }
 
@@ -21,11 +22,12 @@ func (e *Participant) EID() string {
 }
 
 func (e *Participant) RootID() string {
-	panic("implement me")
+	return e.RID
 }
 
 func (e *Participant) SetRootID(s string) error {
-	panic("implement me")
+	e.RID = s
+	return nil
 }
 
 func (e *Participant) Parse(element *xmltree.Element) error {

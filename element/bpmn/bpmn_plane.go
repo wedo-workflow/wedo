@@ -10,6 +10,7 @@ type BPMNPlane struct {
 
 	Content string `json:"content"`
 
+	RID    string `json:"rid"` // Root element id
 	parsed bool
 }
 
@@ -22,11 +23,12 @@ func (e *BPMNPlane) EID() string {
 }
 
 func (e *BPMNPlane) RootID() string {
-	panic("implement me")
+	return e.RID
 }
 
 func (e *BPMNPlane) SetRootID(s string) error {
-	panic("implement me")
+	e.RID = s
+	return nil
 }
 
 func (e *BPMNPlane) Parse(element *xmltree.Element) error {

@@ -12,8 +12,10 @@ import (
 var (
 	processDefinition       = "process_definitions"
 	processDefinitionByName = "process_definitionsByName"
-	elementSet              = "%s_elements"
-	deploySet               = "%s_deploy"
+
+	deploys    = "deploys"
+	deploySet  = "%s_deploy"
+	elementSet = "%s_elements"
 
 	Namespaces    = "namespaces"
 	NamespacesSet = "namespaces_set"

@@ -7,6 +7,7 @@ import (
 type Collaboration struct {
 	ID string `json:"id"`
 
+	RID    string `json:"rid"` // Root element id
 	parsed bool
 }
 
@@ -19,11 +20,12 @@ func (e *Collaboration) EID() string {
 }
 
 func (e *Collaboration) RootID() string {
-	panic("implement me")
+	return e.RID
 }
 
 func (e *Collaboration) SetRootID(s string) error {
-	panic("implement me")
+	e.RID = s
+	return nil
 }
 
 func (e *Collaboration) Parse(element *xmltree.Element) error {

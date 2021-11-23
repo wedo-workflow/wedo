@@ -17,6 +17,7 @@ type Element interface {
 	Parse(element *xmltree.Element) error
 }
 
+// todo : dynamic register element instance
 func DefaultRegister() map[string]Element {
 	return map[string]Element{
 		BPMN_ELEMENT_DEFINITIONS:              bpmn.NewDefinitions(),

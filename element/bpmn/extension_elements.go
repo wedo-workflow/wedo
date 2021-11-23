@@ -5,6 +5,7 @@ import (
 )
 
 type ExtensionElements struct {
+	RID    string `json:"rid"` // Root element id
 	parsed bool
 }
 
@@ -17,11 +18,12 @@ func (e *ExtensionElements) EID() string {
 }
 
 func (e *ExtensionElements) RootID() string {
-	panic("implement me")
+	return e.RID
 }
 
 func (e *ExtensionElements) SetRootID(s string) error {
-	panic("implement me")
+	e.RID = s
+	return nil
 }
 
 func (e *ExtensionElements) Parse(element *xmltree.Element) error {

@@ -8,6 +8,7 @@ type Group struct {
 	ID               string `json:"id"`
 	CategoryValueRef string `json:"categoryValueRef"`
 
+	RID    string `json:"rid"` // Root element id
 	parsed bool
 }
 
@@ -20,11 +21,12 @@ func (e *Group) EID() string {
 }
 
 func (e *Group) RootID() string {
-	panic("implement me")
+	return e.RID
 }
 
 func (e *Group) SetRootID(s string) error {
-	panic("implement me")
+	e.RID = s
+	return nil
 }
 
 func (e *Group) Parse(element *xmltree.Element) error {

@@ -2,6 +2,7 @@ package app
 
 import (
 	"context"
+	"time"
 
 	wedo "github.com/wedo-workflow/wedo/api"
 	"github.com/wedo-workflow/wedo/model"
@@ -17,17 +18,25 @@ func (s *APIServer) DeploymentCreate(ctx context.Context, request *wedo.Deployme
 	if len(request.Content) == 0 {
 		return nil, status.Error(codes.InvalidArgument, "content is empty")
 	}
-	id, err := s.Runtime.Deploy(ctx, &model.Deploy{
-		Name:    request.Name,
-		Content: request.Content,
+	if request.NamespaceId == "" {
+		return nil, status.Error(codes.InvalidArgument, "namespace is empty")
+	}
+	now := time.Now()
+	id, err := s.Runtime.Deploy(ctx, &model.Deployment{
+		NamespaceID: request.NamespaceId,
+		Name:        request.Name,
+		Content:     request.Content,
+		CreateTime:  now,
 	})
 	if err != nil {
 		return nil, status.Error(codes.Internal, err.Error())
 	}
 	ret := &wedo.DeploymentCreateResponse{
-		Id:      id,
-		Name:    request.Name,
-		Content: request.Content,
+		Id:          id,
+		Name:        request.Name,
+		Content:     request.Content,
+		NamespaceId: request.NamespaceId,
+		Timestamp:   timestamppb.New(now),
 	}
 	return ret, nil
 }
@@ -36,7 +45,7 @@ func (s *APIServer) DeploymentGet(ctx context.Context, request *wedo.DeploymentR
 	if request.DeploymentId == "" {
 		return nil, status.Error(codes.InvalidArgument, "deployment id is empty")
 	}
-	deploy, err := s.Runtime.Store().Deploy(ctx, request.DeploymentId)
+	deploy, err := s.Runtime.Store().Deployment(ctx, request.DeploymentId)
 	if err != nil {
 		return nil, status.Error(codes.Internal, err.Error())
 	}

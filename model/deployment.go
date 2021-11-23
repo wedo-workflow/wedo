@@ -6,11 +6,12 @@ import (
 	"time"
 )
 
-type Deploy struct {
-	DID        string
-	Name       string    `json:"name"`
-	Content    []byte    `json:"content"`
-	CreateTime time.Time `json:"create_time"`
+type Deployment struct {
+	DID         string
+	NamespaceID string    `json:"namespace_id"`
+	Name        string    `json:"name"`
+	Content     []byte    `json:"content"`
+	CreateTime  time.Time `json:"create_time"`
 }
 
 // DeploymentListOptions specifies the optional parameters to various
@@ -26,10 +27,10 @@ type PageOpts struct {
 	Size int
 }
 
-// MarshalBinary Deploy implements the BinaryMarshaler interface
-func (d *Deploy) MarshalBinary() ([]byte, error) {
+// MarshalBinary Deployment implements the BinaryMarshaler interface
+func (d *Deployment) MarshalBinary() ([]byte, error) {
 	if d == nil {
-		return nil, errors.New("Deploy is nil")
+		return nil, errors.New("Deployment is nil")
 	}
 	DeployBytes, err := json.Marshal(d)
 	if err != nil {
@@ -38,10 +39,10 @@ func (d *Deploy) MarshalBinary() ([]byte, error) {
 	return DeployBytes, nil
 }
 
-// UnmarshalBinary Deploy implements the BinaryUnmarshaler interface
-func (d *Deploy) UnmarshalBinary(data []byte) error {
+// UnmarshalBinary Deployment implements the BinaryUnmarshaler interface
+func (d *Deployment) UnmarshalBinary(data []byte) error {
 	if d == nil {
-		return errors.New("Deploy is nil")
+		return errors.New("Deployment is nil")
 	}
 	err := json.Unmarshal(data, d)
 	if err != nil {

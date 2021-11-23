@@ -9,6 +9,7 @@ type Task struct {
 	Incomings []*Incoming `json:"incomings"`
 	Outgoings []*Outgoing `json:"outgoings"`
 
+	RID    string `json:"rid"` // Root element id
 	parsed bool
 }
 
@@ -24,11 +25,12 @@ func (e *Task) EID() string {
 }
 
 func (e *Task) RootID() string {
-	panic("implement me")
+	return e.RID
 }
 
 func (e *Task) SetRootID(s string) error {
-	panic("implement me")
+	e.RID = s
+	return nil
 }
 
 func (e *Task) Parse(element *xmltree.Element) error {
