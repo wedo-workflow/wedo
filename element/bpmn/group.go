@@ -8,7 +8,7 @@ type Group struct {
 	ID               string `json:"id"`
 	CategoryValueRef string `json:"categoryValueRef"`
 
-	RID    string `json:"rid"` // Root element id
+	TName  string `json:"type_name"` // Element's Type Name, "task" "process" etc.
 	parsed bool
 }
 
@@ -20,12 +20,12 @@ func (e *Group) EID() string {
 	return e.ID
 }
 
-func (e *Group) RootID() string {
-	return e.RID
+func (e *Group) TypeName() string {
+	return e.TName
 }
 
-func (e *Group) SetRootID(s string) error {
-	e.RID = s
+func (e *Group) SetTypeName(s string) error {
+	e.TName = s
 	return nil
 }
 

@@ -10,7 +10,7 @@ type BPMNPlane struct {
 
 	Content string `json:"content"`
 
-	RID    string `json:"rid"` // Root element id
+	TName  string `json:"type_name"` // Element's Type Name, "task" "process" etc.
 	parsed bool
 }
 
@@ -22,12 +22,12 @@ func (e *BPMNPlane) EID() string {
 	return e.ID
 }
 
-func (e *BPMNPlane) RootID() string {
-	return e.RID
+func (e *BPMNPlane) TypeName() string {
+	return e.TName
 }
 
-func (e *BPMNPlane) SetRootID(s string) error {
-	e.RID = s
+func (e *BPMNPlane) SetTypeName(s string) error {
+	e.TName = s
 	return nil
 }
 

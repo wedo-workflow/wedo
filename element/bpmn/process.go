@@ -10,7 +10,7 @@ type Process struct {
 	IsExecutable bool   `json:"isExecutable"`
 	Version      string `json:"versionTag"`
 
-	RID    string `json:"rid"` // Root element id
+	TName  string `json:"type_name"` // Element's Type Name, "task" "process" etc.
 	parsed bool
 }
 
@@ -22,12 +22,12 @@ func (e *Process) EID() string {
 	return e.ID
 }
 
-func (e *Process) RootID() string {
-	return e.RID
+func (e *Process) TypeName() string {
+	return e.TName
 }
 
-func (e *Process) SetRootID(s string) error {
-	e.RID = s
+func (e *Process) SetTypeName(s string) error {
+	e.TName = s
 	return nil
 }
 

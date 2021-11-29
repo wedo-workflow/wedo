@@ -8,7 +8,7 @@ type IntermediateThrowEvent struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`
 
-	RID    string `json:"rid"` // Root element id
+	TName  string `json:"type_name"` // Element's Type Name, "task" "process" etc.
 	parsed bool
 }
 
@@ -20,12 +20,12 @@ func (e *IntermediateThrowEvent) EID() string {
 	return e.ID
 }
 
-func (e *IntermediateThrowEvent) RootID() string {
-	return e.RID
+func (e *IntermediateThrowEvent) TypeName() string {
+	return e.TName
 }
 
-func (e *IntermediateThrowEvent) SetRootID(s string) error {
-	e.RID = s
+func (e *IntermediateThrowEvent) SetTypeName(s string) error {
+	e.TName = s
 	return nil
 }
 

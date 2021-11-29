@@ -7,7 +7,7 @@ import (
 type MessageEventDefinition struct {
 	ID string `json:"id"`
 
-	RID    string `json:"rid"` // Root element id
+	TName  string `json:"type_name"` // Element's Type Name, "task" "process" etc.
 	parsed bool
 }
 
@@ -19,12 +19,12 @@ func (e *MessageEventDefinition) EID() string {
 	return e.ID
 }
 
-func (e *MessageEventDefinition) RootID() string {
-	return e.RID
+func (e *MessageEventDefinition) TypeName() string {
+	return e.TName
 }
 
-func (e *MessageEventDefinition) SetRootID(s string) error {
-	e.RID = s
+func (e *MessageEventDefinition) SetTypeName(s string) error {
+	e.TName = s
 	return nil
 }
 

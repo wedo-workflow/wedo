@@ -9,7 +9,7 @@ type Definitions struct {
 	TargetNamespace string `json:"targetNamespace"`
 	SchemaLocation  string `json:"schemaLocation"`
 
-	RID    string `json:"rid"` // Root element id
+	TName  string `json:"type_name"` // Element's Type Name, "task" "process" etc.
 	parsed bool
 }
 
@@ -21,12 +21,12 @@ func (e *Definitions) EID() string {
 	return e.ID
 }
 
-func (e *Definitions) RootID() string {
-	return e.RID
+func (e *Definitions) TypeName() string {
+	return e.TName
 }
 
-func (e *Definitions) SetRootID(s string) error {
-	e.RID = s
+func (e *Definitions) SetTypeName(s string) error {
+	e.TName = s
 	return nil
 }
 

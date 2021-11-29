@@ -7,7 +7,7 @@ import (
 type Incoming struct {
 	ID string `json:"id"`
 
-	RID    string `json:"rid"` // Root element id
+	TName  string `json:"type_name"` // Element's Type Name, "task" "process" etc.
 	parsed bool
 }
 
@@ -19,12 +19,12 @@ func (e *Incoming) EID() string {
 	return e.ID
 }
 
-func (e *Incoming) RootID() string {
-	return e.RID
+func (e *Incoming) TypeName() string {
+	return e.TName
 }
 
-func (e *Incoming) SetRootID(s string) error {
-	e.RID = s
+func (e *Incoming) SetTypeName(s string) error {
+	e.TName = s
 	return nil
 }
 

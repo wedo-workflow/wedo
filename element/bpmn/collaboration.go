@@ -7,7 +7,7 @@ import (
 type Collaboration struct {
 	ID string `json:"id"`
 
-	RID    string `json:"rid"` // Root element id
+	TName  string `json:"type_name"` // Element's Type Name, "task" "process" etc.
 	parsed bool
 }
 
@@ -19,12 +19,12 @@ func (e *Collaboration) EID() string {
 	return e.ID
 }
 
-func (e *Collaboration) RootID() string {
-	return e.RID
+func (e *Collaboration) TypeName() string {
+	return e.TName
 }
 
-func (e *Collaboration) SetRootID(s string) error {
-	e.RID = s
+func (e *Collaboration) SetTypeName(s string) error {
+	e.TName = s
 	return nil
 }
 

@@ -5,7 +5,7 @@ import (
 )
 
 type ExtensionElements struct {
-	RID    string `json:"rid"` // Root element id
+	TName  string `json:"type_name"` // Element's Type Name, "task" "process" etc.
 	parsed bool
 }
 
@@ -17,12 +17,12 @@ func (e *ExtensionElements) EID() string {
 	return ""
 }
 
-func (e *ExtensionElements) RootID() string {
-	return e.RID
+func (e *ExtensionElements) TypeName() string {
+	return e.TName
 }
 
-func (e *ExtensionElements) SetRootID(s string) error {
-	e.RID = s
+func (e *ExtensionElements) SetTypeName(s string) error {
+	e.TName = s
 	return nil
 }
 

@@ -8,7 +8,7 @@ type BPMNDiagram struct {
 	ID      string `json:"id"`
 	Content string `json:"content"`
 
-	RID    string `json:"rid"` // Root element id
+	TName  string `json:"type_name"` // Element's Type Name, "task" "process" etc.
 	parsed bool
 }
 
@@ -20,12 +20,12 @@ func (e *BPMNDiagram) EID() string {
 	return e.ID
 }
 
-func (e *BPMNDiagram) RootID() string {
-	return e.RID
+func (e *BPMNDiagram) TypeName() string {
+	return e.TName
 }
 
-func (e *BPMNDiagram) SetRootID(s string) error {
-	e.RID = s
+func (e *BPMNDiagram) SetTypeName(s string) error {
+	e.TName = s
 	return nil
 }
 

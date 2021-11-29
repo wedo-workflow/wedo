@@ -9,7 +9,7 @@ type Participant struct {
 	Name       string `json:"name"`
 	ProcessRef string `json:"processRef"`
 
-	RID    string `json:"rid"` // Root element id
+	TName  string `json:"type_name"` // Element's Type Name, "task" "process" etc.
 	parsed bool
 }
 
@@ -21,12 +21,12 @@ func (e *Participant) EID() string {
 	return e.ID
 }
 
-func (e *Participant) RootID() string {
-	return e.RID
+func (e *Participant) TypeName() string {
+	return e.TName
 }
 
-func (e *Participant) SetRootID(s string) error {
-	e.RID = s
+func (e *Participant) SetTypeName(s string) error {
+	e.TName = s
 	return nil
 }
 

@@ -8,7 +8,7 @@ type ReceiveTask struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`
 
-	RID    string `json:"rid"` // Root element id
+	TName  string `json:"type_name"` // Element's Type Name, "task" "process" etc.
 	parsed bool
 }
 
@@ -20,12 +20,12 @@ func (e *ReceiveTask) EID() string {
 	return e.ID
 }
 
-func (e *ReceiveTask) RootID() string {
-	return e.RID
+func (e *ReceiveTask) TypeName() string {
+	return e.TName
 }
 
-func (e *ReceiveTask) SetRootID(s string) error {
-	e.RID = s
+func (e *ReceiveTask) SetTypeName(s string) error {
+	e.TName = s
 	return nil
 }
 

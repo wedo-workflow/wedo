@@ -7,7 +7,7 @@ import (
 type FormData struct {
 	BusinessKey string `json:"businessKey"`
 
-	RID    string `json:"rid"` // Root element id
+	TName  string `json:"type_name"` // Element's Type Name, "task" "process" etc.
 	parsed bool
 }
 
@@ -19,12 +19,12 @@ func (e *FormData) EID() string {
 	return e.BusinessKey
 }
 
-func (e *FormData) RootID() string {
-	return e.RID
+func (e *FormData) TypeName() string {
+	return e.TName
 }
 
-func (e *FormData) SetRootID(s string) error {
-	e.RID = s
+func (e *FormData) SetTypeName(s string) error {
+	e.TName = s
 	return nil
 }
 

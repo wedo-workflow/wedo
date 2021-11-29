@@ -9,7 +9,7 @@ type SequenceFlow struct {
 	SourceRef string `json:"sourceRef"`
 	TargetRef string `json:"targetRef"`
 
-	RID    string `json:"rid"` // Root element id
+	TName  string `json:"type_name"` // Element's Type Name, "task" "process" etc.
 	parsed bool
 }
 
@@ -21,12 +21,12 @@ func (e *SequenceFlow) EID() string {
 	return e.ID
 }
 
-func (e *SequenceFlow) RootID() string {
-	return e.RID
+func (e *SequenceFlow) TypeName() string {
+	return e.TName
 }
 
-func (e *SequenceFlow) SetRootID(s string) error {
-	e.RID = s
+func (e *SequenceFlow) SetTypeName(s string) error {
+	e.TName = s
 	return nil
 }
 
