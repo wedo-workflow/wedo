@@ -10,8 +10,7 @@ import (
 
 // Redis Keys
 var (
-	processDefinition       = "process_definitions"
-	processDefinitionByName = "process_definitionsByName"
+	processDefinition = "process_definitions"
 
 	deploys    = "deploys"
 	deploySet  = "%s_deploy"

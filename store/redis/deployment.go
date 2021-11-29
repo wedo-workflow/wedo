@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/go-redis/redis/v8"
 	log "github.com/sirupsen/logrus"
 	"github.com/wedo-workflow/wedo/model"
 )
@@ -25,6 +26,9 @@ func (r *Redis) Deployment(ctx context.Context, deployID string) (*model.Deploym
 }
 
 func (r *Redis) DeploymentCreate(ctx context.Context, deploy *model.Deployment) error {
+	if err := r.db.Set(ctx, deployKey(deploy.DID), deploy, redis.KeepTTL).Err(); err != nil {
+		return err
+	}
 	return r.db.HSet(ctx, deploys, deploy.DID, deploy).Err()
 }
 
@@ -67,7 +71,7 @@ func (r *Redis) DeploymentList(ctx context.Context, opts *model.DeploymentListOp
 	return deploys, nil
 }
 
-// DeployDelete deletes a deployment.
+// DeploymentDelete deletes a deployment.
 func (r *Redis) DeploymentDelete(ctx context.Context, deployID string) error {
 	return r.db.Del(ctx, deployKey(deployID)).Err()
 }

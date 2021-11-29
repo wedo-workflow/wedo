@@ -2,19 +2,17 @@ package redis
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/wedo-workflow/wedo/model"
 )
 
-func (r *Redis) ProcessDefinitionAdd(ctx context.Context, deploy *model.Deployment) error {
-	return r.db.HSet(ctx, processDefinition, deploy.DID, deploy.Name).Err()
+func (r *Redis) ProcessDefinitionAdd(ctx context.Context, key, value string) error {
+	return r.db.HSet(ctx, processDefinition, key, value).Err()
 }
 
-func (r *Redis) ProcessDefinition(ctx context.Context, processID string) (*model.Deployment, error) {
-	var deploy = &model.Deployment{}
-	err := r.db.Get(ctx, fmt.Sprintf(deploySet, processID)).Scan(deploy)
-	return deploy, err
+func (r *Redis) ProcessDefinition(ctx context.Context, key string) (string, error) {
+	result := r.db.HGet(ctx, processDefinition, key)
+	return result.Val(), result.Err()
 }
 
 // ProcessDefinitionStart start a process definition instance

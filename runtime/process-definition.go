@@ -7,7 +7,8 @@ import (
 )
 
 func (r *Runtime) ProcessDiagram(ctx context.Context, processID string) (*model.Deployment, error) {
-	return r.store.ProcessDefinition(ctx, processID)
+	// return r.store.ProcessDefinition(ctx, processID)
+	return nil, nil
 }
 
 // GET /process-definition/invoice:1:c3a63aaa-2046-11e7-8f94-34f39ab71d4e

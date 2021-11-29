@@ -5,8 +5,10 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/go-redis/redis/v8"
 	"github.com/google/uuid"
 	log "github.com/sirupsen/logrus"
+	"github.com/wedo-workflow/wedo/element/bpmn"
 	"github.com/wedo-workflow/wedo/model"
 	"github.com/wedo-workflow/xmltree"
 )
@@ -28,9 +30,18 @@ var (
 		"startEvent": true,
 		"endEvent":   true,
 	}
+
+	deployNameKey = "name_%s"
 )
 
 func (r *Runtime) Deploy(ctx context.Context, deploy *model.Deployment) (string, error) {
+	oldDID, err := r.store.ProcessDefinition(ctx, fmt.Sprintf(deployNameKey, deploy.Name))
+	if err != nil && err != redis.Nil {
+		return "", err
+	}
+	if oldDID != "" {
+		return "", errors.New("deploy name already token")
+	}
 	if deploy.NamespaceID == "" {
 		return "", errors.New("namespace id is empty")
 	}
@@ -39,23 +50,29 @@ func (r *Runtime) Deploy(ctx context.Context, deploy *model.Deployment) (string,
 		return "", err
 	}
 	deploy.DID = uuidV4.String()
-	// 0. store deployment
+	// store deployment
 	if err := r.store.DeploymentCreate(ctx, deploy); err != nil {
 		return "", err
 	}
-
-	// 1. store process definition
-	// if err := r.store.ProcessDefinitionAdd(ctx, deploy); err != nil {
-	// 	return "", err
-	// }
-
-	// 3.0 parse deploy content
+	// parse deploy content
 	tree, err := xmltree.Parse(deploy.Content)
 	if err != nil {
 		return "", fmt.Errorf("parse deploy content error: %s", err)
 	}
-	// 3.1 deploy element
+	// deploy element
 	if err := r.deploy(ctx, deploy, tree); err != nil {
+		return "", err
+	}
+	if err := r.store.ProcessDefinitionAdd(ctx, deploy.DID, deploy.Name); err != nil {
+		return "", err
+	}
+	if err := r.store.ProcessDefinitionAdd(ctx, fmt.Sprintf(deployNameKey, deploy.Name), deploy.DID); err != nil {
+		return "", err
+	}
+	if err := r.store.ProcessDefinitionAdd(ctx, "business_name_"+deploy.BusinessName, deploy.DID); err != nil {
+		return "", err
+	}
+	if err := r.store.ProcessDefinitionAdd(ctx, "business_id_"+deploy.BusinessID, deploy.DID); err != nil {
 		return "", err
 	}
 	return deploy.DID, nil
@@ -107,6 +124,18 @@ func (r *Runtime) parseAndStore(ctx context.Context, deploy *model.Deployment, e
 	if _, ok := anchorElements[eleLocal]; ok {
 		if err := r.store.ElementSetAnchor(ctx, deploy, ele); err != nil {
 			return "", err
+		}
+	}
+
+	if eleLocal == "definitions" {
+		deploy.DefinitionsID = ele.EID()
+	}
+
+	if eleLocal == "process" {
+		deploy.BusinessID = ele.EID()
+		process, ok := ele.(*bpmn.Process)
+		if ok {
+			deploy.BusinessName = process.Name
 		}
 	}
 
