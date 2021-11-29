@@ -6,7 +6,7 @@ import (
 	"github.com/wedo-workflow/wedo/model"
 )
 
-func (r *Runtime) ProcessDiagram(ctx context.Context, processID string) (*model.Deploy, error) {
+func (r *Runtime) ProcessDiagram(ctx context.Context, processID string) (*model.Deployment, error) {
 	return r.store.ProcessDefinition(ctx, processID)
 }
 

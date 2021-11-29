@@ -7,6 +7,7 @@ import (
 type MessageEventDefinition struct {
 	ID string `json:"id"`
 
+	TName  string `json:"type_name"` // Element's Type Name, "task" "process" etc.
 	parsed bool
 }
 
@@ -18,12 +19,13 @@ func (e *MessageEventDefinition) EID() string {
 	return e.ID
 }
 
-func (e *MessageEventDefinition) RootID() string {
-	panic("implement me")
+func (e *MessageEventDefinition) TypeName() string {
+	return e.TName
 }
 
-func (e *MessageEventDefinition) SetRootID(s string) error {
-	panic("implement me")
+func (e *MessageEventDefinition) SetTypeName(s string) error {
+	e.TName = s
+	return nil
 }
 
 func (e *MessageEventDefinition) Parse(element *xmltree.Element) error {

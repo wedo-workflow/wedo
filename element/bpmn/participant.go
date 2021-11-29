@@ -9,6 +9,7 @@ type Participant struct {
 	Name       string `json:"name"`
 	ProcessRef string `json:"processRef"`
 
+	TName  string `json:"type_name"` // Element's Type Name, "task" "process" etc.
 	parsed bool
 }
 
@@ -20,12 +21,13 @@ func (e *Participant) EID() string {
 	return e.ID
 }
 
-func (e *Participant) RootID() string {
-	panic("implement me")
+func (e *Participant) TypeName() string {
+	return e.TName
 }
 
-func (e *Participant) SetRootID(s string) error {
-	panic("implement me")
+func (e *Participant) SetTypeName(s string) error {
+	e.TName = s
+	return nil
 }
 
 func (e *Participant) Parse(element *xmltree.Element) error {

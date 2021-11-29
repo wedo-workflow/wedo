@@ -8,6 +8,7 @@ type IntermediateThrowEvent struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`
 
+	TName  string `json:"type_name"` // Element's Type Name, "task" "process" etc.
 	parsed bool
 }
 
@@ -19,12 +20,13 @@ func (e *IntermediateThrowEvent) EID() string {
 	return e.ID
 }
 
-func (e *IntermediateThrowEvent) RootID() string {
-	panic("implement me")
+func (e *IntermediateThrowEvent) TypeName() string {
+	return e.TName
 }
 
-func (e *IntermediateThrowEvent) SetRootID(s string) error {
-	panic("implement me")
+func (e *IntermediateThrowEvent) SetTypeName(s string) error {
+	e.TName = s
+	return nil
 }
 
 func (e *IntermediateThrowEvent) Parse(element *xmltree.Element) error {

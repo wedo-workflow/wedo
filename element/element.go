@@ -9,14 +9,15 @@ type Element interface {
 	// EID is id of element.
 	EID() string
 
-	// RootID is root element of self.
-	RootID() string
-	SetRootID(string) error
+	// TypeName is element's type name.
+	TypeName() string
+	SetTypeName(string) error
 
 	// Parse parse xml dom element to element object.
 	Parse(element *xmltree.Element) error
 }
 
+// todo : dynamic register element instance
 func DefaultRegister() map[string]Element {
 	return map[string]Element{
 		BPMN_ELEMENT_DEFINITIONS:              bpmn.NewDefinitions(),

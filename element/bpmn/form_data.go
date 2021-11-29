@@ -7,6 +7,7 @@ import (
 type FormData struct {
 	BusinessKey string `json:"businessKey"`
 
+	TName  string `json:"type_name"` // Element's Type Name, "task" "process" etc.
 	parsed bool
 }
 
@@ -18,12 +19,13 @@ func (e *FormData) EID() string {
 	return e.BusinessKey
 }
 
-func (e *FormData) RootID() string {
-	panic("implement me")
+func (e *FormData) TypeName() string {
+	return e.TName
 }
 
-func (e *FormData) SetRootID(s string) error {
-	panic("implement me")
+func (e *FormData) SetTypeName(s string) error {
+	e.TName = s
+	return nil
 }
 
 func (e *FormData) Parse(element *xmltree.Element) error {

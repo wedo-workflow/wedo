@@ -8,6 +8,7 @@ type ManualTask struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`
 
+	TName  string `json:"type_name"` // Element's Type Name, "task" "process" etc.
 	parsed bool
 }
 
@@ -19,12 +20,13 @@ func (e *ManualTask) EID() string {
 	return e.ID
 }
 
-func (e *ManualTask) RootID() string {
-	panic("implement me")
+func (e *ManualTask) TypeName() string {
+	return e.TName
 }
 
-func (e *ManualTask) SetRootID(s string) error {
-	panic("implement me")
+func (e *ManualTask) SetTypeName(s string) error {
+	e.TName = s
+	return nil
 }
 
 func (e *ManualTask) Parse(element *xmltree.Element) error {

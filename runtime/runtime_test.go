@@ -1,32 +1,11 @@
 package runtime
 
-import (
-	"context"
-	"os"
-	"testing"
+import "github.com/wedo-workflow/wedo/runtime/config"
 
-	"github.com/wedo-workflow/wedo/model"
-	"github.com/wedo-workflow/wedo/runtime/config"
-)
-
-func TestXML(t *testing.T) {
-	doc, err := os.ReadFile("testdata/diagram.BPMN")
-	if err != nil {
-		t.Log(err)
-		t.FailNow()
-	}
+func initRuntime() *Runtime {
 	rt, err := NewRuntime(config.NewDefaultConfig())
 	if err != nil {
-		t.Log(err)
-		t.FailNow()
+		panic(err)
 	}
-	if _, err := rt.Deploy(context.Background(), &model.Deploy{
-		DID:     "",
-		Name:    "test",
-		Content: doc,
-	}); err != nil {
-		t.Log(err)
-		t.FailNow()
-	}
-	t.Log("test2")
+	return rt
 }

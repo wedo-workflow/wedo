@@ -806,6 +806,9 @@
         "timestamp": {
           "type": "string",
           "format": "date-time"
+        },
+        "namespaceId": {
+          "type": "string"
         }
       }
     },

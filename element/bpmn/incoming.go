@@ -7,6 +7,7 @@ import (
 type Incoming struct {
 	ID string `json:"id"`
 
+	TName  string `json:"type_name"` // Element's Type Name, "task" "process" etc.
 	parsed bool
 }
 
@@ -18,12 +19,13 @@ func (e *Incoming) EID() string {
 	return e.ID
 }
 
-func (e *Incoming) RootID() string {
-	panic("implement me")
+func (e *Incoming) TypeName() string {
+	return e.TName
 }
 
-func (e *Incoming) SetRootID(s string) error {
-	panic("implement me")
+func (e *Incoming) SetTypeName(s string) error {
+	e.TName = s
+	return nil
 }
 
 func (e *Incoming) Parse(element *xmltree.Element) error {

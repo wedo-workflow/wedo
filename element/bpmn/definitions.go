@@ -9,6 +9,7 @@ type Definitions struct {
 	TargetNamespace string `json:"targetNamespace"`
 	SchemaLocation  string `json:"schemaLocation"`
 
+	TName  string `json:"type_name"` // Element's Type Name, "task" "process" etc.
 	parsed bool
 }
 
@@ -20,12 +21,13 @@ func (e *Definitions) EID() string {
 	return e.ID
 }
 
-func (e *Definitions) RootID() string {
-	panic("implement me")
+func (e *Definitions) TypeName() string {
+	return e.TName
 }
 
-func (e *Definitions) SetRootID(s string) error {
-	panic("implement me")
+func (e *Definitions) SetTypeName(s string) error {
+	e.TName = s
+	return nil
 }
 
 func (e *Definitions) Parse(element *xmltree.Element) error {
