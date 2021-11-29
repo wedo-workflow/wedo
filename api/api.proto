@@ -129,6 +129,7 @@ service WedoService {
 
   // Process Definition
 
+  // ProcessDefinitionStart Process Definition Start and return Process Instance ID
   rpc ProcessDefinitionStart(ProcessDefinitionStartRequest) returns (ProcessDefinitionStartResponse) {
     option (google.api.http) = {
       post : "/process-definition/key/{process_definition_key}/namespace-id/{namespace_id}/start"
@@ -139,6 +140,7 @@ service WedoService {
       //      }
     };
   }
+  // ProcessDefinitionGet get a process definition by business key and namespace id.
   rpc ProcessDefinitionGet(ProcessDefinitionRequest) returns (ProcessDefinitionResponse) {
     option (google.api.http) = {
       get : "/process-definition/key/{process_definition_key}/namespace-id/{namespace_id}"

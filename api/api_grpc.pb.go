@@ -47,7 +47,9 @@ type WedoServiceClient interface {
 	NamespaceList(ctx context.Context, in *NamespaceListRequest, opts ...grpc.CallOption) (*NamespaceListResponse, error)
 	// Count all Namespaces.
 	NamespaceListCount(ctx context.Context, in *NamespaceListCountRequest, opts ...grpc.CallOption) (*NamespaceListCountResponse, error)
+	// ProcessDefinitionStart Process Definition Start and return Process Instance ID
 	ProcessDefinitionStart(ctx context.Context, in *ProcessDefinitionStartRequest, opts ...grpc.CallOption) (*ProcessDefinitionStartResponse, error)
+	// ProcessDefinitionGet get a process definition by business key and namespace id.
 	ProcessDefinitionGet(ctx context.Context, in *ProcessDefinitionRequest, opts ...grpc.CallOption) (*ProcessDefinitionResponse, error)
 	TaskCreate(ctx context.Context, in *TaskCreateRequest, opts ...grpc.CallOption) (*TaskCreateResponse, error)
 	TaskGet(ctx context.Context, in *TaskRequest, opts ...grpc.CallOption) (*TaskResponse, error)
@@ -285,7 +287,9 @@ type WedoServiceServer interface {
 	NamespaceList(context.Context, *NamespaceListRequest) (*NamespaceListResponse, error)
 	// Count all Namespaces.
 	NamespaceListCount(context.Context, *NamespaceListCountRequest) (*NamespaceListCountResponse, error)
+	// ProcessDefinitionStart Process Definition Start and return Process Instance ID
 	ProcessDefinitionStart(context.Context, *ProcessDefinitionStartRequest) (*ProcessDefinitionStartResponse, error)
+	// ProcessDefinitionGet get a process definition by business key and namespace id.
 	ProcessDefinitionGet(context.Context, *ProcessDefinitionRequest) (*ProcessDefinitionResponse, error)
 	TaskCreate(context.Context, *TaskCreateRequest) (*TaskCreateResponse, error)
 	TaskGet(context.Context, *TaskRequest) (*TaskResponse, error)

@@ -282,6 +282,7 @@
     },
     "/process-definition/key/{processDefinitionKey}/namespace-id/{namespaceId}": {
       "get": {
+        "summary": "ProcessDefinitionGet get a process definition by business key and namespace id.",
         "operationId": "WedoService_ProcessDefinitionGet",
         "responses": {
           "200": {
@@ -324,6 +325,7 @@
     },
     "/process-definition/key/{processDefinitionKey}/namespace-id/{namespaceId}/start": {
       "post": {
+        "summary": "ProcessDefinitionStart Process Definition Start and return Process Instance ID",
         "operationId": "WedoService_ProcessDefinitionStart",
         "responses": {
           "200": {
@@ -373,6 +375,7 @@
     },
     "/process-definition/{id}": {
       "get": {
+        "summary": "ProcessDefinitionGet get a process definition by business key and namespace id.",
         "operationId": "WedoService_ProcessDefinitionGet2",
         "responses": {
           "200": {
