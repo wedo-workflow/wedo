@@ -150,5 +150,6 @@ func (r *Runtime) DeployList(ctx context.Context, opts *model.DeploymentListOpti
 
 // DeployDelete deletes a deployment
 func (r *Runtime) DeployDelete(ctx context.Context, deploymentID string) error {
+	// todo delete everything about this deployment!
 	return r.store.DeploymentDelete(ctx, deploymentID)
 }

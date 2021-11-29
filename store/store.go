@@ -23,11 +23,11 @@ type Store interface {
 	DeploymentList(ctx context.Context, opts *model.DeploymentListOptions) ([]*model.Deployment, error)
 	DeploymentDelete(ctx context.Context, deployID string) error
 
-	Element(ctx context.Context, element element.Element) (element.Element, error)
+	// Element(ctx context.Context, element element.Element) (element.Element, error)
 	ElementSet(ctx context.Context, deploy *model.Deployment, element element.Element) error
 	ElementSetAnchor(ctx context.Context, deploy *model.Deployment, element element.Element) error
-	ElementDelete(ctx context.Context, element element.Element) error
-	ElementsByRootID(ctx context.Context, rootID string) ([]element.Element, error)
+	// ElementDelete(ctx context.Context, element element.Element) error
+	// ElementsByRootID(ctx context.Context, rootID string) ([]element.Element, error)
 
 	NamespaceCreate(ctx context.Context, namespace *model.Namespace) error
 	NamespaceCheckExist(ctx context.Context, namespace string) (bool, error)
