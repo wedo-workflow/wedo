@@ -2,7 +2,9 @@ package redis
 
 import (
 	"context"
+	"fmt"
 
+	"github.com/google/uuid"
 	"github.com/wedo-workflow/wedo/model"
 )
 
@@ -17,8 +19,22 @@ func (r *Redis) ProcessDefinition(ctx context.Context, key string) (string, erro
 
 // ProcessDefinitionStart start a process definition instance
 func (r *Redis) ProcessDefinitionStart(ctx context.Context, pd *model.ProcessDefinition) (string, error) {
-	// var deploy = &model.Deployment{}
-	// err := r.db.Get(ctx, fmt.Sprintf(deploySetStart, processID)).Scan(deploy)
-	// return deploy, err // processInstanceID
-	return "", nil
+	rest := r.db.HSet(ctx, processInstance, pd.Id)
+	if rest.Err() != nil {
+		return "", rest.Err()
+	}
+
+	piIDV4, err := uuid.NewRandom()
+	if err != nil {
+		return "", err
+	}
+	piID := piIDV4.String()
+
+	pInstance := &model.ProcessIntance{
+		Status: model.PiOK,
+	}
+	if err := r.db.HSet(ctx, fmt.Sprintf(processInstanceDetail, piID), pInstance).Err(); err != nil {
+		return "", err
+	}
+	return piID, nil
 }

@@ -2,6 +2,7 @@ package runtime
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
 	"fmt"
 
@@ -63,10 +64,35 @@ func (r *Runtime) Deploy(ctx context.Context, deploy *model.Deployment) (string,
 	if err := r.deploy(ctx, deploy, tree); err != nil {
 		return "", err
 	}
+	uuidV4ProcessDefinition, err := uuid.NewRandom()
+	if err != nil {
+		return "", err
+	}
+	pdID := uuidV4ProcessDefinition.String()
+	if err := r.store.ProcessDefinitionAdd(ctx, pdID, deploy.DID); err != nil {
+		return "", err
+	}
+	pdBytes, err := json.Marshal(&model.ProcessDefinition{
+		ProcessDefinitionKey: deploy.BusinessName,
+		NamespaceId:          deploy.NamespaceID,
+		Id:                   pdID,
+	})
+	if err != nil {
+		return "", err
+	}
+	if err := r.store.ProcessDefinitionAdd(ctx, pdID+"_detail", string(pdBytes)); err != nil {
+		return "", err
+	}
+	if err := r.store.ProcessDefinitionAdd(ctx, "process_definition_"+deploy.DID, pdID); err != nil {
+		return "", err
+	}
 	if err := r.store.ProcessDefinitionAdd(ctx, deploy.DID, deploy.Name); err != nil {
 		return "", err
 	}
 	if err := r.store.ProcessDefinitionAdd(ctx, fmt.Sprintf(deployNameKey, deploy.Name), deploy.DID); err != nil {
+		return "", err
+	}
+	if err := r.store.ProcessDefinitionAdd(ctx, fmt.Sprintf(deployNameKey, deploy.Name), pdID); err != nil {
 		return "", err
 	}
 	if err := r.store.ProcessDefinitionAdd(ctx, "business_name_"+deploy.BusinessName, deploy.DID); err != nil {

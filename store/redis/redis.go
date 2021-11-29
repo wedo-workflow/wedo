@@ -12,6 +12,9 @@ import (
 var (
 	processDefinition = "process_definitions"
 
+	processInstance       = "process_instances"
+	processInstanceDetail = "%s_instance"
+
 	deploys    = "deploys"
 	deploySet  = "%s_deploy"
 	elementSet = "%s_elements"
