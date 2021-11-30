@@ -44,3 +44,64 @@ func (r *Runtime) TaskCreate(ctx context.Context, task *wedo.TaskCreateRequest) 
 	}
 	return task.Id, nil
 }
+
+// TaskGet gets a task by id.
+func (r *Runtime) TaskGet(ctx context.Context, taskId string) (*wedo.TaskResponse, error) {
+	task, err := r.store.TaskGet(ctx, taskId)
+	if err != nil {
+		return nil, err
+	}
+	return &wedo.TaskResponse{
+		Id:                task.Id,
+		Name:              task.Name,
+		Description:       task.Description,
+		Assignee:          task.Assignee,
+		Owner:             task.Owner,
+		DelegationState:   task.DelegationState,
+		Due:               task.Due,
+		Priority:          task.Priority,
+		ParentTaskId:      task.ParentTaskId,
+		ProcessInstanceId: task.ProcessInstanceId,
+		TaskDefinitionKey: task.TaskDefinitionKey,
+		NamespaceId:       task.NamespaceId,
+		FormKey:           task.FormKey,
+		FollowUpDate:      task.FollowUpDate,
+	}, nil
+}
+
+// TaskDelete deletes a task by id.
+func (r *Runtime) TaskDelete(ctx context.Context, taskId string) error {
+	oldTaks, err := r.store.TaskGet(ctx, taskId)
+	if err != nil {
+		return err
+	}
+	return r.store.TaskDelete(ctx, taskId, oldTaks.ProcessInstanceId)
+}
+
+// TaskList gets a list of tasks by process instance id.
+func (r *Runtime) TaskList(ctx context.Context, request *wedo.TaskListRequest) ([]*wedo.TaskResponse, error) {
+	tasks, err := r.store.TaskList(ctx, &model.TaskListOptions{ProcessInstanceID: request.ProcessInstanceId})
+	if err != nil {
+		return nil, err
+	}
+	response := make([]*wedo.TaskResponse, len(tasks))
+	for i, task := range tasks {
+		response[i] = &wedo.TaskResponse{
+			Id:                task.Id,
+			Name:              task.Name,
+			Description:       task.Description,
+			Assignee:          task.Assignee,
+			Owner:             task.Owner,
+			DelegationState:   task.DelegationState,
+			Due:               task.Due,
+			Priority:          task.Priority,
+			ParentTaskId:      task.ParentTaskId,
+			ProcessInstanceId: task.ProcessInstanceId,
+			TaskDefinitionKey: task.TaskDefinitionKey,
+			NamespaceId:       task.NamespaceId,
+			FormKey:           task.FormKey,
+			FollowUpDate:      task.FollowUpDate,
+		}
+	}
+	return response, nil
+}

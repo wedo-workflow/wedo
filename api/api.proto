@@ -161,16 +161,19 @@ service WedoService {
       body : "*"
     };
   }
+  // TaskGet get a task by id.
   rpc TaskGet(TaskRequest) returns (TaskResponse) {
     option (google.api.http) = {
       get : "/task/{task_id}"
     };
   }
+  // TaskDelete delete a task.
   rpc TaskDelete(TaskDeleteRequest) returns (TaskDeleteResponse) {
     option (google.api.http) = {
       delete : "/task/{task_id}"
     };
   }
+  // TaskList list all tasks By Process Instance ID.
   rpc TaskList(TaskListRequest) returns (TaskListResponse) {
     option (google.api.http) = {
       get : "/tasks"
@@ -350,15 +353,15 @@ message TaskCreateRequest {
   string description = 3;
   string assignee = 4;
   string owner = 5;
-  string delegationState = 6;
+  string delegation_state = 6;
   google.protobuf.Timestamp due = 7;
   string priority = 8;
-  string parentTaskId = 9;
-  string processInstanceId = 10;
-  string taskDefinitionKey = 11;
-  string namespaceId = 13;
-  string formKey = 14;
-  google.protobuf.Timestamp followUpDate = 15;
+  string parent_task_id = 9;
+  string process_instance_id = 10;
+  string task_definition_key = 11;
+  string namespace_id = 13;
+  string form_key = 14;
+  google.protobuf.Timestamp follow_up_date = 15;
 }
 
 enum DelegationState {
@@ -381,15 +384,15 @@ message TaskResponse {
   string description = 3;
   string assignee = 4;
   string owner = 5;
-  string delegationState = 6;
+  string delegation_state = 6;
   google.protobuf.Timestamp due = 7;
   string priority = 8;
-  string parentTaskId = 9;
-  string processInstanceId = 10;
-  string taskDefinitionKey = 11;
-  string namespaceId = 13;
-  string formKey = 14;
-  google.protobuf.Timestamp followUpDate = 15;
+  string parent_task_id = 9;
+  string process_instance_id = 10;
+  string task_definition_key = 11;
+  string namespace_id = 13;
+  string form_key = 14;
+  google.protobuf.Timestamp follow_up_date = 15;
 }
 
 message TaskDeleteRequest {
@@ -401,7 +404,7 @@ message TaskDeleteResponse {
 }
 
 message TaskListRequest {
-  string task_id = 1;
+  string process_instance_id = 1;
 }
 
 message TaskListResponse {

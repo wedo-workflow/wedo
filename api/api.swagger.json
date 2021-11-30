@@ -418,6 +418,7 @@
     },
     "/task/create": {
       "post": {
+        "summary": "TaskCreate create a task.",
         "operationId": "WedoService_TaskCreate",
         "responses": {
           "200": {
@@ -450,6 +451,7 @@
     },
     "/task/{taskId}": {
       "get": {
+        "summary": "TaskGet get a task by id.",
         "operationId": "WedoService_TaskGet",
         "responses": {
           "200": {
@@ -478,6 +480,7 @@
         ]
       },
       "delete": {
+        "summary": "TaskDelete delete a task.",
         "operationId": "WedoService_TaskDelete",
         "responses": {
           "200": {
@@ -508,6 +511,7 @@
     },
     "/tasks": {
       "get": {
+        "summary": "TaskList list all tasks By Process Instance ID.",
         "operationId": "WedoService_TaskList",
         "responses": {
           "200": {
@@ -525,7 +529,7 @@
         },
         "parameters": [
           {
-            "name": "taskId",
+            "name": "processInstanceId",
             "in": "query",
             "required": false,
             "type": "string"

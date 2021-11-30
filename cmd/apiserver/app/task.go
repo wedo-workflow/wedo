@@ -19,15 +19,38 @@ func (s *APIServer) TaskCreate(ctx context.Context, request *wedo.TaskCreateRequ
 	}, nil
 }
 
-func (APIServer) TaskGet(ctx context.Context, request *wedo.TaskRequest) (*wedo.TaskResponse, error) {
-	panic("implement me")
+func (s *APIServer) TaskGet(ctx context.Context, request *wedo.TaskRequest) (*wedo.TaskResponse, error) {
+	if request.TaskId == "" {
+		return nil, status.Error(codes.InvalidArgument, "task id is empty")
+	}
+	task, err := s.Runtime.TaskGet(ctx, request.TaskId)
+	if err != nil {
+		return nil, status.Error(codes.Internal, err.Error())
+	}
+	return task, nil
 }
 
-func (APIServer) TaskDelete(ctx context.Context, request *wedo.TaskDeleteRequest) (*wedo.TaskDeleteResponse, error) {
-	panic("implement me")
+func (s *APIServer) TaskDelete(ctx context.Context, request *wedo.TaskDeleteRequest) (*wedo.TaskDeleteResponse, error) {
+	if request.TaskId == "" {
+		return nil, status.Error(codes.InvalidArgument, "task id is empty")
+	}
+	err := s.Runtime.TaskDelete(ctx, request.TaskId)
+	if err != nil {
+		return nil, status.Error(codes.Internal, err.Error())
+	}
+	return &wedo.TaskDeleteResponse{}, nil
 }
 
 // TaskList lists all tasks.
-func (APIServer) TaskList(ctx context.Context, request *wedo.TaskListRequest) (*wedo.TaskListResponse, error) {
-	panic("implement me")
+func (s *APIServer) TaskList(ctx context.Context, request *wedo.TaskListRequest) (*wedo.TaskListResponse, error) {
+	if request.ProcessInstanceId == "" {
+		return nil, status.Error(codes.InvalidArgument, "process instance id is empty")
+	}
+	tasks, err := s.Runtime.TaskList(ctx, request)
+	if err != nil {
+		return nil, status.Error(codes.Internal, err.Error())
+	}
+	return &wedo.TaskListResponse{
+		Tasks: tasks,
+	}, nil
 }

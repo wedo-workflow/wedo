@@ -45,6 +45,9 @@ type Store interface {
 
 	// TaskCreate create a task
 	TaskCreate(ctx context.Context, task *model.Task) error
+	TaskGet(ctx context.Context, taskID string) (*model.Task, error)
+	TaskDelete(ctx context.Context, taskID string, processInstanceID string) error
+	TaskList(ctx context.Context, opts *model.TaskListOptions) ([]*model.Task, error)
 }
 
 func NewStore(config *config.Config) (Store, error) {

@@ -51,9 +51,13 @@ type WedoServiceClient interface {
 	ProcessDefinitionStart(ctx context.Context, in *ProcessDefinitionStartRequest, opts ...grpc.CallOption) (*ProcessDefinitionStartResponse, error)
 	// ProcessDefinitionGet get a process definition by business key and namespace id.
 	ProcessDefinitionGet(ctx context.Context, in *ProcessDefinitionRequest, opts ...grpc.CallOption) (*ProcessDefinitionResponse, error)
+	// TaskCreate create a task.
 	TaskCreate(ctx context.Context, in *TaskCreateRequest, opts ...grpc.CallOption) (*TaskCreateResponse, error)
+	// TaskGet get a task by id.
 	TaskGet(ctx context.Context, in *TaskRequest, opts ...grpc.CallOption) (*TaskResponse, error)
+	// TaskDelete delete a task.
 	TaskDelete(ctx context.Context, in *TaskDeleteRequest, opts ...grpc.CallOption) (*TaskDeleteResponse, error)
+	// TaskList list all tasks By Process Instance ID.
 	TaskList(ctx context.Context, in *TaskListRequest, opts ...grpc.CallOption) (*TaskListResponse, error)
 }
 
@@ -291,9 +295,13 @@ type WedoServiceServer interface {
 	ProcessDefinitionStart(context.Context, *ProcessDefinitionStartRequest) (*ProcessDefinitionStartResponse, error)
 	// ProcessDefinitionGet get a process definition by business key and namespace id.
 	ProcessDefinitionGet(context.Context, *ProcessDefinitionRequest) (*ProcessDefinitionResponse, error)
+	// TaskCreate create a task.
 	TaskCreate(context.Context, *TaskCreateRequest) (*TaskCreateResponse, error)
+	// TaskGet get a task by id.
 	TaskGet(context.Context, *TaskRequest) (*TaskResponse, error)
+	// TaskDelete delete a task.
 	TaskDelete(context.Context, *TaskDeleteRequest) (*TaskDeleteResponse, error)
+	// TaskList list all tasks By Process Instance ID.
 	TaskList(context.Context, *TaskListRequest) (*TaskListResponse, error)
 }
 

@@ -52,3 +52,8 @@ func (t *Task) UnmarshalBinary(data []byte) error {
 	}
 	return nil
 }
+
+// TaskListOptions task list options
+type TaskListOptions struct {
+	ProcessInstanceID string
+}
