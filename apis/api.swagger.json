@@ -282,6 +282,7 @@
     },
     "/process-definition/key/{processDefinitionKey}/namespace-id/{namespaceId}": {
       "get": {
+        "summary": "ProcessDefinitionGet get a process definition by business key and namespace id.",
         "operationId": "WedoService_ProcessDefinitionGet",
         "responses": {
           "200": {
@@ -324,6 +325,7 @@
     },
     "/process-definition/key/{processDefinitionKey}/namespace-id/{namespaceId}/start": {
       "post": {
+        "summary": "ProcessDefinitionStart Process Definition Start and return Process Instance ID",
         "operationId": "WedoService_ProcessDefinitionStart",
         "responses": {
           "200": {
@@ -373,6 +375,7 @@
     },
     "/process-definition/{id}": {
       "get": {
+        "summary": "ProcessDefinitionGet get a process definition by business key and namespace id.",
         "operationId": "WedoService_ProcessDefinitionGet2",
         "responses": {
           "200": {
@@ -925,6 +928,44 @@
         },
         "name": {
           "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "assignee": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        },
+        "delegationState": {
+          "type": "string"
+        },
+        "due": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "priority": {
+          "type": "string"
+        },
+        "parentTaskId": {
+          "type": "string"
+        },
+        "processInstanceId": {
+          "type": "string"
+        },
+        "taskDefinitionKey": {
+          "type": "string"
+        },
+        "namespaceId": {
+          "type": "string"
+        },
+        "formKey": {
+          "type": "string"
+        },
+        "followUpDate": {
+          "type": "string",
+          "format": "date-time"
         }
       }
     },
@@ -961,6 +1002,44 @@
         },
         "name": {
           "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "assignee": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        },
+        "delegationState": {
+          "type": "string"
+        },
+        "due": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "priority": {
+          "type": "string"
+        },
+        "parentTaskId": {
+          "type": "string"
+        },
+        "processInstanceId": {
+          "type": "string"
+        },
+        "taskDefinitionKey": {
+          "type": "string"
+        },
+        "namespaceId": {
+          "type": "string"
+        },
+        "formKey": {
+          "type": "string"
+        },
+        "followUpDate": {
+          "type": "string",
+          "format": "date-time"
         }
       }
     },
