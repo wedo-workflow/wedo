@@ -150,10 +150,11 @@ service WedoService {
     };
   }
 
+  // Process Instance crud
+
   // Task
 
-
-
+  // TaskCreate create a task.
   rpc TaskCreate(TaskCreateRequest) returns (TaskCreateResponse) {
     option (google.api.http) = {
       post : "/task/create"
@@ -346,6 +347,23 @@ message ProcessDefinitionResponse {
 message TaskCreateRequest {
   string id = 1;
   string name = 2;
+  string description = 3;
+  string assignee = 4;
+  string owner = 5;
+  string delegationState = 6;
+  google.protobuf.Timestamp due = 7;
+  string priority = 8;
+  string parentTaskId = 9;
+  string processInstanceId = 10;
+  string taskDefinitionKey = 11;
+  string namespaceId = 13;
+  string formKey = 14;
+  google.protobuf.Timestamp followUpDate = 15;
+}
+
+enum DelegationState {
+  PENDING = 0;
+  RESOLVED = 1;
 }
 
 message TaskCreateResponse {
@@ -360,6 +378,18 @@ message TaskRequest {
 message TaskResponse {
   string id = 1;
   string name = 2;
+  string description = 3;
+  string assignee = 4;
+  string owner = 5;
+  string delegationState = 6;
+  google.protobuf.Timestamp due = 7;
+  string priority = 8;
+  string parentTaskId = 9;
+  string processInstanceId = 10;
+  string taskDefinitionKey = 11;
+  string namespaceId = 13;
+  string formKey = 14;
+  google.protobuf.Timestamp followUpDate = 15;
 }
 
 message TaskDeleteRequest {

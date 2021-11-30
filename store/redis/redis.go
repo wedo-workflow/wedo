@@ -14,6 +14,9 @@ var (
 
 	processInstance       = "process_instances"
 	processInstanceDetail = "%s_instance"
+	processInstanceTasks  = "%s_instance_tasks"
+
+	taskDetail = "task_%s"
 
 	deploys    = "deploys"
 	deploySet  = "%s_deploy"

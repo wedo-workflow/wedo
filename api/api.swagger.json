@@ -928,6 +928,44 @@
         },
         "name": {
           "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "assignee": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        },
+        "delegationState": {
+          "type": "string"
+        },
+        "due": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "priority": {
+          "type": "string"
+        },
+        "parentTaskId": {
+          "type": "string"
+        },
+        "processInstanceId": {
+          "type": "string"
+        },
+        "taskDefinitionKey": {
+          "type": "string"
+        },
+        "namespaceId": {
+          "type": "string"
+        },
+        "formKey": {
+          "type": "string"
+        },
+        "followUpDate": {
+          "type": "string",
+          "format": "date-time"
         }
       }
     },
@@ -964,6 +1002,44 @@
         },
         "name": {
           "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "assignee": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        },
+        "delegationState": {
+          "type": "string"
+        },
+        "due": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "priority": {
+          "type": "string"
+        },
+        "parentTaskId": {
+          "type": "string"
+        },
+        "processInstanceId": {
+          "type": "string"
+        },
+        "taskDefinitionKey": {
+          "type": "string"
+        },
+        "namespaceId": {
+          "type": "string"
+        },
+        "formKey": {
+          "type": "string"
+        },
+        "followUpDate": {
+          "type": "string",
+          "format": "date-time"
         }
       }
     },

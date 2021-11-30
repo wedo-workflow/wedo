@@ -4,6 +4,7 @@ import (
 	"context"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/wedo-workflow/wedo/element"
 	"github.com/wedo-workflow/wedo/runtime/config"
 	"github.com/wedo-workflow/wedo/store"
@@ -43,4 +44,12 @@ func (r *Runtime) Store() store.Store {
 func (r *Runtime) Run(opts ...Option) error {
 
 	return nil
+}
+
+func (r *Runtime) generateUUID() string {
+	v4, err := uuid.NewRandom()
+	if err != nil {
+		return ""
+	}
+	return v4.String()
 }

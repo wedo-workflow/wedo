@@ -42,6 +42,9 @@ type Store interface {
 	UserDelete(ctx context.Context, userID string) error
 	UserUpdate(ctx context.Context, user *model.User) error
 	UserList(ctx context.Context, opts *model.UserListOptions) ([]*model.User, error)
+
+	// TaskCreate create a task
+	TaskCreate(ctx context.Context, task *model.Task) error
 }
 
 func NewStore(config *config.Config) (Store, error) {
