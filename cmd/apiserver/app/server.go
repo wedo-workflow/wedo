@@ -3,6 +3,7 @@ package app
 import (
 	"context"
 	"fmt"
+	"google.golang.org/protobuf/encoding/protojson"
 	"net"
 	"net/http"
 	"strings"
@@ -11,7 +12,7 @@ import (
 	grpc_logging "github.com/grpc-ecosystem/go-grpc-middleware/logging"
 	grpc_logrus "github.com/grpc-ecosystem/go-grpc-middleware/logging/logrus"
 	grpc_recovery "github.com/grpc-ecosystem/go-grpc-middleware/recovery"
-	grpc_runtime "github.com/grpc-ecosystem/grpc-gateway/runtime"
+	grpc_runtime "github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	log "github.com/sirupsen/logrus"
 	"github.com/wedo-workflow/wedo/runtime"
 	"google.golang.org/grpc"
@@ -110,8 +111,8 @@ func (s *APIServer) Run() {
 		grpc_runtime.WithMarshalerOption(
 			grpc_runtime.MIMEWildcard,
 			&grpc_runtime.JSONPb{
-				OrigName:     true,
-				EmitDefaults: true,
+				MarshalOptions:   protojson.MarshalOptions{},
+				UnmarshalOptions: protojson.UnmarshalOptions{},
 			},
 		),
 	)

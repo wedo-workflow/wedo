@@ -10,7 +10,7 @@ import (
 )
 
 func TestRuntime_Deploy(t *testing.T) {
-	doc, err := os.ReadFile("testdata/diagram.BPMN")
+	doc, err := os.ReadFile("testdata/HelloWorld.bpmn")
 	if err != nil {
 		t.Log(err)
 		t.FailNow()
