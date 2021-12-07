@@ -6,21 +6,22 @@ import "protoc-gen-openapiv2/options/annotations.proto";
 
 option go_package = "github.com/wedo-workflow/wedo";
 
-package github.com.wedo_workflow.wedo.api.v1;
+package github.com.wedo_workflow.wedo;
 
 // swagger-ui base info,
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
     title: "Wedo API Doc";
-    version: "1.0";
+    version: "1.0.0";
     contact: {
       name: "wedo-workflow/wedo project";
       url: "https://github.com/wedo-workflow/wedo";
-      email: "jony4xx@gmail.com";
+      email: "im@jony4.pro";
     };
   };
-  host: "swagger.wedo.run";
+  host: "demo.wedo.run";
   schemes: [HTTPS];
+  base_path: "/v1"
 };
 
 service WedoService {

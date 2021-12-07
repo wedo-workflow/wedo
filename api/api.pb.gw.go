@@ -1783,7 +1783,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/DeploymentGet", runtime.WithHTTPPathPattern("/deployment/{deployment_id}"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/DeploymentGet", runtime.WithHTTPPathPattern("/deployment/{deployment_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -1806,7 +1806,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/DeploymentCreate", runtime.WithHTTPPathPattern("/deployment/create"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/DeploymentCreate", runtime.WithHTTPPathPattern("/deployment/create"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -1829,7 +1829,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/DeploymentList", runtime.WithHTTPPathPattern("/deployments"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/DeploymentList", runtime.WithHTTPPathPattern("/deployments"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -1852,7 +1852,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/DeploymentDelete", runtime.WithHTTPPathPattern("/deployment/{deployment_id}"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/DeploymentDelete", runtime.WithHTTPPathPattern("/deployment/{deployment_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -1875,7 +1875,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserCreate", runtime.WithHTTPPathPattern("/user/create"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/UserCreate", runtime.WithHTTPPathPattern("/user/create"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -1898,7 +1898,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserGet", runtime.WithHTTPPathPattern("/user/{user_id}"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/UserGet", runtime.WithHTTPPathPattern("/user/{user_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -1921,7 +1921,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserDelete", runtime.WithHTTPPathPattern("/user/{user_id}"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/UserDelete", runtime.WithHTTPPathPattern("/user/{user_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -1944,7 +1944,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserList", runtime.WithHTTPPathPattern("/users"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/UserList", runtime.WithHTTPPathPattern("/users"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -1967,7 +1967,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserUpdate", runtime.WithHTTPPathPattern("/user/{user_id}"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/UserUpdate", runtime.WithHTTPPathPattern("/user/{user_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -1990,7 +1990,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserListCount", runtime.WithHTTPPathPattern("/users/count"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/UserListCount", runtime.WithHTTPPathPattern("/users/count"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2013,7 +2013,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/NamespaceCreate", runtime.WithHTTPPathPattern("/namespace/create"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/NamespaceCreate", runtime.WithHTTPPathPattern("/namespace/create"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2036,7 +2036,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/NamespaceGet", runtime.WithHTTPPathPattern("/namespace/{namespace_id}"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/NamespaceGet", runtime.WithHTTPPathPattern("/namespace/{namespace_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2059,7 +2059,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/NamespaceDelete", runtime.WithHTTPPathPattern("/namespace/{namespace_id}"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/NamespaceDelete", runtime.WithHTTPPathPattern("/namespace/{namespace_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2082,7 +2082,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/NamespaceList", runtime.WithHTTPPathPattern("/namespaces"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/NamespaceList", runtime.WithHTTPPathPattern("/namespaces"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2105,7 +2105,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/NamespaceListCount", runtime.WithHTTPPathPattern("/namespaces/count"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/NamespaceListCount", runtime.WithHTTPPathPattern("/namespaces/count"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2128,7 +2128,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/ProcessDefinitionStart", runtime.WithHTTPPathPattern("/process-definition/key/{process_definition_key}/namespace-id/{namespace_id}/start"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/ProcessDefinitionStart", runtime.WithHTTPPathPattern("/process-definition/key/{process_definition_key}/namespace-id/{namespace_id}/start"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2151,7 +2151,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/ProcessDefinitionGet", runtime.WithHTTPPathPattern("/process-definition/key/{process_definition_key}/namespace-id/{namespace_id}"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/ProcessDefinitionGet", runtime.WithHTTPPathPattern("/process-definition/key/{process_definition_key}/namespace-id/{namespace_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2174,7 +2174,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/ProcessDefinitionGet", runtime.WithHTTPPathPattern("/process-definition/{id}"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/ProcessDefinitionGet", runtime.WithHTTPPathPattern("/process-definition/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2197,7 +2197,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/ProcessInstanceGet", runtime.WithHTTPPathPattern("/process-instance/{process_instance_id}"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/ProcessInstanceGet", runtime.WithHTTPPathPattern("/process-instance/{process_instance_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2220,7 +2220,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/ProcessModify", runtime.WithHTTPPathPattern("/process-instance/{process_instance_id}"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/ProcessModify", runtime.WithHTTPPathPattern("/process-instance/{process_instance_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2243,7 +2243,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/ProcessActivateSuspend", runtime.WithHTTPPathPattern("/process-instance/{process_instance_id}/suspended"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/ProcessActivateSuspend", runtime.WithHTTPPathPattern("/process-instance/{process_instance_id}/suspended"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2266,7 +2266,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskCreate", runtime.WithHTTPPathPattern("/task/create"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/TaskCreate", runtime.WithHTTPPathPattern("/task/create"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2289,7 +2289,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskGet", runtime.WithHTTPPathPattern("/task/{task_id}"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/TaskGet", runtime.WithHTTPPathPattern("/task/{task_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2312,7 +2312,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskDelete", runtime.WithHTTPPathPattern("/task/{task_id}"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/TaskDelete", runtime.WithHTTPPathPattern("/task/{task_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2335,7 +2335,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskList", runtime.WithHTTPPathPattern("/tasks"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/TaskList", runtime.WithHTTPPathPattern("/tasks"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2358,7 +2358,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskClaim", runtime.WithHTTPPathPattern("/task/{task_id}/claim"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/TaskClaim", runtime.WithHTTPPathPattern("/task/{task_id}/claim"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2381,7 +2381,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskUnclaim", runtime.WithHTTPPathPattern("/task/{task_id}/unclaim"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/TaskUnclaim", runtime.WithHTTPPathPattern("/task/{task_id}/unclaim"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2404,7 +2404,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskDelegate", runtime.WithHTTPPathPattern("/task/{task_id}/delegate"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/TaskDelegate", runtime.WithHTTPPathPattern("/task/{task_id}/delegate"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2427,7 +2427,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskAssign", runtime.WithHTTPPathPattern("/task/{task_id}/assign"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/TaskAssign", runtime.WithHTTPPathPattern("/task/{task_id}/assign"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2450,7 +2450,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskComplete", runtime.WithHTTPPathPattern("/task/{task_id}/complete"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/TaskComplete", runtime.WithHTTPPathPattern("/task/{task_id}/complete"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2473,7 +2473,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskGetFormKey", runtime.WithHTTPPathPattern("/task/{task_id}/form-key"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/TaskGetFormKey", runtime.WithHTTPPathPattern("/task/{task_id}/form-key"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2496,7 +2496,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskSubmitForm", runtime.WithHTTPPathPattern("/task/{task_id}/submit-form"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/TaskSubmitForm", runtime.WithHTTPPathPattern("/task/{task_id}/submit-form"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2519,7 +2519,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskResolve", runtime.WithHTTPPathPattern("/task/{task_id}/resolve"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/TaskResolve", runtime.WithHTTPPathPattern("/task/{task_id}/resolve"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2542,7 +2542,7 @@ func RegisterWedoServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskDeployedForm", runtime.WithHTTPPathPattern("/task/{task_id}/deployed-form"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/TaskDeployedForm", runtime.WithHTTPPathPattern("/task/{task_id}/deployed-form"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2604,7 +2604,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/DeploymentGet", runtime.WithHTTPPathPattern("/deployment/{deployment_id}"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/DeploymentGet", runtime.WithHTTPPathPattern("/deployment/{deployment_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2624,7 +2624,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/DeploymentCreate", runtime.WithHTTPPathPattern("/deployment/create"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/DeploymentCreate", runtime.WithHTTPPathPattern("/deployment/create"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2644,7 +2644,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/DeploymentList", runtime.WithHTTPPathPattern("/deployments"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/DeploymentList", runtime.WithHTTPPathPattern("/deployments"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2664,7 +2664,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/DeploymentDelete", runtime.WithHTTPPathPattern("/deployment/{deployment_id}"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/DeploymentDelete", runtime.WithHTTPPathPattern("/deployment/{deployment_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2684,7 +2684,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserCreate", runtime.WithHTTPPathPattern("/user/create"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/UserCreate", runtime.WithHTTPPathPattern("/user/create"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2704,7 +2704,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserGet", runtime.WithHTTPPathPattern("/user/{user_id}"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/UserGet", runtime.WithHTTPPathPattern("/user/{user_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2724,7 +2724,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserDelete", runtime.WithHTTPPathPattern("/user/{user_id}"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/UserDelete", runtime.WithHTTPPathPattern("/user/{user_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2744,7 +2744,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserList", runtime.WithHTTPPathPattern("/users"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/UserList", runtime.WithHTTPPathPattern("/users"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2764,7 +2764,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserUpdate", runtime.WithHTTPPathPattern("/user/{user_id}"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/UserUpdate", runtime.WithHTTPPathPattern("/user/{user_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2784,7 +2784,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserListCount", runtime.WithHTTPPathPattern("/users/count"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/UserListCount", runtime.WithHTTPPathPattern("/users/count"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2804,7 +2804,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/NamespaceCreate", runtime.WithHTTPPathPattern("/namespace/create"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/NamespaceCreate", runtime.WithHTTPPathPattern("/namespace/create"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2824,7 +2824,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/NamespaceGet", runtime.WithHTTPPathPattern("/namespace/{namespace_id}"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/NamespaceGet", runtime.WithHTTPPathPattern("/namespace/{namespace_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2844,7 +2844,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/NamespaceDelete", runtime.WithHTTPPathPattern("/namespace/{namespace_id}"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/NamespaceDelete", runtime.WithHTTPPathPattern("/namespace/{namespace_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2864,7 +2864,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/NamespaceList", runtime.WithHTTPPathPattern("/namespaces"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/NamespaceList", runtime.WithHTTPPathPattern("/namespaces"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2884,7 +2884,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/NamespaceListCount", runtime.WithHTTPPathPattern("/namespaces/count"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/NamespaceListCount", runtime.WithHTTPPathPattern("/namespaces/count"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2904,7 +2904,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/ProcessDefinitionStart", runtime.WithHTTPPathPattern("/process-definition/key/{process_definition_key}/namespace-id/{namespace_id}/start"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/ProcessDefinitionStart", runtime.WithHTTPPathPattern("/process-definition/key/{process_definition_key}/namespace-id/{namespace_id}/start"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2924,7 +2924,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/ProcessDefinitionGet", runtime.WithHTTPPathPattern("/process-definition/key/{process_definition_key}/namespace-id/{namespace_id}"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/ProcessDefinitionGet", runtime.WithHTTPPathPattern("/process-definition/key/{process_definition_key}/namespace-id/{namespace_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2944,7 +2944,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/ProcessDefinitionGet", runtime.WithHTTPPathPattern("/process-definition/{id}"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/ProcessDefinitionGet", runtime.WithHTTPPathPattern("/process-definition/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2964,7 +2964,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/ProcessInstanceGet", runtime.WithHTTPPathPattern("/process-instance/{process_instance_id}"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/ProcessInstanceGet", runtime.WithHTTPPathPattern("/process-instance/{process_instance_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2984,7 +2984,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/ProcessModify", runtime.WithHTTPPathPattern("/process-instance/{process_instance_id}"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/ProcessModify", runtime.WithHTTPPathPattern("/process-instance/{process_instance_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -3004,7 +3004,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/ProcessActivateSuspend", runtime.WithHTTPPathPattern("/process-instance/{process_instance_id}/suspended"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/ProcessActivateSuspend", runtime.WithHTTPPathPattern("/process-instance/{process_instance_id}/suspended"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -3024,7 +3024,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskCreate", runtime.WithHTTPPathPattern("/task/create"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/TaskCreate", runtime.WithHTTPPathPattern("/task/create"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -3044,7 +3044,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskGet", runtime.WithHTTPPathPattern("/task/{task_id}"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/TaskGet", runtime.WithHTTPPathPattern("/task/{task_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -3064,7 +3064,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskDelete", runtime.WithHTTPPathPattern("/task/{task_id}"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/TaskDelete", runtime.WithHTTPPathPattern("/task/{task_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -3084,7 +3084,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskList", runtime.WithHTTPPathPattern("/tasks"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/TaskList", runtime.WithHTTPPathPattern("/tasks"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -3104,7 +3104,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskClaim", runtime.WithHTTPPathPattern("/task/{task_id}/claim"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/TaskClaim", runtime.WithHTTPPathPattern("/task/{task_id}/claim"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -3124,7 +3124,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskUnclaim", runtime.WithHTTPPathPattern("/task/{task_id}/unclaim"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/TaskUnclaim", runtime.WithHTTPPathPattern("/task/{task_id}/unclaim"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -3144,7 +3144,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskDelegate", runtime.WithHTTPPathPattern("/task/{task_id}/delegate"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/TaskDelegate", runtime.WithHTTPPathPattern("/task/{task_id}/delegate"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -3164,7 +3164,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskAssign", runtime.WithHTTPPathPattern("/task/{task_id}/assign"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/TaskAssign", runtime.WithHTTPPathPattern("/task/{task_id}/assign"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -3184,7 +3184,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskComplete", runtime.WithHTTPPathPattern("/task/{task_id}/complete"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/TaskComplete", runtime.WithHTTPPathPattern("/task/{task_id}/complete"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -3204,7 +3204,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskGetFormKey", runtime.WithHTTPPathPattern("/task/{task_id}/form-key"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/TaskGetFormKey", runtime.WithHTTPPathPattern("/task/{task_id}/form-key"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -3224,7 +3224,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskSubmitForm", runtime.WithHTTPPathPattern("/task/{task_id}/submit-form"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/TaskSubmitForm", runtime.WithHTTPPathPattern("/task/{task_id}/submit-form"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -3244,7 +3244,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskResolve", runtime.WithHTTPPathPattern("/task/{task_id}/resolve"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/TaskResolve", runtime.WithHTTPPathPattern("/task/{task_id}/resolve"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -3264,7 +3264,7 @@ func RegisterWedoServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskDeployedForm", runtime.WithHTTPPathPattern("/task/{task_id}/deployed-form"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/github.com.wedo_workflow.wedo.WedoService/TaskDeployedForm", runtime.WithHTTPPathPattern("/task/{task_id}/deployed-form"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return

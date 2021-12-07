@@ -95,7 +95,7 @@ func NewWedoServiceClient(cc grpc.ClientConnInterface) WedoServiceClient {
 
 func (c *wedoServiceClient) DeploymentGet(ctx context.Context, in *DeploymentRequest, opts ...grpc.CallOption) (*DeploymentResponse, error) {
 	out := new(DeploymentResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/DeploymentGet", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/DeploymentGet", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -104,7 +104,7 @@ func (c *wedoServiceClient) DeploymentGet(ctx context.Context, in *DeploymentReq
 
 func (c *wedoServiceClient) DeploymentCreate(ctx context.Context, in *DeploymentCreateRequest, opts ...grpc.CallOption) (*DeploymentCreateResponse, error) {
 	out := new(DeploymentCreateResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/DeploymentCreate", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/DeploymentCreate", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -113,7 +113,7 @@ func (c *wedoServiceClient) DeploymentCreate(ctx context.Context, in *Deployment
 
 func (c *wedoServiceClient) DeploymentList(ctx context.Context, in *DeploymentListRequest, opts ...grpc.CallOption) (*DeploymentListResponse, error) {
 	out := new(DeploymentListResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/DeploymentList", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/DeploymentList", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -122,7 +122,7 @@ func (c *wedoServiceClient) DeploymentList(ctx context.Context, in *DeploymentLi
 
 func (c *wedoServiceClient) DeploymentDelete(ctx context.Context, in *DeploymentDeleteRequest, opts ...grpc.CallOption) (*DeploymentDeleteResponse, error) {
 	out := new(DeploymentDeleteResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/DeploymentDelete", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/DeploymentDelete", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -131,7 +131,7 @@ func (c *wedoServiceClient) DeploymentDelete(ctx context.Context, in *Deployment
 
 func (c *wedoServiceClient) UserCreate(ctx context.Context, in *UserCreateRequest, opts ...grpc.CallOption) (*UserCreateResponse, error) {
 	out := new(UserCreateResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserCreate", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/UserCreate", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -140,7 +140,7 @@ func (c *wedoServiceClient) UserCreate(ctx context.Context, in *UserCreateReques
 
 func (c *wedoServiceClient) UserGet(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*UserResponse, error) {
 	out := new(UserResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserGet", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/UserGet", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -149,7 +149,7 @@ func (c *wedoServiceClient) UserGet(ctx context.Context, in *UserRequest, opts .
 
 func (c *wedoServiceClient) UserDelete(ctx context.Context, in *UserDeleteRequest, opts ...grpc.CallOption) (*UserDeleteResponse, error) {
 	out := new(UserDeleteResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserDelete", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/UserDelete", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -158,7 +158,7 @@ func (c *wedoServiceClient) UserDelete(ctx context.Context, in *UserDeleteReques
 
 func (c *wedoServiceClient) UserList(ctx context.Context, in *UserListRequest, opts ...grpc.CallOption) (*UserListResponse, error) {
 	out := new(UserListResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserList", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/UserList", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -167,7 +167,7 @@ func (c *wedoServiceClient) UserList(ctx context.Context, in *UserListRequest, o
 
 func (c *wedoServiceClient) UserUpdate(ctx context.Context, in *UserUpdateRequest, opts ...grpc.CallOption) (*UserUpdateResponse, error) {
 	out := new(UserUpdateResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserUpdate", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/UserUpdate", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -176,7 +176,7 @@ func (c *wedoServiceClient) UserUpdate(ctx context.Context, in *UserUpdateReques
 
 func (c *wedoServiceClient) UserListCount(ctx context.Context, in *UserListCountRequest, opts ...grpc.CallOption) (*UserListCountResponse, error) {
 	out := new(UserListCountResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserListCount", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/UserListCount", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -185,7 +185,7 @@ func (c *wedoServiceClient) UserListCount(ctx context.Context, in *UserListCount
 
 func (c *wedoServiceClient) NamespaceCreate(ctx context.Context, in *NamespaceCreateRequest, opts ...grpc.CallOption) (*NamespaceCreateResponse, error) {
 	out := new(NamespaceCreateResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/NamespaceCreate", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/NamespaceCreate", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -194,7 +194,7 @@ func (c *wedoServiceClient) NamespaceCreate(ctx context.Context, in *NamespaceCr
 
 func (c *wedoServiceClient) NamespaceGet(ctx context.Context, in *NamespaceRequest, opts ...grpc.CallOption) (*NamespaceResponse, error) {
 	out := new(NamespaceResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/NamespaceGet", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/NamespaceGet", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -203,7 +203,7 @@ func (c *wedoServiceClient) NamespaceGet(ctx context.Context, in *NamespaceReque
 
 func (c *wedoServiceClient) NamespaceDelete(ctx context.Context, in *NamespaceDeleteRequest, opts ...grpc.CallOption) (*NamespaceDeleteResponse, error) {
 	out := new(NamespaceDeleteResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/NamespaceDelete", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/NamespaceDelete", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -212,7 +212,7 @@ func (c *wedoServiceClient) NamespaceDelete(ctx context.Context, in *NamespaceDe
 
 func (c *wedoServiceClient) NamespaceList(ctx context.Context, in *NamespaceListRequest, opts ...grpc.CallOption) (*NamespaceListResponse, error) {
 	out := new(NamespaceListResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/NamespaceList", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/NamespaceList", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -221,7 +221,7 @@ func (c *wedoServiceClient) NamespaceList(ctx context.Context, in *NamespaceList
 
 func (c *wedoServiceClient) NamespaceListCount(ctx context.Context, in *NamespaceListCountRequest, opts ...grpc.CallOption) (*NamespaceListCountResponse, error) {
 	out := new(NamespaceListCountResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/NamespaceListCount", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/NamespaceListCount", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -230,7 +230,7 @@ func (c *wedoServiceClient) NamespaceListCount(ctx context.Context, in *Namespac
 
 func (c *wedoServiceClient) ProcessDefinitionStart(ctx context.Context, in *ProcessDefinitionStartRequest, opts ...grpc.CallOption) (*ProcessDefinitionStartResponse, error) {
 	out := new(ProcessDefinitionStartResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/ProcessDefinitionStart", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/ProcessDefinitionStart", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -239,7 +239,7 @@ func (c *wedoServiceClient) ProcessDefinitionStart(ctx context.Context, in *Proc
 
 func (c *wedoServiceClient) ProcessDefinitionGet(ctx context.Context, in *ProcessDefinitionRequest, opts ...grpc.CallOption) (*ProcessDefinitionResponse, error) {
 	out := new(ProcessDefinitionResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/ProcessDefinitionGet", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/ProcessDefinitionGet", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -248,7 +248,7 @@ func (c *wedoServiceClient) ProcessDefinitionGet(ctx context.Context, in *Proces
 
 func (c *wedoServiceClient) ProcessInstanceGet(ctx context.Context, in *ProcessInstanceRequest, opts ...grpc.CallOption) (*ProcessInstanceResponse, error) {
 	out := new(ProcessInstanceResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/ProcessInstanceGet", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/ProcessInstanceGet", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -257,7 +257,7 @@ func (c *wedoServiceClient) ProcessInstanceGet(ctx context.Context, in *ProcessI
 
 func (c *wedoServiceClient) ProcessModify(ctx context.Context, in *ProcessModifyRequest, opts ...grpc.CallOption) (*ProcessModifyResponse, error) {
 	out := new(ProcessModifyResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/ProcessModify", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/ProcessModify", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -266,7 +266,7 @@ func (c *wedoServiceClient) ProcessModify(ctx context.Context, in *ProcessModify
 
 func (c *wedoServiceClient) ProcessActivateSuspend(ctx context.Context, in *ProcessActivateSuspendRequest, opts ...grpc.CallOption) (*ProcessActivateSuspendResponse, error) {
 	out := new(ProcessActivateSuspendResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/ProcessActivateSuspend", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/ProcessActivateSuspend", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -275,7 +275,7 @@ func (c *wedoServiceClient) ProcessActivateSuspend(ctx context.Context, in *Proc
 
 func (c *wedoServiceClient) TaskCreate(ctx context.Context, in *TaskCreateRequest, opts ...grpc.CallOption) (*TaskCreateResponse, error) {
 	out := new(TaskCreateResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskCreate", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/TaskCreate", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -284,7 +284,7 @@ func (c *wedoServiceClient) TaskCreate(ctx context.Context, in *TaskCreateReques
 
 func (c *wedoServiceClient) TaskGet(ctx context.Context, in *TaskRequest, opts ...grpc.CallOption) (*TaskResponse, error) {
 	out := new(TaskResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskGet", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/TaskGet", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -293,7 +293,7 @@ func (c *wedoServiceClient) TaskGet(ctx context.Context, in *TaskRequest, opts .
 
 func (c *wedoServiceClient) TaskDelete(ctx context.Context, in *TaskDeleteRequest, opts ...grpc.CallOption) (*TaskDeleteResponse, error) {
 	out := new(TaskDeleteResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskDelete", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/TaskDelete", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -302,7 +302,7 @@ func (c *wedoServiceClient) TaskDelete(ctx context.Context, in *TaskDeleteReques
 
 func (c *wedoServiceClient) TaskList(ctx context.Context, in *TaskListRequest, opts ...grpc.CallOption) (*TaskListResponse, error) {
 	out := new(TaskListResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskList", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/TaskList", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -311,7 +311,7 @@ func (c *wedoServiceClient) TaskList(ctx context.Context, in *TaskListRequest, o
 
 func (c *wedoServiceClient) TaskClaim(ctx context.Context, in *TaskClaimRequest, opts ...grpc.CallOption) (*TaskClaimResponse, error) {
 	out := new(TaskClaimResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskClaim", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/TaskClaim", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -320,7 +320,7 @@ func (c *wedoServiceClient) TaskClaim(ctx context.Context, in *TaskClaimRequest,
 
 func (c *wedoServiceClient) TaskUnclaim(ctx context.Context, in *TaskUnclaimRequest, opts ...grpc.CallOption) (*TaskUnclaimResponse, error) {
 	out := new(TaskUnclaimResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskUnclaim", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/TaskUnclaim", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -329,7 +329,7 @@ func (c *wedoServiceClient) TaskUnclaim(ctx context.Context, in *TaskUnclaimRequ
 
 func (c *wedoServiceClient) TaskDelegate(ctx context.Context, in *TaskDelegateRequest, opts ...grpc.CallOption) (*TaskDelegateResponse, error) {
 	out := new(TaskDelegateResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskDelegate", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/TaskDelegate", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -338,7 +338,7 @@ func (c *wedoServiceClient) TaskDelegate(ctx context.Context, in *TaskDelegateRe
 
 func (c *wedoServiceClient) TaskAssign(ctx context.Context, in *TaskAssignRequest, opts ...grpc.CallOption) (*TaskAssignResponse, error) {
 	out := new(TaskAssignResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskAssign", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/TaskAssign", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -347,7 +347,7 @@ func (c *wedoServiceClient) TaskAssign(ctx context.Context, in *TaskAssignReques
 
 func (c *wedoServiceClient) TaskComplete(ctx context.Context, in *TaskCompleteRequest, opts ...grpc.CallOption) (*TaskCompleteResponse, error) {
 	out := new(TaskCompleteResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskComplete", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/TaskComplete", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -356,7 +356,7 @@ func (c *wedoServiceClient) TaskComplete(ctx context.Context, in *TaskCompleteRe
 
 func (c *wedoServiceClient) TaskGetFormKey(ctx context.Context, in *TaskGetFormKeyRequest, opts ...grpc.CallOption) (*TaskGetFormKeyResponse, error) {
 	out := new(TaskGetFormKeyResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskGetFormKey", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/TaskGetFormKey", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -365,7 +365,7 @@ func (c *wedoServiceClient) TaskGetFormKey(ctx context.Context, in *TaskGetFormK
 
 func (c *wedoServiceClient) TaskSubmitForm(ctx context.Context, in *TaskSubmitFormRequest, opts ...grpc.CallOption) (*TaskSubmitFormResponse, error) {
 	out := new(TaskSubmitFormResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskSubmitForm", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/TaskSubmitForm", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -374,7 +374,7 @@ func (c *wedoServiceClient) TaskSubmitForm(ctx context.Context, in *TaskSubmitFo
 
 func (c *wedoServiceClient) TaskResolve(ctx context.Context, in *TaskResolveRequest, opts ...grpc.CallOption) (*TaskResolveResponse, error) {
 	out := new(TaskResolveResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskResolve", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/TaskResolve", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -383,7 +383,7 @@ func (c *wedoServiceClient) TaskResolve(ctx context.Context, in *TaskResolveRequ
 
 func (c *wedoServiceClient) TaskDeployedForm(ctx context.Context, in *TaskDeployedFormRequest, opts ...grpc.CallOption) (*TaskDeployedFormResponse, error) {
 	out := new(TaskDeployedFormResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskDeployedForm", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/TaskDeployedForm", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -586,7 +586,7 @@ func _WedoService_DeploymentGet_Handler(srv interface{}, ctx context.Context, de
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/DeploymentGet",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/DeploymentGet",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).DeploymentGet(ctx, req.(*DeploymentRequest))
@@ -604,7 +604,7 @@ func _WedoService_DeploymentCreate_Handler(srv interface{}, ctx context.Context,
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/DeploymentCreate",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/DeploymentCreate",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).DeploymentCreate(ctx, req.(*DeploymentCreateRequest))
@@ -622,7 +622,7 @@ func _WedoService_DeploymentList_Handler(srv interface{}, ctx context.Context, d
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/DeploymentList",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/DeploymentList",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).DeploymentList(ctx, req.(*DeploymentListRequest))
@@ -640,7 +640,7 @@ func _WedoService_DeploymentDelete_Handler(srv interface{}, ctx context.Context,
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/DeploymentDelete",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/DeploymentDelete",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).DeploymentDelete(ctx, req.(*DeploymentDeleteRequest))
@@ -658,7 +658,7 @@ func _WedoService_UserCreate_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserCreate",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/UserCreate",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).UserCreate(ctx, req.(*UserCreateRequest))
@@ -676,7 +676,7 @@ func _WedoService_UserGet_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserGet",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/UserGet",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).UserGet(ctx, req.(*UserRequest))
@@ -694,7 +694,7 @@ func _WedoService_UserDelete_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserDelete",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/UserDelete",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).UserDelete(ctx, req.(*UserDeleteRequest))
@@ -712,7 +712,7 @@ func _WedoService_UserList_Handler(srv interface{}, ctx context.Context, dec fun
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserList",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/UserList",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).UserList(ctx, req.(*UserListRequest))
@@ -730,7 +730,7 @@ func _WedoService_UserUpdate_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserUpdate",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/UserUpdate",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).UserUpdate(ctx, req.(*UserUpdateRequest))
@@ -748,7 +748,7 @@ func _WedoService_UserListCount_Handler(srv interface{}, ctx context.Context, de
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/UserListCount",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/UserListCount",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).UserListCount(ctx, req.(*UserListCountRequest))
@@ -766,7 +766,7 @@ func _WedoService_NamespaceCreate_Handler(srv interface{}, ctx context.Context, 
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/NamespaceCreate",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/NamespaceCreate",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).NamespaceCreate(ctx, req.(*NamespaceCreateRequest))
@@ -784,7 +784,7 @@ func _WedoService_NamespaceGet_Handler(srv interface{}, ctx context.Context, dec
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/NamespaceGet",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/NamespaceGet",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).NamespaceGet(ctx, req.(*NamespaceRequest))
@@ -802,7 +802,7 @@ func _WedoService_NamespaceDelete_Handler(srv interface{}, ctx context.Context, 
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/NamespaceDelete",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/NamespaceDelete",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).NamespaceDelete(ctx, req.(*NamespaceDeleteRequest))
@@ -820,7 +820,7 @@ func _WedoService_NamespaceList_Handler(srv interface{}, ctx context.Context, de
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/NamespaceList",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/NamespaceList",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).NamespaceList(ctx, req.(*NamespaceListRequest))
@@ -838,7 +838,7 @@ func _WedoService_NamespaceListCount_Handler(srv interface{}, ctx context.Contex
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/NamespaceListCount",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/NamespaceListCount",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).NamespaceListCount(ctx, req.(*NamespaceListCountRequest))
@@ -856,7 +856,7 @@ func _WedoService_ProcessDefinitionStart_Handler(srv interface{}, ctx context.Co
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/ProcessDefinitionStart",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/ProcessDefinitionStart",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).ProcessDefinitionStart(ctx, req.(*ProcessDefinitionStartRequest))
@@ -874,7 +874,7 @@ func _WedoService_ProcessDefinitionGet_Handler(srv interface{}, ctx context.Cont
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/ProcessDefinitionGet",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/ProcessDefinitionGet",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).ProcessDefinitionGet(ctx, req.(*ProcessDefinitionRequest))
@@ -892,7 +892,7 @@ func _WedoService_ProcessInstanceGet_Handler(srv interface{}, ctx context.Contex
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/ProcessInstanceGet",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/ProcessInstanceGet",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).ProcessInstanceGet(ctx, req.(*ProcessInstanceRequest))
@@ -910,7 +910,7 @@ func _WedoService_ProcessModify_Handler(srv interface{}, ctx context.Context, de
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/ProcessModify",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/ProcessModify",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).ProcessModify(ctx, req.(*ProcessModifyRequest))
@@ -928,7 +928,7 @@ func _WedoService_ProcessActivateSuspend_Handler(srv interface{}, ctx context.Co
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/ProcessActivateSuspend",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/ProcessActivateSuspend",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).ProcessActivateSuspend(ctx, req.(*ProcessActivateSuspendRequest))
@@ -946,7 +946,7 @@ func _WedoService_TaskCreate_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskCreate",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/TaskCreate",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).TaskCreate(ctx, req.(*TaskCreateRequest))
@@ -964,7 +964,7 @@ func _WedoService_TaskGet_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskGet",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/TaskGet",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).TaskGet(ctx, req.(*TaskRequest))
@@ -982,7 +982,7 @@ func _WedoService_TaskDelete_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskDelete",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/TaskDelete",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).TaskDelete(ctx, req.(*TaskDeleteRequest))
@@ -1000,7 +1000,7 @@ func _WedoService_TaskList_Handler(srv interface{}, ctx context.Context, dec fun
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskList",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/TaskList",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).TaskList(ctx, req.(*TaskListRequest))
@@ -1018,7 +1018,7 @@ func _WedoService_TaskClaim_Handler(srv interface{}, ctx context.Context, dec fu
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskClaim",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/TaskClaim",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).TaskClaim(ctx, req.(*TaskClaimRequest))
@@ -1036,7 +1036,7 @@ func _WedoService_TaskUnclaim_Handler(srv interface{}, ctx context.Context, dec 
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskUnclaim",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/TaskUnclaim",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).TaskUnclaim(ctx, req.(*TaskUnclaimRequest))
@@ -1054,7 +1054,7 @@ func _WedoService_TaskDelegate_Handler(srv interface{}, ctx context.Context, dec
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskDelegate",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/TaskDelegate",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).TaskDelegate(ctx, req.(*TaskDelegateRequest))
@@ -1072,7 +1072,7 @@ func _WedoService_TaskAssign_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskAssign",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/TaskAssign",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).TaskAssign(ctx, req.(*TaskAssignRequest))
@@ -1090,7 +1090,7 @@ func _WedoService_TaskComplete_Handler(srv interface{}, ctx context.Context, dec
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskComplete",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/TaskComplete",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).TaskComplete(ctx, req.(*TaskCompleteRequest))
@@ -1108,7 +1108,7 @@ func _WedoService_TaskGetFormKey_Handler(srv interface{}, ctx context.Context, d
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskGetFormKey",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/TaskGetFormKey",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).TaskGetFormKey(ctx, req.(*TaskGetFormKeyRequest))
@@ -1126,7 +1126,7 @@ func _WedoService_TaskSubmitForm_Handler(srv interface{}, ctx context.Context, d
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskSubmitForm",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/TaskSubmitForm",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).TaskSubmitForm(ctx, req.(*TaskSubmitFormRequest))
@@ -1144,7 +1144,7 @@ func _WedoService_TaskResolve_Handler(srv interface{}, ctx context.Context, dec 
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskResolve",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/TaskResolve",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).TaskResolve(ctx, req.(*TaskResolveRequest))
@@ -1162,7 +1162,7 @@ func _WedoService_TaskDeployedForm_Handler(srv interface{}, ctx context.Context,
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskDeployedForm",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/TaskDeployedForm",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).TaskDeployedForm(ctx, req.(*TaskDeployedFormRequest))
@@ -1174,7 +1174,7 @@ func _WedoService_TaskDeployedForm_Handler(srv interface{}, ctx context.Context,
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var WedoService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "github.com.wedo_workflow.wedo.api.v1.WedoService",
+	ServiceName: "github.com.wedo_workflow.wedo.WedoService",
 	HandlerType: (*WedoServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
