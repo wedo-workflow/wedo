@@ -2,11 +2,11 @@
   "swagger": "2.0",
   "info": {
     "title": "Wedo API Doc",
-    "version": "1.0",
+    "version": "1.0.0",
     "contact": {
       "name": "wedo-workflow/wedo project",
       "url": "https://github.com/wedo-workflow/wedo",
-      "email": "jony4xx@gmail.com"
+      "email": "im@jony4.pro"
     }
   },
   "tags": [
@@ -14,7 +14,8 @@
       "name": "WedoService"
     }
   ],
-  "host": "swagger.wedo.run",
+  "host": "demo.wedo.run",
+  "basePath": "/v1",
   "schemes": [
     "https"
   ],
@@ -33,7 +34,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1DeploymentCreateResponse"
+              "$ref": "#/definitions/wedoDeploymentCreateResponse"
             }
           },
           "default": {
@@ -49,7 +50,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1DeploymentCreateRequest"
+              "$ref": "#/definitions/wedoDeploymentCreateRequest"
             }
           }
         ],
@@ -66,7 +67,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1DeploymentResponse"
+              "$ref": "#/definitions/wedoDeploymentResponse"
             }
           },
           "default": {
@@ -95,7 +96,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1DeploymentDeleteResponse"
+              "$ref": "#/definitions/wedoDeploymentDeleteResponse"
             }
           },
           "default": {
@@ -126,7 +127,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1DeploymentListResponse"
+              "$ref": "#/definitions/wedoDeploymentListResponse"
             }
           },
           "default": {
@@ -149,7 +150,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1NamespaceCreateResponse"
+              "$ref": "#/definitions/wedoNamespaceCreateResponse"
             }
           },
           "default": {
@@ -165,7 +166,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1NamespaceCreateRequest"
+              "$ref": "#/definitions/wedoNamespaceCreateRequest"
             }
           }
         ],
@@ -182,7 +183,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1NamespaceResponse"
+              "$ref": "#/definitions/wedoNamespaceResponse"
             }
           },
           "default": {
@@ -211,7 +212,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1NamespaceDeleteResponse"
+              "$ref": "#/definitions/wedoNamespaceDeleteResponse"
             }
           },
           "default": {
@@ -242,7 +243,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1NamespaceListResponse"
+              "$ref": "#/definitions/wedoNamespaceListResponse"
             }
           },
           "default": {
@@ -265,7 +266,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1NamespaceListCountResponse"
+              "$ref": "#/definitions/wedoNamespaceListCountResponse"
             }
           },
           "default": {
@@ -288,7 +289,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1ProcessDefinitionResponse"
+              "$ref": "#/definitions/wedoProcessDefinitionResponse"
             }
           },
           "default": {
@@ -331,7 +332,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1ProcessDefinitionStartResponse"
+              "$ref": "#/definitions/wedoProcessDefinitionStartResponse"
             }
           },
           "default": {
@@ -381,7 +382,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1ProcessDefinitionResponse"
+              "$ref": "#/definitions/wedoProcessDefinitionResponse"
             }
           },
           "default": {
@@ -424,7 +425,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1ProcessInstanceResponse"
+              "$ref": "#/definitions/wedoProcessInstanceResponse"
             }
           },
           "default": {
@@ -453,7 +454,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1ProcessModifyResponse"
+              "$ref": "#/definitions/wedoProcessModifyResponse"
             }
           },
           "default": {
@@ -503,7 +504,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1ProcessActivateSuspendResponse"
+              "$ref": "#/definitions/wedoProcessActivateSuspendResponse"
             }
           },
           "default": {
@@ -540,7 +541,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1TaskCreateResponse"
+              "$ref": "#/definitions/wedoTaskCreateResponse"
             }
           },
           "default": {
@@ -556,7 +557,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1TaskCreateRequest"
+              "$ref": "#/definitions/wedoTaskCreateRequest"
             }
           }
         ],
@@ -573,7 +574,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1TaskResponse"
+              "$ref": "#/definitions/wedoTaskResponse"
             }
           },
           "default": {
@@ -602,7 +603,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1TaskDeleteResponse"
+              "$ref": "#/definitions/wedoTaskDeleteResponse"
             }
           },
           "default": {
@@ -633,7 +634,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1TaskAssignResponse"
+              "$ref": "#/definitions/wedoTaskAssignResponse"
             }
           },
           "default": {
@@ -670,7 +671,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1TaskClaimResponse"
+              "$ref": "#/definitions/wedoTaskClaimResponse"
             }
           },
           "default": {
@@ -701,7 +702,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1TaskCompleteResponse"
+              "$ref": "#/definitions/wedoTaskCompleteResponse"
             }
           },
           "default": {
@@ -732,7 +733,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1TaskDelegateResponse"
+              "$ref": "#/definitions/wedoTaskDelegateResponse"
             }
           },
           "default": {
@@ -769,7 +770,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1TaskDeployedFormResponse"
+              "$ref": "#/definitions/wedoTaskDeployedFormResponse"
             }
           },
           "default": {
@@ -800,7 +801,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1TaskGetFormKeyResponse"
+              "$ref": "#/definitions/wedoTaskGetFormKeyResponse"
             }
           },
           "default": {
@@ -831,7 +832,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1TaskResolveResponse"
+              "$ref": "#/definitions/wedoTaskResolveResponse"
             }
           },
           "default": {
@@ -862,7 +863,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1TaskSubmitFormResponse"
+              "$ref": "#/definitions/wedoTaskSubmitFormResponse"
             }
           },
           "default": {
@@ -909,7 +910,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1TaskUnclaimResponse"
+              "$ref": "#/definitions/wedoTaskUnclaimResponse"
             }
           },
           "default": {
@@ -940,7 +941,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1TaskListResponse"
+              "$ref": "#/definitions/wedoTaskListResponse"
             }
           },
           "default": {
@@ -971,7 +972,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1UserCreateResponse"
+              "$ref": "#/definitions/wedoUserCreateResponse"
             }
           },
           "default": {
@@ -987,7 +988,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1UserCreateRequest"
+              "$ref": "#/definitions/wedoUserCreateRequest"
             }
           }
         ],
@@ -1004,7 +1005,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1UserResponse"
+              "$ref": "#/definitions/wedoUserResponse"
             }
           },
           "default": {
@@ -1033,7 +1034,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1UserDeleteResponse"
+              "$ref": "#/definitions/wedoUserDeleteResponse"
             }
           },
           "default": {
@@ -1062,7 +1063,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1UserUpdateResponse"
+              "$ref": "#/definitions/wedoUserUpdateResponse"
             }
           },
           "default": {
@@ -1106,7 +1107,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1UserListResponse"
+              "$ref": "#/definitions/wedoUserListResponse"
             }
           },
           "default": {
@@ -1150,7 +1151,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1UserListCountResponse"
+              "$ref": "#/definitions/wedoUserListCountResponse"
             }
           },
           "default": {
@@ -1202,7 +1203,7 @@
         }
       }
     },
-    "v1DeploymentCreateRequest": {
+    "wedoDeploymentCreateRequest": {
       "type": "object",
       "properties": {
         "name": {
@@ -1217,7 +1218,7 @@
         }
       }
     },
-    "v1DeploymentCreateResponse": {
+    "wedoDeploymentCreateResponse": {
       "type": "object",
       "properties": {
         "id": {
@@ -1239,21 +1240,21 @@
         }
       }
     },
-    "v1DeploymentDeleteResponse": {
+    "wedoDeploymentDeleteResponse": {
       "type": "object"
     },
-    "v1DeploymentListResponse": {
+    "wedoDeploymentListResponse": {
       "type": "object",
       "properties": {
         "deployments": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/v1DeploymentResponse"
+            "$ref": "#/definitions/wedoDeploymentResponse"
           }
         }
       }
     },
-    "v1DeploymentResponse": {
+    "wedoDeploymentResponse": {
       "type": "object",
       "properties": {
         "id": {
@@ -1272,7 +1273,7 @@
         }
       }
     },
-    "v1NamespaceCreateRequest": {
+    "wedoNamespaceCreateRequest": {
       "type": "object",
       "properties": {
         "name": {
@@ -1280,7 +1281,7 @@
         }
       }
     },
-    "v1NamespaceCreateResponse": {
+    "wedoNamespaceCreateResponse": {
       "type": "object",
       "properties": {
         "id": {
@@ -1291,10 +1292,10 @@
         }
       }
     },
-    "v1NamespaceDeleteResponse": {
+    "wedoNamespaceDeleteResponse": {
       "type": "object"
     },
-    "v1NamespaceListCountResponse": {
+    "wedoNamespaceListCountResponse": {
       "type": "object",
       "properties": {
         "count": {
@@ -1303,18 +1304,18 @@
         }
       }
     },
-    "v1NamespaceListResponse": {
+    "wedoNamespaceListResponse": {
       "type": "object",
       "properties": {
         "namespaces": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/v1NamespaceResponse"
+            "$ref": "#/definitions/wedoNamespaceResponse"
           }
         }
       }
     },
-    "v1NamespaceResponse": {
+    "wedoNamespaceResponse": {
       "type": "object",
       "properties": {
         "id": {
@@ -1325,10 +1326,10 @@
         }
       }
     },
-    "v1ProcessActivateSuspendResponse": {
+    "wedoProcessActivateSuspendResponse": {
       "type": "object"
     },
-    "v1ProcessDefinitionResponse": {
+    "wedoProcessDefinitionResponse": {
       "type": "object",
       "properties": {
         "processDefinitionKey": {
@@ -1339,7 +1340,7 @@
         }
       }
     },
-    "v1ProcessDefinitionStartResponse": {
+    "wedoProcessDefinitionStartResponse": {
       "type": "object",
       "properties": {
         "processInstanceId": {
@@ -1347,22 +1348,22 @@
         }
       }
     },
-    "v1ProcessInstanceResponse": {
+    "wedoProcessInstanceResponse": {
       "type": "object"
     },
-    "v1ProcessModifyResponse": {
+    "wedoProcessModifyResponse": {
       "type": "object"
     },
-    "v1TaskAssignResponse": {
+    "wedoTaskAssignResponse": {
       "type": "object"
     },
-    "v1TaskClaimResponse": {
+    "wedoTaskClaimResponse": {
       "type": "object"
     },
-    "v1TaskCompleteResponse": {
+    "wedoTaskCompleteResponse": {
       "type": "object"
     },
-    "v1TaskCreateRequest": {
+    "wedoTaskCreateRequest": {
       "type": "object",
       "properties": {
         "id": {
@@ -1411,7 +1412,7 @@
         }
       }
     },
-    "v1TaskCreateResponse": {
+    "wedoTaskCreateResponse": {
       "type": "object",
       "properties": {
         "id": {
@@ -1422,13 +1423,13 @@
         }
       }
     },
-    "v1TaskDelegateResponse": {
+    "wedoTaskDelegateResponse": {
       "type": "object"
     },
-    "v1TaskDeleteResponse": {
+    "wedoTaskDeleteResponse": {
       "type": "object"
     },
-    "v1TaskDeployedFormResponse": {
+    "wedoTaskDeployedFormResponse": {
       "type": "object",
       "properties": {
         "formKey": {
@@ -1439,7 +1440,7 @@
         }
       }
     },
-    "v1TaskGetFormKeyResponse": {
+    "wedoTaskGetFormKeyResponse": {
       "type": "object",
       "properties": {
         "formKey": {
@@ -1447,21 +1448,21 @@
         }
       }
     },
-    "v1TaskListResponse": {
+    "wedoTaskListResponse": {
       "type": "object",
       "properties": {
         "tasks": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/v1TaskResponse"
+            "$ref": "#/definitions/wedoTaskResponse"
           }
         }
       }
     },
-    "v1TaskResolveResponse": {
+    "wedoTaskResolveResponse": {
       "type": "object"
     },
-    "v1TaskResponse": {
+    "wedoTaskResponse": {
       "type": "object",
       "properties": {
         "id": {
@@ -1510,13 +1511,13 @@
         }
       }
     },
-    "v1TaskSubmitFormResponse": {
+    "wedoTaskSubmitFormResponse": {
       "type": "object"
     },
-    "v1TaskUnclaimResponse": {
+    "wedoTaskUnclaimResponse": {
       "type": "object"
     },
-    "v1UserCreateRequest": {
+    "wedoUserCreateRequest": {
       "type": "object",
       "properties": {
         "name": {
@@ -1530,7 +1531,7 @@
         }
       }
     },
-    "v1UserCreateResponse": {
+    "wedoUserCreateResponse": {
       "type": "object",
       "properties": {
         "id": {
@@ -1541,10 +1542,10 @@
         }
       }
     },
-    "v1UserDeleteResponse": {
+    "wedoUserDeleteResponse": {
       "type": "object"
     },
-    "v1UserListCountResponse": {
+    "wedoUserListCountResponse": {
       "type": "object",
       "properties": {
         "count": {
@@ -1553,18 +1554,18 @@
         }
       }
     },
-    "v1UserListResponse": {
+    "wedoUserListResponse": {
       "type": "object",
       "properties": {
         "users": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/v1UserResponse"
+            "$ref": "#/definitions/wedoUserResponse"
           }
         }
       }
     },
-    "v1UserResponse": {
+    "wedoUserResponse": {
       "type": "object",
       "properties": {
         "id": {
@@ -1575,7 +1576,7 @@
         }
       }
     },
-    "v1UserUpdateResponse": {
+    "wedoUserUpdateResponse": {
       "type": "object",
       "properties": {
         "id": {
