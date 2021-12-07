@@ -416,6 +416,122 @@
         ]
       }
     },
+    "/process-instance/{processInstanceId}": {
+      "get": {
+        "summary": "todo ProcessInstanceGet get a process instance by id.",
+        "operationId": "WedoService_ProcessInstanceGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ProcessInstanceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "processInstanceId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WedoService"
+        ]
+      },
+      "put": {
+        "summary": "todo ProcessModify modify a process instance.",
+        "operationId": "WedoService_ProcessModify",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ProcessModifyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "processInstanceId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "processDefinitionKey": {
+                  "type": "string"
+                },
+                "namespaceId": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "WedoService"
+        ]
+      }
+    },
+    "/process-instance/{processInstanceId}/suspended": {
+      "post": {
+        "summary": "todo Process Activate/Suspend a process instance.",
+        "operationId": "WedoService_ProcessActivateSuspend",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ProcessActivateSuspendResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "processInstanceId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "suspend",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "tags": [
+          "WedoService"
+        ]
+      }
+    },
     "/task/create": {
       "post": {
         "summary": "TaskCreate create a task.",
@@ -1209,6 +1325,9 @@
         }
       }
     },
+    "v1ProcessActivateSuspendResponse": {
+      "type": "object"
+    },
     "v1ProcessDefinitionResponse": {
       "type": "object",
       "properties": {
@@ -1227,6 +1346,12 @@
           "type": "string"
         }
       }
+    },
+    "v1ProcessInstanceResponse": {
+      "type": "object"
+    },
+    "v1ProcessModifyResponse": {
+      "type": "object"
     },
     "v1TaskAssignResponse": {
       "type": "object"
