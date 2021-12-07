@@ -150,7 +150,29 @@ service WedoService {
     };
   }
 
-  // Process Instance crud
+  // Process Instance
+
+  // todo ProcessInstanceGet get a process instance by id.
+  rpc ProcessInstanceGet(ProcessInstanceRequest) returns (ProcessInstanceResponse) {
+    option (google.api.http) = {
+      get : "/process-instance/{process_instance_id}"
+    };
+  }
+
+  // todo ProcessModify modify a process instance.
+  rpc ProcessModify(ProcessModifyRequest) returns (ProcessModifyResponse) {
+    option (google.api.http) = {
+      put : "/process-instance/{process_instance_id}"
+      body : "*"
+    };
+  }
+
+  // todo Process Activate/Suspend a process instance.
+  rpc ProcessActivateSuspend(ProcessActivateSuspendRequest) returns (ProcessActivateSuspendResponse) {
+    option (google.api.http) = {
+      post : "/process-instance/{process_instance_id}/suspended"
+    };
+  }
 
   // Task
 
@@ -398,6 +420,36 @@ message ProcessDefinitionRequest {
 message ProcessDefinitionResponse {
   string process_definition_key = 1;
   string namespace_id = 2;
+}
+
+// Process Instance
+
+message ProcessInstanceRequest {
+  string process_instance_id = 1;
+}
+
+message ProcessInstanceResponse {
+
+}
+
+message ProcessModifyRequest {
+  string process_instance_id = 1;
+  string process_definition_key = 2;
+  string namespace_id = 3;
+  string id = 4;
+}
+
+message ProcessModifyResponse {
+
+}
+
+message ProcessActivateSuspendRequest {
+  string process_instance_id = 1;
+  bool suspend = 2;
+}
+
+message ProcessActivateSuspendResponse {
+
 }
 
 // Task
