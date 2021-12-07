@@ -59,6 +59,24 @@ type WedoServiceClient interface {
 	TaskDelete(ctx context.Context, in *TaskDeleteRequest, opts ...grpc.CallOption) (*TaskDeleteResponse, error)
 	// TaskList list all tasks By Process Instance ID.
 	TaskList(ctx context.Context, in *TaskListRequest, opts ...grpc.CallOption) (*TaskListResponse, error)
+	// todo TaskClaim claim a task.
+	TaskClaim(ctx context.Context, in *TaskClaimRequest, opts ...grpc.CallOption) (*TaskClaimResponse, error)
+	// todo TaskUnclaim unclaim a task.
+	TaskUnclaim(ctx context.Context, in *TaskUnclaimRequest, opts ...grpc.CallOption) (*TaskUnclaimResponse, error)
+	// todo TaskDelegate delegate a task.
+	TaskDelegate(ctx context.Context, in *TaskDelegateRequest, opts ...grpc.CallOption) (*TaskDelegateResponse, error)
+	// todo TaskAssign assign a task.
+	TaskAssign(ctx context.Context, in *TaskAssignRequest, opts ...grpc.CallOption) (*TaskAssignResponse, error)
+	// todo TaskComplete complete a task.
+	TaskComplete(ctx context.Context, in *TaskCompleteRequest, opts ...grpc.CallOption) (*TaskCompleteResponse, error)
+	// todo TaskGetFormKey get a form key from a task.
+	TaskGetFormKey(ctx context.Context, in *TaskGetFormKeyRequest, opts ...grpc.CallOption) (*TaskGetFormKeyResponse, error)
+	// todo TaskSubmitForm submit a form to a task.
+	TaskSubmitForm(ctx context.Context, in *TaskSubmitFormRequest, opts ...grpc.CallOption) (*TaskSubmitFormResponse, error)
+	// todo TaskResolve resolve a task.
+	TaskResolve(ctx context.Context, in *TaskResolveRequest, opts ...grpc.CallOption) (*TaskResolveResponse, error)
+	// todo TaskDeployedForm get task's deployed form.
+	TaskDeployedForm(ctx context.Context, in *TaskDeployedFormRequest, opts ...grpc.CallOption) (*TaskDeployedFormResponse, error)
 }
 
 type wedoServiceClient struct {
@@ -258,6 +276,87 @@ func (c *wedoServiceClient) TaskList(ctx context.Context, in *TaskListRequest, o
 	return out, nil
 }
 
+func (c *wedoServiceClient) TaskClaim(ctx context.Context, in *TaskClaimRequest, opts ...grpc.CallOption) (*TaskClaimResponse, error) {
+	out := new(TaskClaimResponse)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskClaim", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wedoServiceClient) TaskUnclaim(ctx context.Context, in *TaskUnclaimRequest, opts ...grpc.CallOption) (*TaskUnclaimResponse, error) {
+	out := new(TaskUnclaimResponse)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskUnclaim", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wedoServiceClient) TaskDelegate(ctx context.Context, in *TaskDelegateRequest, opts ...grpc.CallOption) (*TaskDelegateResponse, error) {
+	out := new(TaskDelegateResponse)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskDelegate", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wedoServiceClient) TaskAssign(ctx context.Context, in *TaskAssignRequest, opts ...grpc.CallOption) (*TaskAssignResponse, error) {
+	out := new(TaskAssignResponse)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskAssign", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wedoServiceClient) TaskComplete(ctx context.Context, in *TaskCompleteRequest, opts ...grpc.CallOption) (*TaskCompleteResponse, error) {
+	out := new(TaskCompleteResponse)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskComplete", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wedoServiceClient) TaskGetFormKey(ctx context.Context, in *TaskGetFormKeyRequest, opts ...grpc.CallOption) (*TaskGetFormKeyResponse, error) {
+	out := new(TaskGetFormKeyResponse)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskGetFormKey", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wedoServiceClient) TaskSubmitForm(ctx context.Context, in *TaskSubmitFormRequest, opts ...grpc.CallOption) (*TaskSubmitFormResponse, error) {
+	out := new(TaskSubmitFormResponse)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskSubmitForm", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wedoServiceClient) TaskResolve(ctx context.Context, in *TaskResolveRequest, opts ...grpc.CallOption) (*TaskResolveResponse, error) {
+	out := new(TaskResolveResponse)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskResolve", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wedoServiceClient) TaskDeployedForm(ctx context.Context, in *TaskDeployedFormRequest, opts ...grpc.CallOption) (*TaskDeployedFormResponse, error) {
+	out := new(TaskDeployedFormResponse)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskDeployedForm", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // WedoServiceServer is the server API for WedoService service.
 // All implementations should embed UnimplementedWedoServiceServer
 // for forward compatibility
@@ -303,6 +402,24 @@ type WedoServiceServer interface {
 	TaskDelete(context.Context, *TaskDeleteRequest) (*TaskDeleteResponse, error)
 	// TaskList list all tasks By Process Instance ID.
 	TaskList(context.Context, *TaskListRequest) (*TaskListResponse, error)
+	// todo TaskClaim claim a task.
+	TaskClaim(context.Context, *TaskClaimRequest) (*TaskClaimResponse, error)
+	// todo TaskUnclaim unclaim a task.
+	TaskUnclaim(context.Context, *TaskUnclaimRequest) (*TaskUnclaimResponse, error)
+	// todo TaskDelegate delegate a task.
+	TaskDelegate(context.Context, *TaskDelegateRequest) (*TaskDelegateResponse, error)
+	// todo TaskAssign assign a task.
+	TaskAssign(context.Context, *TaskAssignRequest) (*TaskAssignResponse, error)
+	// todo TaskComplete complete a task.
+	TaskComplete(context.Context, *TaskCompleteRequest) (*TaskCompleteResponse, error)
+	// todo TaskGetFormKey get a form key from a task.
+	TaskGetFormKey(context.Context, *TaskGetFormKeyRequest) (*TaskGetFormKeyResponse, error)
+	// todo TaskSubmitForm submit a form to a task.
+	TaskSubmitForm(context.Context, *TaskSubmitFormRequest) (*TaskSubmitFormResponse, error)
+	// todo TaskResolve resolve a task.
+	TaskResolve(context.Context, *TaskResolveRequest) (*TaskResolveResponse, error)
+	// todo TaskDeployedForm get task's deployed form.
+	TaskDeployedForm(context.Context, *TaskDeployedFormRequest) (*TaskDeployedFormResponse, error)
 }
 
 // UnimplementedWedoServiceServer should be embedded to have forward compatible implementations.
@@ -371,6 +488,33 @@ func (UnimplementedWedoServiceServer) TaskDelete(context.Context, *TaskDeleteReq
 }
 func (UnimplementedWedoServiceServer) TaskList(context.Context, *TaskListRequest) (*TaskListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TaskList not implemented")
+}
+func (UnimplementedWedoServiceServer) TaskClaim(context.Context, *TaskClaimRequest) (*TaskClaimResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TaskClaim not implemented")
+}
+func (UnimplementedWedoServiceServer) TaskUnclaim(context.Context, *TaskUnclaimRequest) (*TaskUnclaimResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TaskUnclaim not implemented")
+}
+func (UnimplementedWedoServiceServer) TaskDelegate(context.Context, *TaskDelegateRequest) (*TaskDelegateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TaskDelegate not implemented")
+}
+func (UnimplementedWedoServiceServer) TaskAssign(context.Context, *TaskAssignRequest) (*TaskAssignResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TaskAssign not implemented")
+}
+func (UnimplementedWedoServiceServer) TaskComplete(context.Context, *TaskCompleteRequest) (*TaskCompleteResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TaskComplete not implemented")
+}
+func (UnimplementedWedoServiceServer) TaskGetFormKey(context.Context, *TaskGetFormKeyRequest) (*TaskGetFormKeyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TaskGetFormKey not implemented")
+}
+func (UnimplementedWedoServiceServer) TaskSubmitForm(context.Context, *TaskSubmitFormRequest) (*TaskSubmitFormResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TaskSubmitForm not implemented")
+}
+func (UnimplementedWedoServiceServer) TaskResolve(context.Context, *TaskResolveRequest) (*TaskResolveResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TaskResolve not implemented")
+}
+func (UnimplementedWedoServiceServer) TaskDeployedForm(context.Context, *TaskDeployedFormRequest) (*TaskDeployedFormResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TaskDeployedForm not implemented")
 }
 
 // UnsafeWedoServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -762,6 +906,168 @@ func _WedoService_TaskList_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WedoService_TaskClaim_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TaskClaimRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WedoServiceServer).TaskClaim(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskClaim",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WedoServiceServer).TaskClaim(ctx, req.(*TaskClaimRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WedoService_TaskUnclaim_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TaskUnclaimRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WedoServiceServer).TaskUnclaim(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskUnclaim",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WedoServiceServer).TaskUnclaim(ctx, req.(*TaskUnclaimRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WedoService_TaskDelegate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TaskDelegateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WedoServiceServer).TaskDelegate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskDelegate",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WedoServiceServer).TaskDelegate(ctx, req.(*TaskDelegateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WedoService_TaskAssign_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TaskAssignRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WedoServiceServer).TaskAssign(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskAssign",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WedoServiceServer).TaskAssign(ctx, req.(*TaskAssignRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WedoService_TaskComplete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TaskCompleteRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WedoServiceServer).TaskComplete(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskComplete",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WedoServiceServer).TaskComplete(ctx, req.(*TaskCompleteRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WedoService_TaskGetFormKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TaskGetFormKeyRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WedoServiceServer).TaskGetFormKey(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskGetFormKey",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WedoServiceServer).TaskGetFormKey(ctx, req.(*TaskGetFormKeyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WedoService_TaskSubmitForm_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TaskSubmitFormRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WedoServiceServer).TaskSubmitForm(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskSubmitForm",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WedoServiceServer).TaskSubmitForm(ctx, req.(*TaskSubmitFormRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WedoService_TaskResolve_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TaskResolveRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WedoServiceServer).TaskResolve(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskResolve",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WedoServiceServer).TaskResolve(ctx, req.(*TaskResolveRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WedoService_TaskDeployedForm_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TaskDeployedFormRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WedoServiceServer).TaskDeployedForm(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/github.com.wedo_workflow.wedo.api.v1.WedoService/TaskDeployedForm",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WedoServiceServer).TaskDeployedForm(ctx, req.(*TaskDeployedFormRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // WedoService_ServiceDesc is the grpc.ServiceDesc for WedoService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -852,6 +1158,42 @@ var WedoService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "TaskList",
 			Handler:    _WedoService_TaskList_Handler,
+		},
+		{
+			MethodName: "TaskClaim",
+			Handler:    _WedoService_TaskClaim_Handler,
+		},
+		{
+			MethodName: "TaskUnclaim",
+			Handler:    _WedoService_TaskUnclaim_Handler,
+		},
+		{
+			MethodName: "TaskDelegate",
+			Handler:    _WedoService_TaskDelegate_Handler,
+		},
+		{
+			MethodName: "TaskAssign",
+			Handler:    _WedoService_TaskAssign_Handler,
+		},
+		{
+			MethodName: "TaskComplete",
+			Handler:    _WedoService_TaskComplete_Handler,
+		},
+		{
+			MethodName: "TaskGetFormKey",
+			Handler:    _WedoService_TaskGetFormKey_Handler,
+		},
+		{
+			MethodName: "TaskSubmitForm",
+			Handler:    _WedoService_TaskSubmitForm_Handler,
+		},
+		{
+			MethodName: "TaskResolve",
+			Handler:    _WedoService_TaskResolve_Handler,
+		},
+		{
+			MethodName: "TaskDeployedForm",
+			Handler:    _WedoService_TaskDeployedForm_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

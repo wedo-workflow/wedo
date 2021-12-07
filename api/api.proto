@@ -179,6 +179,61 @@ service WedoService {
       get : "/tasks"
     };
   }
+  // todo TaskClaim claim a task.
+  rpc TaskClaim(TaskClaimRequest) returns (TaskClaimResponse) {
+    option (google.api.http) = {
+      put : "/task/{task_id}/claim"
+    };
+  }
+  // todo TaskUnclaim unclaim a task.
+  rpc TaskUnclaim(TaskUnclaimRequest) returns (TaskUnclaimResponse) {
+    option (google.api.http) = {
+      put : "/task/{task_id}/unclaim"
+    };
+  }
+  // todo TaskDelegate delegate a task.
+  rpc TaskDelegate(TaskDelegateRequest) returns (TaskDelegateResponse) {
+    option (google.api.http) = {
+      put : "/task/{task_id}/delegate"
+    };
+  }
+  // todo TaskAssign assign a task.
+  rpc TaskAssign(TaskAssignRequest) returns (TaskAssignResponse) {
+    option (google.api.http) = {
+      put : "/task/{task_id}/assign"
+    };
+  }
+  // todo TaskComplete complete a task.
+  rpc TaskComplete(TaskCompleteRequest) returns (TaskCompleteResponse) {
+    option (google.api.http) = {
+      put : "/task/{task_id}/complete"
+    };
+  }
+  // todo TaskGetFormKey get a form key from a task.
+  rpc TaskGetFormKey(TaskGetFormKeyRequest) returns (TaskGetFormKeyResponse) {
+    option (google.api.http) = {
+      get : "/task/{task_id}/form-key"
+    };
+  }
+  // todo TaskSubmitForm submit a form to a task.
+  rpc TaskSubmitForm(TaskSubmitFormRequest) returns (TaskSubmitFormResponse) {
+    option (google.api.http) = {
+      post : "/task/{task_id}/submit-form"
+      body : "*"
+    };
+  }
+  // todo TaskResolve resolve a task.
+  rpc TaskResolve(TaskResolveRequest) returns (TaskResolveResponse) {
+    option (google.api.http) = {
+      put : "/task/{task_id}/resolve"
+    };
+  }
+  // todo TaskDeployedForm get task's deployed form.
+  rpc TaskDeployedForm(TaskDeployedFormRequest) returns (TaskDeployedFormResponse) {
+    option (google.api.http) = {
+      get : "/task/{task_id}/deployed-form"
+    };
+  }
 }
 
 // Deployment
@@ -409,4 +464,81 @@ message TaskListRequest {
 
 message TaskListResponse {
   repeated TaskResponse tasks = 1;
+}
+
+message TaskClaimRequest {
+  string task_id = 1;
+}
+
+message TaskClaimResponse {
+
+}
+
+message TaskUnclaimRequest {
+  string task_id = 1;
+}
+
+message TaskUnclaimResponse {
+
+}
+
+message TaskDelegateRequest {
+  string task_id = 1;
+  string user_id = 2;
+}
+
+message TaskDelegateResponse {
+
+}
+
+message TaskAssignRequest {
+  string task_id = 1;
+  string user_id = 2;
+}
+
+message TaskAssignResponse {
+
+}
+
+message TaskCompleteRequest {
+  string task_id = 1;
+}
+
+message TaskCompleteResponse {
+
+}
+
+message TaskGetFormKeyRequest {
+  string task_id = 1;
+}
+
+message TaskGetFormKeyResponse {
+  string form_key = 1;
+}
+
+message TaskSubmitFormRequest {
+  string task_id = 1;
+  string form_key = 2;
+  string form_data = 3;
+}
+
+message TaskSubmitFormResponse {
+
+}
+
+message TaskResolveRequest {
+  string task_id = 1;
+}
+
+message TaskResolveResponse {
+
+}
+
+message TaskDeployedFormRequest {
+  string task_id = 1;
+}
+
+message TaskDeployedFormResponse {
+  string form_key = 1;
+  string form_data = 2;
 }

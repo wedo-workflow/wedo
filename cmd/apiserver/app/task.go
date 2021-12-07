@@ -54,3 +54,48 @@ func (s *APIServer) TaskList(ctx context.Context, request *wedo.TaskListRequest)
 		Tasks: tasks,
 	}, nil
 }
+
+func (s *APIServer) TaskClaim(ctx context.Context, request *wedo.TaskClaimRequest) (*wedo.TaskClaimResponse, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (s *APIServer) TaskUnclaim(ctx context.Context, request *wedo.TaskUnclaimRequest) (*wedo.TaskUnclaimResponse, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (s *APIServer) TaskComplete(ctx context.Context, request *wedo.TaskCompleteRequest) (*wedo.TaskCompleteResponse, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (s *APIServer) TaskGetFormKey(ctx context.Context, request *wedo.TaskGetFormKeyRequest) (*wedo.TaskGetFormKeyResponse, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (s *APIServer) TaskDelegate(ctx context.Context, request *wedo.TaskDelegateRequest) (*wedo.TaskDelegateResponse, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (s *APIServer) TaskAssign(ctx context.Context, request *wedo.TaskAssignRequest) (*wedo.TaskAssignResponse, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (s *APIServer) TaskSubmitForm(ctx context.Context, request *wedo.TaskSubmitFormRequest) (*wedo.TaskSubmitFormResponse, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (s *APIServer) TaskResolve(ctx context.Context, request *wedo.TaskResolveRequest) (*wedo.TaskResolveResponse, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (s *APIServer) TaskDeployedForm(ctx context.Context, request *wedo.TaskDeployedFormRequest) (*wedo.TaskDeployedFormResponse, error) {
+	//TODO implement me
+	panic("implement me")
+}

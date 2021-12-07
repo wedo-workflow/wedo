@@ -509,6 +509,313 @@
         ]
       }
     },
+    "/task/{taskId}/assign": {
+      "put": {
+        "summary": "todo TaskAssign assign a task.",
+        "operationId": "WedoService_TaskAssign",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1TaskAssignResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WedoService"
+        ]
+      }
+    },
+    "/task/{taskId}/claim": {
+      "put": {
+        "summary": "todo TaskClaim claim a task.",
+        "operationId": "WedoService_TaskClaim",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1TaskClaimResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WedoService"
+        ]
+      }
+    },
+    "/task/{taskId}/complete": {
+      "put": {
+        "summary": "todo TaskComplete complete a task.",
+        "operationId": "WedoService_TaskComplete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1TaskCompleteResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WedoService"
+        ]
+      }
+    },
+    "/task/{taskId}/delegate": {
+      "put": {
+        "summary": "todo TaskDelegate delegate a task.",
+        "operationId": "WedoService_TaskDelegate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1TaskDelegateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WedoService"
+        ]
+      }
+    },
+    "/task/{taskId}/deployed-form": {
+      "get": {
+        "summary": "todo TaskDeployedForm get task's deployed form.",
+        "operationId": "WedoService_TaskDeployedForm",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1TaskDeployedFormResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WedoService"
+        ]
+      }
+    },
+    "/task/{taskId}/form-key": {
+      "get": {
+        "summary": "todo TaskGetFormKey get a form key from a task.",
+        "operationId": "WedoService_TaskGetFormKey",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1TaskGetFormKeyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WedoService"
+        ]
+      }
+    },
+    "/task/{taskId}/resolve": {
+      "put": {
+        "summary": "todo TaskResolve resolve a task.",
+        "operationId": "WedoService_TaskResolve",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1TaskResolveResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WedoService"
+        ]
+      }
+    },
+    "/task/{taskId}/submit-form": {
+      "post": {
+        "summary": "todo TaskSubmitForm submit a form to a task.",
+        "operationId": "WedoService_TaskSubmitForm",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1TaskSubmitFormResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "formKey": {
+                  "type": "string"
+                },
+                "formData": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "WedoService"
+        ]
+      }
+    },
+    "/task/{taskId}/unclaim": {
+      "put": {
+        "summary": "todo TaskUnclaim unclaim a task.",
+        "operationId": "WedoService_TaskUnclaim",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1TaskUnclaimResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WedoService"
+        ]
+      }
+    },
     "/tasks": {
       "get": {
         "summary": "TaskList list all tasks By Process Instance ID.",
@@ -921,6 +1228,15 @@
         }
       }
     },
+    "v1TaskAssignResponse": {
+      "type": "object"
+    },
+    "v1TaskClaimResponse": {
+      "type": "object"
+    },
+    "v1TaskCompleteResponse": {
+      "type": "object"
+    },
     "v1TaskCreateRequest": {
       "type": "object",
       "properties": {
@@ -981,8 +1297,30 @@
         }
       }
     },
+    "v1TaskDelegateResponse": {
+      "type": "object"
+    },
     "v1TaskDeleteResponse": {
       "type": "object"
+    },
+    "v1TaskDeployedFormResponse": {
+      "type": "object",
+      "properties": {
+        "formKey": {
+          "type": "string"
+        },
+        "formData": {
+          "type": "string"
+        }
+      }
+    },
+    "v1TaskGetFormKeyResponse": {
+      "type": "object",
+      "properties": {
+        "formKey": {
+          "type": "string"
+        }
+      }
     },
     "v1TaskListResponse": {
       "type": "object",
@@ -994,6 +1332,9 @@
           }
         }
       }
+    },
+    "v1TaskResolveResponse": {
+      "type": "object"
     },
     "v1TaskResponse": {
       "type": "object",
@@ -1043,6 +1384,12 @@
           "format": "date-time"
         }
       }
+    },
+    "v1TaskSubmitFormResponse": {
+      "type": "object"
+    },
+    "v1TaskUnclaimResponse": {
+      "type": "object"
     },
     "v1UserCreateRequest": {
       "type": "object",
