@@ -21,7 +21,6 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   };
   host: "demo.wedo.run";
   schemes: [HTTPS];
-  base_path: "/v1"
 };
 
 service WedoService {
