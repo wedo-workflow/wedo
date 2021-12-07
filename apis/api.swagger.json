@@ -15,7 +15,6 @@
     }
   ],
   "host": "demo.wedo.run",
-  "basePath": "/v1",
   "schemes": [
     "https"
   ],
