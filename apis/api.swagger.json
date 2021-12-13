@@ -280,7 +280,7 @@
         ]
       }
     },
-    "/process-definition/key/{processDefinitionKey}/namespace-id/{namespaceId}": {
+    "/process-definition/{id}": {
       "get": {
         "summary": "ProcessDefinitionGet get a process definition by business key and namespace id.",
         "operationId": "WedoService_ProcessDefinitionGet",
@@ -300,19 +300,19 @@
         },
         "parameters": [
           {
-            "name": "processDefinitionKey",
+            "name": "id",
             "in": "path",
             "required": true,
+            "type": "string"
+          },
+          {
+            "name": "processDefinitionKey",
+            "in": "query",
+            "required": false,
             "type": "string"
           },
           {
             "name": "namespaceId",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "id",
             "in": "query",
             "required": false,
             "type": "string"
@@ -323,7 +323,7 @@
         ]
       }
     },
-    "/process-definition/key/{processDefinitionKey}/namespace-id/{namespaceId}/start": {
+    "/process-definition/{id}/start": {
       "post": {
         "summary": "ProcessDefinitionStart Process Definition Start and return Process Instance ID",
         "operationId": "WedoService_ProcessDefinitionStart",
@@ -343,13 +343,7 @@
         },
         "parameters": [
           {
-            "name": "processDefinitionKey",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "namespaceId",
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -361,54 +355,14 @@
             "schema": {
               "type": "object",
               "properties": {
-                "id": {
+                "processDefinitionKey": {
+                  "type": "string"
+                },
+                "namespaceId": {
                   "type": "string"
                 }
               }
             }
-          }
-        ],
-        "tags": [
-          "WedoService"
-        ]
-      }
-    },
-    "/process-definition/{id}": {
-      "get": {
-        "summary": "ProcessDefinitionGet get a process definition by business key and namespace id.",
-        "operationId": "WedoService_ProcessDefinitionGet2",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/wedoProcessDefinitionResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "processDefinitionKey",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "namespaceId",
-            "in": "query",
-            "required": false,
-            "type": "string"
           }
         ],
         "tags": [
@@ -1348,7 +1302,32 @@
       }
     },
     "wedoProcessInstanceResponse": {
-      "type": "object"
+      "type": "object",
+      "properties": {
+        "processInstanceId": {
+          "type": "string"
+        },
+        "processDefinitionKey": {
+          "type": "string"
+        },
+        "namespaceId": {
+          "type": "string"
+        },
+        "state": {
+          "$ref": "#/definitions/wedoProcessInstanceState"
+        }
+      }
+    },
+    "wedoProcessInstanceState": {
+      "type": "string",
+      "enum": [
+        "INITIALIZED",
+        "STARTED",
+        "COMPLETED",
+        "ABORTED",
+        "FAILED"
+      ],
+      "default": "INITIALIZED"
     },
     "wedoProcessModifyResponse": {
       "type": "object"
