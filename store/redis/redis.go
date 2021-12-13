@@ -10,24 +10,26 @@ import (
 
 // Redis Keys
 var (
-	processDefinition = "process_definitions"
+	processDefinition       = "process_definitions"
+	processDefinitionDetail = "process_definition_detail_%s"
 
 	processInstance       = "process_instances"
-	processInstanceDetail = "%s_instance"
-	processInstanceTasks  = "%s_instance_tasks"
+	processInstanceDetail = "process_instance_detail_%s"
+	processInstanceTasks  = "process_instance_tasks_%s"
 
-	taskDetail = "task_%s"
+	taskDetail = "tasks_detail_%s"
 
 	deploys    = "deploys"
-	deploySet  = "%s_deploy"
-	elementSet = "%s_elements"
+	deploySet  = "deploys_detail_%s"
+	elementSet = "deploys_detail_elements_%s"
 
-	Namespaces    = "namespaces"
-	NamespacesSet = "namespaces_set"
+	NamespacesByID          = "namespaces_by_id"
+	NamespacesByName        = "namespaces_by_name"
+	NamespacesNameUniqueSet = "namespaces_name_unqiue_set"
 
-	userProfile     = "%s_user"
-	userList        = "user_list"
-	userListByEmail = "user_list_by_email"
+	users              = "users"
+	userProfile        = "user_detail_%s"
+	userEmailUniqueSet = "users_email_unique_set"
 )
 
 type Redis struct {

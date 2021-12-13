@@ -17,25 +17,38 @@ func (s *APIServer) ProcessDefinitionStart(ctx context.Context, request *wedo.Pr
 		return nil, status.Error(codes.InvalidArgument, "Process definition id is empty")
 	}
 
-	return nil, nil
+	processInstanceID, err := s.Runtime.ProcessDefinitionStart(ctx, &model.ProcessDefinition{
+		Id: request.GetId(),
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	return &wedo.ProcessDefinitionStartResponse{
+		ProcessInstanceId: processInstanceID,
+	}, nil
 }
 
 func (s *APIServer) ProcessDefinitionGet(ctx context.Context, request *wedo.ProcessDefinitionRequest) (*wedo.ProcessDefinitionResponse, error) {
-	if request.NamespaceId == "" {
-		return nil, status.Error(codes.InvalidArgument, "Namespace id is empty")
-	}
-	if request.ProcessDefinitionKey == "" {
+	//if request.NamespaceId == "" {
+	//	return nil, status.Error(codes.InvalidArgument, "Namespace id is empty")
+	//}
+	//if request.ProcessDefinitionKey == "" {
+	//	return nil, status.Error(codes.InvalidArgument, "Process definition id is empty")
+	//}
+	if request.Id == "" {
 		return nil, status.Error(codes.InvalidArgument, "Process definition id is empty")
 	}
 	rt, err := s.Runtime.ProcessDefinitionGet(ctx, &model.ProcessDefinition{
-		ProcessDefinitionKey: request.ProcessDefinitionKey,
-		NamespaceId:          request.NamespaceId,
+		Id: request.Id,
+		//ProcessDefinitionKey: request.ProcessDefinitionKey,
+		//NamespaceId:          request.NamespaceId,
 	})
 	if err != nil {
 		return nil, status.Error(codes.Internal, err.Error())
 	}
 	return &wedo.ProcessDefinitionResponse{
 		ProcessDefinitionKey: rt.BusinessName,
-		NamespaceId:          rt.NamespaceID,
+		NamespaceId:          rt.NamespaceId,
 	}, nil
 }

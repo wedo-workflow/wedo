@@ -12,10 +12,13 @@ import (
 type Store interface {
 	Ping(ctx context.Context) error
 
-	ProcessDefinition(ctx context.Context, key string) (string, error)
-	ProcessDefinitionAdd(ctx context.Context, key string, value string) error
+	ProcessDefinition(ctx context.Context, key string) (*model.ProcessDefinition, error)
+	ProcessDefinitionAdd(ctx context.Context, pd *model.ProcessDefinition) error
 	// ProcessDefinitionStart return the process instance id
 	ProcessDefinitionStart(ctx context.Context, pd *model.ProcessDefinition) (string, error)
+
+	// ProcessInstanceGet return the process instance
+	ProcessInstanceGet(ctx context.Context, id string) (*model.ProcessInstance, error)
 
 	// Deployment read a deployment
 	Deployment(ctx context.Context, deployID string) (*model.Deployment, error)
@@ -31,7 +34,8 @@ type Store interface {
 
 	NamespaceCreate(ctx context.Context, namespace *model.Namespace) error
 	NamespaceCheckExist(ctx context.Context, namespace string) (bool, error)
-	NamespaceGet(ctx context.Context, namespaceID string) (*model.Namespace, error)
+	NamespaceGetByID(ctx context.Context, namespaceID string) (*model.Namespace, error)
+	NamespaceGetByName(ctx context.Context, namespaceName string) (*model.Namespace, error)
 	NamespaceDelete(ctx context.Context, namespaceID string) error
 	NamespaceList(ctx context.Context, opts *model.NamespaceQueryOptions) ([]*model.Namespace, error)
 	NamespaceListCount(ctx context.Context, opts *model.NamespaceQueryOptions) (int64, error)

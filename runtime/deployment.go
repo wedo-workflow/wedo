@@ -2,11 +2,9 @@ package runtime
 
 import (
 	"context"
-	"encoding/json"
 	"errors"
 	"fmt"
 
-	"github.com/go-redis/redis/v8"
 	"github.com/google/uuid"
 	log "github.com/sirupsen/logrus"
 	"github.com/wedo-workflow/wedo/element/bpmn"
@@ -36,13 +34,17 @@ var (
 )
 
 func (r *Runtime) Deploy(ctx context.Context, deploy *model.Deployment) (string, error) {
-	oldDID, err := r.store.ProcessDefinition(ctx, fmt.Sprintf(deployNameKey, deploy.Name))
-	if err != nil && err != redis.Nil {
-		return "", err
+	ns, err := r.NamespaceGetByID(ctx, deploy.NamespaceID)
+	if err != nil || ns.Name == "" {
+		return "", errors.New("namespace not found, create namespace first")
 	}
-	if oldDID != "" {
-		return "", errors.New("deploy name already token")
-	}
+	//oldDID, err := r.store.ProcessDefinition(ctx, fmt.Sprintf(deployNameKey, deploy.Name))
+	//if err != nil && err != redis.Nil {
+	//	return "", err
+	//}
+	//if oldDID != "" {
+	//	return "", errors.New("deploy name already token")
+	//}
 	if deploy.NamespaceID == "" {
 		return "", errors.New("namespace id is empty")
 	}
@@ -51,56 +53,42 @@ func (r *Runtime) Deploy(ctx context.Context, deploy *model.Deployment) (string,
 		return "", err
 	}
 	deploy.DID = uuidV4.String()
-	// store deployment
-	if err := r.store.DeploymentCreate(ctx, deploy); err != nil {
-		return "", err
-	}
+
 	// parse deploy content
 	tree, err := xmltree.Parse(deploy.Content)
 	if err != nil {
 		return "", fmt.Errorf("parse deploy content error: %s", err)
 	}
+
 	// deploy element
 	if err := r.deploy(ctx, deploy, tree); err != nil {
 		return "", err
 	}
+
+	// store deployment
+	if err := r.store.DeploymentCreate(ctx, deploy); err != nil {
+		return "", err
+	}
+
 	uuidV4ProcessDefinition, err := uuid.NewRandom()
 	if err != nil {
 		return "", err
 	}
-	pdID := uuidV4ProcessDefinition.String()
-	if err := r.store.ProcessDefinitionAdd(ctx, pdID, deploy.DID); err != nil {
-		return "", err
-	}
-	pdBytes, err := json.Marshal(&model.ProcessDefinition{
+	pd := &model.ProcessDefinition{
+		Id:                   uuidV4ProcessDefinition.String(),
 		ProcessDefinitionKey: deploy.BusinessName,
 		NamespaceId:          deploy.NamespaceID,
-		Id:                   pdID,
-	})
-	if err != nil {
+		BusinessName:         deploy.BusinessName,
+		ProcessName:          deploy.BusinessName,
+		BusinessID:           deploy.BusinessID,
+		ProcessID:            deploy.BusinessID,
+		DefinitionsID:        deploy.DefinitionsID,
+	}
+
+	if err := r.store.ProcessDefinitionAdd(ctx, pd); err != nil {
 		return "", err
 	}
-	if err := r.store.ProcessDefinitionAdd(ctx, pdID+"_detail", string(pdBytes)); err != nil {
-		return "", err
-	}
-	if err := r.store.ProcessDefinitionAdd(ctx, "process_definition_"+deploy.DID, pdID); err != nil {
-		return "", err
-	}
-	if err := r.store.ProcessDefinitionAdd(ctx, deploy.DID, deploy.Name); err != nil {
-		return "", err
-	}
-	if err := r.store.ProcessDefinitionAdd(ctx, fmt.Sprintf(deployNameKey, deploy.Name), deploy.DID); err != nil {
-		return "", err
-	}
-	if err := r.store.ProcessDefinitionAdd(ctx, fmt.Sprintf(deployNameKey, deploy.Name), pdID); err != nil {
-		return "", err
-	}
-	if err := r.store.ProcessDefinitionAdd(ctx, "business_name_"+deploy.BusinessName, deploy.DID); err != nil {
-		return "", err
-	}
-	if err := r.store.ProcessDefinitionAdd(ctx, "business_id_"+deploy.BusinessID, deploy.DID); err != nil {
-		return "", err
-	}
+
 	return deploy.DID, nil
 }
 

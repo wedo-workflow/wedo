@@ -12,10 +12,10 @@ import (
 
 func (r *Redis) UserCreate(ctx context.Context, user *model.User) error {
 	now := time.Now().UnixMilli()
-	if err := r.db.ZAdd(ctx, userList, &redis.Z{Score: float64(now), Member: user.Id}).Err(); err != nil {
+	if err := r.db.ZAdd(ctx, users, &redis.Z{Score: float64(now), Member: user.Id}).Err(); err != nil {
 		return err
 	}
-	if err := r.db.SAdd(ctx, userListByEmail, user.Email).Err(); err != nil {
+	if err := r.db.SAdd(ctx, userEmailUniqueSet, user.Email).Err(); err != nil {
 		return err
 	}
 	return r.db.Set(ctx, fmt.Sprintf(userProfile, user.Id), user, redis.KeepTTL).Err()
@@ -32,7 +32,7 @@ func (r *Redis) UserGet(ctx context.Context, id string) (*model.User, error) {
 
 // UserCheckExist returns the user with the given email.
 func (r *Redis) UserCheckExist(ctx context.Context, email string) (bool, error) {
-	return r.db.SIsMember(ctx, userListByEmail, email).Result()
+	return r.db.SIsMember(ctx, userEmailUniqueSet, email).Result()
 }
 
 // UserDelete deletes the user with the given ID.
@@ -41,10 +41,10 @@ func (r *Redis) UserDelete(ctx context.Context, id string) error {
 	if err != nil {
 		return err
 	}
-	if err := r.db.ZRem(ctx, userList, id).Err(); err != nil {
+	if err := r.db.ZRem(ctx, users, id).Err(); err != nil {
 		return err
 	}
-	if err := r.db.SRem(ctx, userListByEmail, user.Email).Err(); err != nil {
+	if err := r.db.SRem(ctx, userEmailUniqueSet, user.Email).Err(); err != nil {
 		return err
 	}
 	return r.db.Del(ctx, fmt.Sprintf(userProfile, id)).Err()
@@ -61,7 +61,7 @@ func (r *Redis) UserUpdate(ctx context.Context, user *model.User) error {
 // UserList returns a list of all users.
 func (r *Redis) UserList(ctx context.Context, opts *model.UserListOptions) ([]*model.User, error) {
 	userIDs := make([]string, 0)
-	if err := r.db.ZRevRange(ctx, userList, opts.Offset, opts.Offset+opts.Limit-1).ScanSlice(&userIDs); err != nil {
+	if err := r.db.ZRevRange(ctx, users, opts.Offset, opts.Offset+opts.Limit-1).ScanSlice(&userIDs); err != nil {
 		return nil, err
 	}
 	userIDKeys := make([]string, len(userIDs))

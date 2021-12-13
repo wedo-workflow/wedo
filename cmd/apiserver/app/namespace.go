@@ -30,7 +30,7 @@ func (s *APIServer) NamespaceGet(ctx context.Context, request *wedo.NamespaceReq
 	if request.NamespaceId == "" {
 		return nil, status.Error(codes.InvalidArgument, "id is empty")
 	}
-	namespace, err := s.Runtime.NamespaceGet(ctx, request.NamespaceId)
+	namespace, err := s.Runtime.NamespaceGetByID(ctx, request.NamespaceId)
 	if err != nil {
 		return nil, status.Error(codes.NotFound, "namespace not found")
 	}

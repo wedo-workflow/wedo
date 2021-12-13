@@ -26,8 +26,12 @@ func (r *Runtime) NamespaceCreate(ctx context.Context, namespace *model.Namespac
 	return namespace, r.store.NamespaceCreate(ctx, namespace)
 }
 
-func (r *Runtime) NamespaceGet(ctx context.Context, namespaceID string) (*model.Namespace, error) {
-	return r.store.NamespaceGet(ctx, namespaceID)
+func (r *Runtime) NamespaceGetByID(ctx context.Context, namespaceID string) (*model.Namespace, error) {
+	return r.store.NamespaceGetByID(ctx, namespaceID)
+}
+
+func (r *Runtime) NamespaceGetByName(ctx context.Context, namespaceName string) (*model.Namespace, error) {
+	return r.store.NamespaceGetByName(ctx, namespaceName)
 }
 
 // NamespaceList returns a list of namespaces

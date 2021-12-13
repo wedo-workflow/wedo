@@ -1,11 +1,8 @@
 package model
 
-type ProcessIntance struct {
-	Status ProcessInstanceStatus `json:"status"`
+import wedo "github.com/wedo-workflow/wedo/api"
+
+type ProcessInstance struct {
+	Id     string                    `json:"id"`
+	Status wedo.ProcessInstanceState `json:"status"`
 }
-
-type ProcessInstanceStatus int
-
-const (
-	PiOK ProcessInstanceStatus = iota
-)

@@ -10,14 +10,18 @@ import (
 )
 
 func TestRuntime_Deploy(t *testing.T) {
-	doc, err := os.ReadFile("testdata/HelloWorld.bpmn")
+	doc, err := os.ReadFile("testdata/diagram.bpmn")
 	if err != nil {
-		t.Log(err)
-		t.FailNow()
+		t.Fatal(err)
+	}
+	rt := initRuntime()
+	ns, err := rt.NamespaceGetByName(context.Background(), "default")
+	if err != nil {
+		t.Fatal(err)
 	}
 	deployID, err := initRuntime().Deploy(context.Background(), &model.Deployment{
-		NamespaceID: "dffd661d-978d-4ed8-803d-a54ac0fed8ee",
-		Name:        "test",
+		NamespaceID: ns.ID,
+		Name:        "formal",
 		Content:     doc,
 		CreateTime:  time.Now(),
 	})
@@ -26,4 +30,23 @@ func TestRuntime_Deploy(t *testing.T) {
 		t.FailNow()
 	}
 	t.Log(deployID)
+}
+
+func TestRuntime_DeployList(t *testing.T) {
+	list, err := initRuntime().DeployList(context.Background(), &model.DeploymentListOptions{})
+	if err != nil {
+		t.Log(err)
+		t.FailNow()
+	}
+	for _, deployment := range list {
+		t.Log(deployment)
+	}
+}
+
+func TestRuntime_DeployDelete(t *testing.T) {
+	err := initRuntime().DeployDelete(context.Background(), "69191eb5-dfa4-464a-9b6b-71451d34e933")
+	if err != nil {
+		t.Log(err)
+		t.FailNow()
+	}
 }
