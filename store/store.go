@@ -15,7 +15,7 @@ type Store interface {
 	ProcessDefinition(ctx context.Context, key string) (*model.ProcessDefinition, error)
 	ProcessDefinitionAdd(ctx context.Context, pd *model.ProcessDefinition) error
 	// ProcessDefinitionStart return the process instance id
-	ProcessDefinitionStart(ctx context.Context, pd *model.ProcessDefinition) (string, error)
+	ProcessDefinitionStart(ctx context.Context, pi *model.ProcessInstance) error
 
 	// ProcessInstanceGet return the process instance
 	ProcessInstanceGet(ctx context.Context, id string) (*model.ProcessInstance, error)

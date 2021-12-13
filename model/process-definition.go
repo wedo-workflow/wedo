@@ -33,11 +33,11 @@ func (pd *ProcessDefinition) ToMapping() map[string]interface{} {
 }
 
 // MarshalBinary ProcessDefinition implements the BinaryMarshaler interface
-func (n *ProcessDefinition) MarshalBinary() ([]byte, error) {
-	if n == nil {
+func (pd *ProcessDefinition) MarshalBinary() ([]byte, error) {
+	if pd == nil {
 		return nil, errors.New("ProcessDefinition is nil")
 	}
-	pdBytes, err := json.Marshal(n)
+	pdBytes, err := json.Marshal(pd)
 	if err != nil {
 		return nil, err
 	}
@@ -45,11 +45,11 @@ func (n *ProcessDefinition) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary ProcessDefinition implements the BinaryUnmarshaler interface
-func (n *ProcessDefinition) UnmarshalBinary(data []byte) error {
-	if n == nil {
+func (pd *ProcessDefinition) UnmarshalBinary(data []byte) error {
+	if pd == nil {
 		return errors.New("ProcessDefinition is nil")
 	}
-	err := json.Unmarshal(data, n)
+	err := json.Unmarshal(data, pd)
 	if err != nil {
 		return err
 	}

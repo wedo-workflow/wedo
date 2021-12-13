@@ -10,18 +10,18 @@ import (
 
 // Redis Keys
 var (
-	processDefinition       = "process_definitions"
-	processDefinitionDetail = "process_definition_detail_%s"
-
-	processInstance       = "process_instances"
-	processInstanceDetail = "process_instance_detail_%s"
-	processInstanceTasks  = "process_instance_tasks_%s"
+	processDefinitions         = "process_definitions"
+	processDefinitionDetail    = "process_definition_detail_%s"
+	processDefinitionInstances = "process_definition_detail_%s_instances"
+	processInstances           = "process_instances"
+	processInstanceDetail      = "process_instance_detail_%s"
+	processInstanceTasks       = "process_instance_detail_%s_tasks"
 
 	taskDetail = "tasks_detail_%s"
 
 	deploys    = "deploys"
 	deploySet  = "deploys_detail_%s"
-	elementSet = "deploys_detail_elements_%s"
+	elementSet = "deploys_detail_%s_elements"
 
 	NamespacesByID          = "namespaces_by_id"
 	NamespacesByName        = "namespaces_by_name"
