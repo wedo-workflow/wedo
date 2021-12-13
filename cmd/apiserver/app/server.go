@@ -14,13 +14,11 @@ import (
 	grpc_recovery "github.com/grpc-ecosystem/go-grpc-middleware/recovery"
 	grpc_runtime "github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	log "github.com/sirupsen/logrus"
+	wedo "github.com/wedo-workflow/wedo/api"
+	"github.com/wedo-workflow/wedo/cmd/apiserver/config"
 	"github.com/wedo-workflow/wedo/runtime"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/keepalive"
-	"google.golang.org/grpc/metadata"
-
-	wedo "github.com/wedo-workflow/wedo/api"
-	"github.com/wedo-workflow/wedo/cmd/apiserver/config"
 )
 
 type APIServer struct {
@@ -56,10 +54,6 @@ var (
 		}),
 		grpc_recovery.WithRecoveryHandlerContext(func(ctx context.Context, p interface{}) (err error) {
 			log.Error(p)
-			md, ok := metadata.FromIncomingContext(ctx)
-			if ok {
-				log.Error(md)
-			}
 			return fmt.Errorf("context panic triggered: %v", p)
 		}),
 	}

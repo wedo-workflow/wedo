@@ -155,7 +155,7 @@ service WedoService {
 
   // Process Instance
 
-  // todo ProcessInstanceGet get a process instance by id.
+  // ProcessInstanceGet get a process instance by id.
   rpc ProcessInstanceGet(ProcessInstanceRequest) returns (ProcessInstanceResponse) {
     option (google.api.http) = {
       get : "/process-instance/{process_instance_id}"
@@ -272,6 +272,7 @@ message DeploymentResponse {
   string name = 2;
   bytes content = 3;
   google.protobuf.Timestamp timestamp = 4;
+  string process_definition_id = 5;
 }
 
 message DeploymentCreateRequest {
@@ -286,6 +287,7 @@ message DeploymentCreateResponse {
   bytes content = 3;
   google.protobuf.Timestamp timestamp = 4;
   string namespace_id = 5;
+  string process_definition_id = 6;
 }
 
 message DeploymentListRequest {
@@ -421,8 +423,9 @@ message ProcessDefinitionRequest {
 }
 
 message ProcessDefinitionResponse {
-  string process_definition_key = 1;
-  string namespace_id = 2;
+  string id = 1;
+  string process_definition_key = 2;
+  string namespace_id = 3;
 }
 
 // Process Instance

@@ -11,5 +11,5 @@ func (r *Redis) ProcessInstanceGet(ctx context.Context, processInstanceId string
 	if err := r.db.Get(ctx, fmt.Sprintf(processInstanceDetail, processInstanceId)).Scan(pi); err != nil {
 		return nil, err
 	}
-	return nil, nil
+	return pi, nil
 }

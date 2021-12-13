@@ -50,5 +50,6 @@ func (s *APIServer) ProcessDefinitionGet(ctx context.Context, request *wedo.Proc
 	return &wedo.ProcessDefinitionResponse{
 		ProcessDefinitionKey: rt.BusinessName,
 		NamespaceId:          rt.NamespaceId,
+		Id:                   rt.Id,
 	}, nil
 }

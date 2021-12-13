@@ -372,7 +372,7 @@
     },
     "/process-instance/{processInstanceId}": {
       "get": {
-        "summary": "todo ProcessInstanceGet get a process instance by id.",
+        "summary": "ProcessInstanceGet get a process instance by id.",
         "operationId": "WedoService_ProcessInstanceGet",
         "responses": {
           "200": {
@@ -1190,6 +1190,9 @@
         },
         "namespaceId": {
           "type": "string"
+        },
+        "processDefinitionId": {
+          "type": "string"
         }
       }
     },
@@ -1223,6 +1226,9 @@
         "timestamp": {
           "type": "string",
           "format": "date-time"
+        },
+        "processDefinitionId": {
+          "type": "string"
         }
       }
     },
@@ -1285,6 +1291,9 @@
     "wedoProcessDefinitionResponse": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "string"
+        },
         "processDefinitionKey": {
           "type": "string"
         },

@@ -33,46 +33,41 @@ var (
 	deployNameKey = "name_%s"
 )
 
-func (r *Runtime) Deploy(ctx context.Context, deploy *model.Deployment) (string, error) {
+func (r *Runtime) Deploy(ctx context.Context, deploy *model.Deployment) (*model.Deployment, error) {
 	ns, err := r.NamespaceGetByID(ctx, deploy.NamespaceID)
 	if err != nil || ns.Name == "" {
-		return "", errors.New("namespace not found, create namespace first")
+		return nil, errors.New("namespace not found, create namespace first")
 	}
 	//oldDID, err := r.store.ProcessDefinition(ctx, fmt.Sprintf(deployNameKey, deploy.Name))
 	//if err != nil && err != redis.Nil {
-	//	return "", err
+	//	return nil, err
 	//}
 	//if oldDID != "" {
-	//	return "", errors.New("deploy name already token")
+	//	return nil, errors.New("deploy name already token")
 	//}
 	if deploy.NamespaceID == "" {
-		return "", errors.New("namespace id is empty")
+		return nil, errors.New("namespace id is empty")
 	}
 	uuidV4, err := uuid.NewRandom()
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 	deploy.DID = uuidV4.String()
 
 	// parse deploy content
 	tree, err := xmltree.Parse(deploy.Content)
 	if err != nil {
-		return "", fmt.Errorf("parse deploy content error: %s", err)
+		return nil, fmt.Errorf("parse deploy content error: %s", err)
 	}
 
 	// deploy element
 	if err := r.deploy(ctx, deploy, tree); err != nil {
-		return "", err
-	}
-
-	// store deployment
-	if err := r.store.DeploymentCreate(ctx, deploy); err != nil {
-		return "", err
+		return nil, err
 	}
 
 	uuidV4ProcessDefinition, err := uuid.NewRandom()
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 	pd := &model.ProcessDefinition{
 		Id:                   uuidV4ProcessDefinition.String(),
@@ -86,10 +81,17 @@ func (r *Runtime) Deploy(ctx context.Context, deploy *model.Deployment) (string,
 	}
 
 	if err := r.store.ProcessDefinitionAdd(ctx, pd); err != nil {
-		return "", err
+		return nil, err
 	}
 
-	return deploy.DID, nil
+	deploy.ProcessDefinitionID = pd.Id
+
+	// store deployment
+	if err := r.store.DeploymentCreate(ctx, deploy); err != nil {
+		return nil, err
+	}
+
+	return deploy, nil
 }
 
 func (r *Runtime) deploy(ctx context.Context, deploy *model.Deployment, tree *xmltree.Element) error {

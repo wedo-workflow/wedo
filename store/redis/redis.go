@@ -11,11 +11,12 @@ import (
 // Redis Keys
 var (
 	processDefinitions         = "process_definitions"
-	processDefinitionDetail    = "process_definition_detail_%s"
-	processDefinitionInstances = "process_definition_detail_%s_instances"
+	processDefinitionDetail    = "process_definition_%s_detail"
+	processDefinitionInstances = "process_definition_%s_instances"
 	processInstances           = "process_instances"
-	processInstanceDetail      = "process_instance_detail_%s"
-	processInstanceTasks       = "process_instance_detail_%s_tasks"
+	processInstanceDetail      = "process_instance_%s_detail"
+	processInstanceStatus      = "process_instance_%s_status"
+	processInstanceTasks       = "process_instance_%s_tasks"
 
 	taskDetail = "tasks_detail_%s"
 

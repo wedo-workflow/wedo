@@ -19,7 +19,7 @@ func TestRuntime_Deploy(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	deployID, err := initRuntime().Deploy(context.Background(), &model.Deployment{
+	deploy, err := initRuntime().Deploy(context.Background(), &model.Deployment{
 		NamespaceID: ns.ID,
 		Name:        "formal",
 		Content:     doc,
@@ -29,7 +29,7 @@ func TestRuntime_Deploy(t *testing.T) {
 		t.Log(err)
 		t.FailNow()
 	}
-	t.Log(deployID)
+	t.Log(deploy)
 }
 
 func TestRuntime_DeployList(t *testing.T) {

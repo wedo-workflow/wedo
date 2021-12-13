@@ -22,7 +22,7 @@ func (s *APIServer) DeploymentCreate(ctx context.Context, request *wedo.Deployme
 		return nil, status.Error(codes.InvalidArgument, "namespace is empty")
 	}
 	now := time.Now()
-	id, err := s.Runtime.Deploy(ctx, &model.Deployment{
+	deploy, err := s.Runtime.Deploy(ctx, &model.Deployment{
 		NamespaceID: request.NamespaceId,
 		Name:        request.Name,
 		Content:     request.Content,
@@ -32,11 +32,12 @@ func (s *APIServer) DeploymentCreate(ctx context.Context, request *wedo.Deployme
 		return nil, status.Error(codes.Internal, err.Error())
 	}
 	ret := &wedo.DeploymentCreateResponse{
-		Id:          id,
-		Name:        request.Name,
-		Content:     request.Content,
-		NamespaceId: request.NamespaceId,
-		Timestamp:   timestamppb.New(now),
+		Id:                  deploy.DID,
+		Name:                request.Name,
+		Content:             request.Content,
+		Timestamp:           timestamppb.New(now),
+		NamespaceId:         request.NamespaceId,
+		ProcessDefinitionId: deploy.ProcessDefinitionID,
 	}
 	return ret, nil
 }
@@ -50,10 +51,11 @@ func (s *APIServer) DeploymentGet(ctx context.Context, request *wedo.DeploymentR
 		return nil, status.Error(codes.Internal, err.Error())
 	}
 	ret := &wedo.DeploymentResponse{
-		Id:        request.DeploymentId,
-		Name:      deploy.Name,
-		Content:   deploy.Content,
-		Timestamp: timestamppb.New(deploy.CreateTime),
+		Id:                  request.DeploymentId,
+		Name:                deploy.Name,
+		Content:             deploy.Content,
+		Timestamp:           timestamppb.New(deploy.CreateTime),
+		ProcessDefinitionId: deploy.ProcessDefinitionID,
 	}
 	return ret, nil
 }
@@ -69,10 +71,11 @@ func (s *APIServer) DeploymentList(ctx context.Context, request *wedo.Deployment
 	}
 	for _, deploy := range deploys {
 		ret.Deployments = append(ret.Deployments, &wedo.DeploymentResponse{
-			Id:        deploy.DID,
-			Name:      deploy.Name,
-			Content:   deploy.Content,
-			Timestamp: timestamppb.New(deploy.CreateTime),
+			Id:                  deploy.DID,
+			Name:                deploy.Name,
+			Content:             deploy.Content,
+			Timestamp:           timestamppb.New(deploy.CreateTime),
+			ProcessDefinitionId: deploy.ProcessDefinitionID,
 		})
 	}
 	return ret, nil

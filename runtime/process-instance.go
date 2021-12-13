@@ -6,5 +6,5 @@ import (
 )
 
 func (r *Runtime) ProcessInstanceGet(ctx context.Context, pi *model.ProcessInstance) (*model.ProcessInstance, error) {
-	return &model.ProcessInstance{}, nil
+	return r.store.ProcessInstanceGet(ctx, pi.Id)
 }

@@ -7,14 +7,15 @@ import (
 )
 
 type Deployment struct {
-	DID           string
-	NamespaceID   string    `json:"namespace_id"`
-	Name          string    `json:"name"`
-	BusinessName  string    `json:"business_name"`  // process name
-	BusinessID    string    `json:"business_id"`    // process id
-	DefinitionsID string    `json:"definitions_id"` // definitions id
-	Content       []byte    `json:"content"`
-	CreateTime    time.Time `json:"create_time"`
+	DID                 string
+	ProcessDefinitionID string    `json:"process_definition_id"`
+	NamespaceID         string    `json:"namespace_id"`
+	Name                string    `json:"name"`
+	BusinessName        string    `json:"business_name"`  // process name
+	BusinessID          string    `json:"business_id"`    // process id
+	DefinitionsID       string    `json:"definitions_id"` // definitions id
+	Content             []byte    `json:"content"`
+	CreateTime          time.Time `json:"create_time"`
 }
 
 // DeploymentListOptions specifies the optional parameters to various

@@ -51,7 +51,7 @@ type WedoServiceClient interface {
 	ProcessDefinitionStart(ctx context.Context, in *ProcessDefinitionStartRequest, opts ...grpc.CallOption) (*ProcessDefinitionStartResponse, error)
 	// ProcessDefinitionGet get a process definition by business key and namespace id.
 	ProcessDefinitionGet(ctx context.Context, in *ProcessDefinitionRequest, opts ...grpc.CallOption) (*ProcessDefinitionResponse, error)
-	// todo ProcessInstanceGet get a process instance by id.
+	// ProcessInstanceGet get a process instance by id.
 	ProcessInstanceGet(ctx context.Context, in *ProcessInstanceRequest, opts ...grpc.CallOption) (*ProcessInstanceResponse, error)
 	// todo ProcessModify modify a process instance.
 	ProcessModify(ctx context.Context, in *ProcessModifyRequest, opts ...grpc.CallOption) (*ProcessModifyResponse, error)
@@ -427,7 +427,7 @@ type WedoServiceServer interface {
 	ProcessDefinitionStart(context.Context, *ProcessDefinitionStartRequest) (*ProcessDefinitionStartResponse, error)
 	// ProcessDefinitionGet get a process definition by business key and namespace id.
 	ProcessDefinitionGet(context.Context, *ProcessDefinitionRequest) (*ProcessDefinitionResponse, error)
-	// todo ProcessInstanceGet get a process instance by id.
+	// ProcessInstanceGet get a process instance by id.
 	ProcessInstanceGet(context.Context, *ProcessInstanceRequest) (*ProcessInstanceResponse, error)
 	// todo ProcessModify modify a process instance.
 	ProcessModify(context.Context, *ProcessModifyRequest) (*ProcessModifyResponse, error)

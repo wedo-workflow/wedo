@@ -9,7 +9,7 @@ import (
 func TestRuntime_ProcessDefinitionGet(t *testing.T) {
 	rt := initRuntime()
 	pd, err := rt.ProcessDefinitionGet(context.Background(), &model.ProcessDefinition{
-		Id: "2d08f563-bfc4-4c45-bdd9-22f6afb6d14d",
+		Id: "944e5937-ee35-4a9a-9c5a-f77c37a9a7f0",
 		//ProcessDefinitionKey: request.ProcessDefinitionKey,
 		//NamespaceId:          request.NamespaceId,
 	})
@@ -22,7 +22,7 @@ func TestRuntime_ProcessDefinitionGet(t *testing.T) {
 func TestRuntime_ProcessDefinitionStart(t *testing.T) {
 	rt := initRuntime()
 	pdi, err := rt.ProcessDefinitionStart(context.Background(), &model.ProcessDefinition{
-		Id: "2d08f563-bfc4-4c45-bdd9-22f6afb6d14d",
+		Id: "944e5937-ee35-4a9a-9c5a-f77c37a9a7f0",
 		//ProcessDefinitionKey: request.ProcessDefinitionKey,
 		//NamespaceId:          request.NamespaceId,
 	})

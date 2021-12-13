@@ -17,10 +17,8 @@ func (s *APIServer) ProcessInstanceGet(ctx context.Context, request *wedo.Proces
 		return nil, status.Error(codes.Internal, err.Error())
 	}
 	return &wedo.ProcessInstanceResponse{
-		ProcessInstanceId:    request.ProcessInstanceId,
-		ProcessDefinitionKey: "",
-		NamespaceId:          "",
-		State:                processInstance.Status,
+		ProcessInstanceId: request.ProcessInstanceId,
+		State:             processInstance.Status,
 	}, nil
 }
 

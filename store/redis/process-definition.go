@@ -31,5 +31,8 @@ func (r *Redis) ProcessDefinitionStart(ctx context.Context, pi *model.ProcessIns
 	if err := r.db.Set(ctx, fmt.Sprintf(processInstanceDetail, pi.Id), pi, redis.KeepTTL).Err(); err != nil {
 		return err
 	}
+	if err := r.db.Set(ctx, fmt.Sprintf(processInstanceStatus, pi.Id), pi.Status.String(), redis.KeepTTL).Err(); err != nil {
+		return err
+	}
 	return nil
 }
