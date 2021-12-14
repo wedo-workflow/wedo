@@ -54,9 +54,9 @@ type WedoServiceClient interface {
 	// ProcessInstanceGet get a process instance by id.
 	ProcessInstanceGet(ctx context.Context, in *ProcessInstanceRequest, opts ...grpc.CallOption) (*ProcessInstanceResponse, error)
 	// todo ProcessModify modify a process instance.
-	ProcessModify(ctx context.Context, in *ProcessModifyRequest, opts ...grpc.CallOption) (*ProcessModifyResponse, error)
-	// todo Process Activate/Suspend a process instance.
-	ProcessActivateSuspend(ctx context.Context, in *ProcessActivateSuspendRequest, opts ...grpc.CallOption) (*ProcessActivateSuspendResponse, error)
+	ProcessInstanceModify(ctx context.Context, in *ProcessModifyRequest, opts ...grpc.CallOption) (*ProcessModifyResponse, error)
+	// Process Instance Activate/Suspend a process instance.
+	ProcessInstanceActivateSuspend(ctx context.Context, in *ProcessActivateSuspendRequest, opts ...grpc.CallOption) (*ProcessActivateSuspendResponse, error)
 	// TaskCreate create a task.
 	TaskCreate(ctx context.Context, in *TaskCreateRequest, opts ...grpc.CallOption) (*TaskCreateResponse, error)
 	// TaskGet get a task by id.
@@ -255,18 +255,18 @@ func (c *wedoServiceClient) ProcessInstanceGet(ctx context.Context, in *ProcessI
 	return out, nil
 }
 
-func (c *wedoServiceClient) ProcessModify(ctx context.Context, in *ProcessModifyRequest, opts ...grpc.CallOption) (*ProcessModifyResponse, error) {
+func (c *wedoServiceClient) ProcessInstanceModify(ctx context.Context, in *ProcessModifyRequest, opts ...grpc.CallOption) (*ProcessModifyResponse, error) {
 	out := new(ProcessModifyResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/ProcessModify", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/ProcessInstanceModify", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *wedoServiceClient) ProcessActivateSuspend(ctx context.Context, in *ProcessActivateSuspendRequest, opts ...grpc.CallOption) (*ProcessActivateSuspendResponse, error) {
+func (c *wedoServiceClient) ProcessInstanceActivateSuspend(ctx context.Context, in *ProcessActivateSuspendRequest, opts ...grpc.CallOption) (*ProcessActivateSuspendResponse, error) {
 	out := new(ProcessActivateSuspendResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/ProcessActivateSuspend", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/ProcessInstanceActivateSuspend", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -430,9 +430,9 @@ type WedoServiceServer interface {
 	// ProcessInstanceGet get a process instance by id.
 	ProcessInstanceGet(context.Context, *ProcessInstanceRequest) (*ProcessInstanceResponse, error)
 	// todo ProcessModify modify a process instance.
-	ProcessModify(context.Context, *ProcessModifyRequest) (*ProcessModifyResponse, error)
-	// todo Process Activate/Suspend a process instance.
-	ProcessActivateSuspend(context.Context, *ProcessActivateSuspendRequest) (*ProcessActivateSuspendResponse, error)
+	ProcessInstanceModify(context.Context, *ProcessModifyRequest) (*ProcessModifyResponse, error)
+	// Process Instance Activate/Suspend a process instance.
+	ProcessInstanceActivateSuspend(context.Context, *ProcessActivateSuspendRequest) (*ProcessActivateSuspendResponse, error)
 	// TaskCreate create a task.
 	TaskCreate(context.Context, *TaskCreateRequest) (*TaskCreateResponse, error)
 	// TaskGet get a task by id.
@@ -519,11 +519,11 @@ func (UnimplementedWedoServiceServer) ProcessDefinitionGet(context.Context, *Pro
 func (UnimplementedWedoServiceServer) ProcessInstanceGet(context.Context, *ProcessInstanceRequest) (*ProcessInstanceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ProcessInstanceGet not implemented")
 }
-func (UnimplementedWedoServiceServer) ProcessModify(context.Context, *ProcessModifyRequest) (*ProcessModifyResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ProcessModify not implemented")
+func (UnimplementedWedoServiceServer) ProcessInstanceModify(context.Context, *ProcessModifyRequest) (*ProcessModifyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ProcessInstanceModify not implemented")
 }
-func (UnimplementedWedoServiceServer) ProcessActivateSuspend(context.Context, *ProcessActivateSuspendRequest) (*ProcessActivateSuspendResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ProcessActivateSuspend not implemented")
+func (UnimplementedWedoServiceServer) ProcessInstanceActivateSuspend(context.Context, *ProcessActivateSuspendRequest) (*ProcessActivateSuspendResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ProcessInstanceActivateSuspend not implemented")
 }
 func (UnimplementedWedoServiceServer) TaskCreate(context.Context, *TaskCreateRequest) (*TaskCreateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TaskCreate not implemented")
@@ -900,38 +900,38 @@ func _WedoService_ProcessInstanceGet_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WedoService_ProcessModify_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _WedoService_ProcessInstanceModify_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ProcessModifyRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WedoServiceServer).ProcessModify(ctx, in)
+		return srv.(WedoServiceServer).ProcessInstanceModify(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/ProcessModify",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/ProcessInstanceModify",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WedoServiceServer).ProcessModify(ctx, req.(*ProcessModifyRequest))
+		return srv.(WedoServiceServer).ProcessInstanceModify(ctx, req.(*ProcessModifyRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WedoService_ProcessActivateSuspend_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _WedoService_ProcessInstanceActivateSuspend_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ProcessActivateSuspendRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WedoServiceServer).ProcessActivateSuspend(ctx, in)
+		return srv.(WedoServiceServer).ProcessInstanceActivateSuspend(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/ProcessActivateSuspend",
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/ProcessInstanceActivateSuspend",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WedoServiceServer).ProcessActivateSuspend(ctx, req.(*ProcessActivateSuspendRequest))
+		return srv.(WedoServiceServer).ProcessInstanceActivateSuspend(ctx, req.(*ProcessActivateSuspendRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1250,12 +1250,12 @@ var WedoService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _WedoService_ProcessInstanceGet_Handler,
 		},
 		{
-			MethodName: "ProcessModify",
-			Handler:    _WedoService_ProcessModify_Handler,
+			MethodName: "ProcessInstanceModify",
+			Handler:    _WedoService_ProcessInstanceModify_Handler,
 		},
 		{
-			MethodName: "ProcessActivateSuspend",
-			Handler:    _WedoService_ProcessActivateSuspend_Handler,
+			MethodName: "ProcessInstanceActivateSuspend",
+			Handler:    _WedoService_ProcessInstanceActivateSuspend_Handler,
 		},
 		{
 			MethodName: "TaskCreate",

@@ -163,15 +163,15 @@ service WedoService {
   }
 
   // todo ProcessModify modify a process instance.
-  rpc ProcessModify(ProcessModifyRequest) returns (ProcessModifyResponse) {
+  rpc ProcessInstanceModify(ProcessModifyRequest) returns (ProcessModifyResponse) {
     option (google.api.http) = {
       put : "/process-instance/{process_instance_id}"
       body : "*"
     };
   }
 
-  // todo Process Activate/Suspend a process instance.
-  rpc ProcessActivateSuspend(ProcessActivateSuspendRequest) returns (ProcessActivateSuspendResponse) {
+  // Process Instance Activate/Suspend a process instance.
+  rpc ProcessInstanceActivateSuspend(ProcessActivateSuspendRequest) returns (ProcessActivateSuspendResponse) {
     option (google.api.http) = {
       post : "/process-instance/{process_instance_id}/suspended"
     };
@@ -447,6 +447,7 @@ enum ProcessInstanceState {
   COMPLETED = 2;
   ABORTED = 3;
   FAILED = 4;
+  SUSPENDED = 5;
 }
 
 message ProcessModifyRequest {

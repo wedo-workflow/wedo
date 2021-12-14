@@ -402,7 +402,7 @@
       },
       "put": {
         "summary": "todo ProcessModify modify a process instance.",
-        "operationId": "WedoService_ProcessModify",
+        "operationId": "WedoService_ProcessInstanceModify",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -451,8 +451,8 @@
     },
     "/process-instance/{processInstanceId}/suspended": {
       "post": {
-        "summary": "todo Process Activate/Suspend a process instance.",
-        "operationId": "WedoService_ProcessActivateSuspend",
+        "summary": "Process Instance Activate/Suspend a process instance.",
+        "operationId": "WedoService_ProcessInstanceActivateSuspend",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -1334,7 +1334,8 @@
         "STARTED",
         "COMPLETED",
         "ABORTED",
-        "FAILED"
+        "FAILED",
+        "SUSPENDED"
       ],
       "default": "INITIALIZED"
     },

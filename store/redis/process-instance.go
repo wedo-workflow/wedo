@@ -3,6 +3,7 @@ package redis
 import (
 	"context"
 	"fmt"
+	"github.com/go-redis/redis/v8"
 	"github.com/wedo-workflow/wedo/model"
 )
 
@@ -12,4 +13,8 @@ func (r *Redis) ProcessInstanceGet(ctx context.Context, processInstanceId string
 		return nil, err
 	}
 	return pi, nil
+}
+
+func (r *Redis) ProcessInstanceUpdateStatus(ctx context.Context, pi *model.ProcessInstance) error {
+	return r.db.Set(ctx, fmt.Sprintf(processInstanceStatus, pi.Id), pi.Status.String(), redis.KeepTTL).Err()
 }

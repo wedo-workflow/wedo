@@ -19,6 +19,8 @@ type Store interface {
 
 	// ProcessInstanceGet return the process instance
 	ProcessInstanceGet(ctx context.Context, id string) (*model.ProcessInstance, error)
+	// ProcessInstanceUpdateStatus update the process instance status
+	ProcessInstanceUpdateStatus(ctx context.Context, pi *model.ProcessInstance) error
 
 	// Deployment read a deployment
 	Deployment(ctx context.Context, deployID string) (*model.Deployment, error)
