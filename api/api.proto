@@ -538,6 +538,7 @@ message TaskListResponse {
 
 message TaskClaimRequest {
   string task_id = 1;
+  string user_id = 2;
 }
 
 message TaskClaimResponse {

@@ -13,16 +13,16 @@ type Task struct {
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 
-	Id                string
-	Name              string
+	Id                string `json:"id"`
+	Name              string `json:"name"`
 	Description       string
 	Assignee          string
-	Owner             string
+	Owner             string `json:"owner"`
 	DelegationState   string
 	Due               *timestamppb.Timestamp
 	Priority          string
 	ParentTaskId      string
-	ProcessInstanceId string
+	ProcessInstanceId string `json:"process_instance_id"`
 	TaskDefinitionKey string
 	NamespaceId       string
 	FormKey           string

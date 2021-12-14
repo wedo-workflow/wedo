@@ -1141,6 +1141,10 @@ func local_request_WedoService_TaskList_0(ctx context.Context, marshaler runtime
 
 }
 
+var (
+	filter_WedoService_TaskClaim_0 = &utilities.DoubleArray{Encoding: map[string]int{"task_id": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+)
+
 func request_WedoService_TaskClaim_0(ctx context.Context, marshaler runtime.Marshaler, client WedoServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq TaskClaimRequest
 	var metadata runtime.ServerMetadata
@@ -1160,6 +1164,13 @@ func request_WedoService_TaskClaim_0(ctx context.Context, marshaler runtime.Mars
 	protoReq.TaskId, err = runtime.String(val)
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "task_id", err)
+	}
+
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_WedoService_TaskClaim_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.TaskClaim(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -1186,6 +1197,13 @@ func local_request_WedoService_TaskClaim_0(ctx context.Context, marshaler runtim
 	protoReq.TaskId, err = runtime.String(val)
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "task_id", err)
+	}
+
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_WedoService_TaskClaim_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := server.TaskClaim(ctx, &protoReq)
