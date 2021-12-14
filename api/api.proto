@@ -24,32 +24,6 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 };
 
 service WedoService {
-  // Get a deployment.
-  rpc DeploymentGet(DeploymentRequest) returns (DeploymentResponse) {
-    option (google.api.http) = {
-      get : "/deployment/{deployment_id}"
-    };
-  }
-  // Creates a deployment.
-  rpc DeploymentCreate(DeploymentCreateRequest) returns (DeploymentCreateResponse) {
-    option (google.api.http) = {
-      post : "/deployment/create"
-      body : "*"
-    };
-  }
-  // Updates a deployment.
-  rpc DeploymentList(DeploymentListRequest) returns (DeploymentListResponse) {
-    option (google.api.http) = {
-      get : "/deployments"
-    };
-  }
-  // Delete a deployment.
-  rpc DeploymentDelete(DeploymentDeleteRequest) returns (DeploymentDeleteResponse) {
-    option (google.api.http) = {
-      delete : "/deployment/{deployment_id}"
-    };
-  }
-
   // Create a User.
   rpc UserCreate(UserCreateRequest) returns (UserCreateResponse) {
     option (google.api.http) = {
@@ -88,6 +62,34 @@ service WedoService {
     };
   }
 
+  rpc GroupCreate(GroupCreateRequest) returns (GroupCreateResponse) {
+    option (google.api.http) = {
+      post : "/group/create"
+      body : "*"
+    };
+  }
+  rpc GroupGet(GroupRequest) returns (GroupResponse) {
+    option (google.api.http) = {
+      get : "/group/{group_id}"
+    };
+  }
+  rpc GroupDelete(GroupDeleteRequest) returns (GroupDeleteResponse) {
+    option (google.api.http) = {
+      delete : "/group/{group_id}"
+    };
+  }
+  rpc GroupList(GroupListRequest) returns (GroupListResponse) {
+    option (google.api.http) = {
+      get : "/groups"
+    };
+  }
+  rpc GroupUpdate(GroupUpdateRequest) returns (GroupUpdateResponse) {
+    option (google.api.http) = {
+      put : "/group/{group_id}"
+      body : "*"
+    };
+  }
+
   // Create a Namespace.
   rpc NamespaceCreate(NamespaceCreateRequest) returns (NamespaceCreateResponse) {
     option (google.api.http) = {
@@ -117,6 +119,32 @@ service WedoService {
   rpc NamespaceListCount(NamespaceListCountRequest) returns (NamespaceListCountResponse) {
     option (google.api.http) = {
       get : "/namespaces/count"
+    };
+  }
+
+  // Get a deployment.
+  rpc DeploymentGet(DeploymentRequest) returns (DeploymentResponse) {
+    option (google.api.http) = {
+      get : "/deployment/{deployment_id}"
+    };
+  }
+  // Creates a deployment.
+  rpc DeploymentCreate(DeploymentCreateRequest) returns (DeploymentCreateResponse) {
+    option (google.api.http) = {
+      post : "/deployment/create"
+      body : "*"
+    };
+  }
+  // Updates a deployment.
+  rpc DeploymentList(DeploymentListRequest) returns (DeploymentListResponse) {
+    option (google.api.http) = {
+      get : "/deployments"
+    };
+  }
+  // Delete a deployment.
+  rpc DeploymentDelete(DeploymentDeleteRequest) returns (DeploymentDeleteResponse) {
+    option (google.api.http) = {
+      delete : "/deployment/{deployment_id}"
     };
   }
 
@@ -403,6 +431,65 @@ message UserUpdateResponse {
   string id = 1;
   string name = 2;
 }
+
+// Group
+
+message GroupCreateRequest {
+  string name = 1;
+  string namespace_id = 2;
+  string type = 3;
+}
+
+message GroupCreateResponse {
+  string id = 1;
+  string name = 2;
+  string type = 3;
+}
+
+message GroupRequest {
+  string group_id = 1;
+}
+
+message GroupResponse {
+  string id = 1;
+  string name = 2;
+  string type = 3;
+  string namespace_id = 4;
+}
+
+message GroupDeleteRequest {
+  string group_id = 1;
+}
+
+message GroupDeleteResponse {
+
+}
+
+message GroupListRequest {
+  string namespace_id = 1;
+  string type = 2;
+  int64 offset = 3;
+  int64 limit = 4;
+}
+
+message GroupListResponse {
+  repeated GroupResponse groups = 1;
+}
+
+message GroupUpdateRequest {
+  string group_id = 1;
+  string name = 2;
+  string type = 3;
+  string namespace_id = 4;
+}
+
+message  GroupUpdateResponse {
+  string id = 1;
+  string name = 2;
+  string type = 3;
+  string namespace_id = 4;
+}
+
 
 // Process Definition
 

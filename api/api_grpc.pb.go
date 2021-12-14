@@ -18,14 +18,6 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type WedoServiceClient interface {
-	// Get a deployment.
-	DeploymentGet(ctx context.Context, in *DeploymentRequest, opts ...grpc.CallOption) (*DeploymentResponse, error)
-	// Creates a deployment.
-	DeploymentCreate(ctx context.Context, in *DeploymentCreateRequest, opts ...grpc.CallOption) (*DeploymentCreateResponse, error)
-	// Updates a deployment.
-	DeploymentList(ctx context.Context, in *DeploymentListRequest, opts ...grpc.CallOption) (*DeploymentListResponse, error)
-	// Delete a deployment.
-	DeploymentDelete(ctx context.Context, in *DeploymentDeleteRequest, opts ...grpc.CallOption) (*DeploymentDeleteResponse, error)
 	// Create a User.
 	UserCreate(ctx context.Context, in *UserCreateRequest, opts ...grpc.CallOption) (*UserCreateResponse, error)
 	// Get a User.
@@ -37,6 +29,11 @@ type WedoServiceClient interface {
 	// Update a User.
 	UserUpdate(ctx context.Context, in *UserUpdateRequest, opts ...grpc.CallOption) (*UserUpdateResponse, error)
 	UserListCount(ctx context.Context, in *UserListCountRequest, opts ...grpc.CallOption) (*UserListCountResponse, error)
+	GroupCreate(ctx context.Context, in *GroupCreateRequest, opts ...grpc.CallOption) (*GroupCreateResponse, error)
+	GroupGet(ctx context.Context, in *GroupRequest, opts ...grpc.CallOption) (*GroupResponse, error)
+	GroupDelete(ctx context.Context, in *GroupDeleteRequest, opts ...grpc.CallOption) (*GroupDeleteResponse, error)
+	GroupList(ctx context.Context, in *GroupListRequest, opts ...grpc.CallOption) (*GroupListResponse, error)
+	GroupUpdate(ctx context.Context, in *GroupUpdateRequest, opts ...grpc.CallOption) (*GroupUpdateResponse, error)
 	// Create a Namespace.
 	NamespaceCreate(ctx context.Context, in *NamespaceCreateRequest, opts ...grpc.CallOption) (*NamespaceCreateResponse, error)
 	// Get a Namespace.
@@ -47,6 +44,14 @@ type WedoServiceClient interface {
 	NamespaceList(ctx context.Context, in *NamespaceListRequest, opts ...grpc.CallOption) (*NamespaceListResponse, error)
 	// Count all Namespaces.
 	NamespaceListCount(ctx context.Context, in *NamespaceListCountRequest, opts ...grpc.CallOption) (*NamespaceListCountResponse, error)
+	// Get a deployment.
+	DeploymentGet(ctx context.Context, in *DeploymentRequest, opts ...grpc.CallOption) (*DeploymentResponse, error)
+	// Creates a deployment.
+	DeploymentCreate(ctx context.Context, in *DeploymentCreateRequest, opts ...grpc.CallOption) (*DeploymentCreateResponse, error)
+	// Updates a deployment.
+	DeploymentList(ctx context.Context, in *DeploymentListRequest, opts ...grpc.CallOption) (*DeploymentListResponse, error)
+	// Delete a deployment.
+	DeploymentDelete(ctx context.Context, in *DeploymentDeleteRequest, opts ...grpc.CallOption) (*DeploymentDeleteResponse, error)
 	// ProcessDefinitionStart Process Definition Start and return Process Instance ID
 	ProcessDefinitionStart(ctx context.Context, in *ProcessDefinitionStartRequest, opts ...grpc.CallOption) (*ProcessDefinitionStartResponse, error)
 	// ProcessDefinitionGet get a process definition by business key and namespace id.
@@ -91,42 +96,6 @@ type wedoServiceClient struct {
 
 func NewWedoServiceClient(cc grpc.ClientConnInterface) WedoServiceClient {
 	return &wedoServiceClient{cc}
-}
-
-func (c *wedoServiceClient) DeploymentGet(ctx context.Context, in *DeploymentRequest, opts ...grpc.CallOption) (*DeploymentResponse, error) {
-	out := new(DeploymentResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/DeploymentGet", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *wedoServiceClient) DeploymentCreate(ctx context.Context, in *DeploymentCreateRequest, opts ...grpc.CallOption) (*DeploymentCreateResponse, error) {
-	out := new(DeploymentCreateResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/DeploymentCreate", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *wedoServiceClient) DeploymentList(ctx context.Context, in *DeploymentListRequest, opts ...grpc.CallOption) (*DeploymentListResponse, error) {
-	out := new(DeploymentListResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/DeploymentList", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *wedoServiceClient) DeploymentDelete(ctx context.Context, in *DeploymentDeleteRequest, opts ...grpc.CallOption) (*DeploymentDeleteResponse, error) {
-	out := new(DeploymentDeleteResponse)
-	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/DeploymentDelete", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 func (c *wedoServiceClient) UserCreate(ctx context.Context, in *UserCreateRequest, opts ...grpc.CallOption) (*UserCreateResponse, error) {
@@ -183,6 +152,51 @@ func (c *wedoServiceClient) UserListCount(ctx context.Context, in *UserListCount
 	return out, nil
 }
 
+func (c *wedoServiceClient) GroupCreate(ctx context.Context, in *GroupCreateRequest, opts ...grpc.CallOption) (*GroupCreateResponse, error) {
+	out := new(GroupCreateResponse)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/GroupCreate", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wedoServiceClient) GroupGet(ctx context.Context, in *GroupRequest, opts ...grpc.CallOption) (*GroupResponse, error) {
+	out := new(GroupResponse)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/GroupGet", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wedoServiceClient) GroupDelete(ctx context.Context, in *GroupDeleteRequest, opts ...grpc.CallOption) (*GroupDeleteResponse, error) {
+	out := new(GroupDeleteResponse)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/GroupDelete", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wedoServiceClient) GroupList(ctx context.Context, in *GroupListRequest, opts ...grpc.CallOption) (*GroupListResponse, error) {
+	out := new(GroupListResponse)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/GroupList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wedoServiceClient) GroupUpdate(ctx context.Context, in *GroupUpdateRequest, opts ...grpc.CallOption) (*GroupUpdateResponse, error) {
+	out := new(GroupUpdateResponse)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/GroupUpdate", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *wedoServiceClient) NamespaceCreate(ctx context.Context, in *NamespaceCreateRequest, opts ...grpc.CallOption) (*NamespaceCreateResponse, error) {
 	out := new(NamespaceCreateResponse)
 	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/NamespaceCreate", in, out, opts...)
@@ -222,6 +236,42 @@ func (c *wedoServiceClient) NamespaceList(ctx context.Context, in *NamespaceList
 func (c *wedoServiceClient) NamespaceListCount(ctx context.Context, in *NamespaceListCountRequest, opts ...grpc.CallOption) (*NamespaceListCountResponse, error) {
 	out := new(NamespaceListCountResponse)
 	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/NamespaceListCount", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wedoServiceClient) DeploymentGet(ctx context.Context, in *DeploymentRequest, opts ...grpc.CallOption) (*DeploymentResponse, error) {
+	out := new(DeploymentResponse)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/DeploymentGet", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wedoServiceClient) DeploymentCreate(ctx context.Context, in *DeploymentCreateRequest, opts ...grpc.CallOption) (*DeploymentCreateResponse, error) {
+	out := new(DeploymentCreateResponse)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/DeploymentCreate", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wedoServiceClient) DeploymentList(ctx context.Context, in *DeploymentListRequest, opts ...grpc.CallOption) (*DeploymentListResponse, error) {
+	out := new(DeploymentListResponse)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/DeploymentList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wedoServiceClient) DeploymentDelete(ctx context.Context, in *DeploymentDeleteRequest, opts ...grpc.CallOption) (*DeploymentDeleteResponse, error) {
+	out := new(DeploymentDeleteResponse)
+	err := c.cc.Invoke(ctx, "/github.com.wedo_workflow.wedo.WedoService/DeploymentDelete", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -394,14 +444,6 @@ func (c *wedoServiceClient) TaskDeployedForm(ctx context.Context, in *TaskDeploy
 // All implementations should embed UnimplementedWedoServiceServer
 // for forward compatibility
 type WedoServiceServer interface {
-	// Get a deployment.
-	DeploymentGet(context.Context, *DeploymentRequest) (*DeploymentResponse, error)
-	// Creates a deployment.
-	DeploymentCreate(context.Context, *DeploymentCreateRequest) (*DeploymentCreateResponse, error)
-	// Updates a deployment.
-	DeploymentList(context.Context, *DeploymentListRequest) (*DeploymentListResponse, error)
-	// Delete a deployment.
-	DeploymentDelete(context.Context, *DeploymentDeleteRequest) (*DeploymentDeleteResponse, error)
 	// Create a User.
 	UserCreate(context.Context, *UserCreateRequest) (*UserCreateResponse, error)
 	// Get a User.
@@ -413,6 +455,11 @@ type WedoServiceServer interface {
 	// Update a User.
 	UserUpdate(context.Context, *UserUpdateRequest) (*UserUpdateResponse, error)
 	UserListCount(context.Context, *UserListCountRequest) (*UserListCountResponse, error)
+	GroupCreate(context.Context, *GroupCreateRequest) (*GroupCreateResponse, error)
+	GroupGet(context.Context, *GroupRequest) (*GroupResponse, error)
+	GroupDelete(context.Context, *GroupDeleteRequest) (*GroupDeleteResponse, error)
+	GroupList(context.Context, *GroupListRequest) (*GroupListResponse, error)
+	GroupUpdate(context.Context, *GroupUpdateRequest) (*GroupUpdateResponse, error)
 	// Create a Namespace.
 	NamespaceCreate(context.Context, *NamespaceCreateRequest) (*NamespaceCreateResponse, error)
 	// Get a Namespace.
@@ -423,6 +470,14 @@ type WedoServiceServer interface {
 	NamespaceList(context.Context, *NamespaceListRequest) (*NamespaceListResponse, error)
 	// Count all Namespaces.
 	NamespaceListCount(context.Context, *NamespaceListCountRequest) (*NamespaceListCountResponse, error)
+	// Get a deployment.
+	DeploymentGet(context.Context, *DeploymentRequest) (*DeploymentResponse, error)
+	// Creates a deployment.
+	DeploymentCreate(context.Context, *DeploymentCreateRequest) (*DeploymentCreateResponse, error)
+	// Updates a deployment.
+	DeploymentList(context.Context, *DeploymentListRequest) (*DeploymentListResponse, error)
+	// Delete a deployment.
+	DeploymentDelete(context.Context, *DeploymentDeleteRequest) (*DeploymentDeleteResponse, error)
 	// ProcessDefinitionStart Process Definition Start and return Process Instance ID
 	ProcessDefinitionStart(context.Context, *ProcessDefinitionStartRequest) (*ProcessDefinitionStartResponse, error)
 	// ProcessDefinitionGet get a process definition by business key and namespace id.
@@ -465,18 +520,6 @@ type WedoServiceServer interface {
 type UnimplementedWedoServiceServer struct {
 }
 
-func (UnimplementedWedoServiceServer) DeploymentGet(context.Context, *DeploymentRequest) (*DeploymentResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeploymentGet not implemented")
-}
-func (UnimplementedWedoServiceServer) DeploymentCreate(context.Context, *DeploymentCreateRequest) (*DeploymentCreateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeploymentCreate not implemented")
-}
-func (UnimplementedWedoServiceServer) DeploymentList(context.Context, *DeploymentListRequest) (*DeploymentListResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeploymentList not implemented")
-}
-func (UnimplementedWedoServiceServer) DeploymentDelete(context.Context, *DeploymentDeleteRequest) (*DeploymentDeleteResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeploymentDelete not implemented")
-}
 func (UnimplementedWedoServiceServer) UserCreate(context.Context, *UserCreateRequest) (*UserCreateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UserCreate not implemented")
 }
@@ -495,6 +538,21 @@ func (UnimplementedWedoServiceServer) UserUpdate(context.Context, *UserUpdateReq
 func (UnimplementedWedoServiceServer) UserListCount(context.Context, *UserListCountRequest) (*UserListCountResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UserListCount not implemented")
 }
+func (UnimplementedWedoServiceServer) GroupCreate(context.Context, *GroupCreateRequest) (*GroupCreateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GroupCreate not implemented")
+}
+func (UnimplementedWedoServiceServer) GroupGet(context.Context, *GroupRequest) (*GroupResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GroupGet not implemented")
+}
+func (UnimplementedWedoServiceServer) GroupDelete(context.Context, *GroupDeleteRequest) (*GroupDeleteResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GroupDelete not implemented")
+}
+func (UnimplementedWedoServiceServer) GroupList(context.Context, *GroupListRequest) (*GroupListResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GroupList not implemented")
+}
+func (UnimplementedWedoServiceServer) GroupUpdate(context.Context, *GroupUpdateRequest) (*GroupUpdateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GroupUpdate not implemented")
+}
 func (UnimplementedWedoServiceServer) NamespaceCreate(context.Context, *NamespaceCreateRequest) (*NamespaceCreateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method NamespaceCreate not implemented")
 }
@@ -509,6 +567,18 @@ func (UnimplementedWedoServiceServer) NamespaceList(context.Context, *NamespaceL
 }
 func (UnimplementedWedoServiceServer) NamespaceListCount(context.Context, *NamespaceListCountRequest) (*NamespaceListCountResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method NamespaceListCount not implemented")
+}
+func (UnimplementedWedoServiceServer) DeploymentGet(context.Context, *DeploymentRequest) (*DeploymentResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeploymentGet not implemented")
+}
+func (UnimplementedWedoServiceServer) DeploymentCreate(context.Context, *DeploymentCreateRequest) (*DeploymentCreateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeploymentCreate not implemented")
+}
+func (UnimplementedWedoServiceServer) DeploymentList(context.Context, *DeploymentListRequest) (*DeploymentListResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeploymentList not implemented")
+}
+func (UnimplementedWedoServiceServer) DeploymentDelete(context.Context, *DeploymentDeleteRequest) (*DeploymentDeleteResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeploymentDelete not implemented")
 }
 func (UnimplementedWedoServiceServer) ProcessDefinitionStart(context.Context, *ProcessDefinitionStartRequest) (*ProcessDefinitionStartResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ProcessDefinitionStart not implemented")
@@ -574,78 +644,6 @@ type UnsafeWedoServiceServer interface {
 
 func RegisterWedoServiceServer(s grpc.ServiceRegistrar, srv WedoServiceServer) {
 	s.RegisterService(&WedoService_ServiceDesc, srv)
-}
-
-func _WedoService_DeploymentGet_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeploymentRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(WedoServiceServer).DeploymentGet(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/DeploymentGet",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WedoServiceServer).DeploymentGet(ctx, req.(*DeploymentRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _WedoService_DeploymentCreate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeploymentCreateRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(WedoServiceServer).DeploymentCreate(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/DeploymentCreate",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WedoServiceServer).DeploymentCreate(ctx, req.(*DeploymentCreateRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _WedoService_DeploymentList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeploymentListRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(WedoServiceServer).DeploymentList(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/DeploymentList",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WedoServiceServer).DeploymentList(ctx, req.(*DeploymentListRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _WedoService_DeploymentDelete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeploymentDeleteRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(WedoServiceServer).DeploymentDelete(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/DeploymentDelete",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WedoServiceServer).DeploymentDelete(ctx, req.(*DeploymentDeleteRequest))
-	}
-	return interceptor(ctx, in, info, handler)
 }
 
 func _WedoService_UserCreate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -756,6 +754,96 @@ func _WedoService_UserListCount_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WedoService_GroupCreate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GroupCreateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WedoServiceServer).GroupCreate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/GroupCreate",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WedoServiceServer).GroupCreate(ctx, req.(*GroupCreateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WedoService_GroupGet_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GroupRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WedoServiceServer).GroupGet(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/GroupGet",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WedoServiceServer).GroupGet(ctx, req.(*GroupRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WedoService_GroupDelete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GroupDeleteRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WedoServiceServer).GroupDelete(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/GroupDelete",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WedoServiceServer).GroupDelete(ctx, req.(*GroupDeleteRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WedoService_GroupList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GroupListRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WedoServiceServer).GroupList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/GroupList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WedoServiceServer).GroupList(ctx, req.(*GroupListRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WedoService_GroupUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GroupUpdateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WedoServiceServer).GroupUpdate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/GroupUpdate",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WedoServiceServer).GroupUpdate(ctx, req.(*GroupUpdateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _WedoService_NamespaceCreate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(NamespaceCreateRequest)
 	if err := dec(in); err != nil {
@@ -842,6 +930,78 @@ func _WedoService_NamespaceListCount_Handler(srv interface{}, ctx context.Contex
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WedoServiceServer).NamespaceListCount(ctx, req.(*NamespaceListCountRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WedoService_DeploymentGet_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeploymentRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WedoServiceServer).DeploymentGet(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/DeploymentGet",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WedoServiceServer).DeploymentGet(ctx, req.(*DeploymentRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WedoService_DeploymentCreate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeploymentCreateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WedoServiceServer).DeploymentCreate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/DeploymentCreate",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WedoServiceServer).DeploymentCreate(ctx, req.(*DeploymentCreateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WedoService_DeploymentList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeploymentListRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WedoServiceServer).DeploymentList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/DeploymentList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WedoServiceServer).DeploymentList(ctx, req.(*DeploymentListRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WedoService_DeploymentDelete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeploymentDeleteRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WedoServiceServer).DeploymentDelete(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/github.com.wedo_workflow.wedo.WedoService/DeploymentDelete",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WedoServiceServer).DeploymentDelete(ctx, req.(*DeploymentDeleteRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1178,22 +1338,6 @@ var WedoService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*WedoServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "DeploymentGet",
-			Handler:    _WedoService_DeploymentGet_Handler,
-		},
-		{
-			MethodName: "DeploymentCreate",
-			Handler:    _WedoService_DeploymentCreate_Handler,
-		},
-		{
-			MethodName: "DeploymentList",
-			Handler:    _WedoService_DeploymentList_Handler,
-		},
-		{
-			MethodName: "DeploymentDelete",
-			Handler:    _WedoService_DeploymentDelete_Handler,
-		},
-		{
 			MethodName: "UserCreate",
 			Handler:    _WedoService_UserCreate_Handler,
 		},
@@ -1218,6 +1362,26 @@ var WedoService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _WedoService_UserListCount_Handler,
 		},
 		{
+			MethodName: "GroupCreate",
+			Handler:    _WedoService_GroupCreate_Handler,
+		},
+		{
+			MethodName: "GroupGet",
+			Handler:    _WedoService_GroupGet_Handler,
+		},
+		{
+			MethodName: "GroupDelete",
+			Handler:    _WedoService_GroupDelete_Handler,
+		},
+		{
+			MethodName: "GroupList",
+			Handler:    _WedoService_GroupList_Handler,
+		},
+		{
+			MethodName: "GroupUpdate",
+			Handler:    _WedoService_GroupUpdate_Handler,
+		},
+		{
 			MethodName: "NamespaceCreate",
 			Handler:    _WedoService_NamespaceCreate_Handler,
 		},
@@ -1236,6 +1400,22 @@ var WedoService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "NamespaceListCount",
 			Handler:    _WedoService_NamespaceListCount_Handler,
+		},
+		{
+			MethodName: "DeploymentGet",
+			Handler:    _WedoService_DeploymentGet_Handler,
+		},
+		{
+			MethodName: "DeploymentCreate",
+			Handler:    _WedoService_DeploymentCreate_Handler,
+		},
+		{
+			MethodName: "DeploymentList",
+			Handler:    _WedoService_DeploymentList_Handler,
+		},
+		{
+			MethodName: "DeploymentDelete",
+			Handler:    _WedoService_DeploymentDelete_Handler,
 		},
 		{
 			MethodName: "ProcessDefinitionStart",
