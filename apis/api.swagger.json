@@ -640,6 +640,12 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [
