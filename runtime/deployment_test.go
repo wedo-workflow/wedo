@@ -10,7 +10,7 @@ import (
 )
 
 func TestRuntime_Deploy(t *testing.T) {
-	doc, err := os.ReadFile("testdata/diagram.bpmn")
+	doc, err := os.ReadFile("testdata/invoice.v1.bpmn")
 	if err != nil {
 		t.Fatal(err)
 	}

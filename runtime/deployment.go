@@ -14,23 +14,40 @@ import (
 
 var (
 	parsersWhitelist = map[string]bool{
-		"BPMNShape":        true,
-		"Bounds":           true,
-		"BPMNPlane":        true,
-		"BPMNEdge":         true,
-		"BPMNLabel":        true,
-		"waypoint":         true,
-		"exclusiveGateway": true,
-		"properties":       true,
-		"property":         true,
+		"BPMNShape":            true,
+		"Bounds":               true,
+		"BPMNPlane":            true,
+		"BPMNEdge":             true,
+		"BPMNLabel":            true,
+		"waypoint":             true,
+		"exclusiveGateway":     true,
+		"properties":           true,
+		"property":             true,
+		"dataStore":            true,
+		"dataState":            true,
+		"laneSet":              true,
+		"lane":                 true,
+		"flowNodeRef":          true,
+		"dataStoreReference":   true,
+		"userTask":             true, // todo
+		"documentation":        true,
+		"taskListener":         true,
+		"script":               true,
+		"businessRuleTask":     true,
+		"dataInputAssociation": true,
+		"sourceRef":            true,
+		"targetRef":            true,
+		"serviceTask":          true,
+		"callActivity":         true,
+		"in":                   true,
+		"out":                  true,
+		"conditionExpression":  true,
 	}
 
 	anchorElements = map[string]bool{
 		"startEvent": true,
 		"endEvent":   true,
 	}
-
-	deployNameKey = "name_%s"
 )
 
 func (r *Runtime) Deploy(ctx context.Context, deploy *model.Deployment) (*model.Deployment, error) {
@@ -133,6 +150,7 @@ func (r *Runtime) parseAndStore(ctx context.Context, deploy *model.Deployment, e
 	}
 
 	// 2. store
+	// todo save element when all properties are set
 	if err := r.store.ElementSet(ctx, deploy, ele); err != nil {
 		return "", err
 	}

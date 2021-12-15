@@ -29,10 +29,15 @@ type WedoServiceClient interface {
 	// Update a User.
 	UserUpdate(ctx context.Context, in *UserUpdateRequest, opts ...grpc.CallOption) (*UserUpdateResponse, error)
 	UserListCount(ctx context.Context, in *UserListCountRequest, opts ...grpc.CallOption) (*UserListCountResponse, error)
+	// todo
 	GroupCreate(ctx context.Context, in *GroupCreateRequest, opts ...grpc.CallOption) (*GroupCreateResponse, error)
+	// todo
 	GroupGet(ctx context.Context, in *GroupRequest, opts ...grpc.CallOption) (*GroupResponse, error)
+	// todo
 	GroupDelete(ctx context.Context, in *GroupDeleteRequest, opts ...grpc.CallOption) (*GroupDeleteResponse, error)
+	// todo
 	GroupList(ctx context.Context, in *GroupListRequest, opts ...grpc.CallOption) (*GroupListResponse, error)
+	// todo
 	GroupUpdate(ctx context.Context, in *GroupUpdateRequest, opts ...grpc.CallOption) (*GroupUpdateResponse, error)
 	// Create a Namespace.
 	NamespaceCreate(ctx context.Context, in *NamespaceCreateRequest, opts ...grpc.CallOption) (*NamespaceCreateResponse, error)
@@ -455,10 +460,15 @@ type WedoServiceServer interface {
 	// Update a User.
 	UserUpdate(context.Context, *UserUpdateRequest) (*UserUpdateResponse, error)
 	UserListCount(context.Context, *UserListCountRequest) (*UserListCountResponse, error)
+	// todo
 	GroupCreate(context.Context, *GroupCreateRequest) (*GroupCreateResponse, error)
+	// todo
 	GroupGet(context.Context, *GroupRequest) (*GroupResponse, error)
+	// todo
 	GroupDelete(context.Context, *GroupDeleteRequest) (*GroupDeleteResponse, error)
+	// todo
 	GroupList(context.Context, *GroupListRequest) (*GroupListResponse, error)
+	// todo
 	GroupUpdate(context.Context, *GroupUpdateRequest) (*GroupUpdateResponse, error)
 	// Create a Namespace.
 	NamespaceCreate(context.Context, *NamespaceCreateRequest) (*NamespaceCreateResponse, error)

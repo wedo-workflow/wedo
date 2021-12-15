@@ -143,6 +143,7 @@
     },
     "/group/create": {
       "post": {
+        "summary": "todo",
         "operationId": "WedoService_GroupCreate",
         "responses": {
           "200": {
@@ -175,6 +176,7 @@
     },
     "/group/{groupId}": {
       "get": {
+        "summary": "todo",
         "operationId": "WedoService_GroupGet",
         "responses": {
           "200": {
@@ -203,6 +205,7 @@
         ]
       },
       "delete": {
+        "summary": "todo",
         "operationId": "WedoService_GroupDelete",
         "responses": {
           "200": {
@@ -231,6 +234,7 @@
         ]
       },
       "put": {
+        "summary": "todo",
         "operationId": "WedoService_GroupUpdate",
         "responses": {
           "200": {
@@ -280,6 +284,7 @@
     },
     "/groups": {
       "get": {
+        "summary": "todo",
         "operationId": "WedoService_GroupList",
         "responses": {
           "200": {

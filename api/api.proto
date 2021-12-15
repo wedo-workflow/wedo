@@ -62,27 +62,32 @@ service WedoService {
     };
   }
 
+  // todo
   rpc GroupCreate(GroupCreateRequest) returns (GroupCreateResponse) {
     option (google.api.http) = {
       post : "/group/create"
       body : "*"
     };
   }
+  // todo
   rpc GroupGet(GroupRequest) returns (GroupResponse) {
     option (google.api.http) = {
       get : "/group/{group_id}"
     };
   }
+  // todo
   rpc GroupDelete(GroupDeleteRequest) returns (GroupDeleteResponse) {
     option (google.api.http) = {
       delete : "/group/{group_id}"
     };
   }
+  // todo
   rpc GroupList(GroupListRequest) returns (GroupListResponse) {
     option (google.api.http) = {
       get : "/groups"
     };
   }
+  // todo
   rpc GroupUpdate(GroupUpdateRequest) returns (GroupUpdateResponse) {
     option (google.api.http) = {
       put : "/group/{group_id}"
