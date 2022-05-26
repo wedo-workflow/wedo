@@ -3,7 +3,6 @@ package app
 import (
 	"context"
 	"fmt"
-	"google.golang.org/protobuf/encoding/protojson"
 	"net"
 	"net/http"
 	"strings"
@@ -19,6 +18,7 @@ import (
 	"github.com/wedo-workflow/wedo/runtime"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/keepalive"
+	"google.golang.org/protobuf/encoding/protojson"
 )
 
 type APIServer struct {
@@ -65,6 +65,8 @@ func (s *APIServer) Run() {
 	// Make sure that log statements internal to gRPC library are logged using the logrus Logger as well.
 	grpc_logrus.ReplaceGrpcLogger(logrusEntry)
 	serverOptions := []grpc.ServerOption{
+		grpc.MaxRecvMsgSize(1024 * 1024 * 1024),
+		grpc.MaxSendMsgSize(1024 * 1024 * 1024),
 		grpc.KeepaliveEnforcementPolicy(keepalive.EnforcementPolicy{
 			MinTime:             10 * time.Second,
 			PermitWithoutStream: true,
