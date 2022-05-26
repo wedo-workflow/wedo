@@ -3,6 +3,7 @@ package app
 import (
 	"context"
 	"fmt"
+	"math"
 	"net"
 	"net/http"
 	"strings"
@@ -65,8 +66,7 @@ func (s *APIServer) Run() {
 	// Make sure that log statements internal to gRPC library are logged using the logrus Logger as well.
 	grpc_logrus.ReplaceGrpcLogger(logrusEntry)
 	serverOptions := []grpc.ServerOption{
-		grpc.MaxRecvMsgSize(1024 * 1024 * 1024),
-		grpc.MaxSendMsgSize(1024 * 1024 * 1024),
+		grpc.MaxRecvMsgSize(math.MaxInt32),
 		grpc.KeepaliveEnforcementPolicy(keepalive.EnforcementPolicy{
 			MinTime:             10 * time.Second,
 			PermitWithoutStream: true,
