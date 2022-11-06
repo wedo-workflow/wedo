@@ -19,7 +19,7 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
       email: "im@jony4.pro";
     };
   };
-  host: "demo.wedo.run";
+  host: "wedo.jony4.pro";
   schemes: [HTTPS];
 };
 
