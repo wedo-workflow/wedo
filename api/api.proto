@@ -16,10 +16,10 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
     contact: {
       name: "wedo-workflow/wedo project";
       url: "https://github.com/wedo-workflow/wedo";
-      email: "im@jony4.pro";
+      email: "hi@jony4.vip";
     };
   };
-  host: "wedo.jony4.pro";
+  host: "wedo.jony4.vip";
   schemes: [HTTPS];
 };
 
